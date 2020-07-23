@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Web前端练习</title>
+		<meta name="keywords" content="Web,前端,练习">
+		<meta name="description" content="Web前端练习">
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/test2.css" />
+	</head>
+	<body>
+		<!--header start-->
+		<div id="header">Web前端练习</div>
+		<div id="sidebar">
+			<div class="nav">
+				<ul>
+					<li>CSS练习一</li>
+					<li>CSS练习二</li>
+					<li>CSS练习三</li>
+					<li>CSS练习四</li>
+					<li>JS练习一</li>
+					<li>JS练习二</li>
+					<li>JS练习三</li>
+					<li>JS练习四</li>
+					<li>JS练习五</li>
+					<li>JS练习六</li>
+					<li>JS练习七</li>
+					<li>JS练习八</li>
+					<li>JS练习九</li>
+					<li>JS练习十</li>
+					<li>JS练习十一</li>
+					<li>JS练习十二</li>
+					<li>JS练习十三</li>
+				</ul>
+			</div>
+		</div>
+		<div id="main">
+			<div class="test1">
+				<h2>修改个人信息</h2>
+				<div class="left">
+					<p>姓名：</p>
+					<p>性别：</p>
+					<p>学历：</p>
+					<p>个人描述：</p>
+				</div>
+				<form action="index.html" method="get" class="right">
+					<input type="text" name="name" placeholder="叶权瑞" /><br />
+					<label><input type="radio" name="sex" value="男士" checked />男士</label>
+					<label><input type="radio" name="sex" value="女士" />女士</label><br />
+					<select name="education">
+						<option value="小学">小学</option>
+						<option value="初中">初中</option>
+						<option value="中专/高中">中专/高中</option>
+						<option value="专科">专科</option>
+						<option value="本科" selected>本科</option>
+						<option value="硕士研究生">硕士研究生</option>
+						<option value="博士研究生">博士研究生</option>
+					</select><br />
+					<textarea name="description" placeholder="技术宅"></textarea><br />
+					<label><input type="checkbox" name="unopen" />不要公开我的个人信息</label><br />
+					<input type="submit" name="save" value="保存" />
+					<input type="reset" name="rewrite" value="重填" />
+				</form>
+			</div>
+			<div class="test2">
+				<p style="font-size:2em;color:red;">段落文本（p）：使用内联样式</p><br /><br />
+				<h1>一级标题（h1）：使用内部样式</h1><br />
+				<h2>二级标题（h2）：使用外部样式</h2>
+			</div>
+			<div class="test3">
+				<h4>h4：元素选择器</h4><br />
+				<div class="dp">div：类选择器</div><br /><br />
+				<p class="dp">p：类选择器</p><br />
+				<input type="button" value="按钮" />
+				<input type="text" class="txt" />
+			</div>
+			<div class="test4">
+				<p id="it">id选择器</p><br />
+				<label>label 文本</label>
+				<span>span 文本</span><br /><br />
+				<p>一周排行<span>榜</span></p><br />
+				<a href="#">使用伪类选择器</a>
+			</div>
+			<div class="test5">
+				<input type="button" value="first button" onclick="alert('helloworld')" />
+				<input type="button" value="second button" onclick="helloworld2()" />
+				<input type="button" value="third button" onclick="helloworld3()" />
+			</div>
+			<div class="test6">
+				<h2>判断数据类型，并计算平方</h2><br />
+				<input type="text" id="ts" />
+				<input type="button" value="计算平方" onclick="typesqrt()" />
+			</div>
+			<div class="test7">
+				<h2>猜数字</h2><br />
+				<label>请录入猜测的数字（1-20之间的数字）：<br />
+					<input type="text" id="gn" onchange="guessnum()" />
+					<input type="button" value="重置数字" onclick="varnum()" />
+				</label>
+			</div>
+			<div class="test8">
+				<h2>求阶层</h2><br />
+				<button type="button">求<input type="text" id="fn" onchange="factorial()" />的阶层</button>
+			</div>
+			<div class="test9">
+				<h2>String对象：字符的查找与过滤</h2><br />
+				<input type="text" id="sn" /><br />
+				<button type="button">过滤特殊字符（<input type="text" id="sf" onchange="filter()" />）</button>
+			</div>
+			<div class="test10">
+				<h2>Array对象：倒转、文本与数值的排序</h2><br />
+				<input type="text" id="an" />
+				<input type="button" value="数组倒转" onclick="reverse()" />
+				<input type="button" value="数组排序（文本）" onclick="tsort()" />
+				<input type="button" value="数组排序（数值）" onclick="nsort()" />
+			</div>
+			<div class="test11">
+				<h2>“百钱买百鸡”问题：</h2><br />
+				<h4>公鸡5文一只，母鸡3文一只，小鸡1文一只，如何用一百文钱买到一百只鸡</h4><br />
+				<input type="button" value="答案" onclick="buy()" />
+			</div>
+			<div class="test12">
+				<h2>输入验证</h2><br />
+				<label id="username">用户名（3到6位字母数字的组合）：<input type="text" onblur="regexp1()" /></label><br />
+				<label>电话号码（6位数字）：<input type="text" id="telphone" onblur="regexp2()" /></label>
+			</div>
+			<div class="test13">
+				<h2>页面定时跳转</h2><br />
+				<input type="button" id="tz" value="开始计时" onClick="startCount()" /><br />
+				如果想取消，请点击<a href="javascript:stopCount()">这里</a>
+			</div>
+			<div class="test14">
+				<h2>每隔3秒切换一次图片</h2><br />
+				<img id="img" src="img/1.jpg" width="133" height="200" /><br />
+				<input type="button" value="开始" onClick="startRotate()" />
+			</div>
+			<div class="test15">
+				<h2>表单的验证与提交</h2><br />
+				管理员帐号：<input type="text" id="txtAccount" onfocus="valiAccount();" onblur="valiAccount();" />
+				<span id="accountInfo">10长度以内的字母，数字组合</span><br>
+				电话号码：<input type="text" id="txtPhone" onfocus="valiPhone();" onblur="valiPhone();" />
+				<span id="phoneInfo">形如：0755-36281947</span><br>
+				<input type="button" value="保存" onclick="valiAll()" />
+			</div>
+			<div class="test16">
+				<h2>购物车</h2><br />
+				<label>名称：<input type="text" id="name" class="btn" /></label>
+				<label>价格：<input type="text" id="price" class="btn" /></label>
+				<input type="button" id="add" class="btn blue" value="添加" onclick="insert();">
+				<div id="data">
+					<table id="datalist">
+						<thead class="header">
+							<th>商品名称</th>
+							<th>价格</th>
+							<th width="150">数量</th>
+							<th>小计</th>
+							<th>操作</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td>book1</td>
+								<td>10.00</td>
+								<td>
+									<input type="button" class="btn" value="－" onclick="decreaseNum(this);" />
+									<input type="text"  class="btn" value="1" onfocus="defaultNum(this);" onblur="changeNum(this);" />
+									<input type="button" class="btn" value="＋" onclick="increaseNum(this);" />
+								</td>
+								<td>10.00</td>
+								<td>
+									<input type="button" class="btn green" value="编辑">&nbsp;
+									<input type="button" class="btn red" value="删除" onclick='delOne(this);'>
+								</td>
+							</tr>
+							<tr>
+								<td>book2</td>
+								<td>5.00</td>
+								<td>
+									<input type="button" class="btn" value="－" onclick="decreaseNum(this);" />
+									<input type="text"  class="btn" value="1" onfocus="defaultNum(this);" onblur="changeNum(this);" />
+									<input type="button" class="btn" value="＋" onclick="increaseNum(this);" />
+								</td>
+								<td>5.00</td>
+								<td>
+									<input type="button" class="btn green" value="编辑">&nbsp;
+									<input type="button" class="btn red" value="删除" onclick='delOne(this);'>
+								</td>
+							</tr>
+							<tr>
+								<td>book3</td>
+								<td>15.00</td>
+								<td>
+									<input type="button" class="btn" value="－" onclick="decreaseNum(this);" />
+									<input type="text"  class="btn" value="1" onfocus="defaultNum(this);" onblur="changeNum(this);" />
+									<input type="button" class="btn" value="＋" onclick="increaseNum(this);" />
+								</td>
+								<td>15.00</td>
+								<td>
+									<input type="button" class="btn green" value="编辑">&nbsp;
+									<input type="button" class="btn red" value="删除" onclick='delOne(this);'>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="3" align="right">总计：</td>
+								<td>30.00</td>
+								<td><input type="button" class="btn red" value="全部删除" onclick='delAll();'></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+			<div class="test17">
+				<h2>图片滚动特效</h2><br />
+				<input type="button" class="btn" value="<" onmouseover="moveThis('left')" onmouseout="moveout()" />
+				<div id="div">
+					<div id="div1">
+						<div id="div2">
+							<a href="#"><img src="img/1.jpg" alt="隐藏猫" width="133" height="200" /></a>
+							<a href="#"><img src="img/2.jpg" alt="萌狗" width="133" height="200" /></a>
+							<a href="#"><img src="img/3.jpg" alt="茶杯狗" width="133" height="200" /></a>
+							<a href="#"><img src="img/4.jpg" alt="大头狗" width="133" height="200" /></a>
+							<a href="#"><img src="img/5.jpg" alt="兔子" width="133" height="200" /></a>
+							<a href="#"><img src="img/6.jpg" alt="熊猫" width="133" height="200" /></a>
+							<a href="#"><img src="img/7.jpg" alt="垃圾猫" width="133" height="200" /></a>
+							<a href="#"><img src="img/8.jpg" alt="松鼠" width="133" height="200" /></a>
+							<a href="#"><img src="img/9.jpg" alt="北极熊" width="133" height="200" /></a>
+							<a href="#"><img src="img/10.jpg" alt="猫咪" width="133" height="200" /></a>
+							<a href="#"><img src="img/11.jpg" alt="玩猫" width="133" height="200" /></a>
+						</div>
+						<div id="div3"></div>
+					</div>
+				</div>
+				<input type="button" class="btn" value=">" onmouseover="moveThis('right')" onmouseout="moveout()" />
+			</div>
+		</div>
+		<div id="footer">
+			<span>&copy; 2011-2016
+				<a href="http://www.w3school.com.cn/" target="_blank" style=" color:#eee">枫叶软件</a> 版权所有
+			</span>
+		</div>
+		<script type="text/javascript" src="js/test5.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery.formatCurrency-1.4.0.js" ></script>
+		<script type="text/javascript" src="js/script.js" ></script>
+	</body>
+</html>
