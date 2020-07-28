@@ -1,0 +1,2878 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="target-densitydpi=device-dpi" />
+<meta name="HandheldFriendly" content="true"/>
+<link rel="canonical" href="http://underscorejs.org/" />
+<script src="../../../code.jquery.com/jquery-1.11.0.min.js" tppabs="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<title>Underscore.js(1.9.1) ä¸­æ–‡æ–‡æ¡£</title>
+<meta name="description" content="Underscoreï¼ˆæˆ– Underscore.jsï¼‰æ˜¯ä¸€ä¸ª JavaScript å·¥å…·åº“ï¼Œå®ƒæä¾›äº†ä¸€æ•´å¥—å‡½æ•°å¼ç¼–ç¨‹çš„å®ç”¨åŠŸèƒ½ï¼Œä½†æ˜¯æ²¡æœ‰æ‰©å±•ä»»ä½• JavaScript å†…ç½®å¯¹è±¡ã€‚ä»–å¼¥è¡¥äº† jQuery æ²¡æœ‰å®ç°çš„åŠŸèƒ½ï¼ŒåŒæ—¶åˆæ˜¯ Backbone å¿…ä¸å¯å°‘çš„éƒ¨åˆ†ã€‚">
+<meta name="keywords" content="Underscore, underscore.js, HTML, CSS, JS, JavaScript">
+<style>
+    body {
+      font-size: 14px;
+      line-height: 22px;
+      background: #f4f4f4 url("docs/images/background.png")/*tpa=https://www.html.cn/doc/underscore/docs/images/background.png*//*tpa=https://www.html.cn/doc/underscore/docs/images/background.png*/;
+      color: #000;
+      font-family: Helvetica Neue, Helvetica, Arial;
+    }
+    .interface {
+      font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
+    }
+    div#sidebar {
+      background: #fff;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: 200px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding: 15px 0 30px 30px;
+      border-right: 1px solid #bbb;
+      box-shadow: 0 0 20px #ccc; -webkit-box-shadow: 0 0 20px #ccc; -moz-box-shadow: 0 0 20px #ccc;
+    }
+    a.toc_title, a.toc_title:visited {
+      display: block;
+      color: black;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+      a.toc_title:hover {
+        text-decoration: underline;
+      }
+      #sidebar .version {
+        font-size: 10px;
+        font-weight: normal;
+      }
+    ul.toc_section {
+      font-size: 11px;
+      line-height: 14px;
+      margin: 5px 0 0 0;
+      padding-left: 0px;
+      list-style-type: none;
+      font-family: Lucida Grande;
+    }
+      .toc_section li {
+        cursor: pointer;
+        margin: 0 0 3px 0;
+      }
+        .toc_section li a {
+          text-decoration: none;
+          color: black;
+        }
+          .toc_section li a:hover {
+            text-decoration: underline;
+          }
+    input#function_filter {
+        width: 80%;
+    }
+    div.container {
+      width: 850px;
+      margin: 40px 0 50px 260px;
+    }
+    img#logo {
+      width: 396px;
+      height: 69px;
+    }
+    div.warning {
+      margin-top: 15px;
+      font: bold 11px Arial;
+      color: #770000;
+    }
+    p {
+      margin: 20px 0;
+      width: 850px;
+    }
+    a, a:visited {
+      color: #444;
+    }
+    a:active, a:hover {
+      color: #000;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      padding-top: 20px;
+    }
+      h2 {
+        font-size: 20px;
+      }
+    b.header {
+      font-size: 16px;
+      line-height: 30px;
+    }
+    span.alias {
+      font-size: 14px;
+      font-style: italic;
+      margin-left: 20px;
+    }
+    table, tr, td {
+      margin: 0; padding: 0;
+    }
+      td {
+        padding: 2px 12px 2px 0;
+      }
+      table .rule {
+        height: 1px;
+        background: #ccc;
+        margin: 5px 0;
+      }
+    ul {
+      list-style-type: circle;
+      padding: 0 0 0 20px;
+    }
+      li {
+        margin-bottom: 10px;
+      }
+      code, pre, tt {
+        font-family: Monaco, Consolas, "Lucida Console", monospace;
+        font-size: 12px;
+        line-height: 18px;
+        font-style: normal;
+      }
+        tt {
+          padding: 0px 3px;
+          background: #fff;
+          border: 1px solid #ddd;
+          zoom: 1;
+        }
+        code {
+          margin-left: 20px;
+        }
+        pre {
+          font-size: 12px;
+          padding: 2px 0 2px 15px;
+          border-left: 5px solid #bbb;
+          margin: 0px 0 30px;
+        }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 640px),
+          only screen and (-o-min-device-pixel-ratio: 3/2) and (max-width: 640px),
+          only screen and (min-device-pixel-ratio: 1.5) and (max-width: 640px) {
+      img {
+        max-width: 100%;
+      }
+      div#sidebar {
+        -webkit-overflow-scrolling: initial;
+        position: relative;
+        width: 90%;
+        height: 120px;
+        left: 0;
+        top: -7px;
+        padding: 10px 0 10px 30px;
+        border: 0;
+      }
+      img#logo {
+        width: auto;
+        height: auto;
+      }
+      div.container {
+        margin: 0;
+        width: 100%;
+      }
+      p, div.container ul {
+        max-width: 98%;
+        overflow-x: scroll;
+      }
+      pre {
+        overflow: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="sidebar" class="interface">
+<a class="toc_title" href="#">
+Underscore.js <span class="version">(1.9.1)</span>
+</a>
+<ul class="toc_section">
+<li>&raquo; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore'" tppabs="https://github.com/jashkenas/underscore">GitHub ä»“åº“</a></li>
+<li>&raquo; <a href="docs/underscore.html" tppabs="https://www.html.cn/doc/underscore/docs/underscore.html">æœ‰æ³¨é‡Šçš„æºä»£ç </a></li>
+<li>&raquo; <a href="javascript:if(confirm('http://documentcloud.github.io/underscore-contrib/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://documentcloud.github.io/underscore-contrib/'" tppabs="http://documentcloud.github.io/underscore-contrib/">Underscore-contrib</a></li>
+</ul>
+<input id="function_filter" placeholder="Filter" type="text" autofocus />
+<div class="searchable_section">
+<a class="toc_title" href="#">
+ä»‹ç»(Introduction)
+</a>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#collections">
+é›†åˆ(Collections)
+</a>
+<ul class="toc_section">
+<li data-name="each" data-aliases="forEach">- <a href="#each">each</a></li>
+<li data-name="map" data-aliases="collect">- <a href="#map">map</a></li>
+<li data-name="reduce" data-aliases="inject foldl">- <a href="#reduce">reduce</a></li>
+<li data-name="reduceRight" data-aliases="foldr">- <a href="#reduceRight">reduceRight</a></li>
+<li data-name="find" data-aliases="detect">- <a href="#find">find</a></li>
+<li data-name="filter" data-aliases="select">- <a href="#filter">filter</a></li>
+<li data-name="where">- <a href="#where">where</a></li>
+<li data-name="findWhere">- <a href="#findWhere">findWhere</a></li>
+<li data-name="reject">- <a href="#reject">reject</a></li>
+<li data-name="every" data-aliases="all">- <a href="#every">every</a></li>
+<li data-name="some" data-aliases="any">- <a href="#some">some</a></li>
+<li data-name="contains" data-aliases="include includes">- <a href="#contains">contains</a></li>
+<li data-name="invoke">- <a href="#invoke">invoke</a></li>
+<li data-name="pluck">- <a href="#pluck">pluck</a></li>
+<li data-name="max">- <a href="#max">max</a></li>
+<li data-name="min">- <a href="#min">min</a></li>
+<li data-name="sortBy">- <a href="#sortBy">sortBy</a></li>
+<li data-name="groupBy">- <a href="#groupBy">groupBy</a></li>
+<li data-name="indexBy">- <a href="#indexBy">indexBy</a></li>
+<li data-name="countBy">- <a href="#countBy">countBy</a></li>
+<li data-name="shuffle">- <a href="#shuffle">shuffle</a></li>
+<li data-name="sample">- <a href="#sample">sample</a></li>
+<li data-name="toArray">- <a href="#toArray">toArray</a></li>
+<li data-name="size">- <a href="#size">size</a></li>
+<li data-name="partition">- <a href="#partition">partition</a></li>
+</ul>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#arrays">
+æ•°ç»„(Arrays)
+</a>
+<ul class="toc_section">
+<li data-name="first" data-aliases="head take">- <a href="#first">first</a></li>
+<li data-name="initial">- <a href="#initial">initial</a></li>
+<li data-name="last">- <a href="#last">last</a></li>
+<li data-name="rest" data-aliases="tail drop">- <a href="#rest">rest</a></li>
+<li data-name="compact">- <a href="#compact">compact</a></li>
+<li data-name="flatten">- <a href="#flatten">flatten</a></li>
+<li data-name="without">- <a href="#without">without</a></li>
+<li data-name="union">- <a href="#union">union</a></li>
+<li data-name="intersection">- <a href="#intersection">intersection</a></li>
+<li data-name="difference">- <a href="#difference">difference</a></li>
+<li data-name="uniq" data-aliases="unique">- <a href="#uniq">uniq</a></li>
+<li data-name="zip">- <a href="#zip">zip</a></li>
+<li data-name="unzip">- <a href="#unzip">unzip</a></li>
+<li data-name="object">- <a href="#object">object</a></li>
+<li data-name="chunk">- <a href="#chunk">chunk</a></li>
+<li data-name="indexOf">- <a href="#indexOf">indexOf</a></li>
+<li data-name="lastIndexOf">- <a href="#lastIndexOf">lastIndexOf</a></li>
+<li data-name="sortedIndex">- <a href="#sortedIndex">sortedIndex</a></li>
+<li data-name="findIndex">- <a href="#findIndex">findIndex</a></li>
+<li data-name="findLastIndex">- <a href="#findLastIndex">findLastIndex</a></li>
+<li data-name="range">- <a href="#range">range</a></li>
+</ul>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#functions">
+å‡½æ•°(Functions)
+</a>
+<ul class="toc_section">
+<li data-name="bind">- <a href="#bind">bind</a></li>
+<li data-name="bindAll">- <a href="#bindAll">bindAll</a></li>
+<li data-name="partial">- <a href="#partial">partial</a></li>
+<li data-name="memoize">- <a href="#memoize">memoize</a></li>
+<li data-name="delay">- <a href="#delay">delay</a></li>
+<li data-name="defer">- <a href="#defer">defer</a></li>
+<li data-name="throttle">- <a href="#throttle">throttle</a></li>
+<li data-name="debounce">- <a href="#debounce">debounce</a></li>
+<li data-name="once">- <a href="#once">once</a></li>
+<li data-name="after">- <a href="#after">after</a></li>
+<li data-name="before">- <a href="#before">before</a></li>
+<li data-name="wrap">- <a href="#wrap">wrap</a></li>
+<li data-name="negate">- <a href="#negate">negate</a></li>
+<li data-name="compose">- <a href="#compose">compose</a></li>
+<li data-name="restArguments">- <a href="#restArguments">restArguments</a></li>
+</ul>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#objects">
+å¯¹è±¡(Objects)
+</a>
+<ul class="toc_section">
+<li data-name="keys">- <a href="#keys">keys</a></li>
+<li data-name="allKeys">- <a href="#allKeys">allKeys</a></li>
+<li data-name="values">- <a href="#values">values</a></li>
+<li data-name="mapObject">- <a href="#mapObject">mapObject</a></li>
+<li data-name="pairs">- <a href="#pairs">pairs</a></li>
+<li data-name="invert">- <a href="#invert">invert</a></li>
+<li data-name="create">- <a href="#create">create</a></li>
+<li data-name="object-functions" data-aliases="methods">- <a href="#object-functions">functions</a></li>
+<li data-name="findKey">- <a href="#findKey">findKey</a></li>
+<li data-name="extend">- <a href="#extend">extend</a></li>
+<li data-name="extendOwn" data-aliases="assign">- <a href="#extendOwn">extendOwn</a></li>
+<li data-name="pick">- <a href="#pick">pick</a></li>
+<li data-name="omit">- <a href="#omit">omit</a></li>
+<li data-name="defaults">- <a href="#defaults">defaults</a></li>
+<li data-name="clone">- <a href="#clone">clone</a></li>
+<li data-name="tap">- <a href="#tap">tap</a></li>
+<li data-name="has">- <a href="#has">has</a></li>
+<li data-name="property">- <a href="#property">property</a></li>
+<li data-name="propertyOf">- <a href="#propertyOf">propertyOf</a></li>
+<li data-name="matcher">- <a href="#matcher">matcher</a></li>
+<li data-name="isEqual">- <a href="#isEqual">isEqual</a></li>
+<li data-name="isMatch">- <a href="#isMatch">isMatch</a></li>
+<li data-name="isEmpty">- <a href="#isEmpty">isEmpty</a></li>
+<li data-name="isElement">- <a href="#isElement">isElement</a></li>
+<li data-name="isArray">- <a href="#isArray">isArray</a></li>
+<li data-name="isObject">- <a href="#isObject">isObject</a></li>
+<li data-name="isArguments">- <a href="#isArguments">isArguments</a></li>
+<li data-name="isFunction">- <a href="#isFunction">isFunction</a></li>
+<li data-name="isString">- <a href="#isString">isString</a></li>
+<li data-name="isNumber">- <a href="#isNumber">isNumber</a></li>
+<li data-name="isFinite">- <a href="#isFinite">isFinite</a></li>
+<li data-name="isBoolean">- <a href="#isBoolean">isBoolean</a></li>
+<li data-name="isDate">- <a href="#isDate">isDate</a></li>
+<li data-name="isRegExp">- <a href="#isRegExp">isRegExp</a></li>
+<li data-name="isError">- <a href="#isError">isError</a></li>
+<li data-name="isSymbol">- <a href="#isSymbol">isSymbol</a></li>
+<li data-name="isMap">- <a href="#isMap">isMap</a></li>
+<li data-name="isWeakMap">- <a href="#isWeakMap">isWeakMap</a></li>
+<li data-name="isSet">- <a href="#isSet">isSet</a></li>
+<li data-name="isWeakSet">- <a href="#isWeakSet">isWeakSet</a></li>
+<li data-name="isNaN">- <a href="#isNaN">isNaN</a></li>
+<li data-name="isNull">- <a href="#isNull">isNull</a></li>
+<li data-name="isUndefined">- <a href="#isUndefined">isUndefined</a></li>
+</ul>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#utility">
+å®ç”¨åŠŸèƒ½(Utility)
+</a>
+<ul class="toc_section">
+<li data-name="noConflict">- <a href="#noConflict">noConflict</a></li>
+<li data-name="identity">- <a href="#identity">identity</a></li>
+<li data-name="constant">- <a href="#constant">constant</a></li>
+<li data-name="noop">- <a href="#noop">noop</a></li>
+<li data-name="times">- <a href="#times">times</a></li>
+<li data-name="random">- <a href="#random">random</a></li>
+<li data-name="mixin">- <a href="#mixin">mixin</a></li>
+<li data-name="iteratee">- <a href="#iteratee">iteratee</a></li>
+<li data-name="uniqueId">- <a href="#uniqueId">uniqueId</a></li>
+<li data-name="escape">- <a href="#escape">escape</a></li>
+<li data-name="unescape">- <a href="#unescape">unescape</a></li>
+<li data-name="result">- <a href="#result">result</a></li>
+<li data-name="now">- <a href="#now">now</a></li>
+<li data-name="template">- <a href="#template">template</a></li>
+</ul>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#oop">
+OOP Style
+</a>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#chaining">
+é“¾å¼è¯­æ³•(Chaining)
+</a>
+<ul class="toc_section">
+<li data-name="chain">- <a href="#chain">chain</a></li>
+<li data-name="value">- <a href="#value">value</a></li>
+</ul>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#links">
+æ›´å¤šé“¾æ¥(Links)
+</a>
+</div>
+<div class="searchable_section">
+<a class="toc_title" href="#changelog">
+æ›´æ–°æ—¥å¿—(Change Log)
+</a>
+</div>
+</div>
+<div class="container">
+<p id="introduction">
+<img id="logo" src="docs/images/underscore.png" tppabs="https://www.html.cn/doc/underscore/docs/images/underscore.png" alt="Underscore.js" />
+</p>
+<p>æœ¬æ–‡æ¡£ä¸ºUnderscore.js (1.9.1) ä¸­æ–‡æ–‡æ¡£ï¼Œ<br>
+æŸ¥çœ‹1.8.3ç‰ˆæœ¬çš„æ–‡æ¡£è¯·ç‚¹å‡»:<a href="javascript:if(confirm('https://www.html.cn/doc/underscore1.8.3  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/underscore1.8.3'" tppabs="https://www.html.cn/doc/underscore1.8.3" target="_blank">https://www.html.cn/doc/underscore1.8.3/</a></p>
+<h3>å…¶ä»–å‰ç«¯å¼€å‘æ–‡æ¡£</h3>
+<style>.dev-doc {
+                      padding: 20px 0;
+                      overflow: hidden;
+                  }
+
+                  .dev-doc a {
+                      line-height: 1.42857143;
+                      float: left;
+                      border-radius: 3px;
+                      margin: 0 8px 8px 0;
+                      border: 1px solid #e9e9e9;
+                      padding: 3px 5px;
+                      color: #888;
+                      text-decoration: none;
+                  }
+
+                  .dev-doc a:hover {
+                      color: #45BCF9;
+                      border-color: #45BCF9;
+                      transition: 0.6s all ease;
+                  }
+
+                  .dev-doc a.more-doc {
+                      color: #FFFFFF;
+                      background: #45BCF9;
+                      border: 1px solid #45BCF9;
+                  }
+
+                  .dev-doc a.more-doc:hover {
+                      color: #FFFFFF;
+                      background: #0095e2;
+                      border-color: #0095e2;
+                      transition: 0.6s all ease;
+                  }
+
+                  .dev-doc a.more-doc .iconfont {
+                      font-size: 16px;
+                      vertical-align: -1px;
+                      line-height: 16px;
+                  }
+
+                  .dev-doc a img {
+                      height: 20px;
+                      vertical-align: middle;
+                  }</style>
+<div class=" dev-doc clearfix">
+<a href="javascript:if(confirm('http://react.html.cn/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://react.html.cn/'" tppabs="http://react.html.cn/" target="_blank"><img src="../../newimg88/2017/05/react-s.png" tppabs="https://www.html.cn/newimg88/2017/05/react-s.png" alt=""> React ä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/book/css/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/book/css/'" tppabs="https://www.html.cn/book/css/" target="_blank"><img src="../../newimg88/2016/10/css3-logo.png" tppabs="https://www.html.cn/newimg88/2016/10/css3-logo.png" alt=""> CSSå‚è€ƒæ‰‹å†Œ</a>
+<a href="javascript:if(confirm('https://www.html.cn/doc/parcel/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/parcel/'" tppabs="https://www.html.cn/doc/parcel/" target="_blank"><img src="../../newimg88/2017/12/parcel-s.png" tppabs="https://www.html.cn/newimg88/2017/12/parcel-s.png" alt=""> Parcel ä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/jqapi-1.9/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/jqapi-1.9/'" tppabs="https://www.html.cn/jqapi-1.9/" target="_blank"><img src="../../newimg88/2016/10/jquery-logo.png" tppabs="https://www.html.cn/newimg88/2016/10/jquery-logo.png" alt=""> jQuery APIä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('http://webpack.html.cn/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://webpack.html.cn/'" tppabs="http://webpack.html.cn/" target="_blank"><img src="../../newimg88/2017/02/webpack-s.png" tppabs="https://www.html.cn/newimg88/2017/02/webpack-s.png" alt=""> webpack ä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/doc/lodash/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/lodash/'" tppabs="https://www.html.cn/doc/lodash/" target="_blank"><img src="../../newimg88/2016/10/lodash-logo.png" tppabs="https://www.html.cn/newimg88/2016/10/lodash-logo.png" alt=""> Lodashä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/doc/zeptojs_api/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/zeptojs_api/'" tppabs="https://www.html.cn/doc/zeptojs_api/" target="_blank"><img src="../../newimg88/2016/10/zepto-logo.png" tppabs="https://www.html.cn/newimg88/2016/10/zepto-logo.png" alt=""> Zepto.js ä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/doc/sass/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/sass/'" tppabs="https://www.html.cn/doc/sass/" target="_blank"><img src="../../newimg88/2016/10/sass-logo.png" tppabs="https://www.html.cn/newimg88/2016/10/sass-logo.png" alt=""> Sassä¸­æ–‡æ–‡æ¡£</a>
+<a href="index.htm" tppabs="https://www.html.cn/doc/underscore/" target="_blank"><img src="../../newimg88/2016/10/underscore-logo1.png" tppabs="https://www.html.cn/newimg88/2016/10/underscore-logo1.png" alt=""> Underscore.js ä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/tool/css3Preview/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/tool/css3Preview/'" tppabs="https://www.html.cn/tool/css3Preview/" target="_blank"><img src="../../newimg88/2016/10/css3-logo.png" tppabs="https://www.html.cn/newimg88/2016/10/css3-logo.png" alt=""> CSS3ä»£ç ç”Ÿæˆ(æ¼”ç¤º)</a>
+<a href="javascript:if(confirm('https://www.html.cn/doc/chrome-devtools/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/chrome-devtools/'" tppabs="https://www.html.cn/doc/chrome-devtools/" target="_blank"><img src="../../newimg88/2017/01/chrome-32.png" tppabs="https://www.html.cn/newimg88/2017/01/chrome-32.png" alt=""> Chrome DevTools ä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/doc/typescript/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/typescript/'" tppabs="https://www.html.cn/doc/typescript/" target="_blank"><img src="../../newimg88/2017/07/tepyscript-s.png" tppabs="https://www.html.cn/newimg88/2017/07/tepyscript-s.png" alt=""> TypeScript ä¸­æ–‡æ–‡æ¡£</a>
+<a href="javascript:if(confirm('https://www.html.cn/nav/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/nav/'" tppabs="https://www.html.cn/nav/" target="_blank" class="more-doc">æ›´å¤šå‰ç«¯å¼€å‘æ–‡æ¡£</a>
+</div>
+<p>
+<a href="javascript:if(confirm('http://github.com/jashkenas/underscore/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/jashkenas/underscore/'" tppabs="http://github.com/jashkenas/underscore/">Underscore</a>ä¸€ä¸ªJavaScriptå®ç”¨åº“ï¼Œæä¾›äº†ä¸€æ•´å¥—å‡½æ•°å¼ç¼–ç¨‹çš„å®ç”¨åŠŸèƒ½ï¼Œä½†æ˜¯æ²¡æœ‰æ‰©å±•ä»»ä½•JavaScriptå†…ç½®å¯¹è±¡ã€‚å®ƒæ˜¯è¿™ä¸ªé—®é¢˜çš„ç­”æ¡ˆï¼šâ€œå¦‚æœæˆ‘åœ¨ä¸€ä¸ªç©ºç™½çš„HTMLé¡µé¢å‰åä¸‹ï¼Œ å¹¶å¸Œæœ›ç«‹å³å¼€å§‹å·¥ä½œï¼Œ æˆ‘éœ€è¦ä»€ä¹ˆï¼Ÿâ€œ...å®ƒå¼¥è¡¥äº†éƒ¨åˆ†<a href="javascript:if(confirm('http://docs.jquery.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.jquery.com/'" tppabs="http://docs.jquery.com/">jQuery</a>æ²¡æœ‰å®ç°çš„åŠŸèƒ½,åŒæ—¶åˆæ˜¯<a href="javascript:if(confirm('http://backbonejs.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://backbonejs.org/'" tppabs="http://backbonejs.org/">Backbone.js</a>å¿…ä¸å¯å°‘çš„éƒ¨åˆ†ã€‚ ï¼ˆæ„Ÿè°¢<a href="javascript:if(confirm('http://weibo.com/xiaodengzidaj  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/xiaodengzidaj'" tppabs="http://weibo.com/xiaodengzidaj" target="_blank">@å°é‚“å­daj </a> çš„ç¿»è¯‘å»ºè®®ï¼‰
+</p>
+<p>
+Underscoreæä¾›äº†100å¤šä¸ªå‡½æ•°,åŒ…æ‹¬å¸¸ç”¨çš„: <b>map</b>, <b>filter</b>, <b>invoke</b> &mdash; å½“ç„¶è¿˜æœ‰æ›´å¤šä¸“ä¸šçš„è¾…åŠ©å‡½æ•°,å¦‚:å‡½æ•°ç»‘å®š,
+JavaScriptæ¨¡æ¿åŠŸèƒ½,åˆ›å»ºå¿«é€Ÿç´¢å¼•, å¼ºç±»å‹ç›¸ç­‰æµ‹è¯•, ç­‰ç­‰.
+</p>
+<p>
+ä¸ºäº†ä½ èƒ½ä»”ç»†ç ”è¯»ï¼Œè¿™é‡ŒåŒ…å«äº†ä¸€ä¸ªå®Œæ•´çš„<a href="test/index.htm" tppabs="https://www.html.cn/doc/underscore/test/">æµ‹è¯•å¥—ä»¶</a>ã€‚
+</p>
+<p>
+æ‚¨ä¹Ÿå¯ä»¥é€šè¿‡<a href="docs/underscore.html" tppabs="https://www.html.cn/doc/underscore/docs/underscore.html">æ³¨é‡Šé˜…è¯»æºä»£ç </a>ã€‚
+</p>
+<p>äº«å—Underscoreï¼Œå¹¶å¸Œæœ›è·å¾—æ›´å¤šçš„ä½¿ç”¨åŠŸèƒ½ï¼ˆæ„Ÿè°¢<a href="javascript:if(confirm('http://weibo.com/bananajaward  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/bananajaward'" tppabs="http://weibo.com/bananajaward" target="_blank">@Jawardåä»”</a> çš„ç¿»è¯‘å»ºè®®ï¼‰ï¼Œå¯ä»¥å°è¯•ä½¿ç”¨<a href="javascript:if(confirm('http://documentcloud.github.io/underscore-contrib/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://documentcloud.github.io/underscore-contrib/'" tppabs="http://documentcloud.github.io/underscore-contrib/">Underscore-contrib</a>ï¼ˆæ³¨ï¼šUnderscore-contribæ˜¯ä¸€ä¸ªUnderscoreçš„ä»£ç è´¡çŒ®åº“ï¼‰ã€‚
+</p>
+<p>è¯¥é¡¹ç›®ä»£ç <a href="javascript:if(confirm('http://github.com/documentcloud/underscore/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/documentcloud/underscore/'" tppabs="http://github.com/documentcloud/underscore/">æ‰˜ç®¡åœ¨GitHub</a>ä¸Šã€‚æ‚¨å¯ä»¥åœ¨<a href="javascript:if(confirm('https://github.com/jashkenas/underscore/issues  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/issues'" tppabs="https://github.com/jashkenas/underscore/issues">issues
+é¡µé¢</a>ä¸ŠæŠ¥å‘Šé”™è¯¯æˆ–è®¨è®ºåŠŸèƒ½ï¼Œæˆ–åœ¨ <a href="javascript:if(confirm('https://gitter.im/jashkenas/underscore  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://gitter.im/jashkenas/underscore'" tppabs="https://gitter.im/jashkenas/underscore">Gitter</a> é€šé“ä¸­å’Œæˆ‘ä»¬èŠã€‚
+</p>
+<p>
+<i>Underscoreæ˜¯<a href="javascript:if(confirm('http://documentcloud.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://documentcloud.org/'" tppabs="http://documentcloud.org/">DocumentCloud</a>çš„ä¸€ä¸ªå¼€æºç»„ä»¶ã€‚
+</i></p>
+<h2>ä¸‹è½½ <i style="padding-left: 12px; font-size:12px;">(å³é”®å¦å­˜ä¸º)</i></h2>
+<table>
+<tr>
+<td><a href="underscore.js" tppabs="https://www.html.cn/doc/underscore/underscore.js">å¼€å‘ç‰ˆ (1.9.Â·)</a></td>
+<td><i>60kb, æœªå‹ç¼©ç‰ˆ, å«å¤§é‡æ³¨é‡Š</i></td>
+</tr>
+<tr>
+<td><a href="underscore-min.js" tppabs="https://www.html.cn/doc/underscore/underscore-min.js">ç”Ÿäº§ç‰ˆ (1.9.1)</a></td>
+<td>
+<i>6.5kb, æœ€ç®€åŒ–å¹¶ç”¨Gzipå‹ç¼©</i>
+&nbsp;<small>(<a href="javascript:if(confirm('https://www.html.cn/doc/underscore/underscore-min.map  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/doc/underscore/underscore-min.map'" tppabs="https://www.html.cn/doc/underscore/underscore-min.map">Source Map</a>)</small>
+</td>
+</tr>
+<tr>
+<td colspan="2"><div class="rule"></div></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://raw.github.com/jashkenas/underscore/master/underscore.js  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://raw.github.com/jashkenas/underscore/master/underscore.js'" tppabs="https://raw.github.com/jashkenas/underscore/master/underscore.js">ä¸ç¨³å®šç‰ˆ</a></td>
+<td><i>æœªå‘å¸ƒç‰ˆæœ¬, å½“å‰å¼€å‘ä¸­çš„ <tt>master</tt> åˆ†æ”¯, å¦‚æœä½¿ç”¨æ­¤ç‰ˆæœ¬, é£é™©è‡ªè´Ÿ</i></td>
+</tr>
+</table>
+<h2>å®‰è£…ï¼ˆInstallationï¼‰</h2>
+<ul>
+<li>
+<b>Node.js</b> <tt>npm install underscore</tt>
+</li>
+<li>
+<b>Meteor.js</b> <tt>meteor add underscore</tt>
+</li>
+<li>
+<b>Require.js</b> <tt>require(["underscore"], ...</tt>
+</li>
+<li>
+<b>Bower</b> <tt>bower install underscore</tt>
+</li>
+<li>
+<b>Component</b> <tt>component install jashkenas/underscore</tt>
+</li>
+</ul>
+<div id="documentation">
+<h2 id="collections">é›†åˆå‡½æ•° (æ•°ç»„ æˆ–å¯¹è±¡)</h2>
+<p id="each">
+<b class="header">each</b><code>_.each(list, iteratee, [context])</code>
+<span class="alias">Alias: <b>forEach</b></span>
+<br />
+éå†<b>list</b>ä¸­çš„æ‰€æœ‰å…ƒç´ ï¼ŒæŒ‰é¡ºåºç”¨æ¯ä¸ªå…ƒç´ å½“åšå‚æ•°è°ƒç”¨ <b>iteratee</b> å‡½æ•°ã€‚å¦‚æœä¼ é€’äº†<b>context</b>å‚æ•°ï¼Œåˆ™æŠŠ<b>iteratee</b>ç»‘å®šåˆ°<b>context</b>å¯¹è±¡ä¸Šã€‚æ¯æ¬¡è°ƒç”¨<b>iteratee</b>éƒ½ä¼šä¼ é€’ä¸‰ä¸ªå‚æ•°ï¼š<tt>(element, index, list)</tt>ã€‚å¦‚æœ<b>list</b>æ˜¯ä¸ªJavaScriptå¯¹è±¡ï¼Œ<b>iteratee</b>çš„å‚æ•°æ˜¯ <tt>(value, key, list)</tt>)ã€‚è¿”å›<b>list</b>ä»¥æ–¹ä¾¿é“¾å¼è°ƒç”¨ã€‚
+</p>
+<pre>
+_.each([1, 2, 3], alert);
+=&gt; alerts each number in turn...
+_.each({one: 1, two: 2, three: 3}, alert);
+=&gt; alerts each number value in turn...</pre>
+<p>
+<i>
+æ³¨æ„ï¼šé›†åˆå‡½æ•°èƒ½åœ¨æ•°ç»„ï¼Œå¯¹è±¡ï¼Œå’Œç±»æ•°ç»„å¯¹è±¡ï¼Œæ¯”å¦‚</i><tt>arguments</tt>, <tt>NodeList</tt><i>å’Œç±»ä¼¼çš„æ•°æ®ç±»å‹ä¸Šæ­£å¸¸å·¥ä½œã€‚ ä½†æ˜¯å®ƒé€šè¿‡<a href="javascript:if(confirm('http://zh.wikipedia.org/zh-cn/%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://zh.wikipedia.org/zh-cn/%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B'" tppabs="http://zh.wikipedia.org/zh-cn/%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B" target="_blank">é¸­å­ç±»å‹</a>å·¥ä½œï¼Œæ‰€ä»¥è¦é¿å…ä¼ é€’å¸¦æœ‰ä¸€ä¸ªæ•°å€¼ç±»å‹ <tt>length</tt> å±æ€§çš„å¯¹è±¡ã€‚æ¯ä¸ªå¾ªç¯ä¸èƒ½è¢«ç ´å - æ‰“ç ´ï¼Œ ä½¿ç”¨<b>_.find</b>ä»£æ›¿ï¼Œè¿™ä¹Ÿæ˜¯å¾ˆå¥½çš„æ³¨æ„ã€‚
+</i>
+</p>
+<p id="map">
+<b class="header">map</b><code>_.map(list, iteratee, [context])</code>
+<span class="alias">Alias: <b>collect</b></span>
+<br />
+é€šè¿‡å¯¹ <b>list</b> é‡Œçš„æ¯ä¸ªå…ƒç´ è°ƒç”¨è½¬æ¢å‡½æ•°(<a href="#iteratee"><b>iteratee</b></a>è¿­ä»£å™¨)ç”Ÿæˆä¸€ä¸ªä¸ä¹‹ç›¸å¯¹åº”çš„æ•°ç»„ã€‚<tt>iteratee</tt>ä¼ é€’ä¸‰ä¸ªå‚æ•°ï¼š<tt>value</tt>ï¼Œç„¶åæ˜¯è¿­ä»£ <tt>index</tt>(æˆ– <tt>key</tt> æ³¨ï¼šå¦‚æœ<b>list</b>æ˜¯ä¸ªJavaScriptå¯¹è±¡æ˜¯ï¼Œè¿™ä¸ªå‚æ•°å°±æ˜¯<tt>key</tt>)ï¼Œæœ€åä¸€ä¸ªæ˜¯å¼•ç”¨æŒ‡å‘æ•´ä¸ª<tt>list</tt>ã€‚
+</p>
+<pre>
+_.map([1, 2, 3], function(num){ return num * 3; });
+=&gt; [3, 6, 9]
+_.map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
+=&gt; [3, 6, 9]
+_.map([[1, 2], [3, 4]], _.first);
+=&gt; [1, 3]</pre>
+<p id="reduce">
+<b class="header">reduce</b><code>_.reduce(list, iteratee, [memo], [context])</code>
+<span class="alias">Aliases: <b>inject</b>, <b>foldl</b></span>
+<br />
+åˆ«åä¸º <b>inject</b> å’Œ <b>foldl</b>, <b>reduce</b>æ–¹æ³•æŠŠ<b>list</b>ä¸­å…ƒç´ å½’ç»“ä¸ºä¸€ä¸ªå•ç‹¬çš„æ•°å€¼ã€‚<b>Memo</b>æ˜¯reduceå‡½æ•°çš„åˆå§‹å€¼ï¼Œä¼šè¢«æ¯ä¸€æ¬¡æˆåŠŸè°ƒç”¨<b>iteratee</b>å‡½æ•°çš„è¿”å›å€¼æ‰€å–ä»£
+ã€‚è¿™ä¸ªè¿­ä»£ä¼ é€’4ä¸ªå‚æ•°ï¼š<tt>memo</tt>,<tt>value</tt> å’Œ è¿­ä»£çš„<tt>index</tt>ï¼ˆæˆ–è€… keyï¼‰å’Œæœ€åä¸€ä¸ªå¼•ç”¨çš„æ•´ä¸ª <tt>list</tt>ã€‚
+</p>
+<p>
+å¦‚æœæ²¡æœ‰<b>memo</b>ä¼ é€’ç»™<b>reduce</b>çš„åˆå§‹è°ƒç”¨ï¼Œ<b>iteratee</b>ä¸ä¼šè¢«åˆ—è¡¨ä¸­çš„ç¬¬ä¸€ä¸ªå…ƒç´ è°ƒç”¨ã€‚ç¬¬ä¸€ä¸ªå…ƒç´ å°†å–ä»£<b>memo</b>å‚æ•°ä¼ é€’ç»™åˆ—è¡¨ä¸­ä¸‹ä¸€ä¸ªå…ƒç´ è°ƒç”¨çš„<b>iteratee</b>å‡½æ•°ã€‚
+</p>
+<pre>
+var sum = _.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0);
+=&gt; 6
+</pre>
+<p id="reduceRight">
+<b class="header">reduceRight</b><code>_.reduceRight(list, iteratee, [memo], [context])</code>
+<span class="alias">Alias: <b>foldr</b></span>
+<br />
+<b>reducRight</b>æ˜¯ä»å³ä¾§å¼€å§‹ç»„åˆå…ƒç´ çš„<b>reduce</b>å‡½æ•°ï¼Œ <b>Foldr</b>åœ¨ JavaScript ä¸­ä¸åƒå…¶å®ƒæœ‰æƒ°æ€§æ±‚å€¼çš„è¯­è¨€é‚£ä¹ˆæœ‰ç”¨ï¼ˆæ³¨ï¼šlazy evaluationï¼šä¸€ç§æ±‚å€¼ç­–ç•¥ï¼Œåªæœ‰å½“è¡¨è¾¾å¼çš„å€¼çœŸæ­£éœ€è¦æ—¶æ‰å¯¹è¡¨è¾¾å¼è¿›è¡Œè®¡ç®—ï¼‰ã€‚
+</p>
+<pre>
+var list = [[0, 1], [2, 3], [4, 5]];
+var flat = _.reduceRight(list, function(a, b) { return a.concat(b); }, []);
+=&gt; [4, 5, 2, 3, 0, 1]
+</pre>
+<p id="find">
+<b class="header">find</b><code>_.find(list, predicate, [context])</code>
+<span class="alias">Alias: <b>detect</b></span>
+<br />
+åœ¨<b>list</b>ä¸­é€é¡¹æŸ¥æ‰¾ï¼Œè¿”å›ç¬¬ä¸€ä¸ªé€šè¿‡<b>predicate</b>è¿­ä»£å‡½æ•°çœŸå€¼æ£€æµ‹çš„å…ƒç´ å€¼ï¼Œå¦‚æœæ²¡æœ‰å…ƒç´ é€šè¿‡æ£€æµ‹åˆ™è¿”å› <code>undefined</code>ã€‚
+å¦‚æœæ‰¾åˆ°åŒ¹é…çš„å…ƒç´ ï¼Œå‡½æ•°å°†ç«‹å³è¿”å›ï¼Œä¸ä¼šéå†æ•´ä¸ªlistã€‚
+<b>predicate</b> é€šè¿‡ <a href="#iteratee"><b>iteratee</b></a> è¿›è¡Œè½¬æ¢ï¼Œä»¥ç®€åŒ–é€Ÿè®°è¯­æ³•ã€‚
+</p>
+<pre>
+var even = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+=&gt; 2
+</pre>
+<p id="filter">
+<b class="header">filter</b><code>_.filter(list, predicate, [context])</code>
+<span class="alias">Alias: <b>select</b></span>
+<br />
+éå†<b>list</b>ä¸­çš„æ¯ä¸ªå€¼ï¼Œè¿”å›æ‰€æœ‰é€šè¿‡<b>predicate</b>çœŸå€¼æ£€æµ‹çš„å…ƒç´ æ‰€ç»„æˆçš„æ•°ç»„ã€‚
+<b>predicate</b> é€šè¿‡ <a href="#iteratee"><b>iteratee</b></a> è¿›è¡Œè½¬æ¢ï¼Œä»¥ç®€åŒ–é€Ÿè®°è¯­æ³•ã€‚
+</p>
+<pre>
+var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+=&gt; [2, 4, 6]
+</pre>
+<p id="findWhere">
+<b class="header">findWhere</b><code>_.findWhere(list, properties)</code>
+<br />
+éå†æ•´ä¸ª<b>list</b>ï¼Œè¿”å› <a href="#matches">matchesï¼ˆåŒ¹é…ï¼‰</a> <b>properties</b>å‚æ•°æ‰€åˆ—å‡ºçš„æ‰€æœ‰ é”® - å€¼ å¯¹çš„ç¬¬ä¸€ä¸ªå€¼ã€‚
+</p>
+<p>
+å¦‚æœæ²¡æœ‰æ‰¾åˆ°åŒ¹é…çš„å±æ€§ï¼Œæˆ–è€…<b>list</b>æ˜¯ç©ºçš„ï¼Œé‚£ä¹ˆå°†è¿”å›<i>undefined</i>ã€‚
+</p>
+<pre>
+_.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
+=&gt; {year: 1918, newsroom: "The New York Times",
+  reason: "For its public service in publishing in full so many official reports,
+  documents and speeches by European statesmen relating to the progress and
+  conduct of the war."}
+</pre>
+<p id="where">
+<b class="header">where</b><code>_.where(list, properties)</code>
+<br />
+éå†<b>list</b>ä¸­çš„æ¯ä¸€ä¸ªå€¼ï¼Œè¿”å›ä¸€ä¸ªæ•°ç»„ï¼Œè¿™ä¸ªæ•°ç»„é‡Œçš„å…ƒç´ åŒ…å« <b>properties</b> æ‰€åˆ—å‡ºçš„é”® - å€¼å¯¹ã€‚
+</p>
+<pre>
+_.where(listOfPlays, {author: "Shakespeare", year: 1611});
+=&gt; [{title: "Cymbeline", author: "Shakespeare", year: 1611},
+    {title: "The Tempest", author: "Shakespeare", year: 1611}]
+</pre>
+<p id="reject">
+<b class="header">reject</b><code>_.reject(list, predicate, [context])</code>
+<br />
+è¿”å›<b>list</b>ä¸­æ²¡æœ‰é€šè¿‡<b>predicate</b>çœŸå€¼æ£€æµ‹çš„å…ƒç´ é›†åˆï¼Œä¸<b>filter</b>ç›¸åã€‚
+<b>predicate</b> é€šè¿‡ <a href="#iteratee"><b>iteratee</b></a> è¿›è¡Œè½¬æ¢ï¼Œä»¥ç®€åŒ–é€Ÿè®°è¯­æ³•ã€‚
+</p>
+<pre>
+var odds = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+=&gt; [1, 3, 5]
+</pre>
+<p id="every">
+<b class="header">every</b><code>_.every(list, [predicate], [context])</code>
+<span class="alias">Alias: <b>all</b></span>
+<br />
+å¦‚æœ<b>list</b>ä¸­çš„æ‰€æœ‰å…ƒç´ éƒ½é€šè¿‡<b>predicate</b>çš„çœŸå€¼æ£€æµ‹å°±è¿”å›<i>true</i>ã€‚ï¼ˆæ³¨ï¼šå¦‚æœå­˜åœ¨åŸç”Ÿçš„<b>every</b>æ–¹æ³•ï¼Œå°±ä½¿ç”¨åŸç”Ÿçš„<b>every</b>ã€‚ï¼‰
+<b>predicate</b> é€šè¿‡ <a href="#iteratee"><b>iteratee</b></a> è¿›è¡Œè½¬æ¢ï¼Œä»¥ç®€åŒ–é€Ÿè®°è¯­æ³•ã€‚
+</p>
+<pre>
+_.every([2, 4, 5], function(num) { return num % 2 == 0; });
+=&gt; false
+</pre>
+<p id="some">
+<b class="header">some</b><code>_.some(list, [predicate], [context])</code>
+<span class="alias">Alias: <b>any</b></span>
+<br />
+å¦‚æœ<b>list</b>ä¸­æœ‰ä»»ä½•ä¸€ä¸ªå…ƒç´ é€šè¿‡ <b>predicate</b> çš„çœŸå€¼æ£€æµ‹å°±è¿”å›<i>true</i>ã€‚ä¸€æ—¦æ‰¾åˆ°äº†ç¬¦åˆæ¡ä»¶çš„å…ƒç´ , å°±ç›´æ¥ä¸­æ–­å¯¹listçš„éå†ã€‚
+<b>predicate</b> é€šè¿‡ <a href="#iteratee"><b>iteratee</b></a> è¿›è¡Œè½¬æ¢ï¼Œä»¥ç®€åŒ–é€Ÿè®°è¯­æ³•ã€‚
+</p>
+<pre>
+_.some([null, 0, 'yes', false]);
+=&gt; true
+</pre>
+<p id="contains">
+<b class="header">contains</b><code>_.contains(list, value, [fromIndex])</code>
+<span class="alias">Aliases: <b>include</b>, <b>includes</b></span>
+<br />
+å¦‚æœ<b>list</b>åŒ…å«æŒ‡å®šçš„<b>value</b>åˆ™è¿”å›<i>true</i>ï¼ˆæ³¨ï¼šä½¿ç”¨===æ£€æµ‹ï¼‰ã€‚å¦‚æœ<b>list</b> æ˜¯æ•°ç»„ï¼Œå†…éƒ¨ä½¿ç”¨<b>indexOf</b>åˆ¤æ–­ã€‚ä½¿ç”¨<b>fromIndex</b>æ¥ç»™å®šå¼€å§‹æ£€ç´¢çš„ç´¢å¼•ä½ç½®ã€‚
+</p>
+<pre>
+_.contains([1, 2, 3], 3);
+=&gt; true
+</pre>
+<p id="invoke">
+<b class="header">invoke</b><code>_.invoke(list, methodName, *arguments)</code>
+<br />
+åœ¨<b>list</b>çš„æ¯ä¸ªå…ƒç´ ä¸Šæ‰§è¡Œ<b>methodName</b>æ–¹æ³•ã€‚
+ä»»ä½•ä¼ é€’ç»™<b>invoke</b>çš„é¢å¤–å‚æ•°ï¼Œ<b>invoke</b>éƒ½ä¼šåœ¨è°ƒç”¨<b>methodName</b>æ–¹æ³•çš„æ—¶å€™ä¼ é€’ç»™å®ƒã€‚
+</p>
+<pre>
+_.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
+=&gt; [[1, 5, 7], [1, 2, 3]]
+</pre>
+<p id="pluck">
+<b class="header">pluck</b><code>_.pluck(list, propertyName)</code>
+<br />
+<b>pluck</b>ä¹Ÿè®¸æ˜¯<b>map</b>æœ€å¸¸ä½¿ç”¨çš„ç”¨ä¾‹æ¨¡å‹çš„ç®€åŒ–ç‰ˆæœ¬ï¼Œå³èƒå–æ•°ç»„å¯¹è±¡ä¸­æŸå±æ€§å€¼ï¼Œè¿”å›ä¸€ä¸ªæ•°ç»„ã€‚
+</p>
+<pre>
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.pluck(stooges, 'name');
+=&gt; ["moe", "larry", "curly"]
+</pre>
+<p id="max">
+<b class="header">max</b><code>_.max(list, [iteratee], [context])</code>
+<br />
+è¿”å›<b>list</b>ä¸­çš„æœ€å¤§å€¼ã€‚å¦‚æœä¼ é€’<b>iteratee</b>å‚æ•°ï¼Œ<b>iteratee</b>å°†ä½œä¸º<b>list</b>ä¸­æ¯ä¸ªå€¼çš„æ’åºä¾æ®ã€‚å¦‚æœ<b>list</b>ä¸ºç©ºï¼Œå°†è¿”å›<i>-Infinity</i>ï¼Œæ‰€ä»¥ä½ å¯èƒ½éœ€è¦äº‹å…ˆç”¨<a href="#isEmpty">isEmpty</a>æ£€æŸ¥ <b>list</b> ã€‚
+</p>
+<pre>
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.max(stooges, function(stooge){ return stooge.age; });
+=&gt; {name: 'curly', age: 60};
+</pre>
+<p id="min">
+<b class="header">min</b><code>_.min(list, [iteratee], [context])</code>
+<br />
+è¿”å›<b>list</b>ä¸­çš„æœ€å°å€¼ã€‚å¦‚æœä¼ é€’<b>iteratee</b>å‚æ•°ï¼Œ<b>iteratee</b>å°†ä½œä¸º<b>list</b>ä¸­æ¯ä¸ªå€¼çš„æ’åºä¾æ®ã€‚å¦‚æœ<b>list</b>ä¸ºç©ºï¼Œå°†è¿”å›<i>Infinity</i>ï¼Œæ‰€ä»¥ä½ å¯èƒ½éœ€è¦äº‹å…ˆç”¨<a href="#isEmpty">isEmpty</a>æ£€æŸ¥ <b>list</b> ã€‚
+</p>
+<pre>
+var numbers = [10, 5, 100, 2, 1000];
+_.min(numbers);
+=&gt; 2
+</pre>
+<p id="sortBy">
+<b class="header">sortBy</b><code>_.sortBy(list, iteratee, [context])</code>
+<br />
+è¿”å›ä¸€ä¸ªï¼ˆç¨³å®šçš„ï¼‰æ’åºåçš„<b>list</b>æ‹·è´å‰¯æœ¬ã€‚å¦‚æœä¼ é€’<b>iteratee</b>å‚æ•°ï¼Œ<b>iteratee</b>å°†ä½œä¸º<b>list</b>ä¸­æ¯ä¸ªå€¼çš„æ’åºä¾æ®ã€‚ç”¨æ¥è¿›è¡Œæ’åºè¿­ä»£å™¨ä¹Ÿå¯ä»¥æ˜¯å±æ€§åç§°çš„å­—ç¬¦ä¸²(æ¯”å¦‚ <tt>length</tt>)ã€‚
+</p>
+<pre>
+_.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });
+=&gt; [5, 4, 6, 3, 1, 2]
+
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.sortBy(stooges, 'name');
+=&gt; [{name: 'curly', age: 60}, {name: 'larry', age: 50}, {name: 'moe', age: 40}];
+</pre>
+<p id="groupBy">
+<b class="header">groupBy</b><code>_.groupBy(list, iteratee, [context])</code>
+<br />
+æŠŠä¸€ä¸ªé›†åˆåˆ†ç»„ä¸ºå¤šä¸ªé›†åˆï¼Œé€šè¿‡ <b>iterator</b> è¿”å›çš„ç»“æœè¿›è¡Œåˆ†ç»„. å¦‚æœ <b>iterator</b> æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²è€Œä¸æ˜¯å‡½æ•°, é‚£ä¹ˆå°†ä½¿ç”¨ <b>iterator</b> ä½œä¸ºå„å…ƒç´ çš„å±æ€§åæ¥å¯¹æ¯”è¿›è¡Œåˆ†ç»„ã€‚
+</p>
+<pre>
+_.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+=&gt; {1: [1.3], 2: [2.1, 2.4]}
+
+_.groupBy(['one', 'two', 'three'], 'length');
+=&gt; {3: ["one", "two"], 5: ["three"]}
+</pre>
+<p id="indexBy">
+<b class="header">indexBy</b><code>_.indexBy(list, iteratee, [context])</code>
+<br />
+ç»™å®šä¸€ä¸ª<b>list</b>ï¼Œå’Œ ä¸€ä¸ªç”¨æ¥è¿”å›ä¸€ä¸ªåœ¨åˆ—è¡¨ä¸­çš„æ¯ä¸ªå…ƒç´ é”® çš„<b>iterator</b> å‡½æ•°ï¼ˆæˆ–å±æ€§åï¼‰ï¼Œ
+è¿”å›ä¸€ä¸ªæ¯ä¸€é¡¹ç´¢å¼•çš„å¯¹è±¡ã€‚å’Œ<a href="#groupBy">groupBy</a>éå¸¸åƒï¼Œä½†æ˜¯å½“ä½ çŸ¥é“ä½ çš„é”®æ˜¯å”¯ä¸€çš„æ—¶å€™å¯ä»¥ä½¿ç”¨<b>indexBy</b> ã€‚
+</p>
+<pre>
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.indexBy(stooges, 'age');
+=&gt; {
+  "40": {name: 'moe', age: 40},
+  "50": {name: 'larry', age: 50},
+  "60": {name: 'curly', age: 60}
+}
+</pre>
+<p id="countBy">
+<b class="header">countBy</b><code>_.countBy(list, iteratee, [context])</code>
+<br />
+æ’åºä¸€ä¸ªåˆ—è¡¨ç»„æˆå¤šä¸ªç»„ï¼Œå¹¶ä¸”è¿”å›å„ç»„ä¸­çš„å¯¹è±¡çš„æ•°é‡çš„è®¡æ•°ã€‚ç±»ä¼¼<tt>groupBy</tt>ï¼Œä½†æ˜¯ä¸æ˜¯è¿”å›åˆ—è¡¨çš„å€¼ï¼Œè€Œæ˜¯è¿”å›åœ¨è¯¥ç»„ä¸­å€¼çš„æ•°ç›®ã€‚
+</p>
+<pre>
+_.countBy([1, 2, 3, 4, 5], function(num) {
+  return num % 2 == 0 ? 'even': 'odd';
+});
+=&gt; {odd: 3, even: 2}
+</pre>
+<p id="shuffle">
+<b class="header">shuffle</b><code>_.shuffle(list)</code>
+<br />
+è¿”å›ä¸€ä¸ªéšæœºä¹±åºçš„ <b>list</b> å‰¯æœ¬, ä½¿ç”¨
+<a href="javascript:if(confirm('http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle'" tppabs="http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle</a> æ¥è¿›è¡Œéšæœºä¹±åº.
+</p>
+<pre>
+_.shuffle([1, 2, 3, 4, 5, 6]);
+=&gt; [4, 1, 6, 3, 5, 2]
+</pre>
+<p id="sample">
+<b class="header">sample</b><code>_.sample(list, [n])</code>
+<br />
+ä» <b>list</b>ä¸­äº§ç”Ÿä¸€ä¸ªéšæœºæ ·æœ¬ã€‚ä¼ é€’ä¸€ä¸ªæ•°å­—è¡¨ç¤ºä»<b>list</b>ä¸­è¿”å›<b>n</b>ä¸ªéšæœºå…ƒç´ ã€‚å¦åˆ™å°†è¿”å›ä¸€ä¸ªå•ä¸€çš„éšæœºé¡¹ã€‚
+</p>
+<pre>
+_.sample([1, 2, 3, 4, 5, 6]);
+=&gt; 4
+
+_.sample([1, 2, 3, 4, 5, 6], 3);
+=&gt; [1, 6, 2]
+</pre>
+<p id="toArray">
+<b class="header">toArray</b><code>_.toArray(list)</code>
+<br />
+æŠŠ<b>list</b>(ä»»ä½•å¯ä»¥è¿­ä»£çš„å¯¹è±¡)è½¬æ¢æˆä¸€ä¸ªæ•°ç»„ï¼Œåœ¨è½¬æ¢ <b>arguments</b> å¯¹è±¡æ—¶éå¸¸æœ‰ç”¨ã€‚
+</p>
+<pre>
+(function(){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);
+=&gt; [2, 3, 4]
+</pre>
+<p id="size">
+<b class="header">size</b><code>_.size(list)</code>
+<br />
+è¿”å›<b>list</b>çš„é•¿åº¦ã€‚
+</p>
+<pre>
+_.size([1, 2, 3, 4, 5]);
+=&gt; 5
+
+_.size({one: 1, two: 2, three: 3});
+=&gt; 3
+</pre>
+<p id="partition">
+<b class="header">partition</b><code>_.partition(list, predicate)</code>
+<br />
+å°† <b>list</b> æ‹†åˆ†ä¸ºä¸¤ä¸ªæ•°ç»„ï¼šç¬¬ä¸€ä¸ªæ•°ç»„å…¶å…ƒç´ éƒ½æ»¡è¶³<b>predicate</b>è¿­ä»£å‡½æ•°ï¼Œ è€Œç¬¬äºŒä¸ªçš„æ‰€æœ‰å…ƒç´ å‡ä¸èƒ½æ»¡è¶³<b>predicate</b>è¿­ä»£å‡½æ•°ã€‚
+<b>predicate</b> é€šè¿‡ <a href="#iteratee"><b>iteratee</b></a> è¿›è¡Œè½¬æ¢ï¼Œä»¥ç®€åŒ–é€Ÿè®°è¯­æ³•ã€‚
+</p>
+<pre>
+_.partition([0, 1, 2, 3, 4, 5], isOdd);
+=&gt; [[1, 3, 5], [0, 2, 4]]
+</pre>
+<p id="compact">
+<b class="header">compact</b><code>_.compact(list)</code>
+<br />
+è¿”å›ä¸€ä¸ªé™¤å»äº†æ‰€æœ‰ falsy(å‡) å€¼çš„ <b>list</b> å‰¯æœ¬ã€‚
+åœ¨javascriptä¸­, <i>false</i>, <i>null</i>, <i>0</i>, <i>""</i>,
+<i>undefined</i> å’Œ <i>NaN</i> éƒ½æ˜¯falsy(å‡)å€¼.
+</p>
+<pre>
+_.compact([0, 1, false, 2, '', 3]);
+=&gt; [1, 2, 3]
+</pre>
+<h2 id="arrays">æ•°ç»„å‡½æ•°ï¼ˆArray Functionsï¼‰</h2>
+<p>
+<i>æ³¨ï¼š æ‰€æœ‰çš„æ•°ç»„å‡½æ•°ä¹Ÿå¯ä»¥ç”¨äº <b>arguments</b> (å‚æ•°)å¯¹è±¡ã€‚ ä½†æ˜¯ï¼ŒUnderscore å‡½æ•°ä¸èƒ½ç”¨äºç¨€ç–ï¼ˆ"sparse" ï¼‰æ•°ç»„ã€‚</i>
+</p>
+<p id="first">
+<b class="header">first</b><code>_.first(array, [n])</code>
+<span class="alias">Aliases: <b>head</b>, <b>take</b></span>
+<br />
+è¿”å›<b>array</b> ï¼ˆæ•°ç»„ï¼‰çš„ç¬¬ä¸€ä¸ªå…ƒç´ ã€‚ä¼ é€’ <b>n</b>å‚æ•°å°†è¿”å›æ•°ç»„ä¸­ä»ç¬¬ä¸€ä¸ªå…ƒç´ å¼€å§‹çš„<b>n</b>ä¸ªå…ƒç´ ï¼ˆæ³¨ï¼šè¿”å›æ•°ç»„ä¸­å‰ <b>n</b> ä¸ªå…ƒç´ .ï¼‰ã€‚
+</p>
+<pre>
+_.first([5, 4, 3, 2, 1]);
+=&gt; 5
+</pre>
+<p id="initial">
+<b class="header">initial</b><code>_.initial(array, [n])</code>
+<br />
+è¿”å›æ•°ç»„ä¸­é™¤äº†æœ€åä¸€ä¸ªå…ƒç´ å¤–çš„å…¶ä»–å…¨éƒ¨å…ƒç´ ã€‚ åœ¨argumentså¯¹è±¡ä¸Šç‰¹åˆ«æœ‰ç”¨ã€‚ä¼ é€’ <b>n</b>å‚æ•°å°†ä»ç»“æœä¸­æ’é™¤ä»æœ€åä¸€ä¸ªå¼€å§‹çš„<b>n</b>ä¸ªå…ƒç´ ï¼ˆæ³¨ï¼šæ’é™¤æ•°ç»„åé¢çš„ <b>n</b> ä¸ªå…ƒç´ ï¼‰ã€‚
+</p>
+<pre>
+_.initial([5, 4, 3, 2, 1]);
+=&gt; [5, 4, 3, 2]
+</pre>
+<p id="last">
+<b class="header">last</b><code>_.last(array, [n])</code>
+<br />
+è¿”å›<b>array</b>ï¼ˆæ•°ç»„ï¼‰ä¸­æœ€åä¸€ä¸ªå…ƒç´ ã€‚ä¼ é€’ <b>n</b>å‚æ•°å°†è¿”å›æ•°ç»„ä¸­ä»æœ€åä¸€ä¸ªå…ƒç´ å¼€å§‹çš„<b>n</b>ä¸ªå…ƒç´ ï¼ˆæ³¨ï¼šè¿”å›æ•°ç»„é‡Œçš„åé¢çš„<b>n</b>ä¸ªå…ƒç´ ï¼‰ã€‚
+</p>
+<pre>
+_.last([5, 4, 3, 2, 1]);
+=&gt; 1
+</pre>
+<p id="rest">
+<b class="header">rest</b><code>_.rest(array, [index])</code>
+<span class="alias">Aliases: <b>tail</b>, <b>drop</b></span>
+<br />
+è¿”å›æ•°ç»„ä¸­é™¤äº†ç¬¬ä¸€ä¸ªå…ƒç´ å¤–çš„å…¶ä»–å…¨éƒ¨å…ƒç´ ã€‚ä¼ é€’ <b>index</b> å‚æ•°å°†è¿”å›ä»<b>index</b>å¼€å§‹çš„å‰©ä½™æ‰€æœ‰å…ƒç´  ã€‚ï¼ˆæ„Ÿè°¢<a href="javascript:if(confirm('http://weibo.com/heerake  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/heerake'" tppabs="http://weibo.com/heerake" target="_blank">@å¾·å¾·å¾·å¾·æ’¸</a> æŒ‡å‡ºé”™è¯¯ï¼‰
+</p>
+<pre>
+_.rest([5, 4, 3, 2, 1]);
+=&gt; [4, 3, 2, 1]
+</pre>
+<p id="flatten">
+<b class="header">flatten</b><code>_.flatten(array, [shallow])</code>
+<br />
+å°†ä¸€ä¸ªåµŒå¥—å¤šå±‚çš„æ•°ç»„ <b>arrayï¼ˆæ•°ç»„ï¼‰</b> (åµŒå¥—å¯ä»¥æ˜¯ä»»ä½•å±‚æ•°)è½¬æ¢ä¸ºåªæœ‰ä¸€å±‚çš„æ•°ç»„ã€‚
+å¦‚æœä½ ä¼ é€’ <b>shallow</b>å‚æ•°ï¼Œæ•°ç»„å°†åªå‡å°‘ä¸€ç»´çš„åµŒå¥—ã€‚
+</p>
+<pre>
+_.flatten([1, [2], [3, [[4]]]]);
+=&gt; [1, 2, 3, 4];
+
+_.flatten([1, [2], [3, [[4]]]], true);
+=&gt; [1, 2, 3, [[4]]];
+</pre>
+<p id="without">
+<b class="header">without</b><code>_.without(array, *values)</code>
+<br />
+è¿”å›ä¸€ä¸ªåˆ é™¤æ‰€æœ‰<b>values</b>å€¼åçš„ <b>array</b>å‰¯æœ¬ã€‚ï¼ˆæ³¨ï¼šä½¿ç”¨<i>===</i>è¡¨è¾¾å¼åšç›¸ç­‰æµ‹è¯•ã€‚ï¼‰
+</p>
+<pre>
+_.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
+=&gt; [2, 3, 4]
+</pre>
+<p id="union">
+<b class="header">union</b><code>_.union(*arrays)</code>
+<br />
+è¿”å›ä¼ å…¥çš„ <b>arraysï¼ˆæ•°ç»„ï¼‰</b>å¹¶é›†ï¼šæŒ‰é¡ºåºè¿”å›ï¼Œè¿”å›æ•°ç»„çš„å…ƒç´ æ˜¯å”¯ä¸€çš„ï¼Œå¯ä»¥ä¼ å…¥ä¸€ä¸ªæˆ–å¤šä¸ª <b>arrays</b> ï¼ˆæ•°ç»„ï¼‰ã€‚
+</p>
+<pre>
+_.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+=&gt; [1, 2, 3, 101, 10]
+</pre>
+<p id="intersection">
+<b class="header">intersection</b><code>_.intersection(*arrays)</code>
+<br />
+è¿”å›ä¼ å…¥ <b>arrays</b>ï¼ˆæ•°ç»„ï¼‰äº¤é›†ã€‚ç»“æœä¸­çš„æ¯ä¸ªå€¼æ˜¯å­˜åœ¨äºä¼ å…¥çš„æ¯ä¸ª<b>arrays</b>ï¼ˆæ•°ç»„ï¼‰é‡Œã€‚
+</p>
+<pre>
+_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+=&gt; [1, 2]
+</pre>
+<p id="difference">
+<b class="header">difference</b><code>_.difference(array, *others)</code>
+<br />
+ç±»ä¼¼äº<b>without</b>ï¼Œä½†è¿”å›çš„å€¼æ¥è‡ª<b>array</b>å‚æ•°æ•°ç»„ï¼Œå¹¶ä¸”ä¸å­˜åœ¨äº<b>other</b> æ•°ç»„ã€‚
+</p>
+<pre>
+_.difference([1, 2, 3, 4, 5], [5, 2, 10]);
+=&gt; [1, 3, 4]
+</pre>
+<p id="uniq">
+<b class="header">uniq</b><code>_.uniq(array, [isSorted], [iteratee])</code>
+<span class="alias">Alias: <b>unique</b></span>
+<br />
+è¿”å› <b>array</b>å»é‡åçš„å‰¯æœ¬, ä½¿ç”¨ <i>===</i> åšç›¸ç­‰æµ‹è¯•. å¦‚æœæ‚¨ç¡®å®š <b>array</b> å·²ç»æ’åº, é‚£ä¹ˆç»™ <b>isSorted</b> å‚æ•°ä¼ é€’ <i>true</i>å€¼, æ­¤å‡½æ•°å°†è¿è¡Œçš„æ›´å¿«çš„ç®—æ³•. å¦‚æœè¦å¤„ç†å¯¹è±¡å…ƒç´ , ä¼ é€’ <a href="#iteratee"><b>iteratee</b></a>å‡½æ•°æ¥è·å–è¦å¯¹æ¯”çš„å±æ€§ã€‚
+</p>
+<pre>
+_.uniq([1, 2, 1, 4, 1, 3]);
+=&gt; [1, 2, 4, 3]
+</pre>
+<p id="zip">
+<b class="header">zip</b><code>_.zip(*arrays)</code>
+<br />
+å°†æ¯ä¸ª <b>arrays</b> ä¸­ç›¸åº”ä½ç½®çš„å€¼åˆå¹¶åœ¨ä¸€èµ·ã€‚ å½“æ‚¨æœ‰é€šè¿‡åŒ¹é…æ•°ç»„ç´¢å¼•è¿›è¡Œåè°ƒçš„ç‹¬ç«‹æ•°æ®æºæ—¶ï¼Œè¿™éå¸¸æœ‰ç”¨ã€‚ ç»“åˆ <tt>apply</tt> ä¸€èµ·ä½¿ç”¨ä¼ å…¥ä¸€ä¸ªäºŒç»´æ•°ç»„ã€‚ å¦‚æœä½ ç”¨æ¥å¤„ç†çŸ©é˜µåµŒå¥—æ•°ç»„æ—¶ï¼Œåˆ™å¯ä»¥ä½¿ç”¨å®ƒæ¥è½¬æ¢çŸ©é˜µã€‚
+</p>
+<pre>
+_.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
+=&gt; [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]
+
+</pre>
+<p id="unzip">
+<b class="header">unzip</b><code>_.unzip(array)</code>
+<br>
+ä¸<a href="#zip">zip</a>åŠŸèƒ½ç›¸åçš„å‡½æ•°ï¼Œç»™å®šè‹¥å¹²<b>arrays</b>ï¼Œè¿”å›ä¸€ä¸²è”çš„æ–°æ•°ç»„ï¼Œå…¶ç¬¬ä¸€å…ƒç´ ä¸ªåŒ…å«æ‰€æœ‰çš„è¾“å…¥æ•°ç»„çš„ç¬¬ä¸€å…ƒç´ ï¼Œå…¶ç¬¬äºŒåŒ…å«äº†æ‰€æœ‰çš„ç¬¬äºŒå…ƒç´ ï¼Œä¾æ­¤ç±»æ¨ã€‚ï¼ˆæ„Ÿè°¢ <a href="javascript:if(confirm('http://weibo.com/wenbin1986  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/wenbin1986'" tppabs="http://weibo.com/wenbin1986" target="_blank">@å‘¨æ–‡å½¬1986</a>ã€ <a href="javascript:if(confirm('http://weibo.com/u/2154096382  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/u/2154096382'" tppabs="http://weibo.com/u/2154096382" target="_blank">@æœªå®šçš„ç»ˆç‚¹</a> æŒ‡å‡ºç¤ºä¾‹é”™è¯¯ï¼‰ã€‚
+</p>
+<pre>
+_.unzip([["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]);
+=&gt; [['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]]
+</pre>
+<p id="object">
+<b class="header">object</b><code>_.object(list, [values])</code>
+<br />
+å°†æ•°ç»„è½¬æ¢ä¸ºå¯¹è±¡ã€‚ä¼ é€’ä»»ä½•ä¸€ä¸ªå•ç‹¬<tt>[key, value]</tt>å¯¹çš„åˆ—è¡¨ï¼Œæˆ–è€…ä¸€ä¸ªé”®çš„åˆ—è¡¨å’Œä¸€ä¸ªå€¼å¾—åˆ—è¡¨ã€‚æˆå¯¹ï¼ˆPairsï¼‰ä¼ é€’ åˆ™æ˜¯ <a Href="#pairs">pairs</a> çš„åå‡½æ•°ã€‚
+å¦‚æœå­˜åœ¨é‡å¤é”®ï¼Œæœ€åä¸€ä¸ªå€¼å°†è¢«è¿”å›ã€‚
+</p>
+<pre>
+_.object(['moe', 'larry', 'curly'], [30, 40, 50]);
+=&gt; {moe: 30, larry: 40, curly: 50}
+
+_.object([['moe', 30], ['larry', 40], ['curly', 50]]);
+=&gt; {moe: 30, larry: 40, curly: 50}
+</pre>
+<p id="chunk">
+<b class="header">chunk</b><code>_.chunk(array, length)</code>
+<br />
+å°† <b>array</b> åˆ†æˆå¤šä¸ªæ•°ç»„ï¼Œæ¯ä¸ªæ•°ç»„åŒ…å«<b>length</b> æˆ–æ›´å°‘çš„é¡¹ã€‚
+</p>
+<pre>
+var partners = _.chunk(_.shuffle(kindergarten), 2);
+=&gt; [["Tyrone", "Elie"], ["Aidan", "Sam"], ["Katrina", "Billie"], ["Little Timmy"]]
+</pre>
+<p id="indexOf">
+<b class="header">indexOf</b><code>_.indexOf(array, value, [isSorted])</code>
+<br />
+è¿”å›<b>value</b>åœ¨è¯¥ <b>array</b> ä¸­çš„ç´¢å¼•å€¼ï¼Œå¦‚æœ<b>value</b>ä¸å­˜åœ¨ <b>array</b>ä¸­å°±è¿”å›<i>-1</i>ã€‚ä½¿ç”¨åŸç”Ÿçš„<b>indexOf</b> å‡½æ•°ï¼Œé™¤éå®ƒå¤±æ•ˆã€‚å¦‚æœæ‚¨æ­£åœ¨ä½¿ç”¨ä¸€ä¸ªå¤§æ•°ç»„ï¼Œä½ çŸ¥é“æ•°ç»„å·²ç»æ’åºï¼Œä¼ é€’<tt>true</tt>ç»™<b>isSorted</b>å°†æ›´å¿«çš„ç”¨äºŒè¿›åˆ¶æœç´¢..,æˆ–è€…ï¼Œä¼ é€’ä¸€ä¸ªæ•°å­—ä½œä¸ºç¬¬ä¸‰ä¸ªå‚æ•°ï¼Œä¸ºäº†åœ¨ç»™å®šçš„ç´¢å¼•çš„æ•°ç»„ä¸­å¯»æ‰¾ç¬¬ä¸€ä¸ªåŒ¹é…å€¼ã€‚
+</p>
+<pre>
+_.indexOf([1, 2, 3], 2);
+=&gt; 1
+</pre>
+<p id="lastIndexOf">
+<b class="header">lastIndexOf</b><code>_.lastIndexOf(array, value, [fromIndex])</code>
+<br />
+è¿”å›<b>value</b>åœ¨è¯¥ <b>array</b> ä¸­çš„ä»æœ€åå¼€å§‹çš„ç´¢å¼•å€¼ï¼Œå¦‚æœ<b>value</b>ä¸å­˜åœ¨ <b>array</b>ä¸­å°±è¿”å›<i>-1</i>ã€‚ä¼ é€’<b>fromIndex</b>å°†ä»ä½ ç»™å®šçš„ç´¢æ€§å€¼å¼€å§‹æœç´¢ã€‚
+</p>
+<pre>
+_.lastIndexOf([1, 2, 3, 1, 2, 3], 2);
+=&gt; 4
+</pre>
+<p id="sortedIndex">
+<b class="header">sortedIndex</b><code>_.sortedIndex(array, value, [iteratee], [context])</code>
+<br />
+ä½¿ç”¨äºŒåˆ†æŸ¥æ‰¾ç¡®å®š<b>value</b>åœ¨<b>list</b>ä¸­çš„ä½ç½®åºå·ï¼Œ<b>value</b>æŒ‰æ­¤åºå·æ’å…¥èƒ½ä¿æŒ<b>list</b>åŸæœ‰çš„æ’åºã€‚å¦‚æœæä¾› <a href="#iteratee"><b>iteratee</b></a> å‡½æ•°ï¼Œ<b>iterator</b>å°†ä½œä¸ºlistæ’åºçš„ä¾æ®ï¼ŒåŒ…æ‹¬ä½ ä¼ é€’çš„<b>value</b> ã€‚<b>iterator</b>ä¹Ÿå¯ä»¥æ˜¯å­—ç¬¦ä¸²çš„å±æ€§åç”¨æ¥æ’åº(æ¯”å¦‚<tt>length</tt>)ã€‚
+</p>
+<pre>
+_.sortedIndex([10, 20, 30, 40, 50], 35);
+=&gt; 3
+
+var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
+_.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');
+=&gt; 1
+</pre>
+<p id="findIndex">
+<b class="header">findIndex</b><code>_.findIndex(array, predicate, [context])</code>
+<br />
+ç±»ä¼¼äº<a href="#indexOf"><tt>_.indexOf</tt></a>ï¼Œå½“<strong>predicate</strong>é€šè¿‡çœŸæ£€æŸ¥æ—¶ï¼Œè¿”å›ç¬¬ä¸€ä¸ªç´¢å¼•å€¼ï¼›å¦åˆ™è¿”å›<i>-1</i>ã€‚
+</p>
+<pre>
+_.findIndex([4, 6, 8, 12], isPrime);
+=&gt; -1 // not found
+_.findIndex([4, 6, 7, 12], isPrime);
+=&gt; 2
+</pre>
+<p id="findLastIndex">
+<b class="header">findLastIndex</b><code>_.findLastIndex(array, predicate, [context])</code>
+<br />
+å’Œ<a href="#findIndex"><tt>_.findIndex</tt></a>ç±»ä¼¼ï¼Œä½†åå‘è¿­ä»£æ•°ç»„ï¼Œå½“<strong>predicate</strong>é€šè¿‡çœŸæ£€æŸ¥æ—¶ï¼Œæœ€æ¥è¿‘æœ«ç«¯çš„ç´¢å¼•å€¼å°†è¢«è¿”å›ã€‚
+</p>
+<pre>
+var users = [{'id': 1, 'name': 'Bob', 'last': 'Brown'},
+             {'id': 2, 'name': 'Ted', 'last': 'White'},
+             {'id': 3, 'name': 'Frank', 'last': 'James'},
+             {'id': 4, 'name': 'Ted', 'last': 'Jones'}];
+_.findLastIndex(users, {
+  name: 'Ted'
+});
+=&gt; 3
+</pre>
+<p id="range">
+<b class="header">range</b><code>_.range([start], stop, [step])</code>
+<br />
+ä¸€ä¸ªç”¨æ¥åˆ›å»ºæ•´æ•°çµæ´»ç¼–å·çš„åˆ—è¡¨çš„å‡½æ•°ï¼Œä¾¿äº<tt>each</tt> å’Œ <tt>map</tt>å¾ªç¯ã€‚å¦‚æœçœç•¥<b>start</b>åˆ™é»˜è®¤ä¸º <i>0</i>ï¼›<b>step</b> é»˜è®¤ä¸º <i>1</i>.è¿”å›ä¸€ä¸ªä»<b>start</b> åˆ°<b>stop</b>çš„æ•´æ•°çš„åˆ—è¡¨ï¼Œç”¨<b>step</b>æ¥å¢åŠ  ï¼ˆæˆ–å‡å°‘ï¼‰ç‹¬å ã€‚å€¼å¾—æ³¨æ„çš„æ˜¯ï¼Œå¦‚æœ<b>stop</b>å€¼åœ¨<b>start</b>å‰é¢ï¼ˆä¹Ÿå°±æ˜¯<b>stop</b>å€¼å°äº<b>start</b>å€¼ï¼‰ï¼Œé‚£ä¹ˆå€¼åŸŸä¼šè¢«è®¤ä¸ºæ˜¯é›¶é•¿åº¦ï¼Œè€Œä¸æ˜¯è´Ÿå¢é•¿ã€‚-å¦‚æœä½ è¦ä¸€ä¸ªè´Ÿæ•°çš„å€¼åŸŸ ï¼Œè¯·ä½¿ç”¨è´Ÿæ•°<b>step</b>.
+</p>
+<pre>
+_.range(10);
+=&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+_.range(1, 11);
+=&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+_.range(0, 30, 5);
+=&gt; [0, 5, 10, 15, 20, 25]
+_.range(0, -10, -1);
+=&gt; [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+_.range(0);
+=&gt; []
+</pre>
+<h2 id="functions">ä¸å‡½æ•°æœ‰å…³çš„å‡½æ•°ï¼ˆFunction (uh, ahem) Functionsï¼‰</h2>
+<p id="bind">
+<b class="header">bind</b><code>_.bind(function, object, *arguments)</code>
+<br />
+ç»‘å®šå‡½æ•° <b>function</b> åˆ°å¯¹è±¡ <b>object</b> ä¸Š, ä¹Ÿå°±æ˜¯æ— è®ºä½•æ—¶è°ƒç”¨å‡½æ•°, å‡½æ•°é‡Œçš„ <i>this</i> éƒ½æŒ‡å‘è¿™ä¸ª <b>object</b>.ä»»æ„å¯é€‰å‚æ•° <b>arguments</b> å¯ä»¥ä¼ é€’ç»™å‡½æ•° <b>function</b> , å¯ä»¥å¡«å……å‡½æ•°æ‰€éœ€è¦çš„å‚æ•°,è¿™ä¹Ÿè¢«ç§°ä¸º <b>partial application</b>ã€‚å¯¹äºæ²¡æœ‰ç»“åˆä¸Šä¸‹æ–‡çš„<b>partial application</b>ç»‘å®šï¼Œè¯·ä½¿ç”¨<a href="#partial">partial</a>ã€‚
+<br>(æ³¨ï¼špartial applicationç¿»è¯‘æˆâ€œéƒ¨åˆ†åº”ç”¨â€æˆ–è€…â€œåå‡½æ•°åº”ç”¨â€ã€‚partial applicationå¯ä»¥è¢«æè¿°ä¸ºä¸€ä¸ªå‡½æ•°ï¼Œå®ƒæ¥å—ä¸€å®šæ•°ç›®çš„å‚æ•°ï¼Œç»‘å®šå€¼åˆ°ä¸€ä¸ªæˆ–å¤šä¸ªè¿™äº›å‚æ•°ï¼Œå¹¶è¿”å›ä¸€ä¸ªæ–°çš„å‡½æ•°ï¼Œè¿™ä¸ªè¿”å›å‡½æ•°åªæ¥å—å‰©ä½™æœªç»‘å®šå€¼çš„å‚æ•°ã€‚å‚è§ï¼š<a href="javascript:if(confirm('http://en.wikipedia.org/wiki/Partial_application  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://en.wikipedia.org/wiki/Partial_application'" tppabs="http://en.wikipedia.org/wiki/Partial_application" target="_blank">http://en.wikipedia.org/wiki/Partial_application</a>ã€‚æ„Ÿè°¢<a href="javascript:if(confirm('http://weibo.com/u/2654434300  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/u/2654434300'" tppabs="http://weibo.com/u/2654434300" target="_blank">@ä¸€ä»»é£æœˆå¿†ç§‹å¹´</a>çš„å»ºè®®)ã€‚
+</p>
+<pre>
+var func = function(greeting){ return greeting + ': ' + this.name };
+func = _.bind(func, {name: 'moe'}, 'hi');
+func();
+=&gt; 'hi: moe'
+</pre>
+<p id="bindAll">
+<b class="header">bindAll</b><code>_.bindAll(object, *methodNames)</code>
+<br />
+æŠŠ<b>methodNames</b>å‚æ•°æŒ‡å®šçš„ä¸€äº›æ–¹æ³•ç»‘å®šåˆ°<b>object</b>ä¸Šï¼Œè¿™äº›æ–¹æ³•å°±ä¼šåœ¨å¯¹è±¡çš„ä¸Šä¸‹æ–‡ç¯å¢ƒä¸­æ‰§è¡Œã€‚ç»‘å®šå‡½æ•°ç”¨ä½œäº‹ä»¶å¤„ç†å‡½æ•°æ—¶éå¸¸ä¾¿åˆ©ï¼Œå¦åˆ™å‡½æ•°è¢«è°ƒç”¨æ—¶<i>this</i>ä¸€ç‚¹ç”¨ä¹Ÿæ²¡æœ‰ã€‚<b>methodNames</b>å‚æ•°æ˜¯å¿…é¡»çš„ã€‚
+</p>
+<pre>
+var buttonView = {
+  label  : 'underscore',
+  onClick: function(){ alert('clicked: ' + this.label); },
+  onHover: function(){ console.log('hovering: ' + this.label); }
+};
+_.bindAll(buttonView, 'onClick', 'onHover');
+// When the button is clicked, this.label will have the correct value.
+jQuery('#underscore_button').on('click', buttonView.onClick);
+</pre>
+<p id="partial">
+<b class="header">partial</b><code>_.partial(function, *arguments)</code>
+<br />
+å±€éƒ¨åº”ç”¨ä¸€ä¸ªå‡½æ•°å¡«å……åœ¨ä»»æ„ä¸ªæ•°çš„ <b>arguments</b>ï¼Œ<i>ä¸</i>æ”¹å˜å…¶åŠ¨æ€<tt>this</tt>å€¼ã€‚å’Œ<a href="#bind">bind</a>æ–¹æ³•å¾ˆç›¸è¿‘ã€‚ä½ å¯ä»¥ä¼ é€’<tt>_</tt> ç»™<b>arguments</b>åˆ—è¡¨æ¥æŒ‡å®šä¸€ä¸ªä¸é¢„å…ˆå¡«å……ï¼Œä½†åœ¨è°ƒç”¨æ—¶æä¾›çš„å‚æ•°ã€‚
+</p>
+<pre>
+var subtract = function(a, b) { return b - a; };
+sub5 = _.partial(subtract, 5);
+sub5(20);
+=&gt; 15
+
+// Using a placeholder
+subFrom20 = _.partial(subtract, _, 20);
+subFrom20(5);
+=&gt; 15
+</pre>
+<p id="memoize">
+<b class="header">memoize</b><code>_.memoize(function, [hashFunction])</code>
+<br />
+Memoizesæ–¹æ³•å¯ä»¥ç¼“å­˜æŸå‡½æ•°çš„è®¡ç®—ç»“æœã€‚å¯¹äºè€—æ—¶è¾ƒé•¿çš„è®¡ç®—æ˜¯å¾ˆæœ‰å¸®åŠ©çš„ã€‚å¦‚æœä¼ é€’äº† <b>hashFunction</b> å‚æ•°ï¼Œå°±ç”¨ <b>hashFunction</b> çš„è¿”å›å€¼ä½œä¸ºkeyå­˜å‚¨å‡½æ•°çš„è®¡ç®—ç»“æœã€‚<b>hashFunction</b> é»˜è®¤ä½¿ç”¨functionçš„ç¬¬ä¸€ä¸ªå‚æ•°ä½œä¸ºkeyã€‚memoizedå€¼çš„ç¼“å­˜å¯ä½œä¸ºè¿”å›å‡½æ•°çš„<tt>cache</tt>å±æ€§ã€‚
+</p>
+<pre>
+var fibonacci = _.memoize(function(n) {
+  return n &lt; 2 ? n: fibonacci(n - 1) + fibonacci(n - 2);
+});
+</pre>
+<p id="delay">
+<b class="header">delay</b><code>_.delay(function, wait, *arguments)</code>
+<br />
+ç±»ä¼¼<b>setTimeout</b>ï¼Œç­‰å¾…<b>wait</b>æ¯«ç§’åè°ƒç”¨<b>function</b>ã€‚å¦‚æœä¼ é€’å¯é€‰çš„å‚æ•°<b>arguments</b>ï¼Œå½“å‡½æ•°<b>function</b>æ‰§è¡Œæ—¶ï¼Œ <b>arguments</b> ä¼šä½œä¸ºå‚æ•°ä¼ å…¥ã€‚
+</p>
+<pre>
+var log = _.bind(console.log, console);
+_.delay(log, 1000, 'logged later');
+=&gt; 'logged later' // Appears after one second.
+</pre>
+<p id="defer">
+<b class="header">defer</b><code>_.defer(function, *arguments)</code>
+<br />
+å»¶è¿Ÿè°ƒç”¨<b>function</b>ç›´åˆ°å½“å‰è°ƒç”¨æ ˆæ¸…ç©ºä¸ºæ­¢ï¼Œç±»ä¼¼ä½¿ç”¨å»¶æ—¶ä¸º0çš„<b>setTimeout</b>æ–¹æ³•ã€‚å¯¹äºæ‰§è¡Œå¼€é”€å¤§çš„è®¡ç®—å’Œæ— é˜»å¡UIçº¿ç¨‹çš„HTMLæ¸²æŸ“æ—¶å€™éå¸¸æœ‰ç”¨ã€‚
+å¦‚æœä¼ é€’<b>arguments</b>å‚æ•°ï¼Œå½“å‡½æ•°<b>function</b>æ‰§è¡Œæ—¶ï¼Œ <b>arguments</b> ä¼šä½œä¸ºå‚æ•°ä¼ å…¥ã€‚
+</p>
+<pre>
+_.defer(function(){ alert('deferred'); });
+// Returns from the function before the alert runs.
+</pre>
+<p id="throttle">
+<b class="header">throttle</b><code>_.throttle(function, wait, [options])</code>
+<br />
+åˆ›å»ºå¹¶è¿”å›ä¸€ä¸ªåƒèŠ‚æµé˜€ä¸€æ ·çš„å‡½æ•°ï¼Œå½“é‡å¤è°ƒç”¨å‡½æ•°çš„æ—¶å€™ï¼Œè‡³å°‘æ¯éš” <b>wait</b>æ¯«ç§’è°ƒç”¨ä¸€æ¬¡è¯¥å‡½æ•°ã€‚å¯¹äºæƒ³æ§åˆ¶ä¸€äº›è§¦å‘é¢‘ç‡è¾ƒé«˜çš„äº‹ä»¶æœ‰å¸®åŠ©ã€‚ï¼ˆæ³¨ï¼šè¯¦è§ï¼š<a href="javascript:if(confirm('https://www.html.cn/archives/5256  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.html.cn/archives/5256'" tppabs="https://www.html.cn/archives/5256" target="_blank">javascriptå‡½æ•°çš„throttleå’Œdebounce</a>ï¼Œæ„Ÿè°¢
+<a href="javascript:if(confirm('http://weibo.com/u/3911878332  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/u/3911878332'" tppabs="http://weibo.com/u/3911878332" target="_blank">@æ¾³åˆ©æ¾³å…ˆç”Ÿ</a> çš„ç¿»è¯‘å»ºè®®ï¼‰
+</p>
+<p>
+é»˜è®¤æƒ…å†µä¸‹ï¼Œ<b>throttle</b>å°†åœ¨ä½ è°ƒç”¨çš„ç¬¬ä¸€æ—¶é—´å°½å¿«æ‰§è¡Œè¿™ä¸ª<b>function</b>ï¼Œå¹¶ä¸”ï¼Œå¦‚æœä½ åœ¨<b>wait</b>å‘¨æœŸå†…è°ƒç”¨ä»»æ„æ¬¡æ•°çš„å‡½æ•°ï¼Œéƒ½å°†å°½å¿«çš„è¢«è¦†ç›–ã€‚å¦‚æœä½ æƒ³ç¦ç”¨ç¬¬ä¸€æ¬¡é¦–å…ˆæ‰§è¡Œçš„è¯ï¼Œä¼ é€’<tt>{leading: false}</tt>ï¼Œè¿˜æœ‰å¦‚æœä½ æƒ³ç¦ç”¨æœ€åä¸€æ¬¡æ‰§è¡Œçš„è¯ï¼Œä¼ é€’<tt>{trailing: false}</tt>ã€‚
+</p>
+<pre>
+var throttled = _.throttle(updatePosition, 100);
+$(window).scroll(throttled);
+</pre>
+<p>
+å¦‚æœéœ€è¦å–æ¶ˆé¢„å®šçš„ throttle ï¼Œå¯ä»¥åœ¨ throttle å‡½æ•°ä¸Šè°ƒç”¨ <tt>.cancel()</tt>ã€‚
+</p>
+<p id="debounce">
+<b class="header">debounce</b><code>_.debounce(function, wait, [immediate])</code>
+<br />
+è¿”å› <b>function</b> å‡½æ•°çš„é˜²åè·³ç‰ˆæœ¬,
+å°†å»¶è¿Ÿå‡½æ•°çš„æ‰§è¡Œ(çœŸæ­£çš„æ‰§è¡Œ)åœ¨å‡½æ•°æœ€åä¸€æ¬¡è°ƒç”¨æ—¶åˆ»çš„ <b>wait</b> æ¯«ç§’ä¹‹å.
+å¯¹äºå¿…é¡»åœ¨ä¸€äº›è¾“å…¥ï¼ˆå¤šæ˜¯ä¸€äº›ç”¨æˆ·æ“ä½œï¼‰åœæ­¢åˆ°è¾¾<i>ä¹‹å</i>æ‰§è¡Œçš„è¡Œä¸ºæœ‰å¸®åŠ©ã€‚
+ä¾‹å¦‚: æ¸²æŸ“ä¸€ä¸ªMarkdownæ ¼å¼çš„è¯„è®ºé¢„è§ˆ,
+å½“çª—å£åœæ­¢æ”¹å˜å¤§å°ä¹‹åé‡æ–°è®¡ç®—å¸ƒå±€, ç­‰ç­‰.
+</p>
+<p>
+åœ¨ <b>wait</b> é—´éš”ç»“æŸæ—¶ï¼Œå°†ä½¿ç”¨<i>æœ€è¿‘</i>ä¼ é€’ç»™ debouncedï¼ˆå»æŠ–åŠ¨ï¼‰å‡½æ•°çš„å‚æ•°è°ƒç”¨è¯¥å‡½æ•°ã€‚
+</p>
+<p>
+ä¼ å‚ <b>immediate</b> ä¸º <tt>true</tt>ï¼Œ <b>debounce</b>ä¼šåœ¨ <b>wait</b> æ—¶é—´é—´éš”çš„å¼€å§‹è°ƒç”¨è¿™ä¸ªå‡½æ•°
+ã€‚ï¼ˆæ³¨ï¼šå¹¶ä¸”åœ¨ waite çš„æ—¶é—´ä¹‹å†…ï¼Œä¸ä¼šå†æ¬¡è°ƒç”¨ã€‚ï¼‰åœ¨ç±»ä¼¼ä¸å°å¿ƒç‚¹äº†æäº¤æŒ‰é’®ä¸¤ä¸‹è€Œæäº¤äº†ä¸¤æ¬¡çš„æƒ…å†µä¸‹å¾ˆæœ‰ç”¨ã€‚
+ï¼ˆæ„Ÿè°¢
+<a href="javascript:if(confirm('http://weibo.com/u/1768962955  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/u/1768962955'" tppabs="http://weibo.com/u/1768962955" target="_blank">@ProgramKid </a> çš„ç¿»è¯‘å»ºè®®ï¼‰
+</p>
+<pre>
+var lazyLayout = _.debounce(calculateLayout, 300);
+$(window).resize(lazyLayout);
+</pre>
+<p>
+å¦‚æœéœ€è¦å–æ¶ˆé¢„å®šçš„ debounce ï¼Œå¯ä»¥åœ¨ debounce å‡½æ•°ä¸Šè°ƒç”¨ <tt>.cancel()</tt>ã€‚
+</p>
+<p id="once">
+<b class="header">once</b><code>_.once(function)</code>
+<br />
+åˆ›å»ºä¸€ä¸ªåªèƒ½è°ƒç”¨ä¸€æ¬¡çš„å‡½æ•°ã€‚é‡å¤è°ƒç”¨æ”¹è¿›çš„æ–¹æ³•ä¹Ÿæ²¡æœ‰æ•ˆæœï¼Œåªä¼šè¿”å›ç¬¬ä¸€æ¬¡æ‰§è¡Œæ—¶çš„ç»“æœã€‚
+ä½œä¸ºåˆå§‹åŒ–å‡½æ•°ä½¿ç”¨æ—¶éå¸¸æœ‰ç”¨, ä¸ç”¨å†è®¾ä¸€ä¸ªbooleanå€¼æ¥æ£€æŸ¥æ˜¯å¦å·²ç»åˆå§‹åŒ–å®Œæˆ.
+</p>
+<pre>
+var initialize = _.once(createApplication);
+initialize();
+initialize();
+// Application is only created once.
+</pre>
+<p id="after">
+<b class="header">after</b><code>_.after(count, function)</code>
+<br />
+åˆ›å»ºä¸€ä¸ªå‡½æ•°, åªæœ‰åœ¨è¿è¡Œäº† <b>count</b> æ¬¡ä¹‹åæ‰æœ‰æ•ˆæœ.
+åœ¨å¤„ç†åŒç»„å¼‚æ­¥è¯·æ±‚è¿”å›ç»“æœæ—¶, å¦‚æœä½ è¦ç¡®ä¿åŒç»„é‡Œæ‰€æœ‰å¼‚æ­¥è¯·æ±‚å®Œæˆä¹‹åæ‰
+æ‰§è¡Œè¿™ä¸ªå‡½æ•°, è¿™å°†éå¸¸æœ‰ç”¨ã€‚
+</p>
+<pre>
+var renderNotes = _.after(notes.length, render);
+_.each(notes, function(note) {
+  note.asyncSave({success: renderNotes});
+});
+// renderNotes is run once, after all notes have saved.
+</pre>
+<p id="before">
+<b class="header">before</b><code>_.before(count, function)</code>
+<br />
+åˆ›å»ºä¸€ä¸ªå‡½æ•°,è°ƒç”¨ä¸è¶…è¿‡<b>count</b> æ¬¡ã€‚ å½“<b>count</b>å·²ç»è¾¾åˆ°æ—¶ï¼Œæœ€åä¸€ä¸ªå‡½æ•°è°ƒç”¨çš„ç»“æœå°†è¢«è®°ä½å¹¶è¿”å›ã€‚
+</p>
+<pre>
+var monthlyMeeting = _.before(3, askForRaise);
+monthlyMeeting();
+monthlyMeeting();
+monthlyMeeting();
+// the result of any subsequent calls is the same as the second call
+</pre>
+<p id="wrap">
+<b class="header">wrap</b><code>_.wrap(function, wrapper)</code>
+<br />
+å°†ç¬¬ä¸€ä¸ªå‡½æ•° <b>function</b> å°è£…åˆ°å‡½æ•° <b>wrapper</b> é‡Œé¢,
+å¹¶æŠŠå‡½æ•° <b>function</b> ä½œä¸ºç¬¬ä¸€ä¸ªå‚æ•°ä¼ ç»™ <b>wrapper</b>.
+è¿™æ ·å¯ä»¥è®© <b>wrapper</b> åœ¨ <b>function</b> è¿è¡Œä¹‹å‰å’Œä¹‹å
+æ‰§è¡Œä»£ç , è°ƒæ•´å‚æ•°ç„¶åé™„æœ‰æ¡ä»¶åœ°æ‰§è¡Œã€‚
+</p>
+<pre>
+var hello = function(name) { return "hello: " + name; };
+hello = _.wrap(hello, function(func) {
+  return "before, " + func("moe") + ", after";
+});
+hello();
+=&gt; 'before, hello: moe, after'
+</pre>
+<p id="negate">
+<b class="header">negate</b><code>_.negate(predicate)</code>
+<br />
+è¿”å›ä¸€ä¸ªæ–°çš„<b>predicate</b>å‡½æ•°çš„å¦å®šç‰ˆæœ¬ã€‚
+</p>
+<pre>
+var isFalsy = _.negate(Boolean);
+_.find([-2, -1, 0, 1, 2], isFalsy);
+=&gt; 0
+</pre>
+<p id="compose">
+<b class="header">compose</b><code>_.compose(*functions)</code>
+<br />
+è¿”å›å‡½æ•°é›† <b>functions</b> ç»„åˆåçš„å¤åˆå‡½æ•°,
+ä¹Ÿå°±æ˜¯ä¸€ä¸ªå‡½æ•°æ‰§è¡Œå®Œä¹‹åæŠŠè¿”å›çš„ç»“æœå†ä½œä¸ºå‚æ•°èµ‹ç»™ä¸‹ä¸€ä¸ªå‡½æ•°æ¥æ‰§è¡Œ.
+ä»¥æ­¤ç±»æ¨.
+åœ¨æ•°å­¦é‡Œ, æŠŠå‡½æ•° <i>f()</i>, <i>g()</i>, å’Œ <i>h()</i> ç»„åˆèµ·æ¥å¯ä»¥å¾—åˆ°å¤åˆå‡½æ•° <i>f(g(h()))</i>ã€‚
+</p>
+<pre>
+var greet    = function(name){ return "hi: " + name; };
+var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
+var welcome = _.compose(greet, exclaim);
+welcome('moe');
+=&gt; 'hi: MOE!'
+</pre>
+<p id="restArguments">
+<b class="header">restArguments</b><code>_.restArguments(function, [startIndex])</code>
+<br />
+è¿”å› <b>function</b> çš„ä¸€ä¸ªç‰ˆæœ¬ï¼Œè¯¥å‡½æ•°ç‰ˆæœ¬åœ¨è°ƒç”¨æ—¶æ¥æ”¶æ¥è‡ª <b>startIndex</b> çš„æ‰€æœ‰å‚æ•°ï¼Œå¹¶å°†å…¶æ”¶é›†åˆ°å•ä¸ªæ•°ç»„ä¸­ã€‚ å¦‚æœæœªä¼ é€’æ˜¾å¼çš„ <b>startIndex</b> ï¼Œåˆ™å°†é€šè¿‡æŸ¥çœ‹ <b>function</b> æœ¬èº«çš„å‚æ•°æ•°æ¥ç¡®å®šã€‚ ä¸ ES6 çš„ <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">restå‚æ•°è¯­æ³•</a>ç±»ä¼¼ã€‚
+</p>
+<pre>
+var raceResults = _.restArguments(function(gold, silver, bronze, everyoneElse) {
+  _.each(everyoneElse, sendConsolations);
+});
+
+raceResults("Dopey", "Grumpy", "Happy", "Sneezy", "Bashful", "Sleepy", "Doc");
+</pre>
+<h2 id="objects">å¯¹è±¡å‡½æ•°ï¼ˆObject Functionsï¼‰</h2>
+<p id="keys">
+<b class="header">keys</b><code>_.keys(object)</code>
+<br />
+æ£€ç´¢<b>object</b>æ‹¥æœ‰çš„æ‰€æœ‰å¯æšä¸¾å±æ€§çš„åç§°ã€‚
+</p>
+<pre>
+_.keys({one: 1, two: 2, three: 3});
+=&gt; ["one", "two", "three"]
+</pre>
+<p id="allKeys">
+<b class="header">allKeys</b><code>_.allKeys(object)</code>
+<br />
+æ£€ç´¢<b>object</b>æ‹¥æœ‰çš„å’Œç»§æ‰¿çš„æ‰€æœ‰å±æ€§çš„åç§°ã€‚
+</p>
+<pre>
+function Stooge(name) {
+  this.name = name;
+}
+Stooge.prototype.silly = true;
+_.allKeys(new Stooge("Moe"));
+=&gt; ["name", "silly"]
+</pre>
+<p id="values">
+<b class="header">values</b><code>_.values(object)</code>
+<br />
+è¿”å›<b>object</b>å¯¹è±¡æ‰€æœ‰çš„å±æ€§å€¼ã€‚
+</p>
+<pre>
+_.values({one: 1, two: 2, three: 3});
+=&gt; [1, 2, 3]
+</pre>
+<p id="mapObject">
+<b class="header">mapObject</b><code>_.mapObject(object, iteratee, [context])</code>
+<br />
+å®ƒç±»ä¼¼äº<a href="#map">map</a>ï¼Œä½†æ˜¯è¿™ç”¨äºå¯¹è±¡ã€‚è½¬æ¢æ¯ä¸ªå±æ€§çš„å€¼ã€‚
+</p>
+<pre>
+_.mapObject({start: 5, end: 12}, function(val, key) {
+  return val + 5;
+});
+=&gt; {start: 10, end: 17}
+</pre>
+<p id="pairs">
+<b class="header">pairs</b><code>_.pairs(object)</code>
+<br />
+æŠŠä¸€ä¸ªå¯¹è±¡è½¬å˜ä¸ºä¸€ä¸ª<tt>[key, value]</tt>å½¢å¼çš„æ•°ç»„ã€‚<a href="#object">object</a> é€†å‘å‡½æ•°ã€‚
+</p>
+<pre>
+_.pairs({one: 1, two: 2, three: 3});
+=&gt; [["one", 1], ["two", 2], ["three", 3]]
+</pre>
+<p id="invert">
+<b class="header">invert</b><code>_.invert(object)</code>
+<br />
+è¿”å›ä¸€ä¸ª<b>object</b>å‰¯æœ¬ï¼Œä½¿å…¶é”®ï¼ˆkeysï¼‰å’Œå€¼ï¼ˆvaluesï¼‰å¯¹æ¢ã€‚å¯¹äºè¿™ä¸ªæ“ä½œï¼Œå¿…é¡»ç¡®ä¿objecté‡Œæ‰€æœ‰çš„å€¼éƒ½æ˜¯å”¯ä¸€çš„ä¸”å¯ä»¥åºåˆ—å·æˆå­—ç¬¦ä¸².
+</p>
+<pre>
+_.invert({Moe: "Moses", Larry: "Louis", Curly: "Jerome"});
+=&gt; {Moses: "Moe", Louis: "Larry", Jerome: "Curly"};
+</pre>
+<p id="create">
+<b class="header">create</b><code>_.create(prototype, props)</code>
+<br />
+åˆ›å»ºå…·æœ‰ç»™å®šåŸå‹çš„æ–°å¯¹è±¡ï¼Œå¯é€‰é™„åŠ <b>props</b> ä½œä¸º <i>own</i>çš„å±æ€§ã€‚åŸºæœ¬ä¸Šï¼Œå’Œ<tt>Object.create</tt>ä¸€æ ·ï¼Œä½†æ˜¯æ²¡æœ‰æ‰€æœ‰çš„å±æ€§æè¿°ç¬¦ã€‚
+</p>
+<pre>
+var moe = _.create(Stooge.prototype, {name: "Moe"});
+</pre>
+<p id="object-functions">
+<b class="header">functions</b><code>_.functions(object)</code>
+<span class="alias">Alias: <b>methods</b></span>
+<br />
+è¿”å›ä¸€ä¸ªå¯¹è±¡é‡Œæ‰€æœ‰çš„æ–¹æ³•å, è€Œä¸”æ˜¯å·²ç»æ’åºçš„ &mdash; ä¹Ÿå°±æ˜¯è¯´, å¯¹è±¡é‡Œæ¯ä¸ªæ–¹æ³•(å±æ€§å€¼æ˜¯ä¸€ä¸ªå‡½æ•°)çš„åç§°.
+</p>
+<pre>
+_.functions(_);
+=&gt; ["all", "any", "bind", "bindAll", "clone", "compact", "compose" ...
+</pre>
+<p id="findKey">
+<b class="header">findKey</b><code>_.findKey(object, predicate, [context])</code>
+<br />
+ç±»ä¼¼äº<a href="#findIndex"><tt>_.findIndex</tt></a> ï¼Œä½†ç”¨äºå¯¹è±¡ä¸­çš„ keyï¼ˆé”®ï¼‰ã€‚è¿”å›é€šè¿‡<b>predicate</b> çœŸå€¼æµ‹è¯•çš„ <i>key</i> ï¼Œå¦åˆ™è¿”å› <i>undefined</i> ã€‚
+<b>predicate</b> é€šè¿‡ <a href="#iteratee"><b>iteratee</b></a> è¿›è¡Œè½¬æ¢ï¼Œä»¥ç®€åŒ–é€Ÿè®°è¯­æ³•ã€‚
+</p>
+<p id="extend">
+<b class="header">extend</b><code>_.extend(destination, *sources)</code>
+<br />
+å°†<b>source</b>å¯¹è±¡ä¸­çš„æ‰€æœ‰å±æ€§ç®€å•åœ°è¦†ç›–åˆ°<b>destination</b>å¯¹è±¡ä¸Šï¼Œå¹¶ä¸”è¿”å› <b>destination</b> å¯¹è±¡. å¤åˆ¶æ˜¯æŒ‰é¡ºåºçš„, æ‰€ä»¥åé¢çš„å¯¹è±¡å±æ€§ä¼šæŠŠå‰é¢çš„å¯¹è±¡å±æ€§è¦†ç›–æ‰(å¦‚æœæœ‰é‡å¤)ã€‚
+</p>
+<pre>
+_.extend({name: 'moe'}, {age: 50});
+=&gt; {name: 'moe', age: 50}
+</pre>
+<p id="extendOwn">
+<b class="header">extendOwn</b><code>_.extendOwn(destination, *sources)</code>
+<span class="alias">Alias: <b>assign</b></span>
+<br />
+ç±»ä¼¼äº <b>extend</b>, ä½†åªå¤åˆ¶<i>è‡ªå·±çš„</i>å±æ€§è¦†ç›–åˆ°ç›®æ ‡å¯¹è±¡ã€‚ï¼ˆæ³¨ï¼šä¸åŒ…æ‹¬ç»§æ‰¿è¿‡æ¥çš„å±æ€§ï¼‰ã€‚
+</p>
+<p id="pick">
+<b class="header">pick</b><code>_.pick(object, *keys)</code>
+<br />
+è¿”å›ä¸€ä¸ª<b>object</b>å‰¯æœ¬ï¼Œåªè¿‡æ»¤å‡º<b>keys</b>(æœ‰æ•ˆçš„é”®ç»„æˆçš„æ•°ç»„)å‚æ•°æŒ‡å®šçš„å±æ€§å€¼ã€‚æˆ–è€…æ¥å—ä¸€ä¸ªåˆ¤æ–­å‡½æ•°ï¼ŒæŒ‡å®šæŒ‘é€‰å“ªä¸ªkeyã€‚
+</p>
+<pre>
+_.pick({name: 'moe', age: 50, userid: 'moe1'}, 'name', 'age');
+=&gt; {name: 'moe', age: 50}
+_.pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
+  return _.isNumber(value);
+});
+=&gt; {age: 50}
+</pre>
+<p id="omit">
+<b class="header">omit</b><code>_.omit(object, *keys)</code>
+<br />
+è¿”å›ä¸€ä¸ª<b>object</b>å‰¯æœ¬ï¼Œåªè¿‡æ»¤å‡ºé™¤å»<b>keys</b>(æœ‰æ•ˆçš„é”®ç»„æˆçš„æ•°ç»„)å‚æ•°æŒ‡å®šçš„å±æ€§å€¼ã€‚
+æˆ–è€…æ¥å—ä¸€ä¸ªåˆ¤æ–­å‡½æ•°ï¼ŒæŒ‡å®šå¿½ç•¥å“ªä¸ªkeyã€‚
+</p>
+<pre>
+_.omit({name: 'moe', age: 50, userid: 'moe1'}, 'userid');
+=&gt; {name: 'moe', age: 50}
+_.omit({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
+  return _.isNumber(value);
+});
+=&gt; {name: 'moe', userid: 'moe1'}
+</pre>
+<p id="defaults">
+<b class="header">defaults</b><code>_.defaults(object, *defaults)</code>
+<br />
+ç”¨<b>defaults</b>å¯¹è±¡å¡«å……<b>object</b> ä¸­çš„<tt>undefined</tt>å±æ€§ã€‚ å¹¶ä¸”è¿”å›è¿™ä¸ª<b>object</b>ã€‚ä¸€æ—¦è¿™ä¸ªå±æ€§è¢«å¡«å……ï¼Œå†ä½¿ç”¨defaultsæ–¹æ³•å°†ä¸ä¼šæœ‰ä»»ä½•æ•ˆæœã€‚ï¼ˆæ„Ÿè°¢<a title="ä¸€ä»»é£æœˆå¿†ç§‹å¹´" usercard="id=2654434300" href="javascript:if(confirm('http://weibo.com/u/2654434300  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://weibo.com/u/2654434300'" tppabs="http://weibo.com/u/2654434300">@ä¸€ä»»é£æœˆå¿†ç§‹å¹´</a>çš„æ‹ç –ï¼‰
+</p>
+<pre>
+var iceCream = {flavor: "chocolate"};
+_.defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
+=&gt; {flavor: "chocolate", sprinkles: "lots"}
+</pre>
+<p id="clone">
+<b class="header">clone</b><code>_.clone(object)</code>
+<br />
+åˆ›å»º ä¸€ä¸ªæµ…å¤åˆ¶ï¼ˆæµ…æ‹·è´ï¼‰çš„å…‹éš†<b>object</b>ã€‚ä»»ä½•åµŒå¥—çš„å¯¹è±¡æˆ–æ•°ç»„éƒ½é€šè¿‡å¼•ç”¨æ‹·è´ï¼Œä¸ä¼šå¤åˆ¶ã€‚
+</p>
+<pre>
+_.clone({name: 'moe'});
+=&gt; {name: 'moe'};
+</pre>
+<p id="tap">
+<b class="header">tap</b><code>_.tap(object, interceptor)</code>
+<br />
+ç”¨ <b>object</b>ä½œä¸ºå‚æ•°æ¥è°ƒç”¨å‡½æ•°<b>interceptor</b>ï¼Œç„¶åè¿”å›<b>object</b>ã€‚è¿™ç§æ–¹æ³•çš„ä¸»è¦æ„å›¾æ˜¯ä½œä¸ºå‡½æ•°é“¾å¼è°ƒç”¨ çš„ä¸€ç¯, ä¸ºäº†å¯¹æ­¤å¯¹è±¡æ‰§è¡Œæ“ä½œå¹¶è¿”å›å¯¹è±¡æœ¬èº«ã€‚
+</p>
+<pre>
+_.chain([1,2,3,200])
+  .filter(function(num) { return num % 2 == 0; })
+  .tap(alert)
+  .map(function(num) { return num * num })
+  .value();
+=&gt; // [2, 200] (alerted)
+=&gt; [4, 40000]
+</pre>
+<p id="has">
+<b class="header">has</b><code>_.has(object, key)</code>
+<br />
+å¯¹è±¡æ˜¯å¦åŒ…å«ç»™å®šçš„é”®å—ï¼Ÿç­‰åŒäº<tt>object.hasOwnProperty(key)</tt>ï¼Œä½†æ˜¯ä½¿ç”¨<tt>hasOwnProperty</tt> å‡½æ•°çš„ä¸€ä¸ªå®‰å…¨å¼•ç”¨ï¼Œä»¥é˜²<a href="javascript:if(confirm('http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/'" tppabs="http://www.devthought.com/2012/01/18/an-object-is-not-a-hash/">æ„å¤–è¦†ç›–</a>ã€‚
+</p>
+<pre>
+_.has({a: 1, b: 2, c: 3}, "b");
+=&gt; true
+</pre>
+<p id="property">
+<b class="header">property</b><code>_.property(path)</code>
+<br />
+è¿”å›ä¸€ä¸ªå‡½æ•°ï¼Œè¯¥å‡½æ•°å°†è¿”å›ä»»ä½•ä¼ å…¥å¯¹è±¡çš„æŒ‡å®šå±æ€§ã€‚ <tt>path</tt> å¯ä»¥æŒ‡å®šä¸ºç®€å• keyï¼ˆé”®ï¼‰ï¼Œæˆ–è€…æŒ‡å®šä¸ºå¯¹è±¡é”®æˆ–æ•°ç»„ç´¢å¼•çš„æ•°ç»„ï¼Œç”¨äºæ·±åº¦å±æ€§æå–ã€‚
+</p>
+<pre>
+var stooge = {name: 'moe'};
+'moe' === _.property('name')(stooge);
+=&gt; true
+
+var stooges = {moe: {fears: {worst: 'Spiders'}}, curly: {fears: {worst: 'Moe'}}};
+var curlysWorstFear = _.property(['curly', 'fears', 'worst']);
+curlysWorstFear(stooges);
+=&gt; 'Moe'
+</pre>
+<p id="propertyOf">
+<b class="header">propertyOf</b><code>_.propertyOf(object)</code>
+<br />
+<tt>_.property</tt> çš„åæ“ä½œã€‚ è·å–ä¸€ä¸ªå¯¹è±¡å¹¶è¿”å›ä¸€ä¸ªå‡½æ•°ï¼Œè¯¥å‡½æ•°å°†è¿”å›æä¾›çš„å±æ€§çš„å€¼ã€‚
+</p>
+<pre>
+var stooge = {name: 'moe'};
+_.propertyOf(stooge)('name');
+=&gt; 'moe'</pre>
+<p id="matcher">
+<b class="header">matcher</b><code>_.matcher(attrs)</code>
+<span class="alias">Alias: <b>matches</b></span>
+<br />
+è¿”å›ä¸€ä¸ªæ–­è¨€å‡½æ•°ï¼Œè¿™ä¸ªå‡½æ•°ä¼šç»™ä½ ä¸€ä¸ªæ–­è¨€å¯ä»¥ç”¨æ¥è¾¨åˆ«ç»™å®šçš„å¯¹è±¡æ˜¯å¦åŒ¹é…<b>attrs</b>æŒ‡å®šé”®/å€¼å±æ€§ã€‚
+</p>
+<pre>
+var ready = _.matcher({selected: true, visible: true});
+var readyToGoList = _.filter(list, ready);</pre>
+<p id="isEqual">
+<b class="header">isEqual</b><code>_.isEqual(object, other)</code>
+<br />
+æ‰§è¡Œä¸¤ä¸ªå¯¹è±¡ä¹‹é—´çš„ä¼˜åŒ–æ·±åº¦æ¯”è¾ƒï¼Œç¡®å®šä»–ä»¬æ˜¯å¦åº”è¢«è§†ä¸ºç›¸ç­‰ã€‚
+</p>
+<pre>
+var stooge = {name: 'moe', luckyNumbers: [13, 27, 34]};
+var clone  = {name: 'moe', luckyNumbers: [13, 27, 34]};
+stooge == clone;
+=&gt; false
+_.isEqual(stooge, clone);
+=&gt; true
+</pre>
+<p id="isMatch">
+<b class="header">isMatch</b><code>_.isMatch(object, properties)</code>
+<br />
+å‘Šè¯‰ä½ <b>properties</b>ä¸­çš„é”®å’Œå€¼æ˜¯å¦åŒ…å«åœ¨<b>object</b>ä¸­ã€‚
+</p>
+<pre>
+var stooge = {name: 'moe', age: 32};
+_.isMatch(stooge, {age: 32});
+=&gt; true
+</pre>
+<p id="isEmpty">
+<b class="header">isEmpty</b><code>_.isEmpty(object)</code>
+<br />
+å¦‚æœ<b>object</b> ä¸åŒ…å«ä»»ä½•å€¼(æ²¡æœ‰å¯æšä¸¾çš„å±æ€§)ï¼Œè¿”å›<i>true</i>ã€‚
+å¯¹äºå­—ç¬¦ä¸²å’Œç±»æ•°ç»„ï¼ˆarray-likeï¼‰å¯¹è±¡ï¼Œå¦‚æœlengthå±æ€§ä¸º 0ï¼Œé‚£ä¹ˆ<tt>_.isEmpty</tt>æ£€æŸ¥è¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isEmpty([1, 2, 3]);
+=&gt; false
+_.isEmpty({});
+=&gt; true
+</pre>
+<p id="isElement">
+<b class="header">isElement</b><code>_.isElement(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªDOMå…ƒç´ ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isElement(jQuery('body')[0]);
+=&gt; true
+</pre>
+<p id="isArray">
+<b class="header">isArray</b><code>_.isArray(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+(function(){ return _.isArray(arguments); })();
+=&gt; false
+_.isArray([1,2,3]);
+=&gt; true
+</pre>
+<p id="isObject">
+<b class="header">isObject</b><code>_.isObject(value)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªå¯¹è±¡ï¼Œè¿”å›<i>true</i>ã€‚éœ€è¦æ³¨æ„çš„æ˜¯JavaScriptæ•°ç»„å’Œå‡½æ•°æ˜¯å¯¹è±¡ï¼Œå­—ç¬¦ä¸²å’Œæ•°å­—ä¸æ˜¯ã€‚
+</p>
+<pre>
+_.isObject({});
+=&gt; true
+_.isObject(1);
+=&gt; false
+</pre>
+<p id="isArguments">
+<b class="header">isArguments</b><code>_.isArguments(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªå‚æ•°å¯¹è±¡ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+(function(){ return _.isArguments(arguments); })(1, 2, 3);
+=&gt; true
+_.isArguments([1,2,3]);
+=&gt; false
+</pre>
+<p id="isFunction">
+<b class="header">isFunction</b><code>_.isFunction(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªå‡½æ•°ï¼ˆFunctionï¼‰ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isFunction(alert);
+=&gt; true
+</pre>
+<p id="isString">
+<b class="header">isString</b><code>_.isString(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isString("moe");
+=&gt; true
+</pre>
+<p id="isNumber">
+<b class="header">isNumber</b><code>_.isNumber(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªæ•°å€¼ï¼Œè¿”å›<i>true</i> (åŒ…æ‹¬ <tt>NaN</tt>)ã€‚
+</p>
+<pre>
+_.isNumber(8.4 * 5);
+=&gt; true
+</pre>
+<p id="isFinite">
+<b class="header">isFinite</b><code>_.isFinite(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªæœ‰é™çš„æ•°å­—ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isFinite(-101);
+=&gt; true
+
+_.isFinite(-Infinity);
+=&gt; false
+</pre>
+<p id="isBoolean">
+<b class="header">isBoolean</b><code>_.isBoolean(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªå¸ƒå°”å€¼ï¼Œè¿”å›<i>true</i>ï¼Œå¦åˆ™è¿”å›<i>false</i>ã€‚
+</p>
+<pre>
+_.isBoolean(null);
+=&gt; false
+</pre>
+<p id="isDate">
+<b class="header">isDate</b><code>_.isDate(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ª Dateï¼ˆæ—¥æœŸï¼‰ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isDate(new Date());
+=&gt; true
+</pre>
+<p id="isRegExp">
+<b class="header">isRegExp</b><code>_.isRegExp(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ªæ­£åˆ™è¡¨è¾¾å¼ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isRegExp(/moe/);
+=&gt; true
+</pre>
+<p id="isError">
+<b class="header">isError</b><code>_.isError(object)</code>
+<br />
+å¦‚æœ<b>object</b>ç»§æ‰¿è‡³ Error å¯¹è±¡ï¼Œé‚£ä¹ˆè¿”å› <i>true</i>ã€‚
+</p>
+<pre>
+try {
+  throw new TypeError("Example");
+} catch (o_O) {
+  _.isError(o_O);
+}
+=&gt; true
+</pre>
+<p id="isSymbol">
+<b class="header">isSymbol</b><code>_.isSymbol(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ª <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a> ï¼Œé‚£ä¹ˆè¿”å› <i>true</i>ã€‚
+</p>
+<pre>
+_.isSymbol(Symbol());
+=&gt; true
+</pre>
+<p id="isMap">
+<b class="header">isMap</b><code>_.isMap(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ª <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> ï¼Œé‚£ä¹ˆè¿”å› <i>true</i>ã€‚
+</p>
+<pre>
+_.isMap(new Map());
+=&gt; true
+</pre>
+<p id="isWeakMap">
+<b class="header">isWeakMap</b><code>_.isWeakMap(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ª <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap">WeakMap</a>ï¼Œé‚£ä¹ˆè¿”å› <i>true</i>ã€‚
+</p>
+<pre>
+_.isWeakMap(new WeakMap());
+=&gt; true
+</pre>
+<p id="isSet">
+<b class="header">isSet</b><code>_.isSet(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ª <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a>ï¼Œé‚£ä¹ˆè¿”å› <i>true</i>ã€‚
+</p>
+<pre>
+_.isSet(new Set());
+=&gt; true
+</pre>
+<p id="isWeakSet">
+<b class="header">isWeakSet</b><code>_.isWeakSet(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ä¸€ä¸ª <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet">WeakSet</a>ï¼Œé‚£ä¹ˆè¿”å› <i>true</i>ã€‚
+</p>
+<pre>
+_.isWeakSet(WeakSet());
+=&gt; true
+</pre>
+<p id="isNaN">
+<b class="header">isNaN</b><code>_.isNaN(object)</code>
+<br />
+å¦‚æœ<b>object</b>æ˜¯ <i>NaN</i>ï¼Œè¿”å›<i>true</i>ã€‚
+<br /> æ³¨æ„ï¼š è¿™å’ŒåŸç”Ÿçš„<b>isNaN</b> å‡½æ•°ä¸ä¸€æ ·ï¼Œå¦‚æœå˜é‡æ˜¯<i>undefined</i>ï¼ŒåŸç”Ÿçš„<b>isNaN</b> å‡½æ•°ä¹Ÿä¼šè¿”å› <i>true</i> ã€‚
+</p>
+<pre>
+_.isNaN(NaN);
+=&gt; true
+isNaN(undefined);
+=&gt; true
+_.isNaN(undefined);
+=&gt; false
+</pre>
+<p id="isNull">
+<b class="header">isNull</b><code>_.isNull(object)</code>
+<br />
+å¦‚æœ<b>object</b>çš„å€¼æ˜¯ <i>null</i>ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isNull(null);
+=&gt; true
+_.isNull(undefined);
+=&gt; false
+</pre>
+<p id="isUndefined">
+<b class="header">isUndefined</b><code>_.isUndefined(value)</code>
+<br />
+å¦‚æœ<b>value</b>æ˜¯<i>undefined</i>ï¼Œè¿”å›<i>true</i>ã€‚
+</p>
+<pre>
+_.isUndefined(window.missingVariable);
+=&gt; true
+</pre>
+<h2 id="utility">å®ç”¨åŠŸèƒ½(Utility Functions) </h2>
+<p id="noConflict">
+<b class="header">noConflict</b><code>_.noConflict()</code>
+<br />
+æ”¾å¼ƒ<b>Underscore</b> çš„æ§åˆ¶å˜é‡ <tt>_</tt>ã€‚è¿”å›<b>Underscore</b> å¯¹è±¡çš„å¼•ç”¨ã€‚
+</p>
+<pre>
+var underscore = _.noConflict();
+</pre>
+<p id="identity">
+<b class="header">identity</b><code>_.identity(value)</code>
+<br />
+è¿”å›ä¸ä¼ å…¥å‚æ•°ç›¸ç­‰çš„å€¼. ç›¸å½“äºæ•°å­¦é‡Œçš„: <tt>f(x) = x</tt><br>
+è¿™ä¸ªå‡½æ•°çœ‹ä¼¼æ— ç”¨, ä½†æ˜¯åœ¨Underscoreé‡Œè¢«ç”¨ä½œé»˜è®¤çš„è¿­ä»£å™¨iterator.
+</p>
+<pre>
+var stooge = {name: 'moe'};
+stooge === _.identity(stooge);
+=&gt; true
+</pre>
+<p id="constant">
+<b class="header">constant</b><code>_.constant(value)</code>
+<br />
+åˆ›å»ºä¸€ä¸ªå‡½æ•°ï¼Œè¿™ä¸ªå‡½æ•° è¿”å›ç›¸åŒçš„å€¼ ç”¨æ¥ä½œä¸º<tt>_.constant</tt>çš„å‚æ•°ã€‚
+</p>
+<pre>
+var stooge = {name: 'moe'};
+stooge === _.constant(stooge)();
+=&gt; true</pre>
+<p id="noop">
+<b class="header">noop</b><code>_.noop()</code>
+<br />
+è¿”å›<tt>undefined</tt>ï¼Œä¸è®ºä¼ é€’ç»™å®ƒçš„æ˜¯ä»€ä¹ˆå‚æ•°ã€‚ å¯ä»¥ç”¨ä½œé»˜è®¤å¯é€‰çš„å›è°ƒå‚æ•°ã€‚
+</p>
+<pre>
+obj.initialize = _.noop;
+</pre>
+<p id="times">
+<b class="header">times</b><code>_.times(n, iteratee, [context])</code>
+<br />
+è°ƒç”¨ç»™å®šçš„è¿­ä»£å‡½æ•°<b>n</b>æ¬¡,æ¯ä¸€æ¬¡è°ƒç”¨<b>iteratee</b>ä¼ é€’<tt>index</tt>å‚æ•°ã€‚ç”Ÿæˆä¸€ä¸ªè¿”å›å€¼çš„æ•°ç»„ã€‚
+</p>
+<pre>
+_.times(3, function(n){ genie.grantWishNumber(n); });</pre>
+<p id="random">
+<b class="header">random</b><code>_.random(min, max)</code>
+<br />
+è¿”å›ä¸€ä¸ª<b>min</b> å’Œ <b>max</b>ä¹‹é—´çš„éšæœºæ•´æ•°ã€‚å¦‚æœä½ åªä¼ é€’ä¸€ä¸ªå‚æ•°ï¼Œé‚£ä¹ˆå°†è¿”å›<tt>0</tt>å’Œè¿™ä¸ªå‚æ•°ä¹‹é—´çš„æ•´æ•°ã€‚
+</p>
+<pre>
+_.random(0, 100);
+=&gt; 42</pre>
+<p id="mixin">
+<b class="header">mixin</b><code>_.mixin(object)</code>
+<br />
+å…è®¸ç”¨æ‚¨è‡ªå·±çš„å®ç”¨ç¨‹åºå‡½æ•°æ‰©å±•Underscoreã€‚ä¼ é€’ä¸€ä¸ª <tt>{name: function}</tt>å®šä¹‰çš„å“ˆå¸Œæ·»åŠ åˆ°Underscoreå¯¹è±¡ï¼Œä»¥åŠé¢å‘å¯¹è±¡å°è£…ã€‚
+<pre>
+_.mixin({
+  capitalize: function(string) {
+    return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
+  }
+});
+_("fabio").capitalize();
+=&gt; "Fabio"
+</pre>
+<p id="iteratee">
+<b class="header">iteratee</b><code>_.iteratee(value, [context])</code>
+<br />
+ç”Ÿæˆå¯åº”ç”¨äºé›†åˆä¸­çš„æ¯ä¸ªå…ƒç´ çš„å›è°ƒã€‚<tt>_.iteratee</tt>æ”¯æŒè®¸å¤šå¸¸è§å›è°ƒç”¨ä¾‹çš„ç®€å†™è¯­æ³•ã€‚æ ¹æ®å€¼çš„ç±»å‹ï¼Œ<tt>_.iteratee</tt> å°†è¿”å›ï¼š
+</p>
+<pre>
+// No value
+_.iteratee();
+=> _.identity()
+
+// Function
+_.iteratee(function(n) { return n * 2; });
+=> function(n) { return n * 2; }
+
+// Object
+_.iteratee({firstName: 'Chelsea'});
+=> _.matcher({firstName: 'Chelsea'});
+
+// Anything else
+_.iteratee('firstName');
+=> _.property('firstName');</pre>
+<p>
+é€šè¿‡<tt>_.iteratee</tt>è½¬æ¢åˆ¤æ–­çš„Underscore æ–¹æ³•çš„å®Œæ•´åˆ—è¡¨æ˜¯: <tt>countBy</tt>, <tt>every</tt>,
+<tt>filter</tt>, <tt>find</tt>, <tt>findIndex</tt>, <tt>findKey</tt>,
+<tt>findLastIndex</tt>, <tt>groupBy</tt>, <tt>indexBy</tt>,
+<tt>map</tt>, <tt>mapObject</tt>, <tt>max</tt>, <tt>min</tt>,
+<tt>partition</tt>, <tt>reject</tt>, <tt>some</tt>, <tt>sortBy</tt>,
+<tt>sortedIndex</tt>, and <tt>uniq</tt>
+</p>
+<p>
+å¦‚æœæ‚¨éœ€è¦å…¶ä»–æˆ–ä¸åŒçš„ç®€å†™è¯­æ³•ï¼Œå¯ä»¥ä½¿ç”¨è‡ªå·±çš„è‡ªå®šä¹‰å‡½æ•°è¦†ç›– <tt>_.iteratee</tt>ï¼š
+</p>
+<pre>
+// Support `RegExp` predicate shorthand.
+var builtinIteratee = _.iteratee;
+_.iteratee = function(value, context) {
+  if (_.isRegExp(value)) return function(obj) { return value.test(obj) };
+  return builtinIteratee(value, context);
+};</pre>
+<p id="uniqueId">
+<b class="header">uniqueId</b><code>_.uniqueId([prefix])</code>
+<br />
+ä¸ºéœ€è¦çš„å®¢æˆ·ç«¯æ¨¡å‹æˆ–DOMå…ƒç´ ç”Ÿæˆä¸€ä¸ªå…¨å±€å”¯ä¸€çš„idã€‚å¦‚æœ<b>prefix</b>å‚æ•°å­˜åœ¨ï¼Œ id å°†é™„åŠ ç»™å®ƒã€‚
+</p>
+<pre>
+_.uniqueId('contact_');
+=&gt; 'contact_104'</pre>
+<p id="escape">
+<b class="header">escape</b><code>_.escape(string)</code>
+<br />
+è½¬ä¹‰HTMLå­—ç¬¦ä¸²ï¼Œæ›¿æ¢<tt>&amp;</tt>, <tt>&lt;</tt>, <tt>&gt;</tt>, <tt>&quot;</tt>, <tt>&#x27;</tt>, å’Œ <tt>&#x2F;</tt>å­—ç¬¦ã€‚
+</p>
+<pre>
+_.escape('Curly, Larry &amp; Moe');
+=&gt; "Curly, Larry &amp;amp; Moe"</pre>
+<p id="unescape">
+<b class="header">unescape</b><code>_.unescape(string)</code>
+<br />
+å’Œ<a href="#escape"><b>escape</b></a>ç›¸åã€‚è½¬ä¹‰HTMLå­—ç¬¦ä¸²ï¼Œæ›¿æ¢<tt>&amp;</tt>, <tt>&amp;lt;</tt>, <tt>&amp;gt;</tt>, <tt>&amp;quot;</tt>, <tt>&amp;#96;</tt>, å’Œ <tt>&amp;#x2F;</tt>å­—ç¬¦ã€‚
+</p>
+<pre>
+_.unescape('Curly, Larry &amp;amp; Moe');
+=&gt; "Curly, Larry &amp; Moe"</pre>
+<p id="result">
+<b class="header">result</b><code>_.result(object, property, [defaultValue])</code>
+<br />
+å¦‚æœæŒ‡å®šçš„<b>property</b> çš„å€¼æ˜¯ä¸€ä¸ªå‡½æ•°ï¼Œé‚£ä¹ˆå°†åœ¨<b>object</b>ä¸Šä¸‹æ–‡å†…è°ƒç”¨å®ƒ;å¦åˆ™ï¼Œè¿”å›å®ƒã€‚å¦‚æœæä¾›é»˜è®¤å€¼ï¼Œå¹¶ä¸”å±æ€§ä¸å­˜åœ¨ï¼Œé‚£ä¹ˆé»˜è®¤å€¼å°†è¢«è¿”å›ã€‚å¦‚æœè®¾ç½®<tt>defaultValue</tt>æ˜¯ä¸€ä¸ªå‡½æ•°ï¼Œå®ƒçš„ç»“æœå°†è¢«è¿”å›ã€‚
+</p>
+<pre>
+var object = {cheese: 'crumpets', stuff: function(){ return 'nonsense'; }};
+_.result(object, 'cheese');
+=&gt; "crumpets"
+_.result(object, 'stuff');
+=&gt; "nonsense"
+_.result(object, 'meat', 'ham');
+=&gt; "ham"
+</pre>
+<p id="now">
+<b class="header">now</b><code>_.now()</code>
+<br />
+ä¸€ä¸ªä¼˜åŒ–çš„æ–¹å¼æ¥è·å¾—ä¸€ä¸ªå½“å‰æ—¶é—´çš„æ•´æ•°æ—¶é—´æˆ³ã€‚å¯ç”¨äºå®ç°å®šæ—¶/åŠ¨ç”»åŠŸèƒ½ã€‚
+</p>
+<pre>
+_.now();
+=&gt; 1392066795351
+</pre>
+<p id="template">
+<b class="header">template</b><code>_.template(templateString, [settings])</code>
+<br />
+å°† JavaScript æ¨¡æ¿ç¼–è¯‘ä¸ºå¯ä»¥ç”¨äºé¡µé¢å‘ˆç°çš„å‡½æ•°, å¯¹äºé€šè¿‡JSONæ•°æ®æºç”Ÿæˆå¤æ‚çš„HTMLå¹¶å‘ˆç°å‡ºæ¥çš„æ“ä½œéå¸¸æœ‰ç”¨ã€‚
+æ¨¡æ¿å‡½æ•°å¯ä»¥ä½¿ç”¨
+<tt>&lt;%= â€¦ %&gt;</tt>æ’å…¥å˜é‡, ä¹Ÿå¯ä»¥ç”¨<tt>&lt;% â€¦ %&gt;</tt>æ‰§è¡Œä»»æ„çš„ JavaScript ä»£ç ã€‚
+å¦‚æœæ‚¨å¸Œæœ›æ’å…¥ä¸€ä¸ªå€¼, å¹¶è®©å…¶è¿›è¡ŒHTMLè½¬ä¹‰,è¯·ä½¿ç”¨<tt>&lt;%- â€¦ %&gt;</tt>ã€‚
+å½“ä½ è¦ç»™æ¨¡æ¿å‡½æ•°èµ‹å€¼çš„æ—¶å€™ï¼Œå¯ä»¥ä¼ é€’ä¸€ä¸ªå«æœ‰ä¸æ¨¡æ¿å¯¹åº”å±æ€§çš„<b>data</b>å¯¹è±¡ ã€‚
+å¦‚æœæ‚¨è¦å†™ä¸€ä¸ªä¸€æ¬¡æ€§çš„, æ‚¨å¯ä»¥ä¼ å¯¹è±¡ <b>data</b>
+ä½œä¸ºç¬¬äºŒä¸ªå‚æ•°ç»™æ¨¡æ¿ <b>template</b> æ¥ç›´æ¥å‘ˆç°,
+è¿™æ ·é¡µé¢ä¼šç«‹å³å‘ˆç°è€Œä¸æ˜¯è¿”å›ä¸€ä¸ªæ¨¡æ¿å‡½æ•°.
+å‚æ•° <b>settings</b> æ˜¯ä¸€ä¸ªå“ˆå¸Œè¡¨åŒ…å«ä»»ä½•å¯ä»¥è¦†ç›–çš„è®¾ç½® <tt>_.templateSettings</tt>.
+</p>
+<pre>
+var compiled = _.template("hello: &lt;%= name %&gt;");
+compiled({name: 'moe'});
+=&gt; "hello: moe"
+
+var template = _.template("&lt;b&gt;&lt;%- value %&gt;&lt;/b&gt;");
+template({value: '&lt;script&gt;'});
+=&gt; "&lt;b&gt;&amp;lt;script&amp;gt;&lt;/b&gt;"</pre>
+<p>
+æ‚¨ä¹Ÿå¯ä»¥åœ¨ JavaScript ä»£ç ä¸­ä½¿ç”¨ <tt>print</tt>.
+æœ‰æ—¶å€™è¿™ä¼šæ¯”ä½¿ç”¨ <tt>&lt;%= ... %&gt;</tt> æ›´æ–¹ä¾¿.
+</p>
+<pre>
+var compiled = _.template("&lt;% print('Hello ' + epithet); %&gt;");
+compiled({epithet: "stooge"});
+=&gt; "Hello stooge"</pre>
+<p>å¦‚æœERBå¼çš„åˆ†éš”ç¬¦æ‚¨ä¸å–œæ¬¢, æ‚¨å¯ä»¥æ”¹å˜Underscoreçš„æ¨¡æ¿è®¾ç½®, ä½¿ç”¨åˆ«çš„ç¬¦å·æ¥åµŒå…¥ä»£ç .å®šä¹‰ä¸€ä¸ª <b>interpolate</b> æ­£åˆ™è¡¨è¾¾å¼æ¥é€å­—åŒ¹é…åµŒå…¥ä»£ç çš„è¯­å¥, å¦‚æœæƒ³æ’å…¥è½¬ä¹‰åçš„HTMLä»£ç åˆ™éœ€è¦å®šä¹‰ä¸€ä¸ª <b>escape</b> æ­£åˆ™è¡¨è¾¾å¼æ¥åŒ¹é…,è¿˜æœ‰ä¸€ä¸ª <b>evaluate</b> æ­£åˆ™è¡¨è¾¾å¼æ¥åŒ¹é…æ‚¨æƒ³è¦ç›´æ¥ä¸€æ¬¡æ€§æ‰§è¡Œç¨‹åºè€Œä¸éœ€è¦ä»»ä½•è¿”å›å€¼çš„è¯­å¥.æ‚¨å¯ä»¥å®šä¹‰æˆ–çœç•¥è¿™ä¸‰ä¸ªçš„ä»»æ„ä¸€ä¸ª.ä¾‹å¦‚, è¦æ‰§è¡Œ<a href="javascript:if(confirm('http://github.com/janl/mustache.js  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/janl/mustache.js#readme'" tppabs="http://github.com/janl/mustache.js#readme">Mustache.js</a>ç±»å‹çš„æ¨¡æ¿:
+</p>
+<pre>
+_.templateSettings = {
+  interpolate: /\{\{(.+?)\}\}/g
+};
+
+var template = _.template("Hello {{ name }}!");
+template({name: "Mustache"});
+=&gt; "Hello Mustache!"</pre>
+<p>
+é»˜è®¤çš„, <b>template</b> é€šè¿‡ <tt>with</tt> è¯­å¥æ¥å–å¾— data æ‰€æœ‰çš„å€¼. å½“ç„¶, æ‚¨ä¹Ÿå¯ä»¥åœ¨ <b>variable</b> è®¾ç½®é‡ŒæŒ‡å®šä¸€ä¸ªå˜é‡å. è¿™æ ·èƒ½æ˜¾è‘—æå‡æ¨¡æ¿çš„æ¸²æŸ“é€Ÿåº¦.
+</p>
+<pre>
+_.template("Using 'with': <%= data.answer %>", {variable: 'data'})({answer: 'no'});
+=&gt; "Using 'with': no"</pre>
+<p>
+é¢„ç¼–è¯‘æ¨¡æ¿å¯¹è°ƒè¯•ä¸å¯é‡ç°çš„é”™è¯¯å¾ˆæœ‰å¸®åŠ©.
+è¿™æ˜¯å› ä¸ºé¢„ç¼–è¯‘çš„æ¨¡æ¿å¯ä»¥æä¾›é”™è¯¯çš„ä»£ç è¡Œå·å’Œå †æ ˆè·Ÿè¸ª,
+æœ‰äº›æ¨¡æ¿åœ¨å®¢æˆ·ç«¯(æµè§ˆå™¨)ä¸Šæ˜¯ä¸èƒ½é€šè¿‡ç¼–è¯‘çš„
+åœ¨ç¼–è¯‘å¥½çš„æ¨¡æ¿å‡½æ•°ä¸Š, æœ‰ <b>source</b>
+å±æ€§å¯ä»¥æä¾›ç®€å•çš„é¢„ç¼–è¯‘åŠŸèƒ½.
+</p>
+<pre>&lt;script&gt;
+  JST.project = <%= _.template(jstText).source %>;
+&lt;/script&gt;</pre>
+<h2 id="oop">Object-Oriented Style</h2>
+<p>
+æ‚¨å¯ä»¥åœ¨é¢å‘å¯¹è±¡æˆ–è€…å‡½æ•°çš„é£æ ¼ä¸‹ä½¿ç”¨Underscore,
+è¿™å–å†³äºæ‚¨çš„ä¸ªäººåå¥½. ä»¥ä¸‹ä¸¤è¡Œä»£ç éƒ½å¯ä»¥
+æŠŠä¸€ä¸ªæ•°ç»„é‡Œçš„æ‰€æœ‰æ•°å­—ä¹˜ä»¥2.
+</p>
+<pre>
+_.map([1, 2, 3], function(n){ return n * 2; });
+_([1, 2, 3]).map(function(n){ return n * 2; });</pre>
+<h2 id="chaining">é“¾å¼è¯­æ³•(Chaining)</h2>
+<p>
+å¯¹ä¸€ä¸ªå¯¹è±¡ä½¿ç”¨ <tt>chain</tt> æ–¹æ³•, ä¼šæŠŠè¿™ä¸ªå¯¹è±¡å°è£…å¹¶
+è®©ä»¥åæ¯æ¬¡æ–¹æ³•çš„è°ƒç”¨ç»“æŸåéƒ½è¿”å›è¿™ä¸ªå°è£…çš„å¯¹è±¡, å½“æ‚¨å®Œæˆäº†è®¡ç®—,
+å¯ä»¥ä½¿ç”¨ <tt>value</tt> å‡½æ•°æ¥å–å¾—æœ€ç»ˆçš„å€¼.
+ä»¥ä¸‹æ˜¯ä¸€ä¸ªåŒæ—¶ä½¿ç”¨äº† <b>map/flatten/reduce</b>
+çš„é“¾å¼è¯­æ³•ä¾‹å­, ç›®çš„æ˜¯è®¡ç®—ä¸€é¦–æ­Œçš„æ­Œè¯é‡Œæ¯ä¸€ä¸ªå•è¯å‡ºç°çš„æ¬¡æ•°.
+</p>
+<pre>
+var lyrics = [
+  {line: 1, words: "I'm a lumberjack and I'm okay"},
+  {line: 2, words: "I sleep all night and I work all day"},
+  {line: 3, words: "He's a lumberjack and he's okay"},
+  {line: 4, words: "He sleeps all night and he works all day"}
+];
+
+_.chain(lyrics)
+  .map(function(line) { return line.words.split(' '); })
+  .flatten()
+  .reduce(function(counts, word) {
+    counts[word] = (counts[word] || 0) + 1;
+    return counts;
+  }, {})
+  .value();
+
+=&gt; {lumberjack: 2, all: 4, night: 2 ... }</pre>
+<p>
+æ­¤å¤–, <a href="javascript:if(confirm('https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/prototype  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/prototype'" tppabs="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/prototype">æ•°ç»„åŸå‹æ–¹æ³•</a>
+ä¹Ÿé€šè¿‡ä»£ç†åŠ å…¥åˆ°äº†é“¾å¼å°è£…çš„Underscoreå¯¹è±¡, æ‰€ä»¥æ‚¨å¯ä»¥
+åœ¨é“¾å¼è¯­æ³•ä¸­ç›´æ¥ä½¿ç”¨ <tt>reverse</tt> æˆ– <tt>push</tt> æ–¹æ³•,
+ç„¶åå†æ¥ç€å…¶ä»–çš„è¯­å¥.
+</p>
+<p id="chain">
+<b class="header">chain</b><code>_.chain(obj)</code>
+<br />
+è¿”å›ä¸€ä¸ªå°è£…çš„å¯¹è±¡. åœ¨å°è£…çš„å¯¹è±¡ä¸Šè°ƒç”¨æ–¹æ³•ä¼šè¿”å›å°è£…çš„å¯¹è±¡æœ¬èº«,
+ç›´é“ <tt>value</tt> æ–¹æ³•è°ƒç”¨ä¸ºæ­¢ã€‚
+</p>
+<pre>
+var stooges = [{name: 'curly', age: 25}, {name: 'moe', age: 21}, {name: 'larry', age: 23}];
+var youngest = _.chain(stooges)
+  .sortBy(function(stooge){ return stooge.age; })
+  .map(function(stooge){ return stooge.name + ' is ' + stooge.age; })
+  .first()
+  .value();
+=&gt; "moe is 21"
+</pre>
+<p id="value">
+<b class="header">value</b><code>_.chain(obj).value()</code>
+<br />
+è·å–å°è£…å¯¹è±¡çš„æœ€ç»ˆå€¼ã€‚
+</p>
+<pre>
+_.chain([1, 2, 3]).reverse().value();
+=&gt; [3, 2, 1]
+</pre>
+<h2 id="links">æ›´å¤šé“¾æ¥ &amp; æ¨èé˜…è¯»ï¼ˆLinks &amp; Suggested Readingï¼‰</h2>
+<p>
+Underscoreæ–‡æ¡£ä¹Ÿæœ‰
+<a href="index.htm" tppabs="https://www.html.cn/doc/underscore/">ç®€ä½“ä¸­æ–‡</a> ç‰ˆ
+</p>
+<p>
+<a href="javascript:if(confirm('http://mirven.github.com/underscore.lua/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://mirven.github.com/underscore.lua/'" tppabs="http://mirven.github.com/underscore.lua/">Underscore.lua</a>,
+ä¸€ä¸ªLuaç‰ˆæœ¬çš„Underscore, å‡½æ•°éƒ½é€šç”¨.
+åŒ…å«é¢å‘å¯¹è±¡å°è£…å’Œé“¾å¼è¯­æ³•.
+(<a href="javascript:if(confirm('http://github.com/mirven/underscore.lua  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/mirven/underscore.lua'" tppabs="http://github.com/mirven/underscore.lua">æºç </a>)
+</p>
+<p>
+<a href="javascript:if(confirm('http://www.dollarswift.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.dollarswift.org/'" tppabs="http://www.dollarswift.org/">Dollar.swift</a>, Swiftç‰ˆçš„ è®¸å¤š Underscore.js å‡½æ•°ã€‚
+(<a href="javascript:if(confirm('https://github.com/ankurp/Dollar.swift  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/ankurp/Dollar.swift'" tppabs="https://github.com/ankurp/Dollar.swift">æºç </a>)
+</p>
+<p>
+<a href="javascript:if(confirm('http://underscorem.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://underscorem.org/'" tppabs="http://underscorem.org/">Underscore.m</a>, ä¸€ä¸ª Objective-C ç‰ˆæœ¬çš„
+Underscore.js, å®ç°äº†å¤§éƒ¨åˆ†å‡½æ•°, å®ƒçš„è¯­æ³•é¼“åŠ±ä½¿ç”¨é“¾å¼è¯­æ³•.
+(<a href="javascript:if(confirm('https://github.com/robb/Underscore.m  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/robb/Underscore.m'" tppabs="https://github.com/robb/Underscore.m">æºç </a>)
+</p>
+<p>
+<a href="javascript:if(confirm('http://kmalakoff.github.com/_.m/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://kmalakoff.github.com/_.m/'" tppabs="http://kmalakoff.github.com/_.m/">_.m</a>, å¦ä¸€ä¸ª
+Objective-C ç‰ˆæœ¬, è¿™ä¸ªç‰ˆæœ¬ä¸åŸå§‹çš„
+Underscore.js API æ¯”è¾ƒç›¸è¿‘.
+(<a href="javascript:if(confirm('https://github.com/kmalakoff/_.m  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/kmalakoff/_.m'" tppabs="https://github.com/kmalakoff/_.m">æºç </a>)
+</p>
+<p>
+<a href="javascript:if(confirm('http://brianhaveri.github.com/Underscore.php/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://brianhaveri.github.com/Underscore.php/'" tppabs="http://brianhaveri.github.com/Underscore.php/">Underscore.php</a>,
+ä¸€ä¸ªPHPç‰ˆæœ¬çš„Underscore, å‡½æ•°éƒ½é€šç”¨.
+åŒ…å«é¢å‘å¯¹è±¡å°è£…å’Œé“¾å¼è¯­æ³•.
+(<a href="javascript:if(confirm('http://github.com/brianhaveri/Underscore.php  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/brianhaveri/Underscore.php'" tppabs="http://github.com/brianhaveri/Underscore.php">æºç </a>)
+</p>
+<p>
+<a href="javascript:if(confirm('http://vti.github.com/underscore-perl/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://vti.github.com/underscore-perl/'" tppabs="http://vti.github.com/underscore-perl/">Underscore-perl</a>,
+ä¸€ä¸ªPerlç‰ˆæœ¬çš„Underscore, å®ç°äº†å¤§éƒ¨åˆ†åŠŸèƒ½,
+ä¸»è¦é’ˆå¯¹äºPerlçš„å“ˆå¸Œè¡¨å’Œæ•°ç»„.
+(<a href="javascript:if(confirm('https://github.com/vti/underscore-perl/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/vti/underscore-perl/'" tppabs="https://github.com/vti/underscore-perl/">æºç </a>)
+</p>
+</p>
+<p>
+<a href="javascript:if(confirm('http://russplaysguitar.github.com/UnderscoreCF/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://russplaysguitar.github.com/UnderscoreCF/'" tppabs="http://russplaysguitar.github.com/UnderscoreCF/">Underscore.cfc</a>,
+ä¸€ä¸ª Coldfusion ç‰ˆæœ¬çš„ Underscore.js, å®ç°äº†å¤§éƒ¨åˆ†å‡½æ•°.
+(<a href="javascript:if(confirm('https://github.com/russplaysguitar/underscorecf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/russplaysguitar/underscorecf'" tppabs="https://github.com/russplaysguitar/underscorecf">æºç </a>)
+</p>
+<p>
+<a href="javascript:if(confirm('https://github.com/edtsech/underscore.string  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/edtsech/underscore.string'" tppabs="https://github.com/edtsech/underscore.string">Underscore.string</a>,
+ä¸€ä¸ªUnderscoreçš„æ‰©å±•, æ·»åŠ äº†å¤šä¸ªå­—ç¬¦ä¸²æ“ä½œçš„å‡½æ•°, å¦‚:
+<tt>trim</tt>, <tt>startsWith</tt>, <tt>contains</tt>, <tt>capitalize</tt>,
+<tt>reverse</tt>, <tt>sprintf</tt>, è¿˜æœ‰æ›´å¤š.
+</p>
+<p>
+<a href="javascript:if(confirm('http://javadev.github.io/underscore-java/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://javadev.github.io/underscore-java/'" tppabs="http://javadev.github.io/underscore-java/">Underscore-java</a>,
+ä¸¤ç§è¯­è¨€ä¸­éƒ½é€‚ç”¨çš„å‡½æ•°çš„javaç«¯å£ã€‚åŒ…æ‹¬oopåŒ…è£…å’Œchainingã€‚
+(<a href="javascript:if(confirm('https://github.com/javadev/underscore-java  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/javadev/underscore-java'" tppabs="https://github.com/javadev/underscore-java">source</a>)
+</p>
+<p>
+Rubyçš„ <a href="javascript:if(confirm('http://ruby-doc.org/core/classes/Enumerable.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://ruby-doc.org/core/classes/Enumerable.html'" tppabs="http://ruby-doc.org/core/classes/Enumerable.html">æšä¸¾</a> æ¨¡å—.
+</p>
+<p>
+<a href="javascript:if(confirm('http://www.prototypejs.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.prototypejs.org/'" tppabs="http://www.prototypejs.org/">Prototype.js</a>, æä¾›ç±»ä¼¼äºRubyæšä¸¾æ–¹å¼çš„JavaScripté›†åˆå‡½æ•°.
+</p>
+<p>
+Oliver Steeleçš„
+<a href="javascript:if(confirm('http://osteele.com/sources/javascript/functional/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://osteele.com/sources/javascript/functional/'" tppabs="http://osteele.com/sources/javascript/functional/">Functional JavaScript</a>,
+åŒ…å«å…¨é¢çš„é«˜é˜¶å‡½æ•°æ”¯æŒä»¥åŠå­—ç¬¦ä¸²çš„åŒ¿åå‡½æ•°.
+</p>
+<p>
+Michael Aufreiterçš„ <a href="javascript:if(confirm('http://github.com/michael/data  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/michael/data'" tppabs="http://github.com/michael/data">Data.js</a>,
+ä¸€ä¸ªJavaScriptçš„æ•°æ®æ“ä½œå’ŒæŒä¹…åŒ–çš„ç±»åº“.
+</p>
+<p>
+Pythonçš„ <a href="javascript:if(confirm('http://docs.python.org/library/itertools.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.python.org/library/itertools.html'" tppabs="http://docs.python.org/library/itertools.html">è¿­ä»£å·¥å…·</a>.
+</p>
+<p>
+<a href="javascript:if(confirm('http://toolz.readthedocs.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://toolz.readthedocs.org/'" tppabs="http://toolz.readthedocs.org/">PyToolz</a>, ä¸€ä¸ªPythonç«¯å£
+Â Â Â Â Â Â Â Â æ‰©å±•äº†itertoolså’Œfunctoolsï¼ŒåŒ…æ‹¬å¾ˆå¤šçš„Underscore APIã€‚
+</p>
+<p>
+<a href="javascript:if(confirm('https://github.com/Suor/funcy  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/Suor/funcy'" tppabs="https://github.com/Suor/funcy">Funcy</a>, a practical
+collection of functional helpers for Python, partially inspired by Underscore.
+</p>
+<h2 id="changelog">æ›´æ–°æ—¥å¿—(Change Log)</h2>
+<p id="1.9.1">
+<b class="header">1.9.1</b> &mdash; <small><i>May 31, 2018</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.9.0...1.9.1  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.9.0...1.9.1'" tppabs="https://github.com/jashkenas/underscore/compare/1.9.0...1.9.1">Diff</a> &mdash; <a href="javascript:if(confirm('https://cdn.rawgit.com/jashkenas/underscore/1.9.1/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://cdn.rawgit.com/jashkenas/underscore/1.9.1/index.html'" tppabs="https://cdn.rawgit.com/jashkenas/underscore/1.9.1/index.html">Docs</a><br />
+<ul>
+<li>
+ä¿®å¤äº† 1.9.0 çš„è¾¹ç¼˜æƒ…å†µå›å½’ï¼ŒåŒ…æ‹¬åœ¨ç©ºæ•°ç»„ä¸Šè°ƒç”¨ <tt>_.first</tt> å’Œ <tt>_.last</tt> çš„æŸäº›å½¢å¼ï¼Œå¹¶å°†æ•°ç»„ä½œä¸ºé”®ä¼ é€’ç»™ <tt>_.countBy</tt> å’Œ <tt>_.groupBy</tt> ã€‚
+</li>
+</ul>
+</p>
+<p id="1.9.0">
+<b class="header">1.9.0</b> &mdash; <small><i>April 18, 2018</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.8.3...1.9.0  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.8.3...1.9.0'" tppabs="https://github.com/jashkenas/underscore/compare/1.8.3...1.9.0">Diff</a> &mdash; <a href="javascript:if(confirm('https://cdn.rawgit.com/jashkenas/underscore/1.9.0/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://cdn.rawgit.com/jashkenas/underscore/1.9.0/index.html'" tppabs="https://cdn.rawgit.com/jashkenas/underscore/1.9.0/index.html">Docs</a><br />
+<ul>
+<li>
+ä¸ºå¯å˜å‚æ•°å‡½æ•°å¤„ç†æ·»åŠ  <tt>_.restArguments</tt> å‡½æ•°ã€‚
+</li>
+<li>
+æ·»åŠ <tt>_.chunk</tt>å‡½æ•°ä»¥åˆ†å—æ•°ç»„ã€‚
+</li>
+<li>
+æ·»åŠ  <tt>_.isSymbol</tt>, <tt>_.isMap</tt>, <tt>_.isWeakMap</tt>,
+<tt>_.isSet</tt> å’Œ <tt>_.isWeakSet</tt> å‡½æ•°ã€‚
+</li>
+<li>
+<tt>_.throttle</tt> å’Œ <tt>_.debounce</tt> è¿”å›å‡½æ•°ç°åœ¨å…·æœ‰ <tt>.cancel()</tt> æ–¹æ³•ï¼Œè¯¥æ–¹æ³•å¯ç”¨äºå–æ¶ˆä»»ä½•è®¡åˆ’çš„è°ƒç”¨ã€‚
+</li>
+<li>
+<tt>_.property</tt> ç°åœ¨æ¥å—é”®å’Œç´¢å¼•çš„æ•°ç»„ä½œä¸ºè·¯å¾„è¯´æ˜ç¬¦ï¼Œç”¨äºæŸ¥æ‰¾å€¼çš„æ·±å±‚å±æ€§ã€‚
+</li>
+<li>
+<tt>_.range</tt> ç°åœ¨æ¥å—è´ŸèŒƒå›´ä»¥ç”Ÿæˆé™åºæ•°ç»„ã€‚
+</li>
+<li>
+æ·»åŠ å¯¹å¤šç§ç¯å¢ƒçš„æ”¯æŒï¼ŒåŒ…æ‹¬ï¼šWebWorkersï¼Œbrowserify å’Œ ES6 importsã€‚
+</li>
+<li>
+ç°åœ¨å¯ä»¥é€šè¿‡è®¾ç½®<code>_.partial.placeholder</code>æ¥é…ç½®ç”¨äºpartialçš„å ä½ç¬¦ã€‚
+</li>
+<li>
+<code>_.bindAll</code> ç°åœ¨æ¥å—æ•°ç»„æˆ–å‚æ•° ä½œä¸º key ã€‚
+</li>
+<li>
+ä¸‰å¹´çš„æ€§èƒ½æ”¹è¿›ã€‚
+</li>
+</ul>
+</p>
+<p id="1.8.3">
+<b class="header">1.8.3</b> â€” <small><i>April 2, 2015</i></small> â€” <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.8.2...1.8.3  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.8.2...1.8.3'" tppabs="https://github.com/jashkenas/underscore/compare/1.8.2...1.8.3">Diff</a> â€” <a href="javascript:if(confirm('https://cdn.rawgit.com/jashkenas/underscore/1.8.3/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://cdn.rawgit.com/jashkenas/underscore/1.8.3/index.html'" tppabs="https://cdn.rawgit.com/jashkenas/underscore/1.8.3/index.html">Docs</a><br>
+</p>
+<ul>
+<li>
+æ–°å¢ä¸€ä¸ª<tt>_.create</tt> æ–¹æ³•, ä½œä¸º<tt>Object.create</tt>çš„ä¸€ä¸ªç®€åŒ–ç‰ˆæœ¬ã€‚
+</li>
+<li>
+å›´ç»•ç€ä¸€ä¸ªiOSé”™è¯¯ï¼Œå¯å¯¼è‡´<tt>isArrayLike</tt>æˆä¸º JIT-edï¼Œè¿˜ä¿®å¤ä¸€ä¸ªä¼ é€’<tt>0</tt>ç»™<tt>isArrayLike</tt>æ—¶çš„bugã€‚
+</li>
+</ul>
+<p id="1.8.2">
+<b class="header">1.8.2</b> &mdash; <small><i>Feb. 22, 2015</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.8.1...1.8.2  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.8.1...1.8.2'" tppabs="https://github.com/jashkenas/underscore/compare/1.8.1...1.8.2">Diff</a> &mdash; <a href="javascript:if(confirm('https://cdn.rawgit.com/jashkenas/underscore/1.8.2/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://cdn.rawgit.com/jashkenas/underscore/1.8.2/index.html'" tppabs="https://cdn.rawgit.com/jashkenas/underscore/1.8.2/index.html">Docs</a><br />
+<ul>
+<li>
+æ¢å¤å…ˆå‰åœ¨1.8.1æ”¹å˜çš„è€ç‰ˆæœ¬ Internet Explorerçš„è¾¹ç•Œæƒ…å†µã€‚
+</li>
+<li>
+<tt>_.contains</tt>æ·»åŠ äº†ä¸€ä¸ª <tt>fromIndex</tt> å‚æ•°ã€‚
+</li>
+</ul>
+</p>
+<p id="1.8.1">
+<b class="header">1.8.1</b> &mdash; <small><i>Feb. 19, 2015</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.8.0...1.8.1  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.8.0...1.8.1'" tppabs="https://github.com/jashkenas/underscore/compare/1.8.0...1.8.1">Diff</a> &mdash; <a href="javascript:if(confirm('https://cdn.rawgit.com/jashkenas/underscore/1.8.1/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://cdn.rawgit.com/jashkenas/underscore/1.8.1/index.html'" tppabs="https://cdn.rawgit.com/jashkenas/underscore/1.8.1/index.html">Docs</a><br />
+<ul>
+<li>
+ä¿®å¤/æ”¹å˜ä¸€äº›è€ç‰ˆæœ¬Internet Explorerå’Œè¾¹ç•Œæƒ…å†µçš„è¡Œä¸ºã€‚
+ç”¨è€ç‰ˆæœ¬Internet Explorerå’ŒUnderscore 1.8.1 æµ‹è¯•ä¸€ä¸‹æ‚¨çš„åº”ç”¨ï¼Œè®©æˆ‘ä»¬çŸ¥é“å‘ç”Ÿäº†ä»€ä¹ˆ...
+</li>
+</ul>
+</p>
+<p id="1.8.0">
+<b class="header">1.8.0</b> &mdash; <small><i>Feb. 19, 2015</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.7.0...1.8.0  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.7.0...1.8.0'" tppabs="https://github.com/jashkenas/underscore/compare/1.7.0...1.8.0">Diff</a> &mdash; <a href="javascript:if(confirm('https://cdn.rawgit.com/jashkenas/underscore/1.8.0/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://cdn.rawgit.com/jashkenas/underscore/1.8.0/index.html'" tppabs="https://cdn.rawgit.com/jashkenas/underscore/1.8.0/index.html">Docs</a><br />
+<ul>
+<li>æ–°å¢<tt>_.mapObject</tt>ï¼Œå®ƒç±»ä¼¼äº<tt>_.map</tt>ï¼Œä½†åªæ˜¯å¯¹äºåœ¨å¯¹è±¡ä¸­çš„å€¼ã€‚
+</li>
+<li>
+æ–°å¢<tt>_.allKeys</tt>ï¼Œå®ƒè¿”å›ä¸€ä¸ªå¯¹è±¡ä¸Š<i>æ‰€æœ‰</i>æšä¸¾å±æ€§åç§°ã€‚
+</li>
+<li>
+æ¢å¤ä¸€ä¸ª1.7.0çš„å˜æ›´ï¼Œ<tt>_.extend</tt>ä»…å¤åˆ¶â€œè‡ªå·±â€çš„å±æ€§ï¼ˆæ³¨ï¼šä¸åŒ…æ‹¬ç»§æ‰¿è¿‡æ¥çš„å±æ€§ï¼‰ã€‚
+å¸Œæœ›æ²¡æœ‰ä¼¤å®³åˆ°ä½  &mdash; å¦‚æœå®ƒè¿™æ¬¡ä¼¤å®³åˆ°äº†ä½ ï¼Œæˆ‘å‘ä½ é“æ­‰ã€‚
+</li>
+<li>
+æ·»åŠ <tt>_.extendOwn</tt> &mdash; <tt>_.extend</tt>çš„ä¸€ä¸ªä¸å¤ªæœ‰ç”¨çš„å½¢å¼ï¼Œä»…å¤åˆ¶â€œè‡ªå·±â€çš„å±æ€§ï¼Œï¼ˆæ³¨ï¼šä¸åŒ…æ‹¬ç»§æ‰¿è¿‡æ¥çš„å±æ€§ï¼‰ã€‚
+</li>
+<li>
+æ·»åŠ <tt>_.findIndex</tt>å’Œ<tt>_.findLastIndex</tt>åŠŸèƒ½ï¼Œå¾ˆå¥½åœ°è¡¥å……äº†<tt>_.indexOf</tt> å’Œ <tt>_.lastIndexOf</tt>ã€‚
+</li>
+<li>
+å¢åŠ äº†ä¸€ä¸ª<tt>_.isMatch</tt> æ–­è¨€ï¼ˆåˆ¤æ–­ï¼‰å‡½æ•°ï¼Œå®ƒä¼šå‘Šè¯‰ä½ ï¼Œå¦‚æœä¸€ä¸ªå¯¹è±¡åŒ¹é…çš„key-valueå±æ€§ã€‚å’Œ<tt>_.isEqual</tt> å’Œ <tt>_.matcher</tt>éå¸¸æ¥è¿‘ã€‚
+</li>
+<li>
+å¢åŠ äº†ä¸€ä¸ª<tt>_.isError</tt>åŠŸèƒ½ã€‚
+</li>
+<li>
+æ¢å¤<tt>_.unzip</tt>åŠŸèƒ½ï¼Œåšä¸º<tt>zip</tt>ç›¸åçš„åŠŸèƒ½ã€‚å›æ»šã€‚
+</li>
+<li>
+<tt>_.result</tt>ç°åœ¨æœ‰ä¸€ä¸ªå¯é€‰çš„å›é€€å€¼ï¼ˆæˆ–å‡½æ•°æä¾›å›é€€å€¼ï¼‰ã€‚
+</li>
+<li>
+æ·»åŠ <tt>_.propertyOf</tt> å‡½æ•°å‘ç”Ÿå™¨ä½œä¸º<tt>_.property</tt>çš„é•œåƒç‰ˆæœ¬ã€‚
+</li>
+<li>
+å¼ƒç”¨<tt>_.matches</tt>ã€‚ç›®å‰ä»–å·²ç»æœ‰ä¸€ä¸ªæ›´åŠ å’Œè°çš„åç§° -<tt>_.matcher</tt>ã€‚
+</li>
+<li>
+ç®€åŒ–å„ç§å¤šæ ·çš„ä»£ç ï¼Œä»¥æé«˜è·¨å¹³å°å…¼å®¹æ€§çš„å˜åŒ–ï¼Œä¿®å¤è¾¹ç•Œæƒ…å†µçš„bugã€‚
+</li>
+</ul>
+</p>
+<p id="1.7.0">
+<b class="header">1.7.0</b> &mdash; <small><i>August 26, 2014</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.6.0...1.7.0  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.6.0...1.7.0'" tppabs="https://github.com/jashkenas/underscore/compare/1.6.0...1.7.0">Diff</a> &mdash; <a href="javascript:if(confirm('https://cdn.rawgit.com/jashkenas/underscore/1.7.0/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://cdn.rawgit.com/jashkenas/underscore/1.7.0/index.html'" tppabs="https://cdn.rawgit.com/jashkenas/underscore/1.7.0/index.html">Docs</a><br />
+<ul>
+<li>
+For consistency and speed across browsers, Underscore now ignores
+native array methods for <tt>forEach</tt>, <tt>map</tt>, <tt>reduce</tt>,
+<tt>reduceRight</tt>, <tt>filter</tt>, <tt>every</tt>, <tt>some</tt>,
+<tt>indexOf</tt>, and <tt>lastIndexOf</tt>. "Sparse" arrays are
+officially dead in Underscore.
+</li>
+<li>
+Added <tt>_.iteratee</tt> to customize the iterators used by collection
+functions. Many Underscore methods will take a string argument for easier
+<tt>_.property</tt>-style lookups, an object for <tt>_.where</tt>-style
+filtering, or a function as a custom callback.
+</li>
+<li>
+Added <tt>_.before</tt> as a counterpart to <tt>_.after</tt>.
+</li>
+<li>
+Added <tt>_.negate</tt> to invert the truth value of a passed-in
+predicate.
+</li>
+<li>
+Added <tt>_.noop</tt> as a handy empty placeholder function.
+</li>
+<li>
+<tt>_.isEmpty</tt> now works with <tt>arguments</tt> objects.
+</li>
+<li>
+<tt>_.has</tt> now guards against nullish objects.
+</li>
+<li>
+<tt>_.omit</tt> can now take an iteratee function.
+</li>
+<li>
+<tt>_.partition</tt> is now called with <tt>index</tt> and <tt>object</tt>.
+</li>
+<li>
+<tt>_.matches</tt> creates a shallow clone of your object and only iterates
+over own properties.
+</li>
+<li>
+Aligning better with the forthcoming ECMA6 <tt>Object.assign</tt>,
+<tt>_.extend</tt> only iterates over the object's own properties.
+</li>
+<li>
+Falsey guards are no longer needed in <tt>_.extend</tt> and
+<tt>_.defaults</tt>&mdash;if the passed in argument isn't a JavaScript
+object it's just returned.
+</li>
+<li>
+Fixed a few edge cases in <tt>_.max</tt> and <tt>_.min</tt> to
+handle arrays containing <tt>NaN</tt> (like strings or other objects)
+and <tt>Infinity</tt> and <tt>-Infinity</tt>.
+</li>
+<li>
+Override base methods like <tt>each</tt> and <tt>some</tt>
+and they'll be used internally by other Underscore functions too.
+</li>
+<li>
+The escape functions handle backticks (<tt>`</tt>), to deal with an
+IE &le; 8 bug.
+</li>
+<li>
+For consistency, <tt>_.union</tt> and <tt>_.difference</tt> now
+only work with arrays and not variadic args.
+</li>
+<li>
+<tt>_.memoize</tt> exposes the cache of memoized values as a property
+on the returned function.
+</li>
+<li>
+<tt>_.pick</tt> accepts <tt>iteratee</tt> and <tt>context</tt>
+arguments for a more advanced callback.
+</li>
+<li>
+Underscore templates no longer accept an initial <tt>data</tt> object.
+<tt>_.template</tt> always returns a function now.
+</li>
+<li>
+Optimizations and code cleanup aplenty.
+</li>
+</ul>
+</p>
+<p id="1.6.0">
+<b class="header">1.6.0</b> &mdash; <small><i>February 10, 2014</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.5.2...1.6.0  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.5.2...1.6.0'" tppabs="https://github.com/jashkenas/underscore/compare/1.5.2...1.6.0">Diff</a> &mdash; <a href="javascript:if(confirm('http://htmlpreview.github.io/?https://raw.github.com/jashkenas/underscore/1.6.0/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://htmlpreview.github.io/?https://raw.github.com/jashkenas/underscore/1.6.0/index.html'" tppabs="http://htmlpreview.github.io/?https://raw.github.com/jashkenas/underscore/1.6.0/index.html">Docs</a><br />
+<ul>
+<li>
+Underscore ç°åœ¨å°†è‡ªå·±æ³¨å†Œä¸ºAMDï¼ˆRequire.jsï¼‰ï¼ŒBowerå’ŒComponentï¼ŒÂ ä»¥åŠä½œä¸ºä¸€ä¸ªCommonJSçš„æ¨¡å—å’Œå¸¸è§„ï¼ˆJavaï¼‰çš„è„šæœ¬ã€‚
+Â Â Â Â Â Â Â Â Â Â Â Â è™½ç„¶æ¯”è¾ƒä¸‘é™‹ï¼Œä½†ä¹Ÿè®¸æ˜¯å¿…è¦çš„ã€‚
+</li>
+<li>
+æ·»åŠ äº† <tt>_.partition</tt>, ä¸€ä¸ªæ‹†åˆ†ä¸€ä¸ªé›†åˆä¸ºä¸¤ä¸ªç»“æœåˆ—è¡¨ï¼Œç¬¬ä¸€ä¸ªæ•°ç»„å…¶å…ƒç´ éƒ½æ»¡è¶³<b>predicate</b>è¿­ä»£å‡½æ•°ï¼Œ è€Œç¬¬äºŒä¸ªçš„æ‰€æœ‰å…ƒç´ å‡ä¸èƒ½æ»¡è¶³<b>predicate</b>è¿­ä»£å‡½æ•°ã€‚
+</li>
+<li>
+æ·»åŠ äº† <tt>_.property</tt>, åˆ›å»ºä¸€ä¸ªè¿­ä»£å™¨ï¼Œè½»æ¾ä»å¯¹è±¡ä¸­è·å–ç‰¹å®šå±æ€§ã€‚ ä¸å…¶ä»– Underscore é›†åˆå‡½æ•°ç»“åˆä½¿ç”¨æ—¶å¾ˆæœ‰ç”¨ã€‚
+</li>
+<li>
+æ·»åŠ äº† <tt>_.matches</tt>,
+ä¸€ä¸ªå‡½æ•°ï¼Œå®ƒä¼šç»™ä½ ä¸€ä¸ªæ–­è¨€
+Â Â Â Â Â Â Â Â Â Â Â Â å¯ä»¥ç”¨æ¥è¾¨åˆ« ç»™å®šçš„å¯¹è±¡æ˜¯å¦åŒ¹é…æŒ‡å®šé”®/å€¼å±æ€§çš„åˆ—è¡¨ã€‚
+</li>
+<li>
+æ·»åŠ äº† <tt>_.constant</tt>, ä½œä¸º<tt>_.identity</tt>é«˜é˜¶.
+</li>
+<li>
+æ·»åŠ äº† <tt>_.now</tt>, ä¸€ä¸ªä¼˜åŒ–çš„æ–¹å¼æ¥è·å¾—ä¸€ä¸ªæ—¶é—´æˆ³ &mdash; åœ¨å†…éƒ¨ç”¨æ¥åŠ å¿«<tt>debounce</tt> å’Œ <tt>throttle</tt>ã€‚
+</li>
+<li>
+<tt>_.partial</tt>å‡½æ•° ç°åœ¨å¯ä»¥ç”¨æ¥éƒ¨åˆ†é€‚ç”¨çš„ä»»ä½•å‚æ•°ï¼Œ
+é€šè¿‡ä¼ é€’<tt>_</tt>ï¼Œæ— è®ºä½ æƒ³è¦ä¸€ä¸ªå ä½ç¬¦å˜é‡ï¼Œ
+ç¨åå¡«å……ã€‚
+</li>
+<li>
+<tt>_.each</tt> å‡½æ•°ç°åœ¨
+è¿”å›ä¸€ä¸ªåˆ—è¡¨çš„å¼•ç”¨ï¼Œæ–¹ä¾¿é“¾å¼è°ƒç”¨ã€‚
+</li>
+<li>
+The <tt>_.keys</tt> å‡½æ•° ç°åœ¨ å½“ç©ºå¯¹è±¡ä¼ å…¥çš„æ—¶å€™è¿”å›ä¸€ä¸ªç©ºæ•°ç»„ã€‚
+</li>
+<li>
+&hellip; æ›´å¤šæ‚é¡¹é‡æ„.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.5.2</b> &mdash; <small><i>Sept. 7, 2013</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.5.1...1.5.2  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.5.1...1.5.2'" tppabs="https://github.com/jashkenas/underscore/compare/1.5.1...1.5.2">Diff</a><br />
+<ul>
+<li>
+å¢åŠ äº†<tt>indexBy</tt>å‡½æ•°ï¼Œä»–æ˜¯<tt>countBy</tt> and <tt>groupBy</tt>åŠŸèƒ½ç›¸è¾…ç›¸æˆã€‚
+</li>
+<li>
+å¢åŠ äº†<tt>sample</tt>å‡½æ•°ï¼Œä»æ•°ç»„ä¸­äº§ç”Ÿéšæœºå…ƒç´ ã€‚
+</li>
+<li>
+ä¸€äº›æœ‰å…³å‡½æ•°çš„ä¼˜åŒ–ï¼Œ<tt>_.keys</tt> æ–¹é¢çš„å®ç°ï¼ˆåŒ…å«å¤§å¹…æå‡çš„å¯¹è±¡ä¸Š<tt>each</tt> å‡½æ•°ï¼‰ã€‚å¦å¤–<tt>debounce</tt>ä¸­ä¸€ä¸ªç´§å¯†çš„å¾ªç¯ã€‚
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.5.1</b> â€” <small><i>Jul. 8, 2013</i></small> â€” <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.5.0...1.5.1  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.5.0...1.5.1'" tppabs="https://github.com/jashkenas/underscore/compare/1.5.0...1.5.1">Diff</a><br>
+</p><ul>
+<li>åˆ é™¤<tt>unzip</tt>ï¼Œå› ä¸ºå¥¹ç®€å•çš„åº”ç”¨äº†<tt>zip</tt>å‚æ•°çš„ä¸€ä¸ªæ•°ç»„ã€‚ä½¿ç”¨<tt>_.zip.apply(_, list)</tt>ä»£æ›¿ã€‚
+</li>
+</ul>
+<p></p>
+<p>
+<b class="header">1.5.0</b> â€” <small><i>Jul. 6, 2013</i></small> â€” <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.4.4...1.5.0  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.4.4...1.5.0'" tppabs="https://github.com/jashkenas/underscore/compare/1.4.4...1.5.0">Diff</a><br>
+</p><ul>
+<li>
+æ·»åŠ ä¸€ä¸ª<tt>unzip</tt>æ–°å‡½æ•°ï¼Œä½œä¸º<tt>_.zip</tt>åŠŸèƒ½ç›¸åçš„å‡½æ•°ã€‚
+</li>
+<li>
+<tt>throttle</tt>å‡½æ•°ç°åœ¨å¢åŠ ä¸€ä¸ª<tt>options</tt>å‚æ•°ï¼Œå¦‚æœä½ æƒ³ç¦ç”¨ç¬¬ä¸€æ¬¡é¦–å…ˆæ‰§è¡Œçš„è¯ï¼Œä¼ é€’{leading: false}ï¼Œè¿˜æœ‰å¦‚æœä½ æƒ³ç¦ç”¨æœ€åä¸€æ¬¡æ‰§è¡Œçš„è¯ï¼Œä¼ é€’{trailing: false}ã€‚
+</li>
+<li>
+Underscoreç°åœ¨æä¾›äº†ä¸€ä¸ªsource map æ–¹ä¾¿å‹ç¼©æ–‡ä»¶çš„è°ƒè¯•ã€‚
+</li>
+<li>
+<tt>defaults</tt>å‡½æ•°ç°åœ¨åª é‡å†™<tt>undefined</tt>å€¼ï¼Œä¸å†é‡å†™<tt>null</tt>å€¼ã€‚
+</li>
+<li>åˆ é™¤ä¸å¸¦æ–¹æ³•åå‚æ•°è°ƒç”¨<tt>_.bindAll</tt>çš„èƒ½åŠ›ã€‚
+</li>
+<li>
+åˆ é™¤è®¡æ•°ä¸º0ï¼Œè°ƒç”¨ <tt>_.after</tt> çš„èƒ½åŠ›ã€‚è°ƒç”¨çš„æœ€å°æ•°é‡ç°åœ¨æ˜¯<tt>1</tt>ï¼ˆè‡ªç„¶æ•°ï¼‰
+</li>
+</ul>
+<p></p>
+<p>
+<b class="header">1.4.4</b> â€” <small><i>Jan. 30, 2013</i></small> â€” <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.4.3...1.4.4  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.4.3...1.4.4'" tppabs="https://github.com/jashkenas/underscore/compare/1.4.3...1.4.4">Diff</a><br>
+</p><ul>
+<li>
+æ·»åŠ <tt>_.findWhere</tt>ï¼Œåœ¨åˆ—è¡¨ä¸­æ‰¾åˆ°çš„ç¬¬ä¸€ä¸ªå…ƒç´ ï¼Œä¸€ç»„ç‰¹å®šçš„é”®å’Œå€¼ç›¸åŒ¹é…ã€‚
+</li>
+<li>
+æ·»åŠ <tt>_.partial</tt>ï¼Œå±€éƒ¨åº”ç”¨ä¸€ä¸ªå‡½æ•°å¡«å……åœ¨ä»»æ„æ•°å€¼çš„å‚æ•°ï¼Œ <i>ä¸</i>æ”¹å˜å…¶åŠ¨æ€<tt>this</tt>å€¼ã€‚
+</li>
+<li>
+é€šè¿‡å»æ‰äº†ä¸€äº›çš„è¾¹ç¼˜æ¡ˆä»¶æ¶‰åŒ…æ‹¬æ„é€ å‡½æ•°æ¥ç®€åŒ–<tt>bind</tt>ã€‚æ€»ä¹‹ï¼šä¸è¦<tt>_.bind</tt> ä½ çš„æ„é€ å™¨ã€‚
+</li>
+<li>ä¸€ä¸ª<tt>invoke</tt>çš„å°ä¼˜åŒ–ã€‚
+</li>
+<li>
+ä¿®æ”¹å‹ç¼©ç‰ˆæœ¬ä¸­ç”±äºä¸å½“å‹ç¼©å¼•èµ·çš„<tt>isFunction</tt>BUGã€‚
+</li>
+</ul>
+<p></p>
+<p>
+<b class="header">1.4.3</b> â€” <small><i>Dec. 4, 2012</i></small> â€” <a href="javascript:if(confirm('https://github.com/jashkenas/underscore/compare/1.4.2...1.4.3  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/jashkenas/underscore/compare/1.4.2...1.4.3'" tppabs="https://github.com/jashkenas/underscore/compare/1.4.2...1.4.3">Diff</a><br>
+</p><ul>
+<li>
+æ”¹è¿›Underscoreå’Œ
+ä¸Adobeçš„JSå¼•æ“çš„å…¼å®¹æ€§ï¼Œå¯ç”¨äºscript Illustratorï¼ŒPhotoshopå’Œç›¸å…³äº§å“ã€‚
+</li>
+<li>
+æ·»åŠ ä¸€ä¸ªé»˜è®¤çš„<tt>_.identity</tt>è¿­ä»£åˆ°<tt>countBy</tt>å’Œ<tt>groupBy</tt>ä¸­ã€‚
+</li>
+<li>
+<tt>uniq</tt>å‡½æ•°ç°åœ¨æ¥å—<tt>array, iterator, context</tt>ä½œä¸ºå‚æ•°åˆ—è¡¨ã€‚
+</li>
+<li><tt>times</tt>å‡½æ•°ç°åœ¨æ”¾å›è¿­ä»£å‡½æ•°ç»“æœçš„æ˜ å°„æ•°ç»„ã€‚
+</li>
+<li>ç®€åŒ–å’Œä¿®å¤<tt>throttle</tt>BUGã€‚
+</li>
+</ul>
+<p></p>
+<p>
+<b class="header">1.4.2</b> &mdash; <small><i>2012å¹´10æœˆ1æ—¥</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/documentcloud/underscore/compare/1.4.1...1.4.2  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/documentcloud/underscore/compare/1.4.1...1.4.2'" tppabs="https://github.com/documentcloud/underscore/compare/1.4.1...1.4.2">æ¯”è¾ƒæ–‡ä»¶</a><br />
+<ul>
+<li>
+ä¸ºäº†ä¿è¯å‘ä¸‹å…¼å®¹, æ¢å¤äº† 1.4.0 å€™é€‰ç‰ˆæ—¶çš„ä¸€äº›ç‰¹æ€§
+å½“ä¼  <tt>null</tt> åˆ°è¿­ä»£å‡½æ•°æ—¶. ç°åœ¨åˆå˜å›éå¯é€‰å‚æ•°äº†.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.4.1</b> &mdash; <small><i>Oct. 1, 2012</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/documentcloud/underscore/compare/1.4.0...1.4.1  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/documentcloud/underscore/compare/1.4.0...1.4.1'" tppabs="https://github.com/documentcloud/underscore/compare/1.4.0...1.4.1">æ¯”è¾ƒæ–‡ä»¶</a><br />
+<ul>
+<li>
+ä¿®å¤ 1.4.0 ç‰ˆæœ¬é‡Œ <tt>lastIndexOf</tt> å‡½æ•°çš„é€€åŒ–.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.4.0</b> &mdash; <small><i>Sept. 27, 2012</i></small> &mdash; <a href="javascript:if(confirm('https://github.com/documentcloud/underscore/compare/1.3.3...1.4.0  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/documentcloud/underscore/compare/1.3.3...1.4.0'" tppabs="https://github.com/documentcloud/underscore/compare/1.3.3...1.4.0">æ¯”è¾ƒæ–‡ä»¶</a><br />
+<ul>
+<li>
+å¢åŠ  <tt>pairs</tt> å‡½æ•°, æŠŠä¸€ä¸ª JavaScript å¯¹è±¡è½¬æ¢æˆ
+<tt>[key, value]</tt> çš„ç»„åˆ ... åŒæ ·åœ°, ä¹Ÿæœ‰ <tt>object</tt>
+å‡½æ•°, æŠŠ <tt>[key, value]</tt> çš„æ•°ç»„ç»„åˆè½¬æ¢æˆå¯¹è±¡.
+</li>
+<li>
+å¢åŠ  <tt>countBy</tt> å‡½æ•°, å¯ä»¥è®¡ç®—æ•°ç»„å†…ç¬¦åˆæ¡ä»¶çš„å¯¹è±¡ä¸ªæ•°.
+</li>
+<li>
+å¢åŠ  <tt>invert</tt> å‡½æ•°, åœ¨å¯¹è±¡é‡Œå®ç°ä¸€ä¸ªç®€å•çš„é”®å€¼å¯¹è°ƒ.
+</li>
+<li>
+å¢åŠ  <tt>where</tt> å‡½æ•°, ä»¥ä¾¿äºç­›é€‰å‡ºä¸€ä¸ªæ•°ç»„é‡ŒåŒ…å«æŒ‡å®šé”®å€¼çš„å¯¹è±¡æ•°ç»„.
+</li>
+<li>
+å¢åŠ  <tt>omit</tt> å‡½æ•°, å¯ä»¥è¿‡æ»¤æ‰å¯¹è±¡é‡Œçš„å¯¹åº”keyçš„å±æ€§.
+</li>
+<li>
+å¢åŠ  <tt>random</tt> å‡½æ•°, ç”ŸæˆæŒ‡å®šèŒƒå›´å†…çš„éšæœºæ•°.
+</li>
+<li>
+ç”¨ <tt>_.debounce</tt> åˆ›å»ºçš„å‡½æ•°ç°åœ¨ä¼šè¿”å›ä¸Šä¸€æ¬¡æ›´æ–°åçš„å€¼,
+å°±åƒ <tt>_.throttle</tt> åŠ å·¥è¿‡çš„å‡½æ•°ä¸€æ ·.
+</li>
+<li>
+<tt>sortBy</tt> å‡½æ•°ç°åœ¨ä½¿ç”¨äº†ç¨³å®šçš„æ’åºç®—æ³•.
+</li>
+<li>
+å¢åŠ å¯é€‰å‚æ•° <tt>fromIndex</tt> åˆ° <tt>indexOf</tt> å’Œ
+<tt>lastIndexOf</tt> å‡½æ•°é‡Œ.
+</li>
+<li>
+Underscore çš„è¿­ä»£å‡½æ•°é‡Œä¸å†æ”¯æŒç¨€ç–æ•°ç»„.
+è¯·ä½¿ç”¨ <tt>for</tt> å¾ªç¯æ¥ä»£æ›¿ (æˆ–è€…ä¼šæ›´å¥½).
+</li>
+<li>
+<tt>min</tt> å’Œ <tt>max</tt> å‡½æ•°ç°åœ¨å¯ä»¥ç”¨åœ¨
+<i>éå¸¸</i>å¤§çš„æ•°ç»„ä¸Š.
+</li>
+<li>
+æ¨¡æ¿å¼•æ“é‡Œæ’å…¥å˜é‡ç°åœ¨å¯ä»¥ä½¿ç”¨ <tt>null</tt> å’Œ
+<tt>undefined</tt> ä½œä¸ºç©ºå­—ç¬¦ä¸².
+</li>
+<li>
+<del>Underscore çš„è¿­ä»£å‡½æ•°ä¸å†æ¥å— <tt>null</tt>
+ä½œä¸ºéå¯é€‰å‚æ•°. å¦åˆ™æ‚¨å°†å¾—åˆ°ä¸€ä¸ªé”™è¯¯æç¤º.</del>
+</li>
+<li>
+ä¸€äº›å°å¹…ä¿®å¤å’Œè°ƒæ•´, å¯ä»¥åœ¨æ­¤æŸ¥çœ‹ä¸ä¹‹å‰ç‰ˆæœ¬çš„
+<a href="javascript:if(confirm('https://github.com/documentcloud/underscore/compare/1.3.3...1.4.0  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/documentcloud/underscore/compare/1.3.3...1.4.0'" tppabs="https://github.com/documentcloud/underscore/compare/1.3.3...1.4.0">æ¯”è¾ƒ</a>.
+<b>1.4.0</b> å¯èƒ½æ¯”è¾ƒä¸å‘ä¸‹å…¼å®¹, è¿™å–å†³äºæ‚¨æ€ä¹ˆä½¿ç”¨Underscore
+&mdash; è¯·åœ¨å‡çº§åè¿›è¡Œæµ‹è¯•ã€‚
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.3.3</b> &mdash; <small><i>2012å¹´4æœˆ10æ—¥</i></small><br />
+<ul>
+<li>
+<tt>_.template</tt>çš„å¤šå¤„æ”¹è¿›, ç°åœ¨ä¸ºæ½œåœ¨çš„æ›´æœ‰æ•ˆçš„æœåŠ¡å™¨ç«¯é¢„ç¼–è¯‘
+æä¾›æ¨¡æ¿çš„<tt>æº(source)</tt>ä½œä¸ºå±æ€§. æ‚¨ç°åœ¨ä¹Ÿå¯ä»¥åœ¨åˆ›å»ºæ¨¡æ¿çš„æ—¶å€™
+è®¾ç½® <tt>variable</tt> é€‰é¡¹, ä¹‹åå¯ä»¥é€šè¿‡è¿™ä¸ªå˜é‡åå–åˆ°æ¨¡æ¿ä¼ å…¥çš„æ•°æ®,
+å–ä»£äº† <tt>with</tt> è¯­å¥ &mdash;
+æ˜¾è‘—çš„æ”¹è¿›äº†æ¨¡æ¿çš„æ¸²æŸ“é€Ÿåº¦.
+</li>
+<li>
+å¢åŠ äº† <tt>pick</tt> å‡½æ•°, å®ƒå¯ä»¥è¿‡æ»¤ä¸åœ¨æ‰€æä¾›çš„ç™½åå•ä¹‹å†…çš„å…¶ä»–å±æ€§.
+</li>
+<li>
+å¢åŠ  <tt>result</tt> å‡½æ•°, åœ¨ä¸APIå·¥ä½œæ—¶å¾ˆæ–¹ä¾¿,
+å…è®¸å‡½æ•°å±æ€§æˆ–åŸå§‹å±æ€§(éå‡½æ•°å±æ€§).
+</li>
+<li>
+å¢åŠ  <tt>isFinite</tt> å‡½æ•°, å› ä¸ºæœ‰æ—¶å€™ä»…ä»…çŸ¥é“æŸå˜é‡æ˜¯ä¸€ä¸ª
+æ•°çš„æ—¶å€™è¿˜ä¸å¤Ÿ, è¿˜è¦çŸ¥é“å®ƒæ˜¯å¦æ˜¯æœ‰é™çš„æ•°.
+</li>
+<li>
+<tt>sortBy</tt> å‡½æ•°ç°åœ¨å¯ä»¥ä¼ å±æ€§åä½œä¸ºå¯¹è±¡çš„æ’åºæ ‡å‡†.
+</li>
+<li>
+ä¿®å¤ <tt>uniq</tt> å‡½æ•°, ç°åœ¨å¯ä»¥åœ¨ç¨€ç–æ•°ç»„ä¸Šä½¿ç”¨äº†.
+</li>
+<li>
+<tt>difference</tt> å‡½æ•°ç°åœ¨åœ¨å¯¹æ¯”æ•°ç»„å·®å¼‚çš„æ—¶å€™åªæ‰§è¡Œæµ…åº¦çš„flatten,
+å–ä»£ä¹‹å‰çš„æ·±åº¦flatten.
+</li>
+<li>
+<tt>debounce</tt> å‡½æ•°ç°åœ¨å¤šäº†ä¸€ä¸ªå‚æ•° <tt>immediate</tt>,
+ä¼šå½±å“åˆ°è¾¾æ—¶é—´é—´éš”åæ‰§è¡Œçš„æ˜¯æœ€å…ˆçš„å‡½æ•°è°ƒç”¨è¿˜æ˜¯æœ€åçš„å‡½æ•°è°ƒç”¨.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.3.1</b> &mdash; <small><i>2012å¹´1æœˆ23æ—¥</i></small><br />
+<ul>
+<li>
+å¢åŠ  <tt>_.has</tt> å‡½æ•°, ä½œä¸º <tt>hasOwnProperty</tt> æ›´å®‰å…¨çš„ç‰ˆæœ¬.
+</li>
+<li>
+å¢åŠ  <tt>_.collect</tt> , ä½œä¸º <tt>_.map</tt> çš„åˆ«å.
+</li>
+<li>
+æ¢å¤ä¸€ä¸ªæ—§çš„ä¿®æ”¹, <tt>_.extend</tt> å°†å†æ¬¡å¯ä»¥æ­£ç¡®å¤åˆ¶
+æ‹¥æœ‰undefinedå€¼çš„å±æ€§.
+</li>
+<li>
+ä¿®å¤åœ¨ <tt>_.template</tt> çš„åµŒå…¥è¯­å¥é‡Œåè½¬ä¹‰æ–œæ çš„bug.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.3.0</b> &mdash; <small><i>2012å¹´1æœˆ11æ—¥</i></small><br />
+<ul>
+<li>
+ç§»é™¤Underscoreå¯¹AMD(RequireJS)çš„æ”¯æŒ. å¦‚æœæ‚¨æƒ³ç»§ç»­åœ¨
+RequireJSé‡Œä½¿ç”¨Underscore, å¯ä»¥ä½œä¸ºä¸€ä¸ªæ™®é€šçš„scriptåŠ è½½,
+å°è£…æˆ–ä¿®æ”¹æ‚¨çš„Underscoreå‰¯æœ¬, æˆ–è€…ä¸‹è½½ä¸€ä¸ªUnderscoreåˆ«çš„forkç‰ˆæœ¬.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.2.4</b> &mdash; <small><i>Jan. 4, 2012</i></small><br />
+<ul>
+<li>
+æ‚¨ç°åœ¨å¯ä»¥å†™ (æ‚¨åº”è¯¥ä¼šè¿™æ ·ç”¨, å› ä¸ºè¿™æ ·æ›´ç®€å•)
+<tt>_.chain(list)</tt>
+æ¥ä»£æ›¿ <tt>_(list).chain()</tt>.
+</li>
+<li>
+ä¿®å¤å·²åè½¬ä¹‰çš„å­—ç¬¦åœ¨Underscoreæ¨¡æ¿é‡Œçš„é”™è¯¯, å¹¶å¢åŠ äº†æ”¯æŒè‡ªå®šä¹‰æ”¯æŒ,
+ä½¿ç”¨<tt>_.templateSettings</tt>, åªéœ€è¦å®šä¹‰ä¸€åˆ°ä¸¤ä¸ªå¿…å¤‡çš„æ­£åˆ™è¡¨è¾¾å¼.
+</li>
+<li>
+ä¿®å¤ä»¥æ•°ç»„ä½œä¸ºç¬¬ä¸€å‚æ•°ä¼ ç»™<tt>_.wrap</tt>å‡½æ•°çš„é”™è¯¯.
+</li>
+<li>
+æ”¹è¿›ä¸ClojureScriptçš„å…¼å®¹æ€§, å¢åŠ <tt>call</tt>
+å‡½æ•°åˆ°<tt>String.prototype</tt>é‡Œ.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.2.3</b> &mdash; <small><i>2011å¹´12æœˆ7æ—¥</i></small><br />
+<ul>
+<li>
+åŠ¨æ€èŒƒå›´åœ¨å·²ç¼–è¯‘çš„ <tt>_.template</tt> å‡½æ•°ä¸­ä¿ç•™,
+æ‰€ä»¥æ‚¨å¯ä»¥ä½¿ç”¨ <tt>this</tt> å±æ€§, å¦‚æœæ‚¨å–œæ¬¢çš„è¯.
+</li>
+<li>
+<tt>_.indexOf</tt> å’Œ <tt>_.lastIndexOf</tt> å¢åŠ å¯¹ç¨€ç–æ•°ç»„çš„æ”¯æŒ.
+</li>
+<li>
+<tt>_.reduce</tt> å’Œ <tt>_.reduceRight</tt> ç°åœ¨éƒ½å¯ä»¥ä¼ ä¸€ä¸ªæ˜ç¡®çš„
+<tt>undefined</tt> å€¼. (æ‚¨ä¸ºä»€ä¹ˆè¦è¿™æ ·åšå¹¶æ²¡æœ‰ä»»ä½•åŸå› )
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.2.2</b> &mdash; <small><i>2011å¹´11æœˆ14æ—¥</i></small><br />
+<ul>
+<li>
+ç»§ç»­æ”¹è¿› <tt>_.isEqual</tt> , è¦è®©å®ƒå’Œè¯­ä¹‰ä¸Šæ‰€è¯´çš„ä¸€æ ·.
+ç°åœ¨åŸç”Ÿçš„JavaScriptä¼šä¸€ä¸ªå¯¹è±¡ä¸å®ƒçš„å°è£…èµ·æ¥çš„å¯¹è±¡è§†ä¸ºç›¸ç­‰çš„,
+è¿˜æœ‰, æ•°ç»„åªä¼šå¯¹æ¯”ä»–ä»¬æ•°å­—å…ƒç´  <small>(#351)</small>.
+</li>
+<li>
+<tt>_.escape</tt> ä¸å†å°è¯•åœ¨éåŒé‡è½¬ä¹‰çš„è½¬ä¹‰HTMLå®ä½“ä¸Šè¿›è¡Œè½¬æ¢.
+ç°åœ¨ä¸ç®¡æ€æ ·åªä¼šåè½¬ä¹‰ä¸€æ¬¡ <small>(#350)</small>.
+</li>
+<li>
+åœ¨ <tt>_.template</tt> é‡Œ, å¦‚æœæ„¿æ„çš„è¯æ‚¨å¯ä»¥çœç•¥åµŒå…¥è¡¨è¾¾å¼åé¢çš„åˆ†å·:
+<tt>&lt;% }) %&gt;</tt> <small>(#369)</small>.
+</li>
+<li>
+<tt>_.after(callback, 0)</tt> ç°åœ¨ä¼šç«‹å³è§¦å‘callbackå‡½æ•°,
+æŠŠ"after"åšå¾—æ›´æ˜“äºä½¿ç”¨åœ¨å¼‚æ­¥äº¤äº’çš„APIä¸Š <small>(#366)</small>.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.2.1</b> &mdash; <small><i>2011å¹´10æœˆ24æ—¥</i></small><br />
+<ul>
+<li>
+<tt>_.isEqual</tt> å‡½æ•°çš„å‡ ä¸ªé‡è¦bugä¿®å¤,
+ç°åœ¨èƒ½æ›´å¥½åœ°ç”¨åœ¨å¤æ‚çš„æ•°ç»„ä¸Š, å’Œæ‹¥æœ‰ <tt>length</tt> å±æ€§çš„éæ•°ç»„å¯¹è±¡ä¸Šäº†. <small>(#329)</small>
+</li>
+<li>
+<b>jrburke</b> æä¾›äº†å¯¼å‡ºUnderscoreä»¥ä¾¿AMDæ¨¡å—çš„åŠ è½½å™¨å¯ä»¥åŠ è½½,
+è¿˜æœ‰ <b>tonylukasavage</b> æä¾›äº†å¯¼å‡ºUnderscoreç»™Appcelerator Titaniumä½¿ç”¨.
+<small>(#335, #338)</small>
+</li>
+<li>
+æ‚¨ç°åœ¨å¯ä»¥ä½¿ç”¨ <tt>_.groupBy(list, 'property')</tt> ä½œä¸º
+ä»¥æŒ‡å®šçš„å…±åŒå±æ€§æ¥åˆ†ç»„çš„å¿«æ·æ–¹æ³•.
+</li>
+<li>
+<tt>_.throttle</tt> å‡½æ•°ç°åœ¨è°ƒç”¨çš„æ—¶å€™ä¼šç«‹å³è‡ªè¡Œä¸€æ¬¡,
+æ­¤åæ‰æ˜¯å†æ¯éš”æŒ‡å®šæ—¶é—´å†æ‰§è¡Œä¸€æ¬¡ <small>(#170, #266)</small>.
+</li>
+<li>
+å¤§å¤šæ•° <tt>_.is[ç±»å‹]</tt> å‡½æ•°ä¸å†ä½¿ç”¨ducktypeå†™æ³•(è¯¦è§Rubyçš„duck type).
+</li>
+<li>
+<tt>_.bind</tt> å‡½æ•°ç°åœ¨åœ¨æ„é€ å‡½æ•°(constructor)ä¹Ÿèƒ½ç”¨äº†, å…¼å®¹ECMAScript 5æ ‡å‡†.
+ä¸è¿‡æ‚¨å¯èƒ½æ°¸è¿œä¹Ÿç”¨ä¸åˆ° <tt>_.bind</tt> æ¥ç»‘å®šä¸€ä¸ªæ„é€ å‡½æ•°.
+</li>
+<li>
+<tt>_.clone</tt> å‡½æ•°ä¸å†å°è£…å¯¹è±¡é‡Œçš„éå¯¹è±¡å±æ€§.
+</li>
+<li>
+<tt>_.find</tt> å’Œ <tt>_.filter</tt> ç°åœ¨ä½œä¸º
+<tt>_.detect</tt> å’Œ <tt>_.select</tt> çš„é¦–é€‰å‡½æ•°å.
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.2.0</b> &mdash; <small><i>2011å¹´10æœˆ5æ—¥</i></small><br />
+<ul>
+<li>
+<tt>_.isEqual</tt> å‡½æ•°ç°åœ¨æ”¯æŒæ·±åº¦ç›¸ç­‰æ€§å¯¹æ¯”,
+æ£€æµ‹å¾ªç¯ç»“æ„, æ„Ÿè°¢Kit Cambridge.
+</li>
+<li>
+Underscoreæ¨¡ç‰ˆç°åœ¨æ”¯æŒåµŒå…¥HTMLè½¬ä¹‰å­—ç¬¦äº†, ä½¿ç”¨
+<tt>&lt;%- ... %&gt;</tt> è¯­å¥.
+</li>
+<li>
+Ryan Tenney æä¾›äº† <tt>_.shuffle</tt> å‡½æ•°, å®ƒä½¿ç”¨
+Fisher-Yatesç®—æ³•çš„ä¿®æ”¹ç‰ˆ, è¿”å›ä¸€ä¸ªä¹±åºåçš„æ•°ç»„å‰¯æœ¬.
+</li>
+<li>
+<tt>_.uniq</tt> ç°åœ¨å¯ä»¥ä¼ ä¸€ä¸ªå¯é€‰çš„è¿­ä»£å™¨iterator, ç”¨æ¥ç¡®å®šä¸€ä¸ªæ•°ç»„ä»¥ä»€ä¹ˆæ ·çš„æ ‡å‡†æ¥ç¡®å®šå®ƒæ˜¯å¦å”¯ä¸€çš„.
+</li>
+<li>
+<tt>_.last</tt> ç°åœ¨å¢åŠ äº†ä¸€ä¸ªå¯é€‰å‚æ•°, å¯ä»¥è®¾ç½®è¿”å›é›†åˆé‡Œçš„æœ€åNä¸ªå…ƒç´ .
+</li>
+<li>
+å¢åŠ äº†ä¸€ä¸ªæ–°å‡½æ•° <tt>_.initial</tt>,
+ä¸ <tt>_.rest</tt> å‡½æ•°ç›¸å¯¹,
+å®ƒä¼šè¿”å›ä¸€ä¸ªåˆ—è¡¨é™¤äº†æœ€åNä¸ªå…ƒç´ ä»¥å¤–çš„æ‰€æœ‰å…ƒç´ .
+</li>
+</ul>
+</p>
+<p>
+<b class="header">1.1.7</b> &mdash; <small><i>2011å¹´7æœˆ13æ—¥</i></small><br />
+å¢åŠ  <tt>_.groupBy</tt>, å®ƒå¯ä»¥å°†ä¸€ä¸ªé›†åˆé‡Œçš„å…ƒç´ è¿›è¡Œåˆ†ç»„.
+å¢åŠ  <tt>_.union</tt> å’Œ <tt>_.difference</tt>, ç”¨æ¥è¡¥å……
+(é‡å‘½åè¿‡çš„) <tt>_.intersection</tt> å‡½æ•°.
+å¤šæ–¹é¢çš„æ”¹è¿›ä»¥æ”¯æŒç¨€ç–æ•°ç»„. <tt>_.toArray</tt> ç°åœ¨å¦‚æœç›´æ¥ä¼ æ•°ç»„æ—¶,
+å°†ä¼šè¿”å›æ­¤æ•°ç»„çš„å‰¯æœ¬.
+<tt>_.functions</tt> ç°åœ¨ä¼šè¿”å›å­˜åœ¨äºåŸå‹é“¾ä¸­çš„å‡½æ•°å.
+</p>
+<p>
+<b class="header">1.1.6</b> &mdash; <small><i>2011å¹´4æœˆ18æ—¥</i></small><br />
+å¢åŠ  <tt>_.after</tt> å‡½æ•°, è¢«å®ƒæ”¹é€ è¿‡çš„å‡½æ•°åªæœ‰åœ¨æ‰§è¡ŒæŒ‡å®šæ¬¡æ•°ä¹‹åæ‰ä¼šç”Ÿæ•ˆ.
+<tt>_.invoke</tt> ç°åœ¨å°†ä½¿ç”¨å‡½æ•°çš„ç›´æ¥å¼•ç”¨.
+<tt>_.every</tt> ç°åœ¨å¿…é¡»ä¼ å¦‚è¿­ä»£å™¨å‡½æ•°, ä¸ºäº†ç¬¦åˆECMAScript 5æ ‡å‡†.
+<tt>_.extend</tt> å½“å€¼ä¸ºundefinedçš„æ—¶å€™ä¸å†å¤åˆ¶é”®å€¼.
+<tt>_.bind</tt> ç°åœ¨å¦‚æœè¯•å›¾ç»‘å®šä¸€ä¸ªundefinedå€¼çš„æ—¶å€™å°†æŠ¥é”™.
+</p>
+<p>
+<b class="header">1.1.5</b> &mdash; <small><i>2011å¹´3æœˆ20æ—¥</i></small><br />
+å¢åŠ  <tt>_.defaults</tt> å‡½æ•°, ç”¨æ¥åˆå¹¶JavaScriptå¯¹è±¡,
+ä¸€èˆ¬ç”¨æ¥åšç”Ÿæˆé»˜è®¤å€¼ä½¿ç”¨.
+å¢åŠ  <tt>_.once</tt> å‡½æ•°, ç”¨æ¥æŠŠå‡½æ•°æ”¹é€ æˆåªèƒ½è¿è¡Œä¸€æ¬¡çš„å‡½æ•°.
+<tt>_.bind</tt> å‡½æ•°ç°åœ¨å§”æ‰˜åŸç”Ÿçš„ECMAScript 5ç‰ˆæœ¬(å¦‚å¯ç”¨).
+<tt>_.keys</tt> ç°åœ¨ä¼ éå¯¹è±¡çš„å€¼æ—¶, å°†ä¼šæŠ›å‡ºä¸€ä¸ªé”™è¯¯,
+å°±å’ŒECMAScript 5æ ‡å‡†é‡Œçš„ä¸€æ ·.
+ä¿®å¤äº† <tt>_.keys</tt> å‡½æ•°åœ¨ä¼ å…¥ç¨€ç–æ•°ç»„æ—¶çš„bug.
+</p>
+<p>
+<b class="header">1.1.4</b> &mdash; <small><i>2011å¹´1æœˆ9æ—¥</i></small><br />
+æ”¹è¿›æ‰€æœ‰æ•°ç»„å‡½æ•°å½“ä¼ å€¼ <tt>null</tt> æ—¶å€™çš„è¡Œä¸º,
+ä»¥ç¬¦åˆECMAScript 5æ ‡å‡†. <tt>_.wrap</tt> å‡½æ•°ç°åœ¨èƒ½æ­£ç¡®åœ°
+ç»™å°è£…çš„å‡½æ•°è®¾ç½® <tt>this</tt> å…³é”®å­—äº†.
+<tt>_.indexOf</tt> å‡½æ•°å¢åŠ äº†å¯é€‰å‚æ•°isSorted,
+å¯»æ‰¾ç´¢å¼•çš„æ—¶å€™ä¼šå°†æ•°ç»„ä½œä¸ºå·²æ’åºå¤„ç†, å°†ä½¿ç”¨æ›´å¿«çš„äºŒè¿›åˆ¶æœç´¢.
+é¿å…ä½¿ç”¨ <tt>.callee</tt>, ä¿è¯ <tt>_.isArray</tt> å‡½æ•°
+åœ¨ECMAScript 5ä¸¥æ ¼æ¨¡å¼ä¸‹èƒ½æ­£å¸¸ä½¿ç”¨.
+</p>
+<p>
+<b class="header">1.1.3</b> &mdash; <small><i>2010å¹´12æœˆ1æ—¥</i></small><br />
+åœ¨CommonJSé‡Œ, Underscoreå¯ä»¥åƒè¿™æ ·å¼•å…¥: <br />
+<tt>var _ = require("underscore")</tt>.
+å¢åŠ  <tt>_.throttle</tt> å’Œ <tt>_.debounce</tt> å‡½æ•°.
+ç§»é™¤ <tt>_.breakLoop</tt> å‡½æ•°, ä¸ºäº†ç¬¦åˆECMAScript 5æ ‡å‡†é‡Œæ‰€è¯´çš„æ¯ä¸€ç§å®ç°å½¢å¼éƒ½æ˜¯ä¸èƒ½<i>break</i>çš„
+&mdash; è¿™å°†å»æ‰try/catchå—,
+ç°åœ¨, æ‚¨é‡åˆ°Underscoreè¿­ä»£å™¨çš„æŠ›å‡ºçš„å¼‚å¸¸æ—¶,
+å°†ä¼šæœ‰æ›´å®Œå–„çš„å †æ ˆè·Ÿè¸ªæ¥æ£€æŸ¥é”™è¯¯æ‰€åœ¨ä¹‹å¤„.
+æ”¹è¿› <b>isType</b> ä¸€ç±»å‡½æ•°, ä»¥ä¾¿æ›´å¥½åœ°å…¼å®¹Internet Exploreræµè§ˆå™¨.
+<tt>_.template</tt> å‡½æ•°ç°åœ¨å¯ä»¥æ­£ç¡®çš„åè½¬ä¹‰æ¨¡æ¿ä¸­çš„åæ–œæ äº†.
+æ”¹è¿› <tt>_.reduce</tt> å‡½æ•°ä»¥å…¼å®¹ECMAScript 5æ ‡å‡†:
+å¦‚æœæ‚¨ä¸ä¼ åˆå§‹å€¼, å°†ä½¿ç”¨é›†åˆé‡Œçš„ç¬¬ä¸€é¡¹ä½œä¸ºåˆå§‹å€¼.
+<tt>_.each</tt> ä¸å†è¿”å›è¿­ä»£åçš„é›†åˆ, ä¸ºäº†ä¸ECMAScript 5çš„ <tt>forEach</tt> ä¿æŒä¸€è‡´.
+</p>
+<p>
+<b class="header">1.1.2</b><br />
+ä¿®å¤ <tt>_.contains</tt> æŒ‡å‘ <tt>_.intersect</tt> å‡½æ•°çš„é”™è¯¯,
+åº”è¯¥æ˜¯æŒ‡å‘ <tt>_.include</tt> å‡½æ•°(_.cotainsåº”è¯¥æ˜¯_.includeçš„åˆ«å),
+å¢åŠ  <tt>_.unique</tt>, ä½œä¸º <tt>_.uniq</tt> å‡½æ•°çš„åˆ«å.
+</p>
+<p>
+<b class="header">1.1.1</b><br />
+æ”¹è¿› <tt>_.template</tt> å‡½æ•°çš„è¿è¡Œé€Ÿåº¦, å’Œå¤„ç†å¤šè¡Œæ’å…¥å€¼çš„æ€§èƒ½.
+Ryan Tenney æä¾›äº†è®¸å¤šUnderscoreå‡½æ•°çš„ä¼˜åŒ–æ–¹æ¡ˆ.
+å¢åŠ äº†å¸¦æ³¨é‡Šç‰ˆæœ¬çš„æºä»£ç .
+</p>
+<p>
+<b class="header">1.1.0</b><br />
+ä¿®æ”¹äº† <tt>_.reduce</tt> å‡½æ•°ä»¥ç¬¦åˆECMAScript 5è§„èŒƒ,
+å–ä»£äº†ä¹‹å‰Ruby/Prototype.jsç‰ˆæœ¬çš„ <tt>_.reduce</tt>.
+è¿™æ˜¯ä¸€ä¸ªä¸å‘ä¸‹å…¼å®¹çš„ä¿®æ”¹. <tt>_.template</tt> å‡½æ•°ç°åœ¨å¯ä»¥ä¸ä¼ å‚äº†, å¹¶ä¿ç•™ç©ºæ ¼.
+<tt>_.contains</tt> æ˜¯ä¸€ä¸ª <tt>_.include</tt> å‡½æ•°æ–°çš„åˆ«å.
+</p>
+<p>
+<b class="header">1.0.4</b><br />
+<a href="javascript:if(confirm('http://themoell.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://themoell.com/'" tppabs="http://themoell.com/">Andri MÃ¶ll</a> æä¾›äº† <tt>_.memoize</tt>å‡½æ•°,
+ä»¥ç¼“å­˜è®¡ç®—ç»“æœ, æ¥ä¼˜åŒ–çš„è€—æ—¶è¾ƒé•¿çš„å‡½æ•°, ä½¿å¾—è¿è¡Œé€Ÿåº¦å˜å¿«.
+</p>
+<p>
+<b class="header">1.0.3</b><br />
+ä¿®å¤äº† <tt>_.isEqual</tt> å‡½æ•°åœ¨å¯¹æ¯”åŒ…å« <tt>NaN</tt> çš„å¯¹è±¡æ—¶è¿”å› <tt>false</tt> çš„é—®é¢˜.
+æŠ€æœ¯ä¸Šæ”¹è‰¯åç†è®ºä¸Šæ˜¯æ­£ç¡®çš„, ä½†æ˜¯è¯­ä¹‰ä¸Šä¼¼ä¹æœ‰çŸ›ç›¾, æ‰€ä»¥è¦æ³¨æ„é¿å…å¯¹æ¯”å«æœ‰NaNçš„å¯¹è±¡.
+</p>
+<p>
+<b class="header">1.0.2</b><br />
+ä¿®å¤ <tt>_.isArguments</tt> åœ¨æ–°ç‰ˆæœ¬Operaæµè§ˆå™¨é‡Œçš„bug,
+Operaé‡Œä¼šæŠŠargumentså¯¹è±¡å½“ä½œæ•°ç»„.
+</p>
+<p>
+<b class="header">1.0.1</b><br />
+ä¿®å¤äº† <tt>_.isEqual</tt> å‡½æ•°çš„bug:
+è¿™ä¸ªbugå‡ºç°åœ¨å½“å¯¹æ¯”ç‰¹å®šå› ç´ ä¸¤ä¸ªå¯¹è±¡æ—¶,
+è¿™ä¸¤ä¸ªå¯¹è±¡æœ‰ç€ç›¸åŒä¸ªæ•°çš„å€¼ä¸ºundefinedçš„key, ä½†ä¸åŒå.
+</p>
+<p>
+<b class="header">1.0.0</b><br />
+Underscoreåœ¨è¿™å‡ ä¸ªæœˆé‡Œç®—æ˜¯ç›¸å¯¹ç¨³å®šäº†, æ‰€ä»¥ç°åœ¨æ‰“ç®—å‡ºæµ‹è¯•ç‰ˆ, ç‰ˆæœ¬å·ä¸º<b>1.0</b>.
+ä»<b>0.6</b>ç‰ˆæœ¬å¼€å§‹è¿›è¡Œæ”¹è¿›, åŒ…æ‹¬<tt>_.isBoolean</tt>çš„æ”¹è¿›,
+å’Œ<tt>_.extend</tt>å…è®¸ä¼ å¤šä¸ªsourceå¯¹è±¡.
+</p>
+<p>
+<b class="header">0.6.0</b><br />
+ä¸»è¦ç‰ˆæœ¬, æ•´åˆäº†ä¸€ç³»åˆ—çš„åŠŸèƒ½å‡½æ•°, åŒ…æ‹¬
+<a href="javascript:if(confirm('http://github.com/ratbeard  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/ratbeard'" tppabs="http://github.com/ratbeard">Mile Frawley</a>å†™çš„åœ¨ä¿ç•™æ´ç”¨åŠŸèƒ½çš„åŸºç¡€ä¸Š, å¯¹é›†åˆå‡½æ•°è¿›è¡Œé‡æ„, å†…éƒ¨ä»£ç æ›´åŠ ç®€æ´.
+æ–°çš„ <tt>_.mixin</tt> å‡½æ•°, å…è®¸æ‚¨è‡ªå·±çš„åŠŸèƒ½å‡½æ•°ç»§æ‰¿Underscoreå¯¹è±¡.
+å¢åŠ  <tt>_.times</tt> å‡½æ•°, è·ŸRubyæˆ–Prototype.jsé‡Œçš„timesçš„åŠŸèƒ½ä¸€æ ·.
+å¯¹ECMAScript 5çš„ <tt>Array.isArray</tt>å‡½æ•°æä¾›åŸç”Ÿæ”¯æŒ, è¿˜æœ‰<tt>Object.keys</tt>.
+</p>
+<p>
+<b class="header">0.5.8</b><br />
+ä¿®å¤äº†Underscoreçš„é›†åˆå‡½æ•°, ä»¥ä¾¿å¯ä»¥ç”¨äºDOMçš„
+<a href="javascript:if(confirm('https://developer.mozilla.org/En/DOM/NodeList  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/En/DOM/NodeList'" tppabs="https://developer.mozilla.org/En/DOM/NodeList">èŠ‚ç‚¹åˆ—è¡¨(NodeList)</a> å’Œ
+<a href="javascript:if(confirm('https://developer.mozilla.org/En/DOM/HTMLCollection  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/En/DOM/HTMLCollection'" tppabs="https://developer.mozilla.org/En/DOM/HTMLCollection">HTMLé›†åˆ(HTMLCollection)</a>
+å†ä¸€æ¬¡åœ°æ„Ÿè°¢
+<a href="javascript:if(confirm('http://github.com/jmtulloss  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/jmtulloss'" tppabs="http://github.com/jmtulloss">Justin Tulloss</a>.
+</p>
+<p>
+<b class="header">0.5.7</b><br />
+ä¿®æ”¹ <tt>_.isArguments</tt> å‡½æ•°, ä½¿ç”¨äº†æ›´å®‰å…¨çš„å®ç°æ–¹å¼, è¿˜æœ‰
+åŠ å¿«äº† <tt>_.isNumber</tt> çš„è¿è¡Œé€Ÿåº¦,<br /> æ„Ÿè°¢
+<a href="javascript:if(confirm('http://jedschmidt.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jedschmidt.com/'" tppabs="http://jedschmidt.com/">Jed Schmidt</a>.
+</p>
+<p>
+<b class="header">0.5.6</b><br />
+å¢åŠ äº† <tt>_.template</tt> å¯¹è‡ªå®šä¹‰åˆ†éš”ç¬¦çš„æ”¯æŒ, ç”±
+<a href="javascript:if(confirm('http://github.com/iamnoah  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iamnoah'" tppabs="http://github.com/iamnoah">Noah Sloan</a>æä¾›.
+</p>
+<p>
+<b class="header">0.5.5</b><br />
+ä¿®å¤äº†ä¸€ä¸ªåœ¨ç§»åŠ¨ç‰ˆSafarié‡Œå…³äºargumentså¯¹è±¡çš„é¢å‘å¯¹è±¡å°è£…çš„bug.
+</p>
+<p>
+<b class="header">0.5.4</b><br />
+ä¿®å¤äº†<tt>_.template</tt>å‡½æ•°é‡Œå¤šä¸ªå•å¼•å·åœ¨æ¨¡æ¿é‡Œé€ æˆçš„é”™è¯¯. äº†è§£æ›´å¤šè¯·é˜…è¯»:
+<a href="javascript:if(confirm('http://www.west-wind.com/Weblog/posts/509108.aspx  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.west-wind.com/Weblog/posts/509108.aspx'" tppabs="http://www.west-wind.com/Weblog/posts/509108.aspx">Rick Strahlçš„åšå®¢æ–‡ç« </a>.
+</p>
+<p>
+<b class="header">0.5.2</b><br />
+å‡ ä¸ªå‡½æ•°çš„é‡å†™: <tt>isArray</tt>, <tt>isDate</tt>, <tt>isFunction</tt>,
+<tt>isNumber</tt>, <tt>isRegExp</tt>, å’Œ <tt>isString</tt>,
+æ„Ÿè°¢<a href="javascript:if(confirm('http://www.broofa.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.broofa.com/'" tppabs="http://www.broofa.com/">Robert Kieffer</a>æä¾›çš„å»ºè®®.
+å–ä»£äº† <tt>Object#toString</tt> çš„å¯¹æ¯”æ–¹å¼, ç°åœ¨ä»¥å±æ€§æ¥è¿›è¡Œå¯¹æ¯”,
+è™½ç„¶è¯´å®‰å…¨æ€§æœ‰æ‰€é™ä½, ä½†æ˜¯é€Ÿåº¦æ¯”ä»¥å‰å¿«äº†æœ‰ä¸€ä¸ªæ•°é‡çº§.
+å› æ­¤å…¶ä»–å¤§å¤šæ•°çš„Underscoreå‡½æ•°ä¹Ÿæœ‰å°å¹…åº¦çš„é€Ÿåº¦æå‡.
+å¢åŠ äº† <tt>_.tap</tt> å‡½æ•°, ç”±<a href="javascript:if(confirm('http://dolzhenko.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://dolzhenko.org/'" tppabs="http://dolzhenko.org/">Evgeniy Dolzhenko</a> æä¾›, ä¸<a href="javascript:if(confirm('http://ruby-doc.org/core-1.9.3/Object.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://ruby-doc.org/core-1.9.3/Object.html#method-i-tap'" tppabs="http://ruby-doc.org/core-1.9.3/Object.html#method-i-tap">Ruby 1.9</a>çš„tapæ–¹æ³•ç›¸ä¼¼,
+å¯¹é“¾å¼è¯­æ³•é‡ŒåµŒå…¥å…¶ä»–åŠŸèƒ½(å¦‚ç™»å½•)å¾ˆæ–¹ä¾¿.
+</p>
+<p>
+<b class="header">0.5.1</b><br />
+å¢åŠ äº† <tt>_.isArguments</tt> å‡½æ•°. è®¸å¤šå°çš„å®‰å…¨æ£€æŸ¥å’Œä¼˜åŒ–ç”±
+<a href="javascript:if(confirm('http://github.com/iamnoah/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iamnoah/'" tppabs="http://github.com/iamnoah/">Noah Sloan</a> å’Œ
+<a href="javascript:if(confirm('http://themoell.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://themoell.com/'" tppabs="http://themoell.com/">Andri MÃ¶ll</a>æä¾›.
+</p>
+<p>
+<b class="header">0.5.0</b><br />
+<b>[APIå˜æ›´]</b> <tt>_.bindAll</tt> ç°åœ¨ä¼šå°†contextå¯¹è±¡ä½œä¸ºç¬¬ä¸€ä¸ªå‚æ•°.
+å¦‚æœä¸ä¼ æ–¹æ³•å, contextå¯¹è±¡çš„æ‰€æœ‰æ–¹æ³•éƒ½ä¼šç»‘å®šåˆ°context, æ”¯æŒé“¾å¼è¯­æ³•å’Œç®€æ˜“ç»‘å®š.
+<tt>_.functions</tt> ç°åœ¨åªè¦ä¸€ä¸ªå‚æ•°, ç„¶åè¿”å›æ‰€æœ‰çš„æ–¹æ³•å(ç±»å‹ä¸ºFunctionçš„å±æ€§).
+è°ƒç”¨ <tt>_.functions(_)</tt> ä¼šåˆ—å‡ºæ‰€æœ‰çš„Underscoreå‡½æ•°.
+å¢åŠ  <tt>_.isRegExp</tt> å‡½æ•°, <tt>isEqual</tt> ç°åœ¨ä¹Ÿå¯ä»¥æ£€æµ‹ä¸¤ä¸ªRegExpå¯¹è±¡æ˜¯å¦ç›¸ç­‰äº†.
+æ‰€æœ‰ä»¥"is"å¼€å¤´çš„å‡½æ•°å·²ç»ç¼©å‡åˆ°åŒä¸€ä¸ªå®šä¹‰é‡Œé¢, ç”±<a href="javascript:if(confirm('http://github.com/grayrest/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/grayrest/'" tppabs="http://github.com/grayrest/">Karl Guertin</a> æä¾›çš„è§£å†³æ–¹æ¡ˆ.
+</p>
+<p>
+<b class="header">0.4.7</b><br />
+å¢åŠ  <tt>isDate</tt>, <tt>isNaN</tt>, å’Œ <tt>isNull</tt>.
+ä¼˜åŒ– <tt>isEqual</tt> å‡½æ•°å¯¹æ¯”ä¸¤ä¸ªæ•°ç»„æˆ–ä¸¤ä¸ªæ—¶é—´å¯¹è±¡æ—¶çš„æ€§èƒ½.
+ä¼˜åŒ–äº† <tt>_.keys</tt> å‡½æ•°, ç°åœ¨çš„è¿è¡Œé€Ÿåº¦æ¯”ä»¥å‰åŠ å¿«äº†<small><i><b>25%&ndash;2å€</b></i></small> (å–å†³äºæ‚¨æ‰€ä½¿ç”¨çš„æµè§ˆå™¨)ä¼šåŠ é€Ÿå…¶æ‰€ä¾èµ–çš„å‡½æ•°, å¦‚ <tt>_.each</tt>.
+</p>
+<p>
+<b class="header">0.4.6</b><br />
+å¢åŠ  <tt>range</tt> å‡½æ•°, <a href="javascript:if(confirm('http://docs.python.org/library/functions.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.python.org/library/functions.html#range'" tppabs="http://docs.python.org/library/functions.html#range">Pythoné‡ŒåŒåå‡½æ•°range</a> çš„ç§»æ¤ç‰ˆ,
+ç”¨äºç”Ÿæˆçµæ´»çš„æ•´å‹æ•°ç»„. åŸå§‹ç‰ˆç”±<a href="javascript:if(confirm('http://github.com/kylichuku  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/kylichuku'" tppabs="http://github.com/kylichuku">Kirill Ishanov</a>æä¾›.
+</p>
+<p>
+<b class="header">0.4.5</b><br />
+å¢åŠ  <tt>rest</tt> å‡½æ•°, å¯ä»¥å¯¹æ•°ç»„å’Œargumentså¯¹è±¡ä½¿ç”¨, å¢åŠ äº†ä¸¤ä¸ªå‡½æ•°çš„åˆ«å,
+<tt>first</tt> çš„åˆ«åä¸º <tt>head</tt>,
+è¿˜æœ‰ <tt>rest</tt> çš„åˆ«åä¸º <tt>tail</tt>,
+æ„Ÿè°¢ <a href="javascript:if(confirm('http://github.com/lukesutton/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/lukesutton/'" tppabs="http://github.com/lukesutton/">Luke Sutton</a>çš„è§£å†³æ–¹æ¡ˆ.
+å¢åŠ æµ‹è¯•æ–‡ä»¶, ä»¥ç¡®ä¿æ‰€æœ‰Underscoreçš„æ•°ç»„å‡½æ•°éƒ½å¯ä»¥åœ¨ç”¨åœ¨ <i>arguments</i> å¯¹è±¡ä¸Š.
+</p>
+<p>
+<b class="header">0.4.4</b><br />
+å¢åŠ  <tt>isString</tt>, å’Œ <tt>isNumber</tt> å‡½æ•°. ä¿®å¤äº†
+<tt>_.isEqual(NaN, NaN)</tt> ä¼šè¿”å› <i>true</i> çš„é—®é¢˜.
+</p>
+<p>
+<b class="header">0.4.3</b><br />
+å¼€å§‹ä½¿ç”¨åŸç”Ÿçš„ <tt>StopIteration</tt> æµè§ˆå™¨å¯¹è±¡(å¦‚æœæµè§ˆå™¨æ”¯æŒ).
+ä¿®å¤Underscoreåœ¨CommonJSç¯å¢ƒä¸Šçš„å®‰è£….
+</p>
+<p>
+<b class="header">0.4.2</b><br />
+æŠŠè§£é™¤å°è£…çš„å‡½æ•°unwrappingæ”¹åä¸º<tt>value</tt>, æ›´æ¸…æ™°.
+</p>
+<p>
+<b class="header">0.4.1</b><br />
+é“¾å¼è¯­æ³•å°è£…çš„Underscoreå¯¹è±¡æ”¯æŒå‡½æ•°åŸå‹æ–¹æ³•çš„è°ƒç”¨,
+æ‚¨å¯ä»¥åœ¨å°è£…çš„æ•°ç»„ä¸Šè¿ç»­è°ƒç”¨ä»»æ„å‡½æ•°.
+å¢åŠ  <tt>breakLoop</tt> æ–¹æ³•, å¯ä»¥éšæ—¶åœ¨Underscoreçš„è¿­ä»£ä¸­
+<b>ä¸­æ–­</b> å¹¶è·³å‡ºè¿­ä»£. å¢åŠ  <tt>isEmpty</tt> å‡½æ•°, åœ¨æ•°ç»„å’Œå¯¹è±¡ä¸Šéƒ½æœ‰ç”¨.
+</p>
+<p>
+<b class="header">0.4.0</b><br />
+ç°åœ¨æ‰€æœ‰çš„Underscoreå‡½æ•°éƒ½å¯ä»¥ç”¨é¢å‘å¯¹è±¡çš„é£æ ¼æ¥è°ƒç”¨äº†,
+æ¯”å¦‚: <tt>_([1, 2, 3]).map(...);</tt>.
+<a href="javascript:if(confirm('http://macournoyer.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://macournoyer.com/'" tppabs="http://macournoyer.com/">Marc-AndrÃ© Cournoyer</a> æä¾›äº†åŸå§‹çš„è§£å†³æ–¹æ¡ˆ.
+å°è£…å¯¹è±¡å¯ä»¥ç”¨é“¾å¼è¯­æ³•è¿ç»­è°ƒç”¨å‡½æ•°. æ·»åŠ äº† <a href="#object-functions"><tt>functions</tt></a> æ–¹æ³•,
+èƒ½ä»¥æ­£åºæ–¹å¼åˆ—å‡ºæ‰€æœ‰çš„Underscoreå‡½æ•°.
+</p>
+<p>
+<b class="header">0.3.3</b><br />
+å¢åŠ JavaScript 1.8çš„å‡½æ•° <tt>reduceRight</tt>. åˆ«åä¸º
+<tt>foldr</tt>, å¦å¤– <tt>reduce</tt> çš„åˆ«åä¸º <tt>foldl</tt>.
+</p>
+<p>
+<b class="header">0.3.2</b><br />
+å¯ä»¥åœ¨ <a href="javascript:if(confirm('http://www.mozilla.org/rhino/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.mozilla.org/rhino/'" tppabs="http://www.mozilla.org/rhino/">Rhino</a> ä¸Šè¿è¡Œäº†.
+åªè¦åœ¨ç¼–è¯‘å™¨é‡Œè¾“å…¥: <tt>load("underscore.js")</tt>.
+å¢åŠ åŠŸèƒ½å‡½æ•° <a href="#identity"><tt>identity</tt></a>.
+</p>
+<p>
+<b class="header">0.3.1</b><br />
+æ‰€æœ‰è¿­ä»£å™¨åœ¨åŸå§‹é›†åˆé‡Œç°åœ¨éƒ½ä½œä¸ºç¬¬ä¸‰ä¸ªå‚æ•°ä¼ å…¥,
+å’ŒJavaScript 1.6çš„ <b>forEach</b> ä¸€è‡´.
+è¿­ä»£ä¸€ä¸ªå¯¹è±¡ç°åœ¨ä¼šä»¥ <tt>(value, key, collection)</tt> æ¥è°ƒç”¨, æ›´å¤šè¯¦æƒ…, è¯·æŸ¥çœ‹ <a href="#each"><tt>_.each</tt></a>.
+</p>
+<p>
+<b class="header">0.3.0</b><br />
+å¢åŠ  <a href="javascript:if(confirm('http://github.com/dmitryBaranovskiy  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/dmitryBaranovskiy'" tppabs="http://github.com/dmitryBaranovskiy">Dmitry Baranovskiy</a>çš„
+ç»¼åˆä¼˜åŒ–, åˆå¹¶
+<a href="javascript:if(confirm('http://github.com/kriskowal/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/kriskowal/'" tppabs="http://github.com/kriskowal/">Kris Kowal</a>çš„è§£å†³æ–¹æ¡ˆè®©Underscoreç¬¦åˆ
+<a href="javascript:if(confirm('http://wiki.commonjs.org/wiki/CommonJS  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://wiki.commonjs.org/wiki/CommonJS'" tppabs="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a> æ ‡å‡†,å¹¶å’Œ
+<a href="javascript:if(confirm('http://narwhaljs.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://narwhaljs.org/'" tppabs="http://narwhaljs.org/">Narwhal</a> å…¼å®¹.
+</p>
+<p>
+<b class="header">0.2.0</b><br />
+æ·»åŠ  <tt>compose</tt> å’Œ <tt>lastIndexOf</tt>, é‡å‘½å <tt>inject</tt> ä¸º
+<tt>reduce</tt>, æ·»åŠ  <tt>inject</tt>, <tt>filter</tt>,
+<tt>every</tt>, <tt>some</tt>, å’Œ <tt>forEach</tt> çš„åˆ«å.
+</p>
+<p>
+<b class="header">0.1.1</b><br />
+æ·»åŠ  <tt>noConflict</tt>, ä»¥ä¾¿ "Underscore" å¯¹è±¡å¯ä»¥åˆ†é…ç»™å…¶ä»–å˜é‡.
+</p>
+<p>
+<b class="header">0.1.0</b><br />
+Underscore.js é¦–æ¬¡å‘å¸ƒ.
+</p>
+<p>
+<a href="javascript:if(confirm('http://documentcloud.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://documentcloud.org/'" tppabs="http://documentcloud.org/" title="A DocumentCloud Project" style="background:none;">
+<img src="../../../jashkenas.s3.amazonaws.com/images/a_documentcloud_project.png" tppabs="http://jashkenas.s3.amazonaws.com/images/a_documentcloud_project.png" alt="A DocumentCloud Project" />
+</a>
+</p>
+</div>
+</div>
+<script type="text/javascript" src="underscore.js" tppabs="https://www.html.cn/doc/underscore/underscore.js"></script>
+<script type="text/javascript" src="docs/main.js" tppabs="https://www.html.cn/doc/underscore/docs/main.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "../../../hm.baidu.com/hm.js-e9ccdced32867527733a2550ec94eee6"/*tpa=https://hm.baidu.com/hm.js?e9ccdced32867527733a2550ec94eee6*/;
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+<script async src="../../../www.googletagmanager.com/gtag/js-id=UA-43525385-2" tppabs="https://www.googletagmanager.com/gtag/js?id=UA-43525385-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-43525385-2');
+</script>
+</body>
+</html>
