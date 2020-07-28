@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>Sass (3.4.21) 中文文档</title>
+<meta name="Keywords" content="Sass, scss, css, css3, SassScript, import, media, extend, mixin, include"/>
+<meta name="Description" content="Sass 是一个 CSS 的扩展，它在 CSS 语法的基础上，允许您使用变量 (variables), 嵌套规则 (nested rules), 混合 (mixins), 导入 (inline imports) 等功能，令 CSS 更加强大与优雅。使用 Sass 以及 Compass 样式库 有助于更好地组织管理样式文件，以及更高效地开发项目。"/>
+<link rel="stylesheet" type="text/css" href="res/style.css" tppabs="https://www.html.cn/doc/sass/res/style.css">
+<style id="style-1-cropbar-clipper">
+.en-markup-crop-options { top: 18px !important; left: 50% !important; margin-left: -100px !important; width: 200px !important; border: 2px rgba(255, 255, 255, .38) solid !important; border-radius: 4px !important; }
+.en-markup-crop-options div div:first-of-type { margin-left: 0px !important; }
+</style>
+</head>
+<body>
+<div id="content">
+<aside id="aside">
+<h3>文档目录</h3>
+<ul id="toc">
+<li><a href="#features">特色 (Features)</a></li>
+<li><a href="#syntax">语法 (Syntax)</a></li>
+<li><a href="#using-sass">使用 Sass (Using Sass)</a> <br>
+<ul>
+<li><a href="#plugin">Rack/Rails/Merb 插件（Plugin）</a></li>
+<li><a href="#caching">缓存 (Caching)</a></li>
+<li><a href="#options">配置选项 (Options)</a></li>
+<li><a href="#syntax-selection">语法选择（Syntax Selection）</a></li>
+<li><a href="#编码格式-encodings">编码格式 (Encodings)</a></li>
+</ul>
+</li>
+<li><a href="#css-extensions">CSS扩展 (CSS Extensions)</a> <br>
+<ul>
+<li><a href="#nested-rules">嵌套规则 (Nested Rules)</a></li>
+<li><a href="#parent-selector">引用父选择器:&amp; (Referencing Parent Selectors: &amp;)</a></li>
+<li><a href="#nested-properties">嵌套属性 (Nested Properties)</a></li>
+<li><a href="#placeholder-selectors">占位符选择器: <code>%foo</code> (Placeholder Selectors:
+<code>%foo</code>)</a></li>
+</ul>
+</li>
+<li><a href="#comments">注释: <code>/* */</code> 和 <code>//</code>（Comments: <code>/* */</code> and
+<code>//</code>）</a></li>
+<li><a href="#sassscript">SassScript</a> <br>
+<ul>
+<li><a href="#interactive-shell">交互式 shell（Interactive Shell）</a></li>
+<li><a href="#variables_">变量: <code>$</code>（Variables: <code>$</code> ）</a></li>
+<li><a href="#data-types">数据类型 (Data Types)</a> <br>
+<ul>
+<li><a href="#sass-script-strings">字符串（Strings）</a></li>
+<li><a href="#lists">列表（Lists）</a></li>
+<li><a href="#maps">Maps</a></li>
+<li><a href="#colors">颜色（Colors）</a></li>
+</ul>
+</li>
+<li><a href="#operations">运算 (Operations)</a> <br>
+<ul>
+<li><a href="#number-operations"> 数字运算 (Number Operations)</a> <br>
+<ul>
+<li><a href="#division-and-slash">除法和 <code>/</code> （Division and <code>/</code>）</a>
+</li>
+<li><a href="#subtraction">减法，负数，和 <code>-</code>(Subtraction, Negative Numbers,
+and <code>-</code>)</a></li>
+</ul>
+</li>
+<li><a href="#color-operations">颜色运算 (Color Operations)</a></li>
+<li><a href="#string-operations">字符串运算 (String Operations)</a></li>
+<li><a href="#boolean-operations">布尔运算 (Boolean Operations)</a></li>
+<li><a href="#list-operations">列表运算 (List Operations)</a></li>
+</ul>
+</li>
+<li><a href="#parentheses">圆括号 (Parentheses)</a></li>
+<li><a href="#functions">函数 (Functions)</a> <br>
+<ul>
+<li><a href="#keyword-arguments">关键词参数 (Keyword Arguments)</a></li>
+</ul>
+</li>
+<li><a href="#interpolation_">插值：<code>#{}（</code>Interpolation: <code>#{}</code>）</a></li>
+<li><a href="#parent-script">SassScript中的<code>&amp;</code>（<code>&amp;</code> in SassScript）</a>
+</li>
+<li><a href="#variable-defaults">变量默认: <code>!default</code> （Variable Defaults:
+<code>!default</code>）</a></li>
+</ul>
+</li>
+<li><a href="#directives"><code>@</code>规则 和 指令 (<code>@</code>-Rules and Directives)</a> <br>
+<ul>
+<li><a href="#import"><code>@import</code></a> <br>
+<ul>
+<li><a href="#partials">Partials</a></li>
+<li><a href="#nested-import">嵌套 <code>@import</code>（Nested <code>@import</code> ）</a>
+</li>
+</ul>
+</li>
+<li><a href="#media"><code>@media</code></a></li>
+<li><a href="#extend"><code>@extend</code></a> <br>
+<ul>
+<li><a href="#how-it-works">它是如何工作的（How it Works）</a></li>
+<li><a href="#extending-complex-selectors">扩展复杂的选择器（Extending Complex Selectors）</a></li>
+<li><a href="#multiple-extends">多重扩展 (Multiple Extends)</a></li>
+<li><a href="#chaining-extends">链式扩展（Chaining Extends）</a></li>
+<li><a href="#selector-sequences">选择器序列 (Selector Sequences)</a> <br>
+<ul>
+<li><a href="#merging-selector-sequences">合并选择器序列 (Merging Selector Sequences)</a>
+</li>
+</ul>
+</li>
+<li><a href="#placeholders"> <code>@extend</code>-Only 选择器 (<code>@extend</code>-Only
+Selectors)</a></li>
+<li><a href="#the-optional-flag"><code>!optional</code> 标记（The <code>!optional</code>
+Flag）</a></li>
+<li><a href="#extend-in-directives">指令中的<code>@extend</code> (<code>@extend</code> in
+Directives)</a></li>
+</ul>
+</li>
+<li><a href="#at-root"><code>@at-root</code></a> <br>
+<ul>
+<li><a href="#at-root-without-and-at-root-with"><code>@at-root (without: ...)</code> 和
+<code>@at-root (with: ...)</code></a></li>
+</ul>
+</li>
+<li><a href="#debug"><code>@debug</code></a></li>
+<li><a href="#warn"><code>@warn</code></a></li>
+<li><a href="#error"><code>@error</code></a></li>
+</ul>
+</li>
+<li><a href="#control-directives-expressions">控制指令和表达式（Control Directives &amp; Expressions）</a> <br>
+<ul>
+<li><a href="#if"><code>if()</code></a></li>
+<li><a href="#if_"><code>@if</code></a></li>
+<li><a href="#for"><code>@for</code></a></li>
+<li><a href="#each-directive"><code>@each</code></a> <br>
+<ul>
+<li><a href="#each-multi-assign">多重赋值（Multiple Assignment）</a></li>
+</ul>
+</li>
+<li><a href="#while"><code>@while</code></a></li>
+</ul>
+</li>
+<li><a href="#mixins">混入指令 (Mixin Directives)</a> <br>
+<ul>
+<li><a href="#defining_a_mixin">定义一个混入(mixin):<code>@mixin</code>（Defining a Mixin:
+<code>@mixin</code>）</a></li>
+<li><a href="#including_a_mixin">引用混合样式:<code>@include</code> （Including a Mixin:
+<code>@include</code>）</a></li>
+<li><a href="#mixin-arguments">参数 (Arguments)</a> <br>
+<ul>
+<li><a href="#keyword-arguments-mixin">关键字参数 (Keyword Arguments)</a></li>
+<li><a href="#variable-arguments">可变参数 (Variable Arguments)</a></li>
+</ul>
+</li>
+<li><a href="#mixin-content">传递内容块到混入(Passing Content Blocks to a Mixin)</a> <br>
+<ul>
+<li><a href="#variable-scope-and-content-blocks">变量的作用域和内容块（Variable Scope and Content
+Blocks）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#function_directives">函数指令 (Function Directives)</a></li>
+<li><a href="#output-style">输出格式 (Output Style)</a> <br>
+<ul>
+<li><a href="#nested"><code>:nested</code></a></li>
+<li><a href="#expanded"><code>:expanded</code></a></li>
+<li><a href="#compact"><code>:compact</code></a></li>
+<li><a href="#compressed"><code>:compressed</code></a></li>
+</ul>
+</li>
+<li><a href="#extending-sass">扩展 Sass (Extending Sass)</a> <br>
+<ul>
+<li><a href="#defining-custom-sass-functions"> 自定义 Sass 函数 (Defining Custom Sass Functions)</a>
+</li>
+<li><a href="#cache-stores">缓存存储（Cache Stores）</a></li>
+<li><a href="#custom-importers">自定义导入 (Custom Importers)</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+<article id="article">
+<div id="article-content">
+<h1 id="top"><a href="index.htm" tppabs="https://www.html.cn/doc/sass/" target="_blank"><img height="30" alt="Sass" src="res/logo-b6e1ef6e.svg" tppabs="https://www.html.cn/doc/sass/res/logo-b6e1ef6e.svg"> Sass (3.4.21) 中文文档</a></h1>
+<p data-anchor-id="8gnt">Sass 是一个 CSS 的扩展，它在 CSS 语法的基础上，允许您使用<a href="#variables_">变量 (variables)</a>, <a href="#nested_rules">嵌套规则 (nested rules)</a>, <a href="#mixins">混合 (mixins)</a>, <a href="#import">导入 (inline imports) </a>等功能，令 CSS 更加强大与优雅。使用 Sass 以及 <a href="javascript:if(confirm('http://compass-style.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://compass-style.org/'" tppabs="http://compass-style.org/" target="_blank">Compass 样式库</a> 有助于更好地组织管理样式文件，以及更高效地开发项目。</p>
+<div class="md-section-divider"></div>
+<h2 id="features" data-anchor-id="d7s7">特色 (Features)</h2>
+<ul data-anchor-id="l9ol">
+<li>完全兼容 CSS3</li>
+<li>在 CSS 语言的基础上增加变量(variables)、嵌套 (nesting)、混合 (mixins) 等功能</li>
+<li>通过函数进行颜色值与属性值的运算</li>
+<li>提供 <a href="#control_directives__expressions">控制指令</a>等高级功能</li>
+<li>自定义输出格式</li>
+</ul>
+<div class="md-section-divider"></div>
+<h2 id="syntax" data-anchor-id="7d3u">语法 (Syntax)</h2>
+<p data-anchor-id="w71q">Sass 有两种语法格式。首先是 SCSS (Sassy CSS) ,也是本参考资料示例所使用的格式 , 这种格式仅在 CSS3 语法的基础上进行扩展，这意味着每个CSS样式表是一个同等的SCSS文件。此外，SCSS 也支持大多数 CSS hacks 写法 以及浏览器专属前缀语法 (vendor-specific syntax)，例如，<a href="javascript:if(confirm('http://msdn.microsoft.com/en-us/library/ms530752.aspx  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://msdn.microsoft.com/en-us/library/ms530752.aspx'" tppabs="http://msdn.microsoft.com/en-us/library/ms530752.aspx" target="_blank">IE 古老的 <code>filter</code> 语法</a>。 这种语法的样式表文件需要以 <code>.scss</code> 作为拓展名。</p>
+<p data-anchor-id="lzpb">另一种，也是最早的语法，被称为缩进语法 (Indented Sass)，或者通常说的 "Sass"，它提供了一种更加简介的方式来书写CSS。它使用缩进而不是花括号来表示选择器的嵌套，用换行而不是分号来分隔属性，一些人认为这样做比 SCSS 更容易阅读，书写也更快速。 缩排语法具有 Sass 的所有特色功能， 虽然有些语法上稍有差异； 具体差异在<a href="javascript:if(confirm('http://sass-lang.com/documentation/file.INDENTED_SYNTAX.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/file.INDENTED_SYNTAX.html'" tppabs="http://sass-lang.com/documentation/file.INDENTED_SYNTAX.html" target="_blank">缩进语法参考</a>中都有描述。 使用此种语法的样式表文件需要以 <code>.sass</code> 作为扩展名。</p>
+<p data-anchor-id="awhi">任何一种语法的文件可以直接 <a href="#import">import(导入)</a> 到另一种语法的文件中使用，只要使用 sass-convert 命令行工具，就可以将一种语法转换为另一种语法：</p>
+<pre data-anchor-id="2bnp"><code class="language-sass"># Convert Sass to SCSS
+$ sass-convert style.sass style.scss
+
+# Convert SCSS to Sass
+$ sass-convert style.scss style.ss
+</code></pre>
+<p data-anchor-id="zemp">请注意，此命令 <em>不会</em> 生成CSS文件。要想生成CSS文件，请使用其他地方描述的 <code>sass</code> 命令。</p>
+<div class="md-section-divider"></div>
+<h2 id="using-sass" data-anchor-id="mgep">使用 Sass (Using Sass)</h2>
+<p data-anchor-id="cd0d">Sass 有三种使用方式：作为命令行工具，作为独立的 Ruby 模块 (Ruby module)，或者作为 Rack-enabled 框架的插件，包括 Ruby on Rails 与 Merb。无论使用哪种方式都需要首先安装 Sass gem ：</p>
+<pre data-anchor-id="853k"><code class="language-sass">gem install sass
+</code></pre>
+<p data-anchor-id="2hlc">如果你使用的是Windows ，你可能首先需要<a href="javascript:if(confirm('http://rubyinstaller.org/download.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://rubyinstaller.org/download.html'" tppabs="http://rubyinstaller.org/download.html" target="_blank">安装Ruby</a> 。</p>
+<p data-anchor-id="0rhh">如果要在命令行中运行 Sass ,只要使用</p>
+<pre data-anchor-id="08bl"><code class="language-sass">sass input.scss output.css
+</code></pre>
+<p data-anchor-id="njpg">你还可以使用Sass命令来监视某个Sass文件的改动，并自动编译来更新 CSS ：</p>
+<pre data-anchor-id="94z5"><code class="language-sass">sass --watch input.scss:output.css
+</code></pre>
+<p data-anchor-id="i60h">如果你的目录里有很多 Sass 文件，你也可以使用Sass命令来监视整个目录：</p>
+<pre data-anchor-id="jb0n"><code class="language-sass">sass --watch app/sass:public/stylesheets
+</code></pre>
+<p data-anchor-id="4va3">使用 <code>sass --help</code> 可以列出完整的帮助文档。</p>
+<p data-anchor-id="n3s1">在 Ruby 中使用 Sass 也非常容易，Sass gem 安装完毕后，用它运行 <code>require "sass"</code>， 然后按照下面的方法使用 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Engine.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Engine.html'" tppabs="http://sass-lang.com/documentation/Sass/Engine.html" target="_blank">Sass::Engine</a>：</p>
+<pre data-anchor-id="64ee"><code class="language-sass">engine = Sass::Engine.new("#main {background-color: #0000ff}", :syntax =&gt; :scss)
+engine.render #=&gt; "#main { background-color: #0000ff; }\n"
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="plugin" data-anchor-id="reto">Rack/Rails/Merb 插件（Plugin）</h3>
+<p data-anchor-id="nmz8">在 Rails 3 之前的版本中启用 Sass，需要在 environment.rb 文件中添加一行代码：</p>
+<pre data-anchor-id="z72a"><code class="language-sass">config.gem "sass"
+</code></pre>
+<p data-anchor-id="8d70">对于 Rails 3，则是把这一行加到 Gemfile 中：</p>
+<pre data-anchor-id="u5u2"><code class="language-sass">gem "sass"
+</code></pre>
+<p data-anchor-id="9vyw">要在 Merb 中启用 Sass，需要在 <code>config/dependencies.rb</code> 文件中添加一行代码：</p>
+<pre data-anchor-id="9t2u"><code class="language-sass">dependency "merb-haml"
+</code></pre>
+<p data-anchor-id="17js">在 Rack 应用中启用 Sass，需要在 <code>config.ru</code> 文件中添加以下代码：</p>
+<pre data-anchor-id="mul0"><code class="language-sass">require 'sass/plugin/rack'
+use Sass::Plugin::Rack
+</code></pre>
+<p data-anchor-id="zo8f">Sass 样式表跟视图（views）的工作方式不同。 它不包含任何动态内容， 因此只需要在 Sass 文件更新时生成 CSS 即可。 默认情况下，<code>.sass</code> 和 <code>.scss</code> 文件是放在 public/stylesheets/sass 目录下的（这可以通过 <a href="#template_location-option"><code>:template_location</code></a> 选项进行配置）。 然后，在需要的时候，它们会被编译成相应的 CSS 文件并被放到 public/stylesheets 目录下。 例如，public/stylesheets/sass/main.scss 文件将会被编译为 public/stylesheets/main.css 文件。</p>
+<div class="md-section-divider"></div>
+<h3 id="caching" data-anchor-id="oo9m">缓存 (Caching)</h3>
+<p data-anchor-id="xm1q">默认情况下，Sass 会自动缓存编译后的模板（template）与 <a href="#partials">partials</a>，这样做能够显著提升重新编译的速度，在处理 Sass 模板被切割为多个文件并通过 <a href="#import"><code>@import</code></a> 导入，形成一个大文件时效果尤其显著。</p>
+<p data-anchor-id="ptzz">如果不使用框架的情况下，Sass 将会把缓存的模板放入 <code>.sass-cache</code> 目录。 在 Rails 和 Merb 中，缓存的模板将被放到<code>tmp/sass-cache</code> 目录。 此目录可以通过<a href="#cache_location-option"><code>:cache_location</code></a> 选项进行自定义。 如果你不希望 Sass 启用缓存功能， 可以将 <a href="#cache-option"><code>:cache</code></a> 选项设置为 <code>false</code>。</p>
+<div class="md-section-divider"></div>
+<h3 id="options" data-anchor-id="ppoj">配置选项 (Options)</h3>
+<p data-anchor-id="ucl0">选项可以通过设置的<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Plugin/Configuration.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#options-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#options-instance_method" target="_blank">Sass::Plugin#options</a> hash，具体设置在Rails中的<code>environment.rb</code>或者Rack中的<code>config.ru</code>的文件中：</p>
+<pre data-anchor-id="ycio"><code class="language-sass">Sass::Plugin.options[:style] = :compact
+</code></pre>
+<p data-anchor-id="xvl2">或者，如果你使用Merb，那么可以在<code>init.rb</code>文件中设置<code>Merb::Plugin.config[:sass]</code> hash ：</p>
+<pre data-anchor-id="uii9"><code class="language-sass">Merb::Plugin.config[:sass][:style] = :compact
+</code></pre>
+<p data-anchor-id="7x50">或者通过传递一个选项 (options) hash 给<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Engine.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Engine.html#initialize-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Engine.html#initialize-instance_method" target="_blank">Sass::Engine#initialize</a>， <br>
+所有相关的选项也可通过标记在<code>sass</code> 和 <code>scss</code>命令行可执行文件中使用。可用选项有：</p>
+<table data-anchor-id="uzoc" class="table table-striped-white table-bordered">
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:style</td>
+<td>设置输出CSS的代码风格，可以查看<a href="#output_style">输出的代码风格</a>。</td>
+</tr>
+<tr>
+<td>:syntax</td>
+<td>输入文件的语法，<code>:sass</code> 表示缩进语法，<code>:scss</code>表示CSS扩展语法。只有在你自己构造<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Engine.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Engine.html'" tppabs="http://sass-lang.com/documentation/Sass/Engine.html" target="_blank">Sass::Engine</a> 实例的情况下有用；当你使用 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Plugin.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Plugin.html'" tppabs="http://sass-lang.com/documentation/Sass/Plugin.html" target="_blank">Sass::Plugin</a>时，它会自动设置正确的值。默认设置为 <code>:sass</code> 。</td>
+</tr>
+<tr>
+<td>:property_syntax</td>
+<td>强制缩进语法文档使用一个属性语法。如果不使用正确的语法，将抛出一个错误。<code>:new</code>值表示强制在属性名后面使用一个冒号。例如：<code>color: #0f3</code>或者 <code>width: $main_width</code> 。 <code>:old</code>值表示强制在属性名前面使用一个冒号。例如：<code>:color #0f3</code> 或者 <code>:width $main_width</code>。默认请客下，两种语法都是有效的。该选项对于SCSS（<code>.scss</code>）文档是无效的。</td>
+</tr>
+<tr>
+<td>:cache</td>
+<td>解析 Sass 时是否应该缓存，允许更快的编译速度。默认设置为 <code>true</code> 。</td>
+</tr>
+<tr>
+<td>:read_cache</td>
+<td>如果设置了这个选项，而没有设置<code>:cache</code>选项，那么缓存存在就只读 Sass 缓存，如果没有没有缓存，那就不会编译。</td>
+</tr>
+<tr>
+<td>:cache_store</td>
+<td>如果该选项设置为 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/CacheStores/Base.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/CacheStores/Base.html'" tppabs="http://sass-lang.com/documentation/Sass/CacheStores/Base.html" target="_blank">Sass::CacheStores::Base</a> 的子类的实例，该缓存存储将被用于存储和检索缓存编译结果。默认设置为<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/CacheStores/Filesystem.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/CacheStores/Filesystem.html'" tppabs="http://sass-lang.com/documentation/Sass/CacheStores/Filesystem.html" target="_blank">Sass::CacheStores::Filesystem</a>，初始化使用<a href="#cache_location-option"><code>:cache_location</code> 选项</a>。</td>
+</tr>
+<tr>
+<td>:never_update</td>
+<td>CSS文件永远不应该被更新，即使是模板（template）文件改变。将其设置为<code>true</code>可能会带来小的性能提升。它总是默认为<code>false</code>。该选项只有在Rack，Ruby on Rails，或Merb中有意义。</td>
+</tr>
+<tr>
+<td>:always_update</td>
+<td>CSS文件总是应该进行更新，即使是在每一个控制器被访问时，而不是只当模板被修改时更新。默认为<code>false</code>。该选项只有在Rack，Ruby on Rails，或Merb中有意义。</td>
+</tr>
+<tr>
+<td>:always_check</td>
+<td>Sass模板总是应该被检查是否更新，即使是在每一个控制器被访问时，而不是只在服务启动时。如果一个Sass模板（template）被更新，它会被重新编译并且覆盖相应的CSS文件。在生产模式中默认为<code>false</code>，否则<code>true</code>。该选项只有在Rack，Ruby on Rails，或Merb中有意义。</td>
+</tr>
+<tr>
+<td>:poll</td>
+<td>如果为<code>true</code>，始终使用<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Plugin/Compiler.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Plugin/Compiler.html#watch-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Plugin/Compiler.html#watch-instance_method" target="_blank">Sass::Plugin::Compiler#watch</a>后端轮询而不是本机文件系统的后端。</td>
+</tr>
+<tr>
+<td>:full_exception</td>
+<td>Sass代码中错误是否应该在生成的CSS文件中提供详细的说明。如果设置为<code>true</code>，这个错误将显示在CSS文件的注释中 和页面顶部（支持的浏览器），错误内容包括行号和源代码片段。 否则，异常将在Ruby代码中提醒。在生产模式中默认为<code>false</code>，否则<code>true</code>。</td>
+</tr>
+<tr>
+<td>:template_location</td>
+<td>一个路径，应用根目录中Sass模板（template）的目录。如果散列，<code>:css_location</code> 将被忽略，并且这个选项指定输入和输出目录之间的映射。也可以给定二元列表，代替散列（hash）。默认为<code>css_location + "/sass"</code>。该选项只有在Rack，Ruby on Rails，或Merb中有意义。请注意，如果指定了多个模板位置，它们全部都放置在导入路径中，允许你在它们之间进行导入。<br>
+<strong>需要注意的是，由于它可以采用许多可能的格式，这个选项应该只直接设置，不应该被访问或修改。使用 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Plugin/Configuration.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#template_location_array-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#template_location_array-instance_method" target="_blank">Sass::Plugin#template_location_array</a> ， <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Plugin/Configuration.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#add_template_location-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#add_template_location-instance_method" target="_blank">Sass::Plugin#add_template_location</a> ， <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Plugin/Configuration.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#remove_template_location-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#remove_template_location-instance_method" target="_blank">Sass::Plugin#remove_template_location</a>方法来代替。</strong></td>
+</tr>
+<tr>
+<td>:css_location</td>
+<td>CSS文件输出的路径，当<code>:template_location</code>选项为一个散列（hash）时，这个选项将被忽略。默认设置为<code>"./public/stylesheets"</code>。该选项只有在Rack，Ruby on Rails，或Merb中有意义。</td>
+</tr>
+<tr>
+<td>:cache_location</td>
+<td>其中，高速缓存<code>sassc</code> 文件应写入的路径。在Rails和Merb中默认为<code>"./tmp/sass-cache"</code>，否则默认为<code>"./.sass-cache"</code> 。如果设置了<a href="#cache_location-option"><code>:cache_store</code> 选项</a>，这个将被忽略。</td>
+</tr>
+<tr>
+<td>:unix_newlines</td>
+<td>如果为true，写入文件时使用Unix风格的换行符。只有在Windows上，并且只有当Sass被写入文件时有意义（在 Rack, Rails, 或 Merb中，直接使用<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Plugin.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Plugin.html'" tppabs="http://sass-lang.com/documentation/Sass/Plugin.html" target="_blank">Sass::Plugin</a>时，或者使用命令行可执行文件时）。</td>
+</tr>
+<tr>
+<td>:filename</td>
+<td>被渲染文件的文件名。这完全是用于报告错误，使用Rack, Rails, or Merb时自动设置。</td>
+</tr>
+<tr>
+<td>:line</td>
+<td>Sass模板（template）第一行的行号。用于报告错误的行号。如果Sass模板（template）嵌入一个Ruby文件中，这个设置是很有用的。</td>
+</tr>
+<tr>
+<td>:load_paths</td>
+<td>一个数组，包含文件系统 或 通过<a href="#import"><code>@import</code></a>指令导入的 Sass模板（template）路径。他们可能是字符串， <code>Pathname</code> （路径名）对象或者是<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Importers/Base.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Importers/Base.html'" tppabs="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass::Importers::Base</a>的子类。该选项默认为工作目录，并且在Rack, Rails, 或 Merb中，该选项无论如何值都是<code>:template_location</code>。加载路径也可以由<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass.html#load_paths-class_method'" tppabs="http://sass-lang.com/documentation/Sass.html#load_paths-class_method" target="_blank">Sass.load_paths</a>和 <code>SASS_PATH</code> 环境变量通知。</td>
+</tr>
+<tr>
+<td>:filesystem_importer</td>
+<td>一个<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Importers/Base.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Importers/Base.html'" tppabs="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass::Importers::Base</a>的子类，用来处理普通字符串的加载路径。这应该从文件系统导入文件。这应该是一个通过构造函数带一个字符串参数（加载路径），继承自<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Importers/Base.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Importers/Base.html'" tppabs="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass::Importers::Base</a>的Class对象。默认为<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Importers/Filesystem.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Importers/Filesystem.html'" tppabs="http://sass-lang.com/documentation/Sass/Importers/Filesystem.html" target="_blank">Sass::Importers::Filesystem</a>。</td>
+</tr>
+<tr>
+<td>:sourcemap</td>
+<td>控制如何生产sourcemap。这些sourcemaps告诉浏览器如何找到Sass样式，从而生成每一个CSS样式。该选项有三个有效值：<strong><code>:auto</code></strong>在可能的情况下使用相对URI，假设在你使用的任何服务器上提供的源样式，那么它们的相对位置将和本地文件系统是相同的。如果一个相对URI不可用，那么将被"file:"替换。<strong><code>:file</code></strong>总是使用"file:" URI，这将在本地工作，但不能被部署到一个远程服务器。 <strong><code>:inline</code></strong>包含sourcemap中完整的源文本，这是最方便的，但是可能生产非常大的sourcemap文件。 最后，<strong><code>:none</code></strong> 会导致总是不会生成sourcemap文件。</td>
+</tr>
+<tr>
+<td>:line_numbers</td>
+<td>当设置为<code>true</code>的时候，定义的选择器的行号和文件名 将被作为注释注入到编译的CSS中。这对调试来说是有用的，特别是使用<a href="#import"><code>@import</code></a>和<a href="#mixin"><code>@mixin</code></a>的时候。这个选项有个别名叫做<code>:line_comments</code>。当使用 <code>:compressed</code>输出样式或使用<code>:debug_info</code>/<code>:trace_selectors</code>选项时这个选项将自动禁用。</td>
+</tr>
+<tr>
+<td>:trace_selectors</td>
+<td>当设置为<code>true</code>的时候，将在每个选择器之前注入<a href="#import"><code>@import</code></a>和<a href="#mixin"><code>@mixin</code></a>的完整轨迹。在浏览器中调试通过<a href="#import"><code>@import</code></a>和<a href="#mixin"><code>@mixin</code></a>包含进来的样式表时是很有用的。此选项将取代 <code>:line_comments</code> 选项，并且被<code>:debug_info</code>选项取代。当使用 <code>:compressed</code>输出样式时，这个选项将自动禁用。</td>
+</tr>
+<tr>
+<td>:debug_info</td>
+<td>当设置为<code>true</code>的时候，定义的选择器的行号和文件名 将被注入到编译后的CSS中,可以被浏览器所识别。用于<a href="javascript:if(confirm('https://addons.mozilla.org/en-US/firefox/addon/103988  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://addons.mozilla.org/en-US/firefox/addon/103988'" tppabs="https://addons.mozilla.org/en-US/firefox/addon/103988" target="_blank">FireSass Firebug 扩展</a>，以显示Sass文件名和行号。当使用 <code>:compressed</code>输出样式时，这个选项将自动禁用。</td>
+</tr>
+<tr>
+<td>:custom</td>
+<td>这个选项可用于单个应用程序设置以使数据可用于<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">定制Sass功能</a>。</td>
+</tr>
+<tr>
+<td>:quiet</td>
+<td>当设置为<code>true</code>的时候，导致禁用警告信息。</td>
+</tr>
+</tbody>
+</table>
+<div class="md-section-divider"></div>
+<h3 id="syntax-selection" data-anchor-id="2q40">语法选择（Syntax Selection）</h3>
+<p data-anchor-id="tp8f">Sass命令行工具将使用文件扩展名以确定你使用的是哪种语法，但并不总是一个文件名。<code>sass</code>命令行程序默认为缩进语法，但如果输入应该被解析为SCSS语法，你可以传递<code>--scss</code>选项给她。此外，你可以使用<code>scss</code>命令行程序，它和<code>sass</code>程序完全一样，但是他的默认语法为SCSS。</p>
+<div class="md-section-divider"></div>
+<h3 data-anchor-id="m4iq" id="编码格式-encodings">编码格式 (Encodings)</h3>
+<p data-anchor-id="dw0x">在 Ruby 1.9 及以上环境中运行 Sass 时，Sass 对文件的编码格式比较敏感，首先会根据 <a href="javascript:if(confirm('http://www.w3.org/TR/2013/WD-css-syntax-3-20130919/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.w3.org/TR/2013/WD-css-syntax-3-20130919/#determine-the-fallback-encoding'" tppabs="http://www.w3.org/TR/2013/WD-css-syntax-3-20130919/#determine-the-fallback-encoding" target="_blank">CSS spec</a> 判断样式文件的编码格式， 如果失败则检测 Ruby 字符串编码。也就是说，Sass 首先检查 Unicode 字节顺序标记，然后是 <code>@charset</code> 声明，最后是 Ruby 字符串编码，假如都没有检测到，默认使用 UTF-8 编码。</p>
+<p data-anchor-id="4qu1">要明确指定样式表的编码，与 CSS 相同，使用<code>@charset</code>声明。在样式文件的起始位置（前面没有任何空白与注释）插入 <code>@charset "encoding-name";</code>， Sass 将会按照给定的编码格式编译文件。注意，无论你使用哪种编码，它必须可以转换为 Unicode 字符集。</p>
+<p data-anchor-id="n3tj">默认情况下，Sass 总会以UTF-8编码输出 CSS 文件。当且仅当输出文件包含非ASCII字符时，才会在输出文件中添加 <code>@charset</code> 声明，在压缩模式中，而在压缩模式下 (compressed mode) 使用 UTF-8字节顺序标记代替 @charset 声明语句。</p>
+<div class="md-section-divider"></div>
+<h2 id="css-extensions" data-anchor-id="o0si">CSS扩展 (CSS Extensions)</h2>
+<div class="md-section-divider"></div>
+<h3 id="nested-rules" data-anchor-id="3vqs">嵌套规则 (Nested Rules)</h3>
+<p data-anchor-id="hhva">Sass 允许将一个 CSS 样式嵌套进另一个样式中，内层样式仅适用于外层样式的选择器范围内（注：可以理解为层级选择器），例如：</p>
+<pre data-anchor-id="ofrk"><code class="language-scss">#main p {
+  color: #00ff00;
+  width: 97%;
+
+  .redbox {
+    background-color: #ff0000;
+    color: #000000;
+  }
+}
+</code></pre>
+<p data-anchor-id="jecj">编译为：</p>
+<pre data-anchor-id="l8np"><code class="language-css">#main p {
+  color: #00ff00;
+  width: 97%; }
+  #main p .redbox {
+    background-color: #ff0000;
+    color: #000000; }
+</code></pre>
+<p data-anchor-id="55wb">这有助于避免父选择器重复，相对于复杂的CSS布局中多层嵌套的选择器 要简单得多。 例如：</p>
+<pre data-anchor-id="xvhd"><code class="language-scss">#main {
+  width: 97%;
+
+  p, div {
+    font-size: 2em;
+    a { font-weight: bold; }
+  }
+
+  pre { font-size: 3em; }
+}
+</code></pre>
+<p data-anchor-id="72w9">编译为：</p>
+<pre data-anchor-id="ucih"><code class="language-css">#main {
+  width: 97%; }
+  #main p, #main div {
+    font-size: 2em; }
+    #main p a, #main div a {
+      font-weight: bold; }
+  #main pre {
+    font-size: 3em; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="parent-selector" data-anchor-id="2fw6">引用父选择器:&amp; (Referencing Parent Selectors: &amp;)</h3>
+<p data-anchor-id="joju">有些时候需要直接使用嵌套外层的父选择器，这个就很有用了，例如，你可能喜欢给选择器指定 hover样式，或者当body元素具有某个样式时，在这些情况下，你可以 <code>&amp;</code> 字符来明确地表示插入指定父选择器。 例如：</p>
+<pre data-anchor-id="q0fp"><code class="language-scss">a {
+  font-weight: bold;
+  text-decoration: none;
+  &amp;:hover { text-decoration: underline; }
+  body.firefox &amp; { font-weight: normal; }
+}
+</code></pre>
+<p data-anchor-id="4mj6">编译为：</p>
+<pre data-anchor-id="8ee7"><code class="language-css">a {
+  font-weight: bold;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+  body.firefox a {
+    font-weight: normal; }
+</code></pre>
+<p data-anchor-id="frbi"><code>&amp;</code>将替换为呈现在CSS文件中的父选择器。这意味着，如果你有一个多层嵌套的规则，父选择器将在被<code>&amp;</code>替换之前完全分解。 例如：</p>
+<pre data-anchor-id="5pmx"><code class="language-scss">#main {
+  color: black;
+  a {
+    font-weight: bold;
+    &amp;:hover { color: red; }
+  }
+}
+</code></pre>
+<p data-anchor-id="m143">编译为：</p>
+<pre data-anchor-id="mlcw"><code class="language-css">#main {
+  color: black; }
+  #main a {
+    font-weight: bold; }
+    #main a:hover {
+      color: red; }
+</code></pre>
+<p data-anchor-id="uyo4"><code>&amp;</code> 必须出现在的选择器的开头位置（注：也就是作为选择器的第一个字符），但可以跟随后缀，将被添加到父选择的后面。 例如：</p>
+<pre data-anchor-id="3ea3"><code class="language-scss">#main {
+  color: black;
+  &amp;-sidebar { border: 1px solid; }
+}
+</code></pre>
+<p data-anchor-id="qv3a">编译为：</p>
+<pre data-anchor-id="xuoe"><code class="language-css">#main {
+  color: black; }
+  #main-sidebar {
+    border: 1px solid; }
+</code></pre>
+<p data-anchor-id="4ewh">父选择器 <code>&amp;</code> 被作为一个后缀的时候，Sass 将抛出一个错误。</p>
+<div class="md-section-divider"></div>
+<h3 id="nested-properties" data-anchor-id="5l6x">嵌套属性 (Nested Properties)</h3>
+<p data-anchor-id="lu8q">CSS中有一些属性遵循相同的“命名空间”；比如，<code>font-family</code>, <code>font-size</code>, 和 <code>font-weight</code>都在<code>font</code>命名空间中。在CSS中，如果你想在同一个命名空间中设置一串属性，你必须每次都输出来。Sass为此提供了一个快捷方式：只需要输入一次命名空间，然后在其内部嵌套子属性。例如：</p>
+<pre data-anchor-id="ip8q"><code class="language-scss">.funky {
+  font: {
+    family: fantasy;
+    size: 30em;
+    weight: bold;
+  }
+}
+</code></pre>
+<p data-anchor-id="3x24">编译为：</p>
+<pre data-anchor-id="3oso"><code class="language-css">.funky {
+  font-family: fantasy;
+  font-size: 30em;
+  font-weight: bold; }
+</code></pre>
+<p data-anchor-id="ri2n">命名空间也可以有自己的属性值。例如：</p>
+<pre data-anchor-id="ej2j"><code class="language-scss">.funky {
+  font: 20px/24px fantasy {
+    weight: bold;
+  }
+}
+</code></pre>
+<p data-anchor-id="ckok">编译为：</p>
+<pre data-anchor-id="itd9"><code class="language-css">.funky {
+  font: 20px/24px fantasy;
+    font-weight: bold;
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="placeholder-selectors" data-anchor-id="6f24">占位符选择器: <code>%foo</code> (Placeholder Selectors: <code>%foo</code>)</h3>
+<p data-anchor-id="bjfo">Sass 支持一种特殊类型的选择器,叫做"占位符选择器" (placeholder selector)。这些看起来像 class 和 id 选择器，除了<code>#</code> 或<code>.</code>用<code>%</code>替换。他们需要在<a href="#extend"><code>@extend</code> 指令</a>中使用;有关详细信息，请参阅<a href="#placeholders"><code>@extend</code>-Only Selectors</a>。</p>
+<p data-anchor-id="d8rr">当他们单独使用的时候，即没有使用<code>@extend</code>的，使用占位符选择器的规则集将不会被渲染为CSS。</p>
+<div class="md-section-divider"></div>
+<h2 id="comments" data-anchor-id="2cit">注释: <code>/* */</code> 和 <code>//</code>（Comments: <code>/* */</code> and <code>//</code>）</h2>
+<p data-anchor-id="gypy">Sass 支持标准的CSS多行注释以<code>/* */</code>以及单行注释 <code>//</code>。在尽可能的情况下，多行注释会被保留在输出的CSS中，而单行注释会被删除。 例如：</p>
+<pre data-anchor-id="5hbf"><code class="language-scss">/* This comment is
+ * several lines long.
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. */
+body { color: black; }
+
+// These comments are only one line long each.
+// They won't appear in the CSS output,
+// since they use the single-line comment syntax.
+a { color: green; }
+</code></pre>
+<p data-anchor-id="rfu6">编译为：</p>
+<pre data-anchor-id="8kie"><code class="language-css">/* This comment is
+ * several lines long.
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. */
+body {
+  color: black; }
+
+a {
+  color: green; }
+</code></pre>
+<p data-anchor-id="h9bm">如果多行注释的第一个字母是 <code>!</code>，那么注释总是会被保留到输出的CSS中，即使在压缩输出模式下。这可用于在你生成的CSS中添加版权声明。</p>
+<p data-anchor-id="c05f">使用插值语句 (interpolation) ，可以将变量值输出到多行注释中，例如：</p>
+<pre data-anchor-id="0aqc"><code class="language-scss">$version: "1.2.3";
+    /* This CSS is generated by My Snazzy Framework version #{$version}. */
+</code></pre>
+<p data-anchor-id="fgns">编译为：</p>
+<pre data-anchor-id="twgl"><code class="language-css">/* This CSS is generated by My Snazzy Framework version 1.2.3. */
+</code></pre>
+<div class="md-section-divider"></div>
+<h2 id="sassscript" data-anchor-id="ujw6">SassScript</h2>
+<p data-anchor-id="3ouf">除了普通的CSS属性的语法，Sass 支持一些扩展，名为SassScript。SassScript允许属性使用变量，算术和额外功能。SassScript可以在任何属性值被使用。</p>
+<p data-anchor-id="qzck">SassScript也可以用来生成选择器和属性名称，当编写<a href="#mixins">mixins</a>时非常有用。这是通过 <a href="#interpolation_">interpolation（插值）</a> 完成。</p>
+<div class="md-section-divider"></div>
+<h3 id="interactive-shell" data-anchor-id="rd99">交互式 shell（Interactive Shell）</h3>
+<p data-anchor-id="p51x">Interactive Shell 可以在命令行中测试 SassScript 的功能。在命令行中输入 sass -i，然后输入想要测试的 SassScript 查看输出结果：</p>
+<p data-anchor-id="9tvq">您可以使用交互式shell（Interactive Shell）轻松地尝试 SassScript。 <br>
+要箱运行启动 shell ，只要使用<code>-i</code>选项的 sass 命令行（注：在命令行中输入 <code>sass -i</code>）。 <br>
+在提示符下，输入任何合法的 SassScript表达式，由它他评估并打印出您的结果：</p>
+<pre data-anchor-id="g3w9"><code class="language-sass">$ sass -i
+&gt;&gt; "Hello, Sassy World!"
+"Hello, Sassy World!"
+&gt;&gt; 1px + 1px + 1px
+3px
+&gt;&gt; #777 + #777
+#eeeeee
+&gt;&gt; #777 + #888
+white
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="variables_" data-anchor-id="xk6r">变量: <code>$</code>（Variables: <code>$</code> ）</h3>
+<p data-anchor-id="7z8v">使用SassScript最直截了当的方法是使用变量。变量以美元符号开始，赋值像设置CSS属性那样：</p>
+<pre data-anchor-id="huls"><code class="language-scss">$width: 5em;
+</code></pre>
+<p data-anchor-id="rsgo">你可以在属性中引用他们:</p>
+<pre data-anchor-id="4i9c"><code class="language-scss">#main {
+  width: $width;
+}
+</code></pre>
+<p data-anchor-id="gl6b">变量仅在它定义的选择器嵌套层级的范围内可用（注：可以理解为块级作用域）。不在任何嵌套选择器内定义的变量则在可任何地方使用（注：可以理解为全局变量）。定义变量的时候可以后面带上<code>!global</code>标志，在这种情况下，变量在任何地方可见（注：可以理解为全局变量）。例如：</p>
+<pre data-anchor-id="imgx"><code class="language-scss">#main {
+  $width: 5em !global;
+      width: $width;
+}
+
+#sidebar {
+  width: $width;
+}
+</code></pre>
+<p data-anchor-id="kwlq">编译为：</p>
+<pre data-anchor-id="73dt"><code class="language-css">#main {
+  width: 5em;
+}
+
+#sidebar {
+  width: 5em;
+}
+</code></pre>
+<p data-anchor-id="i2nv">由于历史原因，变量名（以及其他所有Sass标识符）可以互换连字符（注：<code>-</code>）和下划线（注：<code>_</code>）。例如，如果你定义了一个名为 <code>$main-width</code>，您可以使用 <code>$main_width</code>访问它，反之亦然。</p>
+<div class="md-section-divider"></div>
+<h3 id="data-types" data-anchor-id="mp1j">数据类型 (Data Types)</h3>
+<p data-anchor-id="ffdw">SassScript 支持 7 种主要的数据类型：</p>
+<ul data-anchor-id="1lfy">
+<li>数字 (例如： <code>1.2</code>, <code>13</code>, <code>10px</code>)</li>
+<li>文本字符串，带引号字符串和不带引号字符串(例如：<code>"foo"</code>, <code>'bar'</code>, <code>baz</code>)</li>
+<li>颜色 (例如：<code>blue</code>, <code>#04a3f9</code>, <code>rgba(255, 0, 0, 0.5)</code>)</li>
+<li>布尔值 (例如： <code>true</code>, <code>false</code>)</li>
+<li>空值 (例如： <code>null</code>)</li>
+<li>值列表 (list)，用空格或逗号分隔 (例如： <code>1.5em 1em 0 2em</code>, <code>Helvetica, Arial, sans-serif</code>)</li>
+<li>maps ，从一个值映射到另一个 (例如： <code>(key1: value1, key2: value2)</code>)</li>
+</ul>
+<p data-anchor-id="1vcc">SassScript也支持其他所有类型的CSS属性值，比如 Unicode 字符集，或 <code>!important</code> 声明。然而，不会对这些类型的属性值做特殊处理，一律视为不带引号的字符串。</p>
+<div class="md-section-divider"></div>
+<h4 id="sass-script-strings" data-anchor-id="q2fp">字符串（Strings）</h4>
+<p data-anchor-id="hm1n">CSS指定两种字符串类型：带引号的字符串（注：包括双引号和单引号），如<code>"Lucida Grande"</code> 或者 <code>'http://sass-lang.com'</code>，还有不带引号的字符串，如<code>sans-serif</code> 或者 <code>bold</code>。SassScript 识别这两种类型，并且一般来说，在编译输出的CSS文件中不会改变Sass文档中使用的字符串类型。</p>
+<p data-anchor-id="4f1e">有一个例外，当使用 <a href="#interpolation_"><code>#{}</code> interpolation</a>时，带引号的字符串将被编译为不带引号的字符串，这样主要是为了便于使用，比如<a href="#mixins">mixins</a>中的选择器名称。例如：</p>
+<pre data-anchor-id="3wkp"><code class="language-scss">@mixin firefox-message($selector) {
+      body.firefox #{$selector}:before {
+    content: "Hi, Firefox users!";
+  }
+}
+
+@include firefox-message(".header");
+</code></pre>
+<p data-anchor-id="detn">编译为：</p>
+<pre data-anchor-id="psky"><code class="language-css">body.firefox .header:before {
+  content: "Hi, Firefox users!"; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="lists" data-anchor-id="iwj9">列表（Lists）</h4>
+<p data-anchor-id="qolu">列表(lists) 是指 Sass 如何表示在CSS声明的，类似<code>margin: 10px 15px 0 0</code> 或 <code>font-face: Helvetica, Arial, sans-serif</code>这样的值，列表只是一串其他值，无论是用空格还是用逗号隔开。事实上，独立的值也被视为列表：只包含一个值的列表。</p>
+<p data-anchor-id="zddp">列表本身没有太多的功能，但 Sass list functions 赋予了数组更多新功能：nth 函数可以直接访问数组中的某一项；join 函数可以将多个数组连接在一起；append 函数可以在数组中添加新值；而 @each 指令能够遍历数组中的每一项。</p>
+<p data-anchor-id="za3k">列表本身没有太多的功能，但是 SassScript list functions 使它们非常有用。<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#nth-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#nth-instance_method" target="_blank"><code>nth</code> 函数</a>可以直接访问列表中的某一项；<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#join-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#join-instance_method" target="_blank"><code>join</code> 函数</a>可以将多个列表拼接在一起；<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#append-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#append-instance_method" target="_blank"><code>append</code> 函数</a>可以将某项添加到列表中；<a href="#each-directive"><code>@each</code> 指令</a>可以将添加样式到列表中的每一项。</p>
+<p data-anchor-id="9xkj">除了包含简单的值，列表可包含其他列表。例如，<code>1px 2px, 5px 6px</code>包含<code>1px 2px</code>列表和<code>5px 6px</code>列表两个项。如果内外两层列表使用相同的分隔符号，你需要使用括号将内层列表括起来，以明确内层类别的开始和结束位置。 <br>
+例如，<code>(1px 2px) (5px 6px)</code> 同样是包含<code>1px 2px</code>列表和<code>5px 6px</code>列表两个项的列表。不同的是，该列表层外用空格分隔，之前列表外层是用逗号分隔。</p>
+<p data-anchor-id="9klo">当列表被编译为 CSS 时，Sass 不会添加任何圆括号，因为CSS不能识别他们。这意味着， <code>(1px 2px) (5px 6px)</code> 和<code>1px 2px 5px 6px</code> 在编译后的 CSS 文件中看起来是完全一样的。然而，它们在 Sass 中却是不同的：第一个是含两个列表的列表，而第二个是含有四个成员的列表。</p>
+<p data-anchor-id="igi4">用 () 表示不包含任何值的空数组（在 Sass 3.3 版之后也视为空的 map）。空数组不可以直接编译成 CSS，比如编译 font-family: () Sass 将会报错。如果数组中包含空数组或空值，编译时将被清除，比如 1px 2px () 3px 或 1px 2px null 3px。</p>
+<p data-anchor-id="u7xk">列表也可以没有任何项。这些列表可以用 <code>()</code> 表示（也是一个空的 <a href="#maps">map</a>）。 <br>
+它们不能直接输出到CSS;如果你试图这样做，例如<code>font-family: ()</code>，Sass 将会报错。如果列表中包含空列表或空值，比如 <code>1px 2px () 3px</code> 或者 <code>1px 2px null 3px</code>，在包含列表编译成CSS前，空列表和空值将被删除。</p>
+<p data-anchor-id="annc">逗号分隔的列表可以保留结尾的逗号。这是特别有用，因为它可以表示一个 单个元素的列表。 <br>
+例如，<code>(1,)</code>表示为只包含<code>1</code>的列表，而<code>(1 2 3,)</code>这个表示包含一个列表，这个列表又包含以空格分隔的<code>1</code>,<code>2</code>, 和 <code>3</code>的列表。</p>
+<div class="md-section-divider"></div>
+<h4 id="maps" data-anchor-id="2qhh">Maps</h4>
+<p data-anchor-id="mten">Maps代表一个键和值对集合，其中键用于查找值。他们可以很容易地将值收集到命名组中，并且可以动态地访问这些组。在CSS中你找不到和他们类似的值，虽然他们的语法类似于媒体查询表达式：</p>
+<pre data-anchor-id="bxl6"><code class="language-scss">$map: (key1: value1, key2: value2, key3: value3);
+</code></pre>
+<p data-anchor-id="7muu">和列表（Lists）不同，Maps必须始终使用括号括起来，并且必须用逗号分隔。Maps中的键和值可以是任意的SassScript对象。一个Maps可能只有一个值与给定的键关联（尽管该值可以是一个列表）。一个给定的值可能与许多键关联。</p>
+<p data-anchor-id="dup5">和列表（Lists）类似，Maps的主要操作使用的是 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions" target="_blank">SassScript 函数</a>。<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method" target="_blank"><code>map-get</code>函数</a>用于查找map中的值，<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#map_merge-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#map_merge-instance_method" target="_blank"><code>map-merge</code>函数</a>用于添加值到map中的值， <a href="#each-multi-assign"><code>@each</code> 指令</a>可以用来为 map 中的每个键值对添加样式。map中键值对的顺序和map创建时始终相同。</p>
+<p data-anchor-id="1e2x">Maps还可以用于任何列表（Lists）能做的事情。当用于一个列表函数时，map被视为键值对列表。例如，<code>(key1: value1, key2: value2)</code>被用于列表函数时，将被视为嵌套列表<code>key1 value1, key2 value2</code>。列表不能被视为maps，不过，空列表除外。 <code>()</code>表示一个键/值对都没有的map,也可以被视为一个没有元素的列表。</p>
+<p data-anchor-id="5tyv">需要注意的是 map 的建（keys）可以是任何 Sass 数据类型（甚至是另一个map），并且声明map的语法允许是任意的SassScript表达式，这个表达式将被评估为一个值以确定建（keys）。</p>
+<p data-anchor-id="x97o">Maps不能转换为纯CSS。作为变量的值或参数传递给CSS函数将会导致错误。使用<code>inspect($value)</code> 函数以产生输出字符串，这对于调试 maps 非常有用。</p>
+<div class="md-section-divider"></div>
+<h4 id="colors" data-anchor-id="tc83">颜色（Colors）</h4>
+<p data-anchor-id="k4s9">任何CSS颜色表达式返回SassScript颜色值。这其中包括了<a href="javascript:if(confirm('https://github.com/nex3/sass/blob/stable/lib/sass/script/value/color.rb  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/nex3/sass/blob/stable/lib/sass/script/value/color.rb#L28-L180'" tppabs="https://github.com/nex3/sass/blob/stable/lib/sass/script/value/color.rb#L28-L180" target="_blank">大量的命名的颜色</a>，这些名字字符串不区别带不带引号。</p>
+<p data-anchor-id="jb9i">在压缩输出模式，Sass 将输出CSS简短的颜色表示法。例如，在压缩模式下 <code>#FF0000</code> 将输出为<code>red</code>，但是<code>blanchedalmond</code>将输出为 <code>#FFEBCD</code>。</p>
+<p data-anchor-id="bkb5">一个用户遇到的常见问题是在其它输出模式中Sass喜欢输出与命名的颜色相同的格式，当压缩的时候，插值到选择器的颜色变得无效语法。为了避免这种情况，如果他们是为了在选择施工中使用，总是给命名的颜色。</p>
+<div class="md-section-divider"></div>
+<h3 id="operations" data-anchor-id="zig5">运算 (Operations)</h3>
+<p data-anchor-id="3f4c">所有数据类型的支持相等运算(<code>==</code> 和 <code>!=</code>)。此外，每种类型都有其自己特殊的运算方式。</p>
+<div class="md-section-divider"></div>
+<h4 id="number-operations" data-anchor-id="9pu0">数字运算 (Number Operations)</h4>
+<p data-anchor-id="l9sp">SassScript 支持对数字标准的算术运算（加法<code>+</code>，减法 <code>-</code> ，乘法<code>*</code>，除法<code>/</code>和取模<code>%</code>）。Sass 数学函数在算术运算期间会保留单位。这意味着，就像在现实生活中，你不能用不相同的单位数字进行算术运算（比如数字后面添加了<code>px</code>和<code>em</code>单位），还有两个单位相同的数字相乘将产生单位平方(<code>10px * 10px == 100px * px</code>)。<strong>要知道</strong>，<code>px * px</code>是无效的CSS单位，Sass会抛出一个错误，因为你试图在CSS中使用无效的单位。</p>
+<p data-anchor-id="uwgx">数字支持关系运算符(<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>)，并且所有类型支持相等运算符(<code>==</code>, <code>!=</code>)。</p>
+<div class="md-section-divider"></div>
+<h5 id="division-and-slash" data-anchor-id="p4q4">除法和 <code>/</code> （Division and <code>/</code>）</h5>
+<p data-anchor-id="z9mb">CSS允许 <code>/</code> 出现在属性值之间作为分隔数字的方式(注：例如font属性，<code>p.ex2{font:italic bold 12px/20px arial,sans-serif;}</code>)。由于SassScript是CSS属性语法的扩展，所以它必须支持这一点，同时还允许 <code>/</code> 用于除法。这意味着，在默认情况下，在SassScript中如果两个数字由 <code>/</code> 分隔，在返回的CSS中将以同样的方式出现。</p>
+<p data-anchor-id="98zz">但是，这里有将<code>/</code>解析为除法三种情况。这些涵盖了绝大多数当做除法的案例。 他们是：</p>
+<ol data-anchor-id="izq7">
+<li>如果该值，或值的任何部分，存储在一个变量中或通过函数返回。</li>
+<li>如果该值是由括号括起来的，除非这些括号是在一个列表（list）外部，并且值是括号内部。</li>
+<li>如果该值被用作另一个算术表达式的一部分。</li>
+</ol>
+<p data-anchor-id="y3wx">例如:</p>
+<pre data-anchor-id="bcfk"><code class="language-scss">p {
+  font: 10px/8px;             // 原生的CSS，不作为除法
+  $width: 1000px;
+      width: $width/2;            // 使用了变量, 作为除法
+  width: round(1.5)/2;        // 使用了函数, 作为除法
+  height: (500px/2);          // 使用了括号, 作为除法
+  margin-left: 5px + 8px/2px; // 使用了 +, 作为除法
+  font: (italic bold 10px/8px); // 在一个列表（list）中，括号可以被忽略。
+}
+</code></pre>
+<p data-anchor-id="901i">编译为：</p>
+<pre data-anchor-id="ssz4"><code class="language-css">p {
+  font: 10px/8px;
+  width: 500px;
+  height: 250px;
+  margin-left: 9px; }
+</code></pre>
+<p data-anchor-id="0j33">如果你想纯CSS 的<code>/</code> 和变量一起使用（注：即<code>/</code>不作为除法使用），你可以使用<code>#{}</code>插入他们。例如：</p>
+<pre data-anchor-id="y5q9"><code class="language-scss">p {
+  $font-size: 12px;
+      $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+</code></pre>
+<p data-anchor-id="6nnd">编译为：</p>
+<pre data-anchor-id="uyk0"><code class="language-css">p {
+  font: 12px/30px; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h5 id="subtraction" data-anchor-id="gh5h">减法，负数，和 <code>-</code>(Subtraction, Negative Numbers, and <code>-</code>)</h5>
+<p data-anchor-id="651y">在CSS和在Sass中 <code>-</code> 有许多不同的意义。它可以是一个减法运算符（比如在<code>5px - 3px</code>中），也可以表示一个负数（比如在<code>-3px</code>中），还可以是一个一元负运算符（比如在<code>-$var</code>中），或是标识符的一部分（比如在<code>font-weight</code>中）。大多数时候，我们可以很容易的分辨<code>-</code> 到底代表什么，但也有一些棘手的请客。以下作为一般规则，你是最安全的使用<code>-</code>：</p>
+<ul data-anchor-id="pbri">
+<li>减法的时候，你总是在 <code>-</code> 两侧保留空格。</li>
+<li>当表示一个负数或一元负运算时候，在<code>-</code>前面包含一个空格，后面不加空格。</li>
+<li>如果在一个空格隔开的list（列表）中，你可以将一元负运算使用括号括起来，比如在<code>10px (-$var)</code>中。</li>
+</ul>
+<p data-anchor-id="cra8"><code>-</code> 的不同含义的优先顺序如下：</p>
+<ol data-anchor-id="ioqs">
+<li>
+<p><code>-</code> 作为标识符的一部分。这意味着<code>a-1</code>是一个不带引号的字符串，其值为<code>"a-1"</code>。唯一的例外是单位;Sass 通常允许任何有效的标识符被用作一个标识符，但标识符不可能以数字或连字符开始。这意味着，<code>5px-3px</code>和<code>5px - 3px</code>是相同。</p>
+</li>
+<li>
+<p><code>-</code> 在不带空格两个数字之间。这表明是减法，所以<code>1-2</code>和<code>1 - 2</code> 是相同的。</p>
+</li>
+<li>
+<p>字面数字以 <code>-</code> 开头。这表明是一个负数，所以 <code>1 -2</code>是一个含有<code>1</code>和<code>-2</code>的 list（列表）。</p>
+</li>
+<li>
+<p><code>-</code> 两个数字之间，不论是否带空格。这表明是减法，所以 <code>1 -$var</code> 和 <code>1 - $var</code> 是相同的。</p>
+</li>
+<li>
+<p><code>-</code> 在值之前。这表明是一元负运算符;该操作需要一个数字，并返回其负值。</p>
+</li>
+</ol>
+<div class="md-section-divider"></div>
+<h4 id="color-operations" data-anchor-id="qr7m">颜色运算 (Color Operations)</h4>
+<p data-anchor-id="wv7e">所有算术运算都支持的颜色值，颜色值的运算是分段进行计算的，也就是，依次计算红（red），绿（green），以及蓝（blue）的成分值。例如：</p>
+<pre data-anchor-id="vtnw"><code class="language-scss">p {
+  color: #010203 + #040506;
+}
+</code></pre>
+<p data-anchor-id="7934">计算 <code>01 + 04 = 05</code>, <code>02 + 05 = 07</code>, 和 <code>03 + 06 = 09</code>，并且编译为：</p>
+<pre data-anchor-id="fmwk"><code class="language-css">p {
+  color: #050709; }
+</code></pre>
+<p data-anchor-id="u41g">通常<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">color functions(颜色函数)</a>比尝试使用颜色运算更加有用，以达到同样的效果。</p>
+<p data-anchor-id="1gmp">数字和颜色值之间的算术运算也是分段。例如：</p>
+<pre data-anchor-id="2nls"><code class="language-scss">p {
+  color: #010203 * 2;
+}
+</code></pre>
+<p data-anchor-id="u8gg">计算 <code>01 * 2 = 02</code>, <code>02 * 2 = 04</code>, 和 <code>03 * 2 = 06</code>，并且编译为：</p>
+<pre data-anchor-id="ppmp"><code class="language-css">p {
+  color: #020406; }
+</code></pre>
+<p data-anchor-id="vmsb">需要注意的是，包含alpha通道（那些由<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#rgba-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#rgba-instance_method" target="_blank">rgba</a>或<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#hsla-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#hsla-instance_method" target="_blank">hsla</a>函数创建的）的颜色必须具有相同的alpha值，才能进行颜色运算。这样算术不会影响alpha值。例如：</p>
+<pre data-anchor-id="7thc"><code class="language-scss">p {
+  color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
+}
+</code></pre>
+<p data-anchor-id="rqxx">编译为：</p>
+<pre data-anchor-id="twy6"><code class="language-css">p {
+  color: rgba(255, 255, 0, 0.75); }
+</code></pre>
+<p data-anchor-id="51wh">颜色的alpha通道可以使用<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#opacify-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#opacify-instance_method" target="_blank">opacify</a>和<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#transparentize-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#transparentize-instance_method" target="_blank">transparentize</a>函数进行调整。例如：</p>
+<pre data-anchor-id="gu5a"><code class="language-scss">$translucent-red: rgba(255, 0, 0, 0.5);
+    p {
+      color: opacify($translucent-red, 0.3);
+      background-color: transparentize($translucent-red, 0.25);
+}
+</code></pre>
+<p data-anchor-id="sf4t">编译为：</p>
+<pre data-anchor-id="fnc0"><code class="language-css">p {
+  color: rgba(255, 0, 0, 0.8);
+  background-color: rgba(255, 0, 0, 0.25); }
+</code></pre>
+<p data-anchor-id="5ion">IE浏览器的滤镜（filters）要求所有的颜色包括 alpha 层，而且格式必须是固定的 #AABBCCDD ，使用 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#ie_hex_str-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#ie_hex_str-instance_method" target="_blank">ie_hex_str</a> 函数可以轻松的将颜色转化为 IE 滤镜所要求的格式。例如：</p>
+<pre data-anchor-id="e4zn"><code class="language-scss">$translucent-red: rgba(255, 0, 0, 0.5);
+    $green: #00ff00;
+div {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr='#{ie-hex-str($green)}', endColorstr='#{ie-hex-str($translucent-red)}');
+}
+</code></pre>
+<p data-anchor-id="rfv4">编译为：</p>
+<pre data-anchor-id="fyx1"><code class="language-css">div {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=#FF00FF00, endColorstr=#80FF0000);
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="string-operations" data-anchor-id="ojs8">字符串运算 (String Operations)</h4>
+<p data-anchor-id="mnut"><code>+</code> 运算可用于连接字符串:</p>
+<pre data-anchor-id="2zhc"><code class="language-scss">p {
+  cursor: e + -resize;
+}
+</code></pre>
+<p data-anchor-id="5wjv">编译为：</p>
+<pre data-anchor-id="lxiy"><code class="language-css">p {
+  cursor: e-resize; }
+</code></pre>
+<p data-anchor-id="ynkc">请注意，如果带引号的字符串被添加到不带引号的字符串中（也就是说，带引号的字符串在 <code>+</code> 的左侧）， <br>
+那么返回的结果是带引号的字符串。同样，如果一个不带引号的字符串添加到带引号的字符串中（不带引号的字符串在 <code>+</code> 的左侧）那么返回的结果是一个不带引号的字符串。 例如：</p>
+<pre data-anchor-id="rif1"><code class="language-scss">p:before {
+  content: "Foo " + Bar;
+  font-family: sans- + "serif";
+}
+</code></pre>
+<p data-anchor-id="8fk7">编译为：</p>
+<pre data-anchor-id="zjlx"><code class="language-css">p:before {
+  content: "Foo Bar";
+  font-family: sans-serif; }
+</code></pre>
+<p data-anchor-id="swe2">默认情况下，运算表达式与其他值连用时，用空格做连接符：</p>
+<pre data-anchor-id="sfgb" class="language-scss"><code>p {
+  margin: 3px + 4px auto;
+}
+</code></pre>
+<p data-anchor-id="svrw">编译为：</p>
+<pre data-anchor-id="vke9"><code class="language-css">p {
+  margin: 7px auto; }
+</code></pre>
+<p data-anchor-id="yw2k">在文本字符串中，#{}式插值可以用来在字符串中放置动态值：</p>
+<pre data-anchor-id="3qqo"><code class="language-scss">p:before {
+  content: "I ate #{5 + 10} pies!";
+}
+</code></pre>
+<p data-anchor-id="z523">编译为：</p>
+<pre data-anchor-id="lmw7"><code class="language-css">p:before {
+  content: "I ate 15 pies!"; }
+</code></pre>
+<p data-anchor-id="7rru">在字符串插值时，Null值被视为空字符串：</p>
+<pre data-anchor-id="szlp"><code class="language-scss">$value: null;
+    p:before {
+      content: "I ate #{$value} pies!";
+}
+</code></pre>
+<p data-anchor-id="k1pn">编译为：</p>
+<pre data-anchor-id="odjc"><code class="language-css">p:before {
+  content: "I ate  pies!"; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="boolean-operations" data-anchor-id="ziqa">布尔运算 (Boolean Operations)</h4>
+<p data-anchor-id="l669">SassScript 支持布尔值的 <code>and</code>, <code>or</code>, 和 <code>not</code> 运算。</p>
+<div class="md-section-divider"></div>
+<h4 id="list-operations" data-anchor-id="4unr">列表运算 (List Operations)</h4>
+<p data-anchor-id="rn0e">数组不支持任何特殊运算，只能使用 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#list-functions'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#list-functions" target="_blank">list 函数</a> 控制。</p>
+<div class="md-section-divider"></div>
+<h3 id="parentheses" data-anchor-id="j294">圆括号 (Parentheses)</h3>
+<p data-anchor-id="9k5w">圆括号可以用来影响运算的顺序(注：优先级)：</p>
+<pre data-anchor-id="6a1b"><code class="language-scss">p {
+  width: 1em + (2em * 3);
+}
+</code></pre>
+<p data-anchor-id="yk6u">编译为：</p>
+<pre data-anchor-id="peha"><code class="language-css">p {
+  width: 7em; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="functions" data-anchor-id="uwyu">函数 (Functions)</h3>
+<p data-anchor-id="i6gn">SassScript定义了一些有用的函数， 这些函数可以像普通 CSS 函数语法一样调用：</p>
+<pre data-anchor-id="2zlu"><code class="language-scss">p {
+  color: hsl(0, 100%, 50%);
+}
+</code></pre>
+<p data-anchor-id="oz6v">编译为：</p>
+<pre data-anchor-id="otgs"><code class="language-css">p {
+  color: #ff0000; }
+</code></pre>
+<p data-anchor-id="6480">可用函数的完整列表，请参阅<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">这张页面</a>。</p>
+<div class="md-section-divider"></div>
+<h4 id="keyword-arguments" data-anchor-id="qg60">关键词参数 (Keyword Arguments)</h4>
+<p data-anchor-id="33gw">Sass 函数允许指定明确的关键词参数 (keyword arguments) 进行调用。 上面的例子也可以改写成：</p>
+<pre data-anchor-id="51tm"><code class="language-scss">p {
+  color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
+}
+</code></pre>
+<p data-anchor-id="thk9">虽然不够简明，但可以让Sass代码阅读起来更加方便。 关键词参数让函数具有更灵活的接口， 即便参数众多，也不会让使用变得困难。</p>
+<p data-anchor-id="fxqh">命名参数（named arguments）可以以任意顺序传入，并且，具有默认值的参数可以省略掉。 由于命名参数也是变量名称，因此，下划线、短横线可以互换使用。</p>
+<p data-anchor-id="oa8r">完整的 Sass 函数列表和它们的参数名称，以及在 Ruby 里如何定义你自己的函数的步骤，请见 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">Sass::Script::Functions</a>。</p>
+<div class="md-section-divider"></div>
+<h3 id="interpolation_" data-anchor-id="prko">插值：<code>#{}（</code>Interpolation: <code>#{}</code>）</h3>
+<p data-anchor-id="ynhu">您还可以通过 <code>#{}</code> 插值语法在选择器和属性名中使用 SassScript 变量：</p>
+<pre data-anchor-id="8c2q"><code class="language-scss">$name: foo;
+    $attr: border;
+p.#{$name} {
+      #{$attr}-color: blue;
+}
+</code></pre>
+<p data-anchor-id="ffna">编译为：</p>
+<pre data-anchor-id="tpiy"><code class="language-css">p.foo {
+  border-color: blue; }
+</code></pre>
+<p data-anchor-id="w1vn">它也可以使用<code>#{}</code>插值语句把 SassScript 插入到属性值中。在大多数情况下，这种做可能还不如使用直接变量来的方便，但使用 <code>#{}</code>意味着靠近它的运算符都将被视为纯CSS（注：可以避免各种运算）。 例如：</p>
+<pre data-anchor-id="fj9u"><code class="language-scss">p {
+  $font-size: 12px;
+      $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+</code></pre>
+<p data-anchor-id="7y0x">编译为：</p>
+<pre data-anchor-id="026h"><code class="language-css">p {
+  font: 12px/30px; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="parent-script" data-anchor-id="3ebr">SassScript中的<code>&amp;</code>（<code>&amp;</code> in SassScript）</h3>
+<p data-anchor-id="sxzj">就像当它在<a href="#parent-selector">选择器</a>中使用一样，SassScript中的<code>&amp;</code>指向当前父选择器。下面是一个逗号分隔的列表（list）中包含一个空格的分隔列表（list）。例如：</p>
+<pre data-anchor-id="qfga"><code class="language-scss">.foo.bar .baz.bang, .bip.qux {
+  $selector: &amp;;
+}
+</code></pre>
+<p data-anchor-id="gjxr"><code>$selector</code>的值是现在 <code>((".foo.bar" ".baz.bang"), ".bip.qux")</code>。这个混合选择器在这里加了引号，以表明他们是字符串，但在现实中，他们将不带引号的。即使选择器不包含逗号或空格，<code>&amp;</code>总会有两个嵌套层次，因此它可以保证访问一致性。</p>
+<p data-anchor-id="uur1">如果没有父选择器，<code>&amp;</code>的值将是空。这意味着你可以在一个mixin中使用它来检测父选择是否存在：</p>
+<pre data-anchor-id="ayve"><code class="language-scss">@mixin does-parent-exist {
+  @if &amp; {
+    &amp;:hover {
+      color: red;
+    }
+  } @else {
+    a {
+      color: red;
+    }
+  }
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="variable-defaults" data-anchor-id="tn54">变量默认: <code>!default</code> （Variable Defaults: <code>!default</code>）</h3>
+<p data-anchor-id="0wj2">如果分配给变量的值后面添加了<code>!default</code>标志 ，这意味着该变量如果已经赋值，那么它不会被重新赋值，但是，如果它尚未赋值，那么它会被赋予新的给定值。</p>
+<p data-anchor-id="1igr">例如:</p>
+<pre data-anchor-id="lya9"><code class="language-scss">$content: "First content";
+    $content: "Second content?" !default;
+$new_content: "First time reference" !default;
+
+#main {
+  content: $content;
+      new-content: $new_content;
+}
+</code></pre>
+<p data-anchor-id="hf0v">编译为：</p>
+<pre data-anchor-id="sm6p"><code class="language-css">#main {
+  content: "First content";
+  new-content: "First time reference"; }
+</code></pre>
+<p data-anchor-id="9j63">通过!default赋值的时候，如果变量是 <code>null</code> 值时，将视为未赋值（注：所以下面的$content值为 "Non-null content"）：</p>
+<pre data-anchor-id="t0kj"><code class="language-scss">$content: null;
+    $content: "Non-null content" !default;
+
+#main {
+  content: $content;
+}
+</code></pre>
+<p data-anchor-id="37vv">编译为：</p>
+<pre data-anchor-id="wafo"><code class="language-css">#main {
+  content: "Non-null content"; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h2 id="directives" data-anchor-id="dm1v"><code>@</code>规则 和 指令 (<code>@</code>-Rules and Directives)</h2>
+<p data-anchor-id="1hhx">Sass 支持所有CSS3的 <code>@</code>规则，以及一些已知的其他特定的Sass "指令"。这些在 Sass 都有对应的效果，更多资料请查看 <a href="#control_directives">控制指令 (control directives)</a> 和 <a href="#mixins">混入指令 (mixin directives)</a> 。</p>
+<div class="md-section-divider"></div>
+<h3 id="import" data-anchor-id="5r3g"><code>@import</code></h3>
+<p data-anchor-id="epqh">Sass 扩展了 CSS <code>@import</code>规则，允许其导入 SCSS 或 Sass 文件。被导入的全部SCSS 或 Sass文件将一起合并到同一个 CSS 文件中。此外，被导入文件中所定义的任何变量或<a href="#mixins">混入（mixins）</a>都可以在主文件（注：主文件值的是导入其他文件的文件，即，A文件中导入了B文件，这里的主文件指的就是A文件）中使用。</p>
+<p data-anchor-id="d65x">Sass 会在当前目录和 Rack, Rails, Merb目录下查找其他 Sass 文件。附加搜索目录可以使用<a href="#load_paths-option"><code>:load_paths</code></a>选项或命令行中的<code>--load-path</code>选项指定。</p>
+<p data-anchor-id="bafg">通常，@import 寻找 Sass 文件并将其导入，但在以下情况下，@import 仅作为普通的 CSS 语句，不会导入任何 Sass 文件。</p>
+<p data-anchor-id="0zvm"><code>@import</code> 需要一个文件名来导入。默认情况下，它会寻找一个 Sass 文件直接导入，但在以下情况下， 仅作为普通的 CSS @import 规则语句，不会导入任何 Sass 文件。</p>
+<ul data-anchor-id="3xzs">
+<li>如果文件的扩展名是 <code>.css</code>。</li>
+<li>如果文件名以 <code>http://</code> 开始。</li>
+<li>如果文件名是 <code>url()</code>。</li>
+<li>如果<code>@import</code> 中包含任何的媒体查询（media queries）。</li>
+</ul>
+<p data-anchor-id="frac">如果没有上述条件得到满足并且扩展名是<code>.scss</code> 或<code>.sass</code>，那么 Sass 或 SCSS 文件将被导入。如果没有指定扩展名，Sass 将尝试找到以<code>.scss</code> 或<code>.sass</code>为扩展名的该名称文件并导入。</p>
+<p data-anchor-id="oz56">例如,</p>
+<pre data-anchor-id="0l1h"><code class="language-scss">@import "foo.scss";
+</code></pre>
+<p data-anchor-id="txw6">或</p>
+<pre data-anchor-id="dd46"><code class="language-scss">@import "foo";
+</code></pre>
+<p data-anchor-id="kw57">这两行代码都能导入文件<code>foo.scss</code>，而</p>
+<pre data-anchor-id="rjpz"><code class="language-scss">@import "foo.css";
+@import "foo" screen;
+@import "http://foo.com/bar";
+@import url(foo);
+</code></pre>
+<p data-anchor-id="4iql">将全部编译为</p>
+<pre data-anchor-id="a0oz"><code class="language-css">@import "foo.css";
+@import "foo" screen;
+@import "http://foo.com/bar";
+@import url(foo);
+</code></pre>
+<p data-anchor-id="kggm">Sass 支持在一个 <code>@import</code> 规则中同时导入多个文件。例如：</p>
+<pre data-anchor-id="3sbo"><code class="language-scss">@import "rounded-corners", "text-shadow";
+</code></pre>
+<p data-anchor-id="dnkt">将同时导入<code>rounded-corners</code>和<code>text-shadow</code> 这两个文件。</p>
+<p data-anchor-id="iqz3">导入规则中可能含有<code>#{}</code> 插值，但存在一定的限制。不能通过变量动态导入Sass文件；<code>#{}</code>插值仅适用于CSS导入规则。 因此，它仅适用于<code>url()</code> 导入。</p>
+<p data-anchor-id="neja">例如：</p>
+<pre data-anchor-id="fgv9"><code class="language-scss">$family: unquote("Droid+Sans");
+    @import url("http://fonts.googleapis.com/css?family=#{$family}");
+</code></pre>
+<p data-anchor-id="8kvf">将编译为</p>
+<pre data-anchor-id="strx"><code class="language-css">@import url("http://fonts.googleapis.com/css?family=Droid+Sans");
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="partials" data-anchor-id="3sd8">Partials</h4>
+<p data-anchor-id="15tz">如果你有一个 SCSS 或 Sass 文件要导入，但不希望将其编译到一个CSS文件，你可以在文件名的开头添加一个下划线。这将告诉Sass不要将其编译到一个正常的CSS文件。然后，在导入语句中却不需要添加下划线。</p>
+<p data-anchor-id="8yys">例如，你可能有一个命名为 <code>_colors.scss</code> 的文件，但是不会编译成 <code>_colors.css</code> 文件。你可以这么做</p>
+<pre data-anchor-id="2ex5"><code class="language-scss">@import "colors";
+</code></pre>
+<p data-anchor-id="kbbd">这样， <code>_colors.scss</code> 将被导入。</p>
+<p data-anchor-id="ivmh">注意，请不要将带下划线与不带下划线的同名文件放置在同一个目录下，比如，<code>_colors.scss</code> 和 <code>colors.scss</code> 不能同时存在于同一个目录下。否则带下划线的文件将会被忽略。</p>
+<div class="md-section-divider"></div>
+<h4 id="nested-import" data-anchor-id="fnid">嵌套 <code>@import</code>（Nested <code>@import</code> ）</h4>
+<p data-anchor-id="jjhk">虽然在大部分情况下，一般都是在文档的顶层（注：最外层，不在嵌套规则内）使用 <code>@import</code>，但是也可以在CSS 规则和<code>@media</code> 规则中包含<code>@import</code>语句。就像一个基层的 <code>@import</code> ，这里会包含 <code>@import</code> 导入文件的内容。但是，这样导入的规则只能嵌套在原先防止 <code>@import</code> 的地方。</p>
+<p data-anchor-id="1h94">举个例子，如果 <code>example.scss</code> 包含</p>
+<pre data-anchor-id="0fga"><code class="language-scss">.example {
+  color: red;
+}
+</code></pre>
+<p data-anchor-id="o0a7">然后（注：导入到 <code>#main</code> 样式内）</p>
+<pre data-anchor-id="fx40"><code class="language-scss">#main {
+  @import "example";
+}
+</code></pre>
+<p data-anchor-id="8rte">注：这样导入后等同于：</p>
+<pre data-anchor-id="krzj"><code class="language-scss">#main {
+  .example {
+      color: red;
+    }
+}
+</code></pre>
+<p data-anchor-id="2jkk">将被编译为</p>
+<pre data-anchor-id="51s0"><code class="language-css">#main .example {
+  color: red;
+}
+</code></pre>
+<p data-anchor-id="f1cd">该指令只允许出现在文档顶层（注：最外层，不在嵌套规则内），像<code>@mixin</code> 或者 <code>@charset</code>，在文件中，不允许被<code>@import</code>导入到一个嵌套上下文中。</p>
+<p data-anchor-id="tq0f">不允许在混人 (mixin) 或控制指令 (control directives) 中嵌套 <code>@import</code>。</p>
+<div class="md-section-divider"></div>
+<h3 id="media" data-anchor-id="u1iu"><code>@media</code></h3>
+<p data-anchor-id="uzks">Sass 中 <code>@media</code> 指令的行为和纯 CSS 中一样，只是增加了一点额外的功能：它们可以嵌套在CSS规则。如果一个<code>@media</code> 指令出现在CSS规则中，它将被冒泡到样式表的顶层，并且包含规则内所有的选择器。这使得很容易地添加特定media样式，而不需要重复使用选择器，或打乱样式表书写流。例如：</p>
+<pre data-anchor-id="ztjk"><code class="language-scss">.sidebar {
+  width: 300px;
+  @media screen and (orientation: landscape) {
+    width: 500px;
+  }
+}
+</code></pre>
+<p data-anchor-id="rqsm">编译为：</p>
+<pre data-anchor-id="illn"><code class="language-css">.sidebar {
+  width: 300px; }
+  @media screen and (orientation: landscape) {
+    .sidebar {
+      width: 500px; } }
+</code></pre>
+<p data-anchor-id="74ty"><code>@media</code>的查询（queries）也可以相互嵌套。这些查询（queries）在编译时，将会使用 <code>and</code> 操作符号结合。例如：</p>
+<pre data-anchor-id="nqqm"><code class="language-scss">@media screen {
+  .sidebar {
+    @media (orientation: landscape) {
+      width: 500px;
+    }
+  }
+}
+</code></pre>
+<p data-anchor-id="ga4f">编译为：</p>
+<pre data-anchor-id="cve0"><code class="language-css">@media screen and (orientation: landscape) {
+  .sidebar {
+    width: 500px; } }
+</code></pre>
+<p data-anchor-id="9pea">@media 甚至可以使用 SassScript（比如变量，函数，以及运算符）代替条件的名称或者值：</p>
+<p data-anchor-id="12im">最后，<code>@media</code> 查询（queries）可以包含 SassScript 表达式（包括变量 variables，函数 functions 和操作符operators）代替特征名称和特征值。</p>
+<pre data-anchor-id="c949"><code class="language-scss">$media: screen;
+    $feature: -webkit-min-device-pixel-ratio;
+$value: 1.5;
+
+@media #{$media} and ($feature: $value) {
+  .sidebar {
+    width: 500px;
+  }
+}
+</code></pre>
+<p data-anchor-id="995z">编译为：</p>
+<pre data-anchor-id="7til"><code class="language-css">@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .sidebar {
+    width: 500px; } }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="extend" data-anchor-id="mmmg"><code>@extend</code></h3>
+<p data-anchor-id="3f1v">设计一个页面时常常遇到这种情况：当一个样式类（class）含有另一个类的所有样式，并且它自己的特定样式。处理这种最常见的方法是在HTML同时使用一个通用样式类和特殊样式类。例如，假设我们设计需要一个普通错误的样式和一个严重错误的样式。我们可以类似这样写：</p>
+<pre data-anchor-id="70u8"><code class="language-html">&lt;div class="error seriousError"&gt;
+  Oh no! You've been hacked!
+&lt;/div&gt;
+</code></pre>
+<p data-anchor-id="gyt2">我们的样式如下</p>
+<pre data-anchor-id="vsyt"><code class="language-css">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  border-width: 3px;
+}
+</code></pre>
+<p data-anchor-id="hc8w">不幸的是，这意味着，我们必须时刻记住使用<code>.seriousError</code>的时候需要搭配使用<code>.error</code>。 <br>
+这对于维护来说是一个负担，甚至导致棘手的错误，并且导致无语意的样式。</p>
+<p data-anchor-id="eqvd"><code>@extend</code> 指令避免这些问题，告诉 Sass 一个选择器的样式应该继承另一选择器。 例如：</p>
+<pre data-anchor-id="b9j1"><code class="language-scss">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+</code></pre>
+<p data-anchor-id="i6a5">编译为：</p>
+<pre data-anchor-id="npqb"><code class="language-css">.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.seriousError {
+  border-width: 3px;
+}
+</code></pre>
+<p data-anchor-id="0rut">这意味着<code>.error</code>说定义的所有样式也适用于<code>.seriousError</code>，除了<code>.seriousError</code>的特定样式。相当于，每个带有<code>.seriousError</code>类的元素也带有<code>.error</code>类。</p>
+<p data-anchor-id="ai7x">其他使用了<code>.error</code> 规则也会同样继承给<code>.seriousError</code>，例如，如果我们有特殊错误样式的hack：</p>
+<pre data-anchor-id="3cwh"><code class="language-css">.error.intrusion {
+  background-image: url("/image/hacked.png");
+}
+</code></pre>
+<p data-anchor-id="a23c">然后<code>&lt;div class="seriousError intrusion"&gt;</code>也同样会使用了 <code>hacked.png</code> 背景。</p>
+<div class="md-section-divider"></div>
+<h4 id="how-it-works" data-anchor-id="k2ie">它是如何工作的（How it Works）</h4>
+<p data-anchor-id="rnzo"><code>@extend</code>通过在样式表中出现被扩展选择器（例如<code>.error</code>）的地方插入扩展选择器（例如<code>.seriousError</code>）。比如上面的例子：</p>
+<pre data-anchor-id="s2y3"><code class="language-scss">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.error.intrusion {
+  background-image: url("/image/hacked.png");
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+</code></pre>
+<p data-anchor-id="3m7d">编译为：</p>
+<pre data-anchor-id="1sbh"><code class="language-css">.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd; }
+
+.error.intrusion, .seriousError.intrusion {
+  background-image: url("/image/hacked.png"); }
+
+.seriousError {
+  border-width: 3px; }
+</code></pre>
+<p data-anchor-id="guev">当合并选择器时，<code>@extend</code> 会很聪明地避免不必要的重复，所以像<code>.seriousError.seriousError</code> 将转换为 <code>.seriousError</code>，此外，她不会生成不能匹配任何元素的选择器（比如 <code>#main#footer</code> ）。</p>
+<div class="md-section-divider"></div>
+<h4 id="extending-complex-selectors" data-anchor-id="6kjw">扩展复杂的选择器（Extending Complex Selectors）</h4>
+<p data-anchor-id="i0ok">Class 选择器并不是唯一可以被延伸 (extend) 的，Sass 允许延伸任何定义给单个元素的选择器，比如 .special.cool，a:hover 或者 a.user[href^="http://"] 等，例如：</p>
+<p data-anchor-id="3ml0">类（class）选择，并不是唯一可以扩展。她可以扩展任何定义给单个元素的选择器，如<code>.special.cool</code>, <code>a:hover</code>, 或 <code>a.user[href^="http://"]</code>。 例如：</p>
+<pre data-anchor-id="b1y8"><code class="language-scss">.hoverlink {
+  @extend a:hover;
+}
+</code></pre>
+<p data-anchor-id="1u8p">同带 class 元素一样，这意味着，<code>a:hover</code>定义的样式同样也适用于<code>.hoverlink</code>。例如：</p>
+<pre data-anchor-id="u3p5"><code class="language-scss">.hoverlink {
+  @extend a:hover;
+}
+a:hover {
+  text-decoration: underline;
+}
+</code></pre>
+<p data-anchor-id="ljtj">编译为：</p>
+<pre data-anchor-id="rzv8"><code class="language-css">a:hover, .hoverlink {
+  text-decoration: underline; }
+</code></pre>
+<p data-anchor-id="8n5n">与上面 <code>.error.intrusion</code> 的例子一样， <code>a:hover</code> 中所有的样式将继承给 <code>.hoverlink</code>，甚至包括其他使用到她的样式，例如：</p>
+<pre data-anchor-id="2q8z"><code class="language-scss">.hoverlink {
+  @extend a:hover;
+}
+.comment a.user:hover {
+  font-weight: bold;
+}
+</code></pre>
+<p data-anchor-id="p2ou">编译为：</p>
+<pre data-anchor-id="1jmg"><code class="language-css">.comment a.user:hover, .comment .user.hoverlink {
+  font-weight: bold; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="multiple-extends" data-anchor-id="l713">多重扩展 (Multiple Extends)</h4>
+<p data-anchor-id="ywoa">同一个选择器可以扩展多个选择器。这意味着，它继承了被扩展选择器的所有样式。例如：</p>
+<pre data-anchor-id="dnw1"><code class="language-scss">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.attention {
+  font-size: 3em;
+  background-color: #ff0;
+}
+.seriousError {
+  @extend .error;
+  @extend .attention;
+  border-width: 3px;
+}
+</code></pre>
+<p data-anchor-id="i0il">编译为：</p>
+<pre data-anchor-id="vjyf"><code class="language-css">.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd; }
+
+.attention, .seriousError {
+  font-size: 3em;
+  background-color: #ff0; }
+
+.seriousError {
+  border-width: 3px; }
+</code></pre>
+<p data-anchor-id="753b">每个带<code>.seriousError</code>类的元素也有<code>.error</code>类和<code>.attention</code>类。 <br>
+因此，定义在文档后面的样式优先级高于定义在文档前面的样式：<code>.seriousError</code>的背景颜色是<code>#ff0</code>，而非<code>#fdd</code>，因为 <code>.attention</code> 是在 <code>.error</code> 后面定义。</p>
+<p data-anchor-id="lsbq">多重扩展也可以用逗号分隔的选择器列表（list）写入。例如，<code>@extend .error, .attention</code>等同于<code>@extend .error; @extend .attention</code>。</p>
+<div class="md-section-divider"></div>
+<h4 id="chaining-extends" data-anchor-id="gl8t">链式扩展（Chaining Extends）</h4>
+<p data-anchor-id="en9e">一个选择器可以扩展另一个选择器，另一个选择器又扩展的第三选择器选择。 例如：</p>
+<pre data-anchor-id="m8oy"><code class="language-scss">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+.criticalError {
+  @extend .seriousError;
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+}
+</code></pre>
+<p data-anchor-id="rvqy">现在，带 <code>.seriousError</code> 类的每个元素将包含 <code>.error</code> 类，而带 <code>.criticalError</code> 类的每个元素不仅包含 <code>.criticalError</code>类也会同时包含 <code>.error</code> 类，上面的代码编译为：</p>
+<pre data-anchor-id="1siq"><code class="language-css">.error, .seriousError, .criticalError {
+  border: 1px #f00;
+  background-color: #fdd; }
+
+.seriousError, .criticalError {
+  border-width: 3px; }
+
+.criticalError {
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="selector-sequences" data-anchor-id="l9c0">选择器序列 (Selector Sequences)</h4>
+<p data-anchor-id="tddp">选择器序列，比如<code>.foo .bar</code> 或 <code>.foo + .bar</code>，目前还不能作为扩展。但是，选择器序列本身可以使用<code>@extend</code>。例如：</p>
+<pre data-anchor-id="abrp"><code class="language-scss">#fake-links .link {
+  @extend a;
+}
+
+a {
+  color: blue;
+  &amp;:hover {
+    text-decoration: underline;
+  }
+}
+</code></pre>
+<p data-anchor-id="u51a">将被编译为：</p>
+<pre data-anchor-id="6fad"><code class="language-css">a, #fake-links .link {
+  color: blue; }
+  a:hover, #fake-links .link:hover {
+    text-decoration: underline; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h5 id="merging-selector-sequences" data-anchor-id="pdwv">合并选择器序列 (Merging Selector Sequences)</h5>
+<p data-anchor-id="izj3">有时，选择器序列扩展另一个选择器，这个选择器出现在另一选择器序列中。在这种情况下，这两个选择器序列需要合并。例如：</p>
+<pre data-anchor-id="xgnl"><code class="language-scss">#admin .tabbar a {
+  font-weight: bold;
+}
+#demo .overview .fakelink {
+  @extend a;
+}
+</code></pre>
+<p data-anchor-id="5ubl">技术上讲能够生成所有匹配条件的结果，但是这样生成的样式表太复杂了，上面这个简单的例子就可能有 10 种结果。所以，Sass 只会编译输出有用的选择器。</p>
+<p data-anchor-id="0ez8">当两个列 (sequence) 合并时，如果没有包含相同的选择器，将生成两个新选择器：第一列出现在第二列之前，或者第二列出现在第一列之前。例如：</p>
+<pre data-anchor-id="kv4s"><code class="language-scss">#admin .tabbar a {
+  font-weight: bold;
+}
+#demo .overview .fakelink {
+  @extend a;
+}
+</code></pre>
+<p data-anchor-id="m3jj">编译为：</p>
+<pre data-anchor-id="mrd5"><code class="language-css">#admin .tabbar a,
+#admin .tabbar #demo .overview .fakelink,
+#demo .overview #admin .tabbar .fakelink {
+  font-weight: bold; }
+</code></pre>
+<p data-anchor-id="03wv">如果两个列 (sequence) 包含了相同的选择器，相同部分将会合并在一起，其他部分交替输出。在下面的例子里，两个列都包含 <code>#admin</code>，输出结果中它们合并在了一起：</p>
+<pre data-anchor-id="pe4y"><code class="language-scss">#admin .tabbar a {
+  font-weight: bold;
+}
+#admin .overview .fakelink {
+  @extend a;
+}
+</code></pre>
+<p data-anchor-id="flg4">编译为：</p>
+<pre data-anchor-id="8otj"><code class="language-css">#admin .tabbar a,
+#admin .tabbar .overview .fakelink,
+#admin .overview .tabbar .fakelink {
+  font-weight: bold; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="placeholders" data-anchor-id="q3xp"><code>@extend</code>-Only 选择器 (<code>@extend</code>-Only Selectors)</h4>
+<p data-anchor-id="zgl2">有时候你只会想写一个 <code>@extend</code> 扩展样式类，不想直接在你的HTML中使用。在写一个 Sass 样式库时，这是特别有用，如果他们需要，在这里你可以提供 <code>@extend</code> 扩展样式给用户，如果他们不需要，直接被忽视。</p>
+<p data-anchor-id="81sw">对于这种情况，如果使用普通的样式类，在你你最终生成的样式表中，会有很多额外（注：无用）的CSS，并且在HTML被使用时，和其他样式类结合的时候容易造成冲突。这就是 Sass 为什么支持"占位选择器"的原因（例如，<code>%foo</code>）。</p>
+<p data-anchor-id="b2km">占位选择器看起来很像普通的 class 和 id 选择器，只是 <code>#</code> 或 <code>.</code> 被替换成了 <code>%</code>。他可以像 class 或者 id 选择器那样使用，而它本身的规则，不会被编译到 CSS 文件中。例如：</p>
+<pre data-anchor-id="3nol"><code class="language-scss">// This ruleset won't be rendered on its own.
+#context a%extreme {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+</code></pre>
+<p data-anchor-id="i0ht">占位符选择器，就像class和id选择器那样可以用于扩展。扩展选择器，将会编译成CSS，占位符选择器本身不会被编译。例如：</p>
+<pre data-anchor-id="22v3"><code class="language-scss">.notice {
+  @extend %extreme;
+}
+</code></pre>
+<p data-anchor-id="u69b">编译为：</p>
+<pre data-anchor-id="b3rk"><code class="language-css">#context a.notice {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="the-optional-flag" data-anchor-id="jm44"><code>!optional</code> 标记（The <code>!optional</code> Flag）</h4>
+<p data-anchor-id="se0j">通常，当你扩展一个选择器的时候，如果说<code>@extend</code>不起作用了，你会收到一个错误提示。 <br>
+例如，如果没有 <code>.notice</code> 选择器,你这么写<code>a.important {@extend .notice}</code>,将会报错。如果只有<code>h1.notice</code>一个选择器包含了<code>.notice</code>，那么也会报错。因为 <code>h1</code> 会与 <code>a</code> 冲突，并且不会生成新的选择器。</p>
+<p data-anchor-id="8fu3">然而，有时候，要想<code>@extend</code>不生成任何新的选择器。只是在选择器后添加 <code>!optional</code>标志就可以了。例如：</p>
+<pre data-anchor-id="9dhf"><code class="language-scss">a.important {
+  @extend .notice !optional;
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="extend-in-directives" data-anchor-id="qwad">指令中的<code>@extend</code> (<code>@extend</code> in Directives)</h4>
+<p data-anchor-id="adx9">在指令中使用 <code>@extend</code> 时（比如在<code>@media</code> 中）存在一些限制：Sass 不可以将 <code>@media</code> 层外的 CSS 规则扩展给指令层内的 CSS，这样会生成大量的无用代码。意思是说，如果在 <code>@media</code> （或者其他 CSS 指令）中使用<code>@extend</code>，必须扩展给相同指令层中的选择器。</p>
+<p data-anchor-id="4kg2">下面的例子是可行的：</p>
+<pre data-anchor-id="0knb"><code class="language-scss">@media print {
+  .error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .seriousError {
+    @extend .error;
+    border-width: 3px;
+  }
+}
+</code></pre>
+<p data-anchor-id="kr5h">但下面这个例子会报错：</p>
+<pre data-anchor-id="uu3b"><code class="language-scss">.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+@media print {
+  .seriousError {
+    // INVALID EXTEND: .error is used outside of the "@media print" directive
+    @extend .error;
+    border-width: 3px;
+  }
+}
+</code></pre>
+<p data-anchor-id="jj4y">希望有一天，浏览器可以原生支持 <code>@extend</code> 指令，这样就可以在<code>@media</code>和其他指令中使用扩展功能了。</p>
+<div class="md-section-divider"></div>
+<h3 id="at-root" data-anchor-id="zy6h"><code>@at-root</code></h3>
+<p data-anchor-id="sqbd"><code>@at-root</code>指令导致一个或多个规则被限定输出在文档的根层级上，而不是被嵌套在其父选择器下。 <br>
+它可以被用于单一或内联选择器：</p>
+<pre data-anchor-id="ih0k"><code class="language-scss">.parent {
+  ...
+  @at-root .child { ... }
+}
+</code></pre>
+<p data-anchor-id="xgs9">这将生成：</p>
+<pre data-anchor-id="a3cx"><code class="language-css">.parent { ... }
+.child { ... }
+</code></pre>
+<p data-anchor-id="afay">或者它可以用于包含多个选择器的代码块：</p>
+<pre data-anchor-id="4jyh"><code class="language-scss">.parent {
+  ...
+  @at-root {
+    .child1 { ... }
+    .child2 { ... }
+  }
+  .step-child { ... }
+}
+</code></pre>
+<p data-anchor-id="8rmn">这将输出如下：</p>
+<pre data-anchor-id="hcod"><code class="language-css">.parent { ... }
+.child1 { ... }
+.child2 { ... }
+.parent .step-child { ... }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="at-root-without-and-at-root-with" data-anchor-id="znd5"><code>@at-root (without: ...)</code> 和 <code>@at-root (with: ...)</code>（<code>@at-root (without: ...)</code> and `@at-root (with: ...)）</h4>
+<p data-anchor-id="mn17">默认情况下， <code>@at-root</code>只是排除了选择器。然而，它也可以使用<code>@at-root</code>将选择器移动到嵌套指令（比如<code>@media</code>）之外。例如：</p>
+<pre data-anchor-id="gv3r"><code class="language-scss">@media print {
+  .page {
+    width: 8in;
+    @at-root (without: media) {
+      color: red;
+    }
+  }
+}
+</code></pre>
+<p data-anchor-id="cmyx">生成：</p>
+<pre data-anchor-id="0iga"><code class="language-css">@media print {
+  .page {
+    width: 8in;
+  }
+}
+.page {
+  color: red;
+}
+</code></pre>
+<p data-anchor-id="jakf">您可以使用<code>@at-root (without: ...)</code> 将规则移动到任何指令之外。你同样可以让多个指令做到这一点,只要多个指令使用空格分隔就可以了：<code>@at-root (without: media supports)</code>会将规则移动到<code>@media</code> 和 <code>@supports</code>查询（queries）之外。</p>
+<p data-anchor-id="qkqg">还有有两个特殊值你可以传递给<code>@at-root</code>。"rule"是指正常的CSS规则;<code>@at-root (without: rule)</code>等价于没有查询的<code>@at-root</code>。 <code>@at-root (without: all)</code> 意思是该样式应该移动到<em>全部</em>的指令和CSS规则之外。</p>
+<p data-anchor-id="9ez8">如果你想指定哪个指令或规则包含，而不是哪些应该排除，那么，你可以使用<code>with</code>代替<code>without</code>。 <br>
+例如，<code>@at-root (with: rule)</code>将规则移动到所有指令之外，但在CSS规则内会保留。</p>
+<div class="md-section-divider"></div>
+<h3 id="debug" data-anchor-id="ri03"><code>@debug</code></h3>
+<p data-anchor-id="z81m"><code>@debug</code>指令打印SassScript表达式的值到标准的错误输出流。这对于调试具有复杂SassScript 表达式的Sass文件非常有用的。 例如：</p>
+<pre data-anchor-id="dbkq"><code class="language-scss">@debug 10em + 12em;
+</code></pre>
+<p data-anchor-id="fayc">输出：</p>
+<pre data-anchor-id="bewp"><code class="language-css">Line 1 DEBUG: 22em
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="warn" data-anchor-id="w4ni"><code>@warn</code></h3>
+<p data-anchor-id="sy59"><code>@warn</code>指令打印SassScript表达式的值到标准的错误输出流。这对于警告用户弃用库 或 修复 mixin 轻微的错误是非常有用的。<code>@warn</code>和<code>@debug</code>之间有两个主要区别：</p>
+<ol data-anchor-id="urkb">
+<li>您可以使用<code>--quiet</code>命令行选项或<code>:quiet</code> Sass选项关闭警告。</li>
+<li>样式表跟踪将与消息一起被打印出来，这样，用户可以看到他们的样式在哪里引起了警告。</li>
+</ol>
+<p data-anchor-id="l2hu">用法示例:</p>
+<pre data-anchor-id="uykk"><code class="language-scss">@mixin adjust-location($x, $y) {
+  @if unitless($x) {
+        @warn "Assuming #{$x} to be in pixels";
+        $x: 1px * $x;
+      }
+      @if unitless($y) {
+    @warn "Assuming #{$y} to be in pixels";
+        $y: 1px * $y;
+      }
+      position: relative; left: $x; top: $y;
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="error" data-anchor-id="2fd2"><code>@error</code></h3>
+<p data-anchor-id="rn4p"><code>@error</code>指令抛出一个SassScript表达式的值作为一个致命的错误，其中包括一个不错的堆栈跟踪。这对于验证混入（mixin）和函数的参数很有用。例如：</p>
+<pre data-anchor-id="c2zk"><code class="language-scss">@mixin adjust-location($x, $y) {
+  @if unitless($x) {
+        @error "$x may not be unitless, was #{$x}.";
+      }
+      @if unitless($y) {
+    @error "$y may not be unitless, was #{$y}.";
+      }
+      position: relative; left: $x; top: $y;
+}
+</code></pre>
+<p data-anchor-id="yr0l">目前还没有办法捕获错误。</p>
+<div class="md-section-divider"></div>
+<h2 id="control-directives-expressions" data-anchor-id="0ig4">控制指令和表达式（Control Directives &amp; Expressions）</h2>
+<p data-anchor-id="ziez">SassScript支持一些基本控制指令和表达式，比如仅在在某些条件下包含样式，或者包括相同的样式几次变化。</p>
+<p data-anchor-id="arry"><strong>注意：</strong> 控制指令是一项高级功能，日常编写过程中并不常用到，主要在 <a href="#mixins">mixins（混合）</a>指令中使用，尤其是像<a href="javascript:if(confirm('http://compass-style.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://compass-style.org/'" tppabs="http://compass-style.org/" target="_blank">Compass</a>这样的库。</p>
+<div class="md-section-divider"></div>
+<h3 id="if" data-anchor-id="ipbi"><code>if()</code></h3>
+<p data-anchor-id="xccx">内置的<code>if()</code>函数可让您在一个条件处理分支并返回两种可能结果。它可以在任何脚本上下文中使用。<code>if</code>函数只判断相对应的一个参数并且返回 -- 这使您可以引用已经定义的或者可以计算的变量，否则将导致错误（例如，除以零）。</p>
+<pre data-anchor-id="g8jh"><code class="language-scss">if(true, 1px, 2px) =&gt; 1px
+if(false, 1px, 2px) =&gt; 2px
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="if_" data-anchor-id="rorn"><code>@if</code></h3>
+<p data-anchor-id="0zf3"><code>@if</code> 指令需要一个SassScript表达和嵌套在它下面要使用的样式，如果表达式返回值不为 <code>false</code> 或者 <code>null</code> ，那么后面花括号中的内容就会返回：</p>
+<pre data-anchor-id="3ebh"><code class="language-scss">p {
+  @if 1 + 1 == 2 { border: 1px solid;  }
+  @if 5 &lt; 3      { border: 2px dotted; }
+  @if null       { border: 3px double; }
+}
+</code></pre>
+<p data-anchor-id="tydi">编译为：</p>
+<pre data-anchor-id="7ajb"><code class="language-css">p {
+  border: 1px solid; }
+</code></pre>
+<p data-anchor-id="8n63"><code>@if</code> 语句后面可以跟多个<code>@else if</code>语句和一个 <code>@else</code> 语句。 <br>
+&nbsp;如果<code>@if</code>语句失败，Sass 将逐条尝试<code>@else if</code> 语句，直到有一个成功，或如果全部失败，那么会执行<code>@else</code>语句。 例如：</p>
+<pre data-anchor-id="cmjp"><code class="language-scss">$type: monster;
+    p {
+      @if $type == ocean {
+        color: blue;
+      } @else if $type == matador {
+        color: red;
+      } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}
+</code></pre>
+<p data-anchor-id="n30x">编译为：</p>
+<pre data-anchor-id="yg00"><code class="language-css">p {
+  color: green; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="for" data-anchor-id="apwo"><code>@for</code></h3>
+<p data-anchor-id="59wg"><code>@for</code>指令重复输出一组样式。对于每次重复，计数器变量用于调整输出结果。该指令有两种形式：<code>@for $var from &lt;start&gt; through &lt;end&gt;</code> 和 <code>@for $var from &lt;start&gt; to &lt;end&gt;</code>。注意关键字<code>through</code> 和 <code>to</code>的区别。<code>$var</code>可以是任何变量名，比如<code>$i</code>;<code>&lt;start&gt;</code> 和 <code>&lt;end&gt;</code>是应该返回整数的SassScript表达式。当<code>&lt;start&gt;</code>比<code>&lt;end&gt;</code>大的时候，计数器将递减，而不是增量。</p>
+<p data-anchor-id="inve"><code>@for</code>语句将设置<code>$var</code>为指定的范围内每个连续的数值，并且每一次输出的嵌套样式中使用<code>$var</code>的值。对于<code>from ... through</code>的形式，范围<em>包括</em><code>&lt;start&gt;</code>和<code>&lt;end&gt;</code>的值，但<code>from ... to</code>的形式从<code>&lt;start&gt;</code>开始运行，<em>但不包括</em><code>&lt;end&gt;</code>的值。使用<code>through</code>语法，</p>
+<pre data-anchor-id="exx8"><code class="language-scss">@for $i from 1 through 3 {
+      .item-#{$i} { width: 2em * $i; }
+}
+</code></pre>
+<p data-anchor-id="vi4o">编译为：</p>
+<pre data-anchor-id="bghs"><code class="language-css">.item-1 {
+  width: 2em; }
+.item-2 {
+  width: 4em; }
+.item-3 {
+  width: 6em; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="each-directive" data-anchor-id="ph74"><code>@each</code></h3>
+<p data-anchor-id="pxg5"><code>@each</code>指令通常格式是<code>@each $var in &lt;list or map&gt;</code>。<code>$var</code>可以是任何变量名，像<code>$length</code> 或者 <code>$name</code>，和<code>&lt;list or map&gt;</code>是一个返回列表（list）或 map 的 SassScript 表达式。</p>
+<p data-anchor-id="hk79"><code>@each</code> 规则将<code>$var</code>设置为列表（list）或 map 中的每个项目，输出样式中包含使用<code>$var</code>的值。 例如：</p>
+<pre data-anchor-id="zvea"><code class="language-scss">@each $animal in puma, sea-slug, egret, salamander {
+      .#{$animal}-icon {
+        background-image: url('/images/#{$animal}.png');
+  }
+}
+</code></pre>
+<p data-anchor-id="b000">编译为：</p>
+<pre data-anchor-id="6j6f"><code class="language-css">.puma-icon {
+  background-image: url('/images/puma.png'); }
+.sea-slug-icon {
+  background-image: url('/images/sea-slug.png'); }
+.egret-icon {
+  background-image: url('/images/egret.png'); }
+.salamander-icon {
+  background-image: url('/images/salamander.png'); }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="each-multi-assign" data-anchor-id="i3dg">多重赋值（Multiple Assignment）</h4>
+<p data-anchor-id="531x"><code>@each</code>指令也可以使用多个变量，格式为<code>@each $var1,$var2, ... in &lt;list&gt;</code>。如果<code>&lt;list&gt;</code>是列表（list）中的列表，子列表中的每个元素被分配给各自的变量。例如：</p>
+<pre data-anchor-id="7ujh"><code class="language-scss">@each $animal, $color, $cursor in (puma, black, default),
+                                      (sea-slug, blue, pointer),
+                                      (egret, white, move) {
+      .#{$animal}-icon {
+        background-image: url('/images/#{$animal}.png');
+        border: 2px solid $color;
+        cursor: $cursor;
+  }
+}
+</code></pre>
+<p data-anchor-id="qxdo">编译为：</p>
+<pre data-anchor-id="4uiz"><code class="language-css">.puma-icon {
+  background-image: url('/images/puma.png');
+  border: 2px solid black;
+  cursor: default; }
+.sea-slug-icon {
+  background-image: url('/images/sea-slug.png');
+  border: 2px solid blue;
+  cursor: pointer; }
+.egret-icon {
+  background-image: url('/images/egret.png');
+  border: 2px solid white;
+  cursor: move; }
+</code></pre>
+<p data-anchor-id="bmfh">因为<a href="#maps">maps</a>被视为键值对的列表，所以多重赋值也可以很好的工作。例如：</p>
+<pre data-anchor-id="1quo"><code class="language-scss">@each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+  #{$header} {
+        font-size: $size;
+  }
+}
+</code></pre>
+<p data-anchor-id="ag0t">编译为：</p>
+<pre data-anchor-id="wd5j"><code class="language-css">h1 {
+  font-size: 2em; }
+h2 {
+  font-size: 1.5em; }
+h3 {
+  font-size: 1.2em; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="while" data-anchor-id="ajp9"><code>@while</code></h3>
+<p data-anchor-id="pgwt"><code>@while</code> 指令重复输出嵌套样式，直到SassScript表达式返回结果为<code>false</code>。这可用于实现比<code>@for</code>语句更复杂的循环，只是很少会用到例如：</p>
+<pre data-anchor-id="zbqn"><code class="language-scss">$i: 6;
+    @while $i &gt; 0 {
+  .item-#{$i} { width: 2em * $i; }
+      $i: $i - 2;
+}
+</code></pre>
+<p data-anchor-id="v7ib">编译为：</p>
+<pre data-anchor-id="pthg"><code class="language-css">.item-6 {
+  width: 12em; }
+
+.item-4 {
+  width: 8em; }
+
+.item-2 {
+  width: 4em; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h2 id="mixins" data-anchor-id="uz2o">混入指令 (Mixin Directives)</h2>
+<p data-anchor-id="tlxx">混入(mixin)允许您定义可以在整个样式表中重复使用的样式，而避免了使用无语意的类（class），比如 <code>.float-left</code>。混入(mixin)还可以包含所有的CSS规则，以及任何其他在Sass文档中被允许使用的东西。 <br>
+他们甚至可以带<a href="#mixin-arguments">arguments</a>，引入变量，只需少量的混入(mixin)代码就能输出多样化的样式。</p>
+<div class="md-section-divider"></div>
+<h3 id="defining_a_mixin" data-anchor-id="dtdx">定义一个混入(mixin):<code>@mixin</code>（Defining a Mixin: <code>@mixin</code>）</h3>
+<p data-anchor-id="t6m5">混入(mixin)通过 <code>@mixin</code> 指令定义。在它后面跟混入的名称和任选的<a href="#mixin-arguments">arguments（参数）</a>，以及混入的内容块。例如，<code>large-text</code>混入定义如下：</p>
+<pre data-anchor-id="72ap"><code class="language-scss">@mixin large-text {
+  font: {
+    family: Arial;
+    size: 20px;
+    weight: bold;
+  }
+  color: #ff0000;
+}
+</code></pre>
+<p data-anchor-id="yj9k">混入也可以包含选择器和属性的混合体，选择器中甚至可以包含<a href="#referencing_parent_selectors_">parent references（父选择器）</a>。 例如：</p>
+<pre data-anchor-id="fuhg"><code class="language-scss">@mixin clearfix {
+  display: inline-block;
+  &amp;:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html &amp; { height: 1px }
+}
+</code></pre>
+<p data-anchor-id="sost">由于历史原因，混入（mixin）的名字（和所有其他 Sass 标识符）可以互换连字符和下划线。例如，如果你定义了一个名为<code>add-column</code>的混入，你可以把它作为<code>add_column</code>，反之亦然。</p>
+<div class="md-section-divider"></div>
+<h3 id="including_a_mixin" data-anchor-id="zp8i">引用混合样式:<code>@include</code> （Including a Mixin: <code>@include</code>）</h3>
+<p data-anchor-id="07ps">使用 <code>@include</code> 指令可以将混入（mixin）引入到文档中。这需要一个混入的名称和可选的<a href="#mixin-arguments">参数传递给它</a>，并包括由混入定义的当前规则的样式。 例如：</p>
+<pre data-anchor-id="9ndo"><code class="language-scss">.page-title {
+  @include large-text;
+  padding: 4px;
+  margin-top: 10px;
+}
+</code></pre>
+<p data-anchor-id="esh1">编译为：</p>
+<pre data-anchor-id="077g"><code class="language-css">.page-title {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff0000;
+  padding: 4px;
+  margin-top: 10px; }
+</code></pre>
+<p data-anchor-id="p911">混入（mixin）也可以包含在任何规则的外（即，在文档的根）,只要它们不直接定义的任何属性或使用任何父选择器引用。例如：</p>
+<pre data-anchor-id="rl03"><code class="language-scss">@mixin silly-links {
+  a {
+    color: blue;
+    background-color: red;
+  }
+}
+
+@include silly-links;
+</code></pre>
+<p data-anchor-id="5v5v">编译为：</p>
+<pre data-anchor-id="q9t2"><code class="language-css">a {
+  color: blue;
+  background-color: red; }
+</code></pre>
+<p data-anchor-id="m81c">混入（mixin）定义也可以包含其他的混入。例如：</p>
+<pre data-anchor-id="dy9b"><code class="language-scss">@mixin compound {
+  @include highlighted-background;
+  @include header-text;
+}
+
+@mixin highlighted-background { background-color: #fc0; }
+@mixin header-text { font-size: 20px; }
+</code></pre>
+<p data-anchor-id="feja">混入可以包含自己。这行为不同于 Sass 3.3 之前的版本，以前混入递归是被禁止的。</p>
+<p data-anchor-id="qqe4">只定义后代选择器的混入可以安全地混入到文件的最顶层。</p>
+<div class="md-section-divider"></div>
+<h3 id="mixin-arguments" data-anchor-id="ycue">参数 (Arguments)</h3>
+<p data-anchor-id="xhts">混入（mixin）可以用 SassScript 值作为参数，给定的参数被包括在混入（mixin）中并且作为为变量提供给混入（mixin）。</p>
+<p data-anchor-id="bm3x">当定义一个混入（mixin）的时候，参数被作为变量名，写到混入（mixin）名字后面的括号内，多个参数可以用逗号分隔。然后，当调用混入的时候，值通过对应的参数顺序被传递。 例如：</p>
+<pre data-anchor-id="pghm"><code class="language-scss">@mixin sexy-border($color, $width) {
+  border: {
+    color: $color;
+        width: $width;
+    style: dashed;
+  }
+}
+
+p { @include sexy-border(blue, 1in); }
+</code></pre>
+<p data-anchor-id="ohiq">编译为：</p>
+<pre data-anchor-id="bto0"><code class="language-css">p {
+  border-color: blue;
+  border-width: 1in;
+  border-style: dashed; }
+</code></pre>
+<p data-anchor-id="byap">混入（mixin）也可以使用普通的变量赋值语法为参数指定默认值。然后，当调用混入的时候，如果没有给参数赋值，则自动会使用默认值代替。 例如：</p>
+<pre data-anchor-id="xnwz"><code class="language-scss">@mixin sexy-border($color, $width: 1in) {
+  border: {
+    color: $color;
+        width: $width;
+    style: dashed;
+  }
+}
+p { @include sexy-border(blue); }
+h1 { @include sexy-border(blue, 2in); }
+</code></pre>
+<p data-anchor-id="2ao4">编译为：</p>
+<pre data-anchor-id="0yyg"><code class="language-css">p {
+  border-color: blue;
+  border-width: 1in;
+  border-style: dashed; }
+
+h1 {
+  border-color: blue;
+  border-width: 2in;
+  border-style: dashed; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h4 id="keyword-arguments-mixin" data-anchor-id="5gk2">关键字参数 (Keyword Arguments)</h4>
+<p data-anchor-id="rmiv">混入（mixin）在引入（<code>@include</code>指令）的时候也可以使用明确的关键字参数。例如，上面的例子可以写成：</p>
+<pre data-anchor-id="zoxp"><code class="language-scss">p { @include sexy-border($color: blue); }
+    h1 { @include sexy-border($color: blue, $width: 2in); }
+</code></pre>
+<p data-anchor-id="fxoo">虽然这是不够简明，但是它可以使样式表更容易阅读。它给函数呈现了更加灵活的接口，它使多参数的混入更加容易调用。</p>
+<p data-anchor-id="xghw">命名的参数可以按任何顺序进行传递，有默认值的参数可以省略。由于命名参数是变量名，下划线和连字符可以互换使用。</p>
+<div class="md-section-divider"></div>
+<h4 id="variable-arguments" data-anchor-id="1rzm">可变参数 (Variable Arguments)</h4>
+<p data-anchor-id="sac2">有时，不能确定一个混入（mixin）或者一个函数（function）使用多少个参数。例如，用于创建盒子阴影（box-shadow）的一个混入（mixin）可以采取任何数量的box-shadow作为参数。对于这些情况，Sass支持"可变参数",参数在声明混入（mixin）或函数（function）结束的地方，所有剩余的参数打包成一个<a href="#lists">列表（list）</a>。参数看起来就像普通参数一样，但后面跟随着<code>...</code>。例如：</p>
+<pre data-anchor-id="52kt"><code class="language-scss">@mixin box-shadow($shadows...) {
+      -moz-box-shadow: $shadows;
+      -webkit-box-shadow: $shadows;
+      box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+</code></pre>
+<p data-anchor-id="4os7">编译为：</p>
+<pre data-anchor-id="8oh5"><code class="language-css">.shadows {
+  -moz-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  -webkit-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+}
+</code></pre>
+<p data-anchor-id="6k0y">可变参数可以包含任何关键字参数传递给混入（mixin）或者函数（function）。这些可以使用<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#keywords-instance_method'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#keywords-instance_method" target="_blank"><code>keywords($args)</code>函数</a> 来访问，返回一个map，参数名称字符串（无<code>$</code>）和值的键值对。</p>
+<p data-anchor-id="2ckp">可变参数，也可以在调用（@include指令）一个混入（mixin）时使用。使用相同的语法，你可以扩展值的列表（list），以便每个值作为单独的参数传入，或扩展值的map，以使每个键值对作为一个关键字参数处理。例如：</p>
+<pre data-anchor-id="omnb"><code class="language-scss">@mixin colors($text, $background, $border) {
+      color: $text;
+      background-color: $background;
+      border-color: $border;
+}
+
+$values: #ff0000, #00ff00, #0000ff;
+    .primary {
+      @include colors($values...);
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+    .secondary {
+      @include colors($value-map...);
+}
+</code></pre>
+<p data-anchor-id="4y48">编译为：</p>
+<pre data-anchor-id="sghd"><code class="language-css">.primary {
+  color: #ff0000;
+  background-color: #00ff00;
+  border-color: #0000ff;
+}
+
+.secondary {
+  color: #00ff00;
+  background-color: #0000ff;
+  border-color: #ff0000;
+}
+</code></pre>
+<p data-anchor-id="af85">你可以同时传递一个列表（list）和一个map参数，只要列表（list）在map上之前，比如<code>@include colors($values..., $map...)</code>。</p>
+<p data-anchor-id="756q">您可以使用可变参数来包装一个混入（mixin）并且添加额外的样式，而不改变混入（mixin）的参数签名。如果你这样做，关键字参数将通过包装的混入（mixin）直接传递。例如：</p>
+<pre data-anchor-id="2boy"><code class="language-scss">@mixin wrapped-stylish-mixin($args...) {
+      font-weight: bold;
+      @include stylish-mixin($args...);
+}
+
+.stylish {
+  // The $width argument will get passed on to "stylish-mixin" as a keyword
+      @include wrapped-stylish-mixin(#00ff00, $width: 100px);
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="mixin-content" data-anchor-id="11uj">传递内容块到混入(Passing Content Blocks to a Mixin)</h3>
+<p data-anchor-id="mp21">样式内容块可以传递到混入（mixin）包含样式的位置。样式内容块将出现在混入内的任何 <code>@content</code> 指令的位置。这使得可以定义抽象 关联到选择器和指令的解析。</p>
+<p data-anchor-id="77xy">例如：</p>
+<pre data-anchor-id="r9yt"><code class="language-scss">@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url(/logo.gif);
+  }
+}
+</code></pre>
+<p data-anchor-id="2qav">生成:</p>
+<pre data-anchor-id="m35d"><code class="language-css">* html #logo {
+  background-image: url(/logo.gif);
+}
+</code></pre>
+<p data-anchor-id="ftps">同样的混入（mixin）可以在<code>.sass</code> 简写语法（<code>@mixin</code> 可以用 <code>=</code> 表示，而 <code>@include</code> 可以用 <code>+</code> 表示）来完成：</p>
+<pre data-anchor-id="khcg"><code class="language-scss">=apply-to-ie6-only
+  * html
+    @content
+
++apply-to-ie6-only
+  #logo
+    background-image: url(/logo.gif)
+</code></pre>
+<p data-anchor-id="1ndj"><strong>注意：</strong> 当<code>@content</code>指令指定多次或在一个循环中指定的时候，样式块将在每次调用中被复制并引用。</p>
+<div class="md-section-divider"></div>
+<h4 id="variable-scope-and-content-blocks" data-anchor-id="9itq">变量的作用域和内容块（Variable Scope and Content Blocks）</h4>
+<p data-anchor-id="mrxm">传递给混入（mixin）的内容块在其被定义的作用域中进行运算，而不是混入（mixin）的作用域。这意味着混入（mixin）的局部变量<strong>不能</strong>传递给样式块使用，并且变量将解析为全局值：</p>
+<pre data-anchor-id="vpol"><code class="language-scss">$color: white;
+    @mixin colors($color: blue) {
+  background-color: $color;
+      @content;
+      border-color: $color;
+}
+.colors {
+  @include colors { color: $color; }
+}
+</code></pre>
+<p data-anchor-id="5mbs">编译为:</p>
+<pre data-anchor-id="hup9"><code class="language-css">.colors {
+  background-color: blue;
+  color: white;
+  border-color: blue;
+}
+</code></pre>
+<p data-anchor-id="kgfn">另外，这清楚地表明，变量和传递到块中使用的混入，指向块定义的周围其他样式。例如：</p>
+<pre data-anchor-id="fdsu"><code class="language-scss">#sidebar {
+  $sidebar-width: 300px;
+      width: $sidebar-width;
+  @include smartphone {
+    width: $sidebar-width / 3;
+  }
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h2 id="function_directives" data-anchor-id="6n84">函数指令 (Function Directives)</h2>
+<p data-anchor-id="cucd">Sass 支持自定义函数，并能在任何值或脚本上下文中使用。例如</p>
+<pre data-anchor-id="e5nu"><code class="language-scss">$grid-width: 40px;
+    $gutter-width: 10px;
+
+@function grid-width($n) {
+      @return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+
+#sidebar { width: grid-width(5); }
+</code></pre>
+<p data-anchor-id="acrv">就变成了:</p>
+<pre data-anchor-id="jl8d"><code class="language-css">#sidebar {
+  width: 240px; }
+</code></pre>
+<p data-anchor-id="39ei">正如你看到的，函数可以访问任何全局定义的变量，以及接受参数，就像一个混入（mixin）。函数可以包含语句，并且你必须调用<code>@return</code>来设置函数的返回值。</p>
+<p data-anchor-id="0tko">与混入（mixin）一样，你可以使用关键字参数来调用Sass定义的函数。在上面的例子中，我们可以这样调用函数：</p>
+<pre data-anchor-id="96x5"><code class="language-scss">#sidebar { width: grid-width($n: 5); }
+</code></pre>
+<p data-anchor-id="trg7">建议您在函数前加上前缀，以避免命名冲突，其他人阅读样式表的时候也会知道它们不是 Sass 或者 CSS 的自带功能。例如，如果您在ACME公司工作，你可以给上面的函数取名为<code>-acme-grid-width</code>。</p>
+<p data-anchor-id="1bp3">用户自定义的函数也支持<a href="#variable_arguments">可变参数</a>，方式和混入（mixin）是相同的。</p>
+<p data-anchor-id="m9l2">由于历史的原因，函数名（和所有其他Sass标识符）中连字符和下划线可以互换。例如，如果你定义了一个名为<code>grid-width</code>的函数，你可以通过<code>grid_width</code>调用它，反之亦然。</p>
+<div class="md-section-divider"></div>
+<h2 id="output-style" data-anchor-id="kik9">输出格式 (Output Style)</h2>
+<p data-anchor-id="8akk">虽然Sass 默认的 CSS 输出格式非常好，并且能反映文档的结构，但是由于每个人的喜好和需求各不相同，因此Sass 支持其他几种格式。</p>
+<p data-anchor-id="mu6u">Sass 提供了四种输出格式，可以通过<a href="#style-option"><code>:style</code> 选项</a> 选项设定，或者在命令行中使用 --style 选项。</p>
+<p data-anchor-id="n2k3">Sass 允许您通过设置<a href="#style-option"><code>:style</code> 选项</a> 或使用 <code>--style</code> 命令行标志，在四种不同的输出格式之间进行选择。</p>
+<div class="md-section-divider"></div>
+<h3 id="nested" data-anchor-id="o8mb"><code>:nested</code></h3>
+<p data-anchor-id="c5h4">nested（嵌套）格式是 Sass 默认的输出格式，因为它的格式反映CSS样式与HTML文档结构。每个属性都独占用一行，但缩排不是固定的。每个规则是基于它的何嵌套深度缩进。例如：</p>
+<pre data-anchor-id="udsv"><code class="language-css">#main {
+  color: #fff;
+  background-color: #000; }
+  #main p {
+    width: 10em; }
+
+.huge {
+  font-size: 10em;
+  font-weight: bold;
+  text-decoration: underline; }
+</code></pre>
+<p data-anchor-id="3xsk">当阅读大型 CSS 文件时，nested（嵌套）格式是非常有用的：不用详细阅读，就可以让你轻松掌握文件的结构。</p>
+<div class="md-section-divider"></div>
+<h3 id="expanded" data-anchor-id="ebet"><code>:expanded</code></h3>
+<p data-anchor-id="9yw6">expanded（扩展）格式更像是手写的CSS样式，每个属性和规则都独占用一行。在规则之内的属性缩进的，但规则没有任何特殊的缩进。例如：</p>
+<pre data-anchor-id="fjca"><code class="language-css">#main {
+  color: #fff;
+  background-color: #000;
+}
+#main p {
+  width: 10em;
+}
+
+.huge {
+  font-size: 10em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="compact" data-anchor-id="oo1k"><code>:compact</code></h3>
+<p data-anchor-id="xu4f">compact（紧凑）格式比起nested（嵌套）或expanded（扩展）格式占据更小的空间。这种格式重点聚焦在选择器上，不是它们的属性。每个CSS规则独占用一行，该行还包括定义的每个属性。嵌套的规则都是另起一行，不嵌套的选择器会输出空白行作为分隔符。 例如：</p>
+<pre data-anchor-id="rlty"><code class="language-css">#main { color: #fff; background-color: #000; }
+#main p { width: 10em; }
+
+.huge { font-size: 10em; font-weight: bold; text-decoration: underline; }
+</code></pre>
+<div class="md-section-divider"></div>
+<h3 id="compressed" data-anchor-id="5i6n"><code>:compressed</code></h3>
+<p data-anchor-id="y2kt">compressed（压缩）格式占用尽可能小的空间，在该文件的末尾会有一个换行，并且除了必要的分隔选择器之外，基本没有多余空格，它还包括其他一些小的压缩，比如选择颜色最小的表示方式。这意味着可读性很差。 例如：</p>
+<pre data-anchor-id="g7bf"><code class="language-css">#main{color:#fff;background-color:#000}#main p{width:10em}.huge{font-size:10em;font-weight:bold;text-decoration:underline}
+</code></pre>
+<div class="md-section-divider"></div>
+<h2 id="extending-sass" data-anchor-id="ipkq">扩展 Sass (Extending Sass)</h2>
+<p data-anchor-id="fte4">对于独特的需求，Sass为用户提供了多项高级定制功能。使用这些功能需要对Ruby有深刻的理解。</p>
+<div class="md-section-divider"></div>
+<h3 id="defining-custom-sass-functions" data-anchor-id="vdnd">自定义 Sass 函数 (Defining Custom Sass Functions)</h3>
+<p data-anchor-id="t1oh">用户通过 Ruby API 可以自定义 Sass 函数，更多信息请查看 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Script/Functions.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Script/Functions.html#adding_custom_functions'" tppabs="http://sass-lang.com/documentation/Sass/Script/Functions.html#adding_custom_functions" target="_blank">源代码文档</a>。</p>
+<div class="md-section-divider"></div>
+<h3 id="cache-stores" data-anchor-id="w8fh">缓存存储（Cache Stores）</h3>
+<p data-anchor-id="olgh">Sass会缓存已经解析的文档，这使得它们可以重复使用，而无需再次解析，除非他们已经被更改。 默认情况下，Sass会将这些缓存文件写到 <a href="#cache_location-option"><code>:cache_location</code></a>指定的文件系统中。如果你不能写入文件系统或者需要ruby进程或计算机共享缓存，那么你可以定义自己的缓存存储，并设置<a href="#cache_store-option"><code>:cache_store</code>选项</a>。有关创建自定义缓存存储的详细信息，请查看<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/CacheStores/Base.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/CacheStores/Base.html'" tppabs="http://sass-lang.com/documentation/Sass/CacheStores/Base.html" target="_blank">源代码文档</a>。</p>
+<div class="md-section-divider"></div>
+<h3 id="custom-importers" data-anchor-id="mwo1">自定义导入 (Custom Importers)</h3>
+<p data-anchor-id="b4mw">Sass导入主要负责获取路径传递给<code>@import</code>并找到这些路径相应的Sass代码。默认情况下，这些代码是从<a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Importers/Filesystem.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Importers/Filesystem.html'" tppabs="http://sass-lang.com/documentation/Sass/Importers/Filesystem.html" target="_blank">文件系统</a>中加载，但是Importers可以从数据库加载，通过HTTP，或者使用不同的文件命名方案，被添加到Sass。</p>
+<p data-anchor-id="9vbh">每个importer负责一个单独的加载路径（或任何相应的后端概念）。importer可以和普通的文件系统路径一起放置在<a href="javascript:if(confirm('http://sass-lang.com/documentation/file.SASS_REFERENCE.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/file.SASS_REFERENCE.html#load_paths-option'" tppabs="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#load_paths-option" target="_blank"><code>:load_paths</code>数组</a>中。</p>
+<p data-anchor-id="e9fc">当解析一个<code>@import</code>的时候，Sass将通过加载路径寻找importer来成功地导入路径。一旦被发现，该导入的文件就会被使用。</p>
+<p data-anchor-id="x03o">用户创建的导入必须继承自 <a href="javascript:if(confirm('http://sass-lang.com/documentation/Sass/Importers/Base.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sass-lang.com/documentation/Sass/Importers/Base.html'" tppabs="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass::Importers::Base</a>。</p>
+</div>
+</article>
+</div>
+<script src="res/prism.js" tppabs="https://www.html.cn/doc/sass/res/prism.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../hm.baidu.com/hm.js-e9ccdced32867527733a2550ec94eee6"/*tpa=https://hm.baidu.com/hm.js?e9ccdced32867527733a2550ec94eee6*/;
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../www.google-analytics.com/analytics.js'/*tpa=https://www.google-analytics.com/analytics.js*/,'ga');
+
+  ga('create', 'UA-43525385-9', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
