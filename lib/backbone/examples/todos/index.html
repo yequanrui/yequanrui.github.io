@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Backbone.js Todos</title>
+<link rel="stylesheet" href="todos.css" tppabs="https://www.html.cn/doc/backbone/examples/todos/todos.css"/>
+</head>
+<body>
+<div id="todoapp">
+<header>
+<h1>Todos</h1>
+<input id="new-todo" type="text" placeholder="What needs to be done?">
+</header>
+<section id="main">
+<input id="toggle-all" type="checkbox">
+<label for="toggle-all">Mark all as complete</label>
+<ul id="todo-list"></ul>
+</section>
+<footer>
+<a id="clear-completed">Clear completed</a>
+<div id="todo-count"></div>
+</footer>
+</div>
+<div id="instructions">
+Double-click to edit a todo.
+</div>
+<div id="credits">
+Created by
+<br />
+<a href="javascript:if(confirm('http://jgn.me/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://jgn.me/'" tppabs="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>.
+<br />Rewritten by: <a href="javascript:if(confirm('http://addyosmani.github.com/todomvc  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://addyosmani.github.com/todomvc'" tppabs="http://addyosmani.github.com/todomvc">TodoMVC</a>.
+</div>
+<script src="../../test/vendor/json2.js" tppabs="https://www.html.cn/doc/backbone/test/vendor/json2.js"></script>
+<script src="../../test/vendor/jquery.js" tppabs="https://www.html.cn/doc/backbone/test/vendor/jquery.js"></script>
+<script src="../../test/vendor/underscore.js" tppabs="https://www.html.cn/doc/backbone/test/vendor/underscore.js"></script>
+<script src="../../backbone.js" tppabs="https://www.html.cn/doc/backbone/backbone.js"></script>
+<script src="../backbone.localStorage.js" tppabs="https://www.html.cn/doc/backbone/examples/backbone.localStorage.js"></script>
+<script src="todos.js" tppabs="https://www.html.cn/doc/backbone/examples/todos/todos.js"></script>
+<script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+      <label><%- title %></label>
+      <a class="destroy"></a>
+    </div>
+    <input class="edit" type="text" value="<%- title %>" />
+  </script>
+<script type="text/template" id="stats-template">
+    <% if (done) { %>
+      <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+    <% } %>
+    <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+  </script>
+</body>
+</html>
