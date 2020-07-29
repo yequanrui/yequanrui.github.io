@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Less &#x6269;&#x5145;&#x4E86; CSS &#x8BED;&#x8A00;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x8BF8;&#x5982;&#x53D8;&#x91CF;&#x3001;&#x6DF7;&#x5408;&#xFF08;mixin&#xFF09;&#x3001;&#x8FD0;&#x7B97;&#x3001;&#x51FD;&#x6570;&#x7B49;&#x3002;  Less &#x65E2;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF08;Node.js &#x548C; Rhino &#x5E73;&#x53F0;&#xFF09;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x6D4F;&#x89C8;&#x5668;&#xFF09;&#x3002;
+">
+<meta name="keywords" content="Less,Lesscss,CSS,SASS,sass-lang,&#x6837;&#x5F0F;&#x8868;,&#x9884;&#x5904;&#x7406;,&#x9884;&#x7F16;&#x8BD1;
+">
+<meta name="author" content="The Core Less Team">
+<title>
+&#x7528;&#x6CD5; | Less.js &#x4E2D;&#x6587;&#x6587;&#x6863;
+</title>
+<link href="../public/css/index.css" tppabs="https://www.html.cn/doc/less/public/css/index.css" rel="stylesheet">
+<script type="text/javascript">
+  WebFontConfig = {google: {families: ['PT+Sans:400,700,400italic,700italic', 'PT+Mono&subset=latin,cyrillic'] }};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+<!--[if lt IE 9]>
+  <script src="../../../../oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" tppabs="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="../../../../oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js" tppabs="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
+</head>
+<body class="usage&#xFF08;&#x7528;&#x6CD5;&#xFF09;">
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+<div class="container">
+<div class="navbar-header">
+<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a href="../index.htm#" tppabs="https://www.html.cn/doc/less/#" class="navbar-brand" alt="Less">
+<img src="../public/img/logo.png" tppabs="https://www.html.cn/doc/less/public/img/logo.png">
+</a>
+</div>
+<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+<ul class="nav navbar-nav">
+<li>
+<a href="../features/index.htm" tppabs="https://www.html.cn/doc/less/features/">&#x8BED;&#x8A00;&#x7279;&#x6027;</a>
+</li>
+<li>
+<a href="../functions/index.htm" tppabs="https://www.html.cn/doc/less/functions/">&#x51FD;&#x6570;&#x53C2;&#x8003;</a>
+</li>
+<li>
+<a href="index.htm" tppabs="https://www.html.cn/doc/less/usage/">&#x7528;&#x6CD5;</a>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a href="../about/index.htm" tppabs="https://www.html.cn/doc/less/about/">&#x5173;&#x4E8E;</a>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li> <a href="javascript:if(confirm('https://github.com/less/less-docs  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs'" tppabs="https://github.com/less/less-docs">Docs Repo</a> </li>
+<li> <a href="javascript:if(confirm('https://github.com/less/less-docs/issues?&state=open  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/issues?&state=open'" tppabs="https://github.com/less/less-docs/issues?&state=open">Docs Issues</a> </li>
+<li class="divider"></li>
+<li> <a href="javascript:if(confirm('https://github.com/less/less.js.git  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js.git'" tppabs="https://github.com/less/less.js.git">Less.js Repo</a> </li>
+<li> <a href="javascript:if(confirm('https://github.com/less/less.js/issues  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/issues'" tppabs="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="docs-header" id="content">
+<div class="container">
+<h1>&#x7528;&#x6CD5;</h1>
+<p>&#x5982;&#x4F55;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x7B2C;&#x4E09;&#x65B9;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528; Less&#x3002;</p>
+</div>
+</div>
+<div class="banner">
+<div class="container">
+less v2.2.0 has been released -
+<strong>
+<a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/CHANGELOG.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/CHANGELOG.md'" tppabs="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
+</strong>
+</div>
+</div>
+<div class="container docs-container">
+<div class="row">
+<div class="col-md-3">
+<div class="sidebar hidden-print" role="complementary">
+<div id="navigation">
+<ul class="nav sidenav"><li><a href="#using-less-environments">Using Less&#xFF08;&#x4F7F;&#x7528; Less&#xFF09;</a></li>
+<li><a href="#v2-upgrade-guide">V2 Upgrade Guide</a><ul class="nav"><li><a href="#v2-upgrade-guide-language-changes">Language Changes</a></li>
+<li><a href="#v2-upgrade-guide-command-line-usage">Command line usage</a></li>
+<li><a href="#v2-upgrade-guide-clean-css">Clean CSS</a></li>
+<li><a href="#v2-upgrade-guide-sourcemaps">Sourcemaps</a></li>
+<li><a href="#v2-upgrade-guide-programmatic-usage">Programmatic Usage</a></li>
+<li><a href="#v2-upgrade-guide-browser-usage">Browser usage</a></li></ul></li>
+<li><a href="#command-line-usage">Command Line Usage</a><ul class="nav"><li><a href="#command-line-usage-installing-lessc-for-use-globally-lessc-">Installing lessc for use globally &#xFF08;&#x5B89;&#x88C5;Lessc&#x5230;&#x5168;&#x5C40;&#x4F7F;&#x7528;&#xFF09;</a></li>
+<li><a href="#command-line-usage-installing-for-node-development-">Installing for node development &#xFF08;&#x5B89;&#x88C5;&#x5230;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#xFF09;</a></li>
+<li><a href="#command-line-usage-server-side-and-command-line-usage-">Server-Side and Command Line Usage &#xFF08;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x547D;&#x4EE4;&#x884C;&#x4F7F;&#x7528;&#xFF09;</a></li>
+<li><a href="#command-line-usage-command-line-usage-">Command line usage &#xFF08;&#x547D;&#x4EE4;&#x884C;&#x4F7F;&#x7528;&#xFF09;</a></li>
+<li><a href="#command-line-usage-options-">Options &#xFF08;&#x9009;&#x9879;&#xFF09;</a></li></ul></li>
+<li><a href="#using-less-in-the-browser">Using Less in the Browser</a><ul class="nav"><li><a href="#using-less-in-the-browser-setting-options">Setting options</a></li>
+<li><a href="#using-less-in-the-browser-watch-mode-">Watch mode &#xFF08;&#x76D1;&#x89C6;&#x6A21;&#x5F0F;&#xFF09;</a></li>
+<li><a href="#using-less-in-the-browser-modify-variables-">Modify variables &#xFF08;&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#xFF09;</a></li>
+<li><a href="#using-less-in-the-browser-debugging-">Debugging &#xFF08;&#x8C03;&#x8BD5;&#xFF09;</a></li>
+<li><a href="#using-less-in-the-browser-options-">Options &#xFF08;&#x9009;&#x9879;&#xFF09;</a></li>
+<li><a href="#using-less-in-the-browser-relativeurls">relativeUrls</a></li></ul></li>
+<li><a href="#browser-support">Browser Support</a></li>
+<li><a href="#plugins">Plugins</a><ul class="nav"><li><a href="#plugins-how-do-i-use-a-plugin-command-line">How do I use a plugin ? - command line</a></li>
+<li><a href="#plugins-using-a-plugin-in-code">Using a plugin in code</a></li>
+<li><a href="#plugins-in-the-browser">In the browser</a></li>
+<li><a href="#plugins-list-of-less-plugins">List of less plugins</a></li>
+<li><a href="#plugins-for-plugin-authors">For plugin authors</a></li></ul></li>
+<li><a href="#programmatic-usage">Programmatic Usage</a><ul class="nav"><li><a href="#programmatic-usage-getting-access-to-the-log">Getting access to the log</a></li></ul></li>
+<li><a href="#online-less-compilers">Online Less Compilers</a><ul class="nav"><li><a href="#online-less-compilers--less2css-org-http-less2css-org-">less2css.org</a></li>
+<li><a href="#online-less-compilers--winless-org-online-less-compiler-http-winless-org-online-less-compiler-">winless.org/online-less-compiler</a></li>
+<li><a href="#online-less-compilers--lesstester-com-http-lesstester-com-">lesstester.com</a></li>
+<li><a href="#online-less-compilers--dopefly-com-less-converter-http-www-dopefly-com-less-converter-less-converter-html-">dopefly.com/less-converter</a></li>
+<li><a href="#online-less-compilers--lessphp-gpeasy-com-demo-http-lessphp-gpeasy-com-demo-">lessphp.gpeasy.com/demo</a></li>
+<li><a href="#online-less-compilers--leafo-net-lessphp-editor-http-leafo-net-lessphp-editor-html-">leafo.net/lessphp/editor</a></li>
+<li><a href="#online-less-compilers--precess-http-precess-co-">precess</a></li>
+<li><a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support-less-ide-">Online Web IDEs/Playgrounds with Less support &#xFF08;&#x652F;&#x6301;Less&#x7684;&#x5728;&#x7EBF;IDE&#x548C;&#x5728;&#x7EBF;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#xFF09;</a></li>
+<li><a href="#online-less-compilers--cssdeck-labs-http-cssdeck-com-labs-">CSSDeck Labs</a></li>
+<li><a href="#online-less-compilers--codepen-http-codepen-io-">CodePen</a></li>
+<li><a href="#online-less-compilers--fiddle-salad-http-fiddlesalad-com-less-">Fiddle Salad</a></li>
+<li><a href="#online-less-compilers--js-bin-http-jsbin-com-">JS Bin</a></li>
+<li><a href="#online-less-compilers--jsfiddle-http-jsfiddle-net-t2xe9-">jsFiddle</a></li></ul></li>
+<li><a href="#guis-for-less">GUIs for Less</a><ul class="nav"><li><a href="#guis-for-less-cross-platform">Cross platform</a></li>
+<li><a href="#guis-for-less--crunch-http-crunchapp-net-">Crunch!</a></li>
+<li><a href="#guis-for-less--mixture-http-mixture-io-">Mixture</a></li>
+<li><a href="#guis-for-less--simpless-http-wearekiss-com-simpless-">SimpLESS</a></li>
+<li><a href="#guis-for-less--koala-http-koala-app-com-">Koala</a></li>
+<li><a href="#guis-for-less-specific-platforms">Specific platforms</a></li>
+<li><a href="#guis-for-less-windows">Windows</a></li>
+<li><a href="#guis-for-less-osx">OSx</a></li>
+<li><a href="#guis-for-less-linux">Linux</a></li></ul></li>
+<li><a href="#editors-and-plugins">Editors and Plugins</a><ul class="nav"><li><a href="#editors-and-plugins-editors-and-ides-ide-">Editors and IDEs &#xFF08;&#x7F16;&#x8F91;&#x5668;&#x548C;IDE&#xFF09;</a></li>
+<li><a href="#editors-and-plugins--sublime-text-2-3-http-sublimetext-com-">Sublime Text 2 &amp; 3</a></li>
+<li><a href="#editors-and-plugins--eclipse-http-www-eclipse-org-">Eclipse</a></li>
+<li><a href="#editors-and-plugins--visual-studio-http-www-visualstudio-com-">Visual Studio</a></li>
+<li><a href="#editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-">Dreamweaver</a></li>
+<li><a href="#editors-and-plugins--notepad-6-x-npp-">Notepad++ 6.x</a></li></ul></li>
+<li><a href="#third-party-compilers">Third Party Compilers</a><ul class="nav"><li><a href="#third-party-compilers-node-js-compilers">Node.js compilers</a></li>
+<li><a href="#third-party-compilers-other-technologies">Other technologies</a></li></ul></li>
+<li><a href="#frameworks-using-less">Frameworks Using Less</a><ul class="nav"><li><a href="#frameworks-using-less-ui-theme-frameworks-and-components">UI/Theme Frameworks and Components</a></li>
+<li><a href="#frameworks-using-less-grid-systems-">Grid Systems &#xFF08;&#x6805;&#x683C;&#x7CFB;&#x7EDF;&#xFF09;</a></li>
+<li><a href="#frameworks-using-less-mixin-libraries-mixin-">Mixin Libraries &#xFF08;Mixin&#x5E93;&#xFF09;</a></li></ul></li>
+<li><a href="#developing-less">Developing Less</a><ul class="nav"><li><a href="#developing-less-install-these-tools-">Install these tools &#xFF08;&#x5B89;&#x88C5;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#xFF09;</a></li>
+<li><a href="#developing-less-usage-">Usage &#xFF08;&#x4F7F;&#x7528;&#xFF09;</a></li>
+<li><a href="#developing-less-how-to-run-less-in-other-environments-less-">How to run less in other environments &#xFF08;&#x5982;&#x4F55;&#x5728;&#x5176;&#x4ED6;&#x73AF;&#x5883;&#x4E2D;&#x8FD0;&#x884C;less&#xFF09;</a></li>
+<li><a href="#developing-less-guide-">Guide &#xFF08;&#x6307;&#x5357;&#xFF09;</a></li>
+<li><a href="#developing-less-books">Books</a></li></ul></li></ul></div>
+</div>
+</div>
+<div class="col-md-9" role="main">
+<div class="panel docs-content">
+<div class="docs-section">
+<h1 class="docs-heading">Using Less&#xFF08;&#x4F7F;&#x7528; Less&#xFF09;<span class="anchor-target" id="using-less-environments"></span>
+<a href="#using-less-environments" name="using-less-environments" class="anchor glyphicon glyphicon-link"></a></h1>
+<p class="lead">
+&#x5728; Node&#x3001;&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x7B2C;&#x4E09;&#x65B9;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528; Less&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;&#x5B89;&#x88C5;&#x6307;&#x5BFC;&#x548C;&#x6982;&#x51B5;&#x4ECB;&#x7ECD;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#x9996;&#x9875;&#x7684; <a href="javascript:if(confirm('https://www.html.cn/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://www.html.cn/#using-less'" tppabs="https://www.html.cn/#using-less">&#x4F7F;&#x7528; Less</a> &#x4E00;&#x8282;&#x3002;</p>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">V2 Upgrade Guide<span class="anchor-target" id="v2-upgrade-guide"></span>
+<a href="#v2-upgrade-guide" name="v2-upgrade-guide" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md" data-content="v2-upgrademd" target="_blank"></a>
+<a id="v2-upgrademd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md" target="_blank">Edit the markdown source for &quot;v2-upgrade&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<h2 class="docs-heading">Language Changes<span class="anchor-target" id="v2-upgrade-guide-language-changes"></span>
+<a href="#v2-upgrade-guide-language-changes" name="v2-upgrade-guide-language-changes" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>Colours now output as they are written, so <code>purple</code> stays as <code>purple</code> and is not converted to its hex representation.</p>
+<h2 class="docs-heading">Command line usage<span class="anchor-target" id="v2-upgrade-guide-command-line-usage"></span>
+<a href="#v2-upgrade-guide-command-line-usage" name="v2-upgrade-guide-command-line-usage" class="anchor glyphicon glyphicon-link"></a></h2>
+<h3 class="docs-heading">Clean CSS<span class="anchor-target" id="v2-upgrade-guide-clean-css"></span>
+<a href="#v2-upgrade-guide-clean-css" name="v2-upgrade-guide-clean-css" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>We have removed the dependency on clean css and moved it to a <a href="javascript:if(confirm('https://github.com/less/less-plugin-clean-css  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-clean-css'" tppabs="https://github.com/less/less-plugin-clean-css">plugin</a>.
+This allows us to 1. update the dependency and integration without a less release 2. Does not tie people who do not use clean css into having it downloaded by npm.</p>
+<p>The usage is similar, just install the plugin (<code>npm install -g less-plugin-clean-css</code>) then tell less to use it by using the
+<code>--clean-css</code> argument.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># old</span>
+lessc --clean-css --clean-option=--compatibility:ie8 --clean-option=--advanced
+<span class="hljs-comment"># new</span>
+lessc --clean-css=<span class="hljs-string">&quot;--compatibility=ie8 --advanced&quot;</span>
+</code></pre>
+<h3 class="docs-heading">Sourcemaps<span class="anchor-target" id="v2-upgrade-guide-sourcemaps"></span>
+<a href="#v2-upgrade-guide-sourcemaps" name="v2-upgrade-guide-sourcemaps" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>We have improved the source map options and path generation so the sourcemap should be generated at the correct path without specifying any options.</p>
+<h2 class="docs-heading">Programmatic Usage<span class="anchor-target" id="v2-upgrade-guide-programmatic-usage"></span>
+<a href="#v2-upgrade-guide-programmatic-usage" name="v2-upgrade-guide-programmatic-usage" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>We have deprecated the use of less.Parser and toCss to generate the css. Instead we require you to use the <code>less.render</code> shorthand.
+See <a href="#programmatic-usage">Programmatic Usage</a> for more information.</p>
+<p>Further, instead of returning a string which is the css, we return an object with a <code>css</code> field set to the string and a <code>map</code> field set to the sourcemap (if applicable).</p>
+<p>The sourcemap options are now to be set on sourceMap instead of directly on options. So instead of <code>options.sourceMapFullFilename =</code> you would set <code>options.sourceMap = { sourceMapFullFilename:</code>.</p>
+<h2 class="docs-heading">Browser usage<span class="anchor-target" id="v2-upgrade-guide-browser-usage"></span>
+<a href="#v2-upgrade-guide-browser-usage" name="v2-upgrade-guide-browser-usage" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>The browser usage has not changed significantly. Options set on the <code>less</code> object are exposed as <code>less.options</code> after the less script has run, rather than polluting <code>less</code>.</p>
+<p>It is now possible to specify options on the script and less tags, which should simplify option setting in the browser. See the browser usage section for more information.</p>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Command Line Usage<span class="anchor-target" id="command-line-usage"></span>
+<a href="#command-line-usage" name="command-line-usage" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/command-line-usage.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/command-line-usage.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/command-line-usage.md" data-content="command-line-usagemd" target="_blank"></a>
+<a id="command-line-usagemd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/command-line-usage.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/command-line-usage.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/command-line-usage.md" target="_blank">Edit the markdown source for &quot;command-line-usage&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<blockquote>
+<p>&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x7F16;&#x8BD1; <code>.less</code> &#x6587;&#x4EF6;&#x751F;&#x6210; <code>.css</code>&#x6587;&#x4EF6;</p>
+</blockquote>
+<p><span class="warning">&#x6CE8;&#x610F;! &#x5982;&#x679C;&#x547D;&#x4EE4;&#x884C;&#x4E0D;&#x662F;&#x4F60;&#x7684;&#x957F;&#x5904;, &#x66F4;&#x591A;&#x7684;&#x53BB;&#x4E86;&#x89E3; <a href="#guis-for-less">GUIs for Less</a>.</span></p>
+<h3 class="docs-heading">Installing lessc for use globally &#xFF08;&#x5B89;&#x88C5;Lessc&#x5230;&#x5168;&#x5C40;&#x4F7F;&#x7528;&#xFF09;<span class="anchor-target" id="command-line-usage-installing-lessc-for-use-globally-lessc-"></span>
+<a href="#command-line-usage-installing-lessc-for-use-globally-lessc-" name="command-line-usage-installing-lessc-for-use-globally-lessc-" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>&#x7528;<a href="javascript:if(confirm('https://www.npmjs.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://www.npmjs.org/'" tppabs="https://www.npmjs.org/">npm</a>&#x5DE5;&#x5177;&#x5305;&#x5B89;&#x88C5;</p>
+<pre><code class="lang-bash">npm install less -g
+</code></pre>
+<p>&#x7136;&#x540E;&#x4F60;&#x5C06;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>lessc</code> &#x8FD9;&#x4E2A;&#x5168;&#x5C40;&#x547D;&#x4EE4;. &#x5BF9;&#x4E8E;&#x6307;&#x5B9A;&#x7684;&#x7248;&#x672C;(&#x6216;&#x8005; &#x6807;&#x7B7E;) &#x4F60;&#x80FD;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5B89;&#x88C5;&#x5305;&#x540E;&#x6DFB;&#x52A0; <code>@VERSION</code>, &#x4F8B;&#x5982;. <code>npm install less@1.6.2 -g</code>.</p>
+<h3 class="docs-heading">Installing for node development &#xFF08;&#x5B89;&#x88C5;&#x5230;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#xFF09;<span class="anchor-target" id="command-line-usage-installing-for-node-development-"></span>
+<a href="#command-line-usage-installing-for-node-development-" name="command-line-usage-installing-for-node-development-" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>&#x53E6;&#x5916;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x7F16;&#x8BD1;&#x5668;,&#x4F60;&#x53EF;&#x80FD;&#x4F1A;</p>
+<pre><code class="lang-bash">npm i less --save-dev
+</code></pre>
+<p>&#x8BE5;&#x547D;&#x4EE4;&#x4F1A;&#x5B89;&#x88C5;&#x6700;&#x65B0;&#x7684;lessc&#x5B98;&#x65B9;&#x7248;&#x672C;&#x5230;&#x4F60;&#x7684;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x5939;, &#x540C;&#x65F6;&#x4F1A;&#x628A;&#x5B83;&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x9879;&#x76EE;<code>package.json</code>&#x6587;&#x4EF6;&#x7684;<code>devDependencies</code>.</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;,[&#x6CE2;&#x6D6A;&#x7EBF;&#x7248;&#x672C;&#x8303;&#x56F4;][]&#x5C06;&#x81EA;&#x52A8;&#x5728;package.json&#x4E2D;&#x6307;&#x5B9A;&#x3002;&#x8FD9;&#x662F;&#x5BF9;&#x7684;,&#x56E0;&#x4E3A;&#x6700;&#x65B0;&#x7248;&#x672C;&#x53D1;&#x5E03;&#x7684;&#x65B0;&#x8865;&#x4E01;&#x5C06;&#x7531;npm&#x5B89;&#x88C5;&#x3002;</p>
+<h4 class="docs-heading">Beta releases of lessc &#xFF08;lessc&#x7684;&#x6D4B;&#x8BD5;&#x7248;&#x672C;&#xFF09;<span class="anchor-target" id="command-line-usage-beta-releases-of-lessc-lessc-"></span>
+<a href="#command-line-usage-beta-releases-of-lessc-lessc-" name="command-line-usage-beta-releases-of-lessc-lessc-" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x56E0;&#x4E3A;&#x65B0;&#x529F;&#x80FD;&#x5C06;&#x4F1A;&#x5B9A;&#x671F;&#x7684;&#x53D1;&#x5E03;,lessc &#x6784;&#x5EFA;&#x4E5F;&#x4F1A;&#x5C06;&#x4ED6;&#x4EEC;&#x4F5C;&#x4E3A;&#x6807;&#x8BB0;&#x53D1;&#x5E03;&#x5230;npm&#x3002; &#x8FD9;&#x4E9B;&#x7248;&#x672C;<em>&#x4E0D;&#x4F1A;</em>&#x4F5C;&#x4E3A;<code>@latest</code>&#x7684;&#x6B63;&#x5F0F;&#x53D1;&#x5E03;,&#x901A;&#x5E38;&#x662F;&#x5E26;&#x6709;&#x7248;&#x672C;&#x53F7;&#x6216;&#x5E26;<code>alpha/beta/release</code>&#x5B57;&#x6837;&#x7684;&#x5019;&#x9009;&#x7248;&#x672C;.</p>
+<p>&#x7531;&#x4E8E;&#x8865;&#x4E01;&#x53D1;&#x5E03;&#x662F;&#x6301;&#x7EED;&#x6027;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x540C;&#x65F6;&#x516C;&#x5E03;&#x8865;&#x4E01;&#x7248;&#x672C;&#xFF0C;&#x4F5C;&#x4E3A;&#x6B21;&#x8981;&#x6216;&#x4E3B;&#x8981;&#x7248;&#x672C;&#x5347;&#x7EA7;&#x7684;alpha/beta/&#x5019;&#x9009;&#x7248;&#x672C;&#x4E5F;&#x4F1A;&#x88AB;&#x516C;&#x5E03;&#xFF08;&#x4E3A;&#x4E86;&#x9075;&#x5FAA;<a href="javascript:if(confirm('http://semver.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://semver.org/'" tppabs="http://semver.org/">&#x8BED;&#x4E49;&#x7248;&#x672C;</a>,&#x6211;&#x4EEC;&#x4F1A;&#x4ECE;1.4.0&#x7248;&#x672C;&#x7EE7;&#x7EED;&#xFF09;&#x3002;</p>
+<h4 class="docs-heading">Installing an unpublished development version of lessc &#xFF08;&#x5B89;&#x88C5;lessc &#x672A;&#x53D1;&#x5E03;&#x7684;&#x5F00;&#x53D1;&#x7248;&#x672C;&#xFF09;<span class="anchor-target" id="command-line-usage-installing-an-unpublished-development-version-of-lessc-lessc-"></span>
+<a href="#command-line-usage-installing-an-unpublished-development-version-of-lessc-lessc-" name="command-line-usage-installing-an-unpublished-development-version-of-lessc-lessc-" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x8D85;&#x524D;&#x7684;,lessc&#x672A;&#x53D1;&#x5E03;&#x7684;&#x7248;&#x672C;,&#x6309;&#x7167;&#x8BF4;&#x660E;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;[git&#x7684;URL&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;][]&#x548C;&#x4E00;&#x5B9A;&#x8981;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684;&#x63D0;&#x4EA4;SHA(&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#x7684;&#x540D;&#x5B57;)&#x4F7F;&#x7528;<code>commit-ish</code>&#x3002;&#x8FD9;&#x5C06;&#x4FDD;&#x8BC1;&#x60A8;&#x7684;&#x9879;&#x76EE;&#x603B;&#x662F;&#x4F7F;&#x7528;lessc&#x7684;&#x5177;&#x4F53;&#x7248;&#x672C;.</p>
+<p>&#x6307;&#x5B9A;&#x7684;git URL &#x53EF;&#x80FD;&#x5C31;&#x662F;&#x5B98;&#x65B9;lessc&#x7684;repo&#x5E93;&#x6216;&#x8005;&#x4E00;&#x4E2A;fork&#x5E93;.</p>
+<h3 class="docs-heading">Server-Side and Command Line Usage &#xFF08;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x547D;&#x4EE4;&#x884C;&#x4F7F;&#x7528;&#xFF09;<span class="anchor-target" id="command-line-usage-server-side-and-command-line-usage-"></span>
+<a href="#command-line-usage-server-side-and-command-line-usage-" name="command-line-usage-server-side-and-command-line-usage-" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>&#x8FD9;&#x4E2A;&#x8D44;&#x6E90;&#x5E93;&#x5305;&#x542B;&#x4E86;&#x4E8C;&#x8FDB;&#x5236;&#x8D44;&#x6E90;&#xFF0C;<code>bin/lessc</code> &#x53EF;&#x4EE5;&#x5728;&#x5B89;&#x88C5;&#x6709;<a href="javascript:if(confirm('http://nodejs.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://nodejs.org/'" tppabs="http://nodejs.org/">Node.js</a> &#x7684;*nix, OSX and Windows&#x8FD9;&#x4E9B;&#x5E73;&#x53F0;&#x4E0A;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p><strong>Usage</strong>: <code>lessc [option option=parameter ...] &lt;source&gt; [destination]</code></p>
+<h3 class="docs-heading">Command line usage &#xFF08;&#x547D;&#x4EE4;&#x884C;&#x4F7F;&#x7528;&#xFF09;<span class="anchor-target" id="command-line-usage-command-line-usage-"></span>
+<a href="#command-line-usage-command-line-usage-" name="command-line-usage-command-line-usage-" class="anchor glyphicon glyphicon-link"></a></h3>
+<pre><code class="lang-bash">lessc [option option=parameter ...] &lt;<span class="hljs-built_in">source</span>&gt; [destination]
+</code></pre>
+<p>&#x5982;&#x679C;&#x6E90;&#x6587;&#x4EF6;&#x8BBE;&#x7F6E;`-&apos;&#x547D;&#x4EE4;&#x9009;&#x9879;&#xFF0C;&#x4ECE;&#x6807;&#x51C6;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x3002;</p>
+<h4 class="docs-heading">Examples &#xFF08;&#x4F8B;&#x5982;&#xFF09;<span class="anchor-target" id="command-line-usage-examples-"></span>
+<a href="#command-line-usage-examples-" name="command-line-usage-examples-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash"><span class="hljs-comment"># compile bootstrap.less to bootstrap.css</span>
+$ lessc bootstrap.less bootstrap.css
+
+<span class="hljs-comment"># compile bootstrap.less to bootstrap.css and minify (compress) the result</span>
+$ lessc -x bootstrap.less bootstrap.css
+</code></pre>
+<h3 class="docs-heading">Options &#xFF08;&#x9009;&#x9879;&#xFF09;<span class="anchor-target" id="command-line-usage-options-"></span>
+<a href="#command-line-usage-options-" name="command-line-usage-options-" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 class="docs-heading">Help &#xFF08;&#x5E2E;&#x52A9;&#xFF09;<span class="anchor-target" id="command-line-usage-help-"></span>
+<a href="#command-line-usage-help-" name="command-line-usage-help-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --help
+lessc --h
+</code></pre>
+<p>&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x53EF;&#x9009;&#x9879;&#x7684;&#x5E2E;&#x52A9;&#x83DC;&#x5355;,&#x7136;&#x540E;&#x9000;&#x51FA;</p>
+<h4 class="docs-heading">Include paths<span class="anchor-target" id="command-line-usage-include-paths"></span>
+<a href="#command-line-usage-include-paths" name="command-line-usage-include-paths" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --include-path=PATH1;PATH2
+</code></pre>
+<p>&#x8BBE;&#x7F6E;&#x53EF;&#x7528;&#x7684;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#xFF0C;&#x5728;Windows,&#x7528;&apos;:&apos; &#x6216;&#x8005; &apos;;&apos;&#x5206;&#x9694;</p>
+<p>&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x914D;&#x7F6E;&#x4E00;&#x7CFB;&#x5217;less&#x5BFC;&#x5165;&#x6240;&#x80FD;&#x7528;&#x5230;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x6BD4;&#x5982;&#x4F60;&#x60F3;&#x5728;less&#x6587;&#x4EF6;&#x4E2D;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x4F60;&#x60F3;&#x8981;&#x5F15;&#x7528;&#x7684;&#x4E00;&#x4E2A;less&#x5DE5;&#x5177;&#x5E93;.</p>
+<p>&#x5728;node&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x6837;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x9009;&#x9879;</p>
+<pre><code class="lang-js">{ paths: [<span class="hljs-string">&apos;PATH1&apos;</span>, <span class="hljs-string">&apos;PATH2&apos;</span>]  }
+</code></pre>
+<h4 class="docs-heading">Makefile &#xFF08;&#x8F93;&#x51FA;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x4F9D;&#x8D56;&#x5217;&#x8868;&#x5173;&#x7CFB;&#x7684;makefile&#xFF09;<span class="anchor-target" id="command-line-usage-makefile-makefile-"></span>
+<a href="#command-line-usage-makefile-makefile-" name="command-line-usage-makefile-makefile-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc -M
+lessc --depends
+</code></pre>
+<h4 class="docs-heading">No Color &#xFF08;&#x7981;&#x7528;&#x5F69;&#x8272;&#x7684;&#x8F93;&#x51FA;&#xFF09;<span class="anchor-target" id="command-line-usage-no-color-"></span>
+<a href="#command-line-usage-no-color-" name="command-line-usage-no-color-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --no-color
+</code></pre>
+<h4 class="docs-heading">No IE Compatability &#xFF08;&#x7981;&#x7528;IE&#x517C;&#x5BB9;&#x6027;&#x68C0;&#x67E5;&#xFF09;<span class="anchor-target" id="command-line-usage-no-ie-compatability-ie-"></span>
+<a href="#command-line-usage-no-ie-compatability-ie-" name="command-line-usage-no-ie-compatability-ie-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --no-ie-compat
+</code></pre>
+<p>&#x76EE;&#x524D;&#x4EC5;&#x7528;&#x4E8E; data-uri&#x51FD;&#x6570;&#xFF0C;&#x786E;&#x4FDD;&#x521B;&#x5EFA;&#x51FA;&#x80FD;&#x591F;&#x9002;&#x5408;&#x6D4F;&#x89C8;&#x5668;&#x5904;&#x7406;&#x7684;&#x56FE;&#x7247;&#x5927;&#x5C0F;&#x3002;</p>
+<h4 class="docs-heading">Disable JavaScript &#xFF08;&#x7981;&#x7528;JavaScript&#xFF09;<span class="anchor-target" id="command-line-usage-disable-javascript-javascript-"></span>
+<a href="#command-line-usage-disable-javascript-javascript-" name="command-line-usage-disable-javascript-javascript-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --no-js
+</code></pre>
+<h4 class="docs-heading">Lint &#xFF08;&#x4EC5;&#x8BED;&#x6CD5;&#x68C0;&#x67E5;&#xFF09;<span class="anchor-target" id="command-line-usage-lint-"></span>
+<a href="#command-line-usage-lint-" name="command-line-usage-lint-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --lint
+lessc -<span class="hljs-operator">-l</span>
+</code></pre>
+<p>&#x8FD0;&#x884C;less&#x8F6C;&#x6362;&#x5668;,&#x4EC5;&#x4EC5;&#x4F1A;&#x62A5;&#x544A;&#x9519;&#x8BEF;,&#x65E0;&#x4EFB;&#x4F55;&#x8F93;&#x51FA;</p>
+<h4 class="docs-heading">Silent &#xFF08;&#x6291;&#x5236;&#x9519;&#x8BEF;&#x6D88;&#x606F;&#x8F93;&#x51FA;&#xFF09;<span class="anchor-target" id="command-line-usage-silent-"></span>
+<a href="#command-line-usage-silent-" name="command-line-usage-silent-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc <span class="hljs-operator">-s</span>
+lessc --silent
+</code></pre>
+<p>&#x505C;&#x6B62;&#x6240;&#x6709;&#x8B66;&#x544A;&#x4FE1;&#x606F;&#x663E;&#x793A;&#x3002;</p>
+<h4 class="docs-heading">Strict Imports<span class="anchor-target" id="command-line-usage-strict-imports"></span>
+<a href="#command-line-usage-strict-imports" name="command-line-usage-strict-imports" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --strict-imports
+</code></pre>
+<h4 class="docs-heading">Allow imports from insecure https hosts &#xFF08;&#x5141;&#x8BB8;&#x5BFC;&#x5165;&#x4E0D;&#x5B89;&#x5168;&#x7684;https hosts&#xFF09;<span class="anchor-target" id="command-line-usage-allow-imports-from-insecure-https-hosts-https-hosts-"></span>
+<a href="#command-line-usage-allow-imports-from-insecure-https-hosts-https-hosts-" name="command-line-usage-allow-imports-from-insecure-https-hosts-https-hosts-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --insecure
+</code></pre>
+<h4 class="docs-heading">Version &#xFF08;&#x663E;&#x793A;&#x7248;&#x672C;&#xFF09;<span class="anchor-target" id="command-line-usage-version-"></span>
+<a href="#command-line-usage-version-" name="command-line-usage-version-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc -v
+lessc --version
+</code></pre>
+<h4 class="docs-heading">Compress &#xFF08;&#x538B;&#x7F29;&#xFF09;<span class="anchor-target" id="command-line-usage-compress-"></span>
+<a href="#command-line-usage-compress-" name="command-line-usage-compress-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc -x
+lessc --compress
+</code></pre>
+<p>&#x538B;&#x7F29;&#x4F7F;&#x7528;less&#x5185;&#x7F6E;&#x7684;&#x538B;&#x7F29;&#x5DE5;&#x5177;,&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x4E60;&#x60EF;,&#x4F46;&#x6CA1;&#x6709;&#x5229;&#x7528;&#x6240;&#x6709;&#x4E13;&#x7528;&#x538B;&#x7F29;css&#x7684;&#x6280;&#x5DE7;.&#x60A8;&#x80FD;&#x53D1;&#x6325;&#x60F3;&#x8C61;&#x6539;&#x8FDB;&#x6211;&#x4EEC;&#x7684;&#x538B;&#x7F29;&#x8F93;&#x51FA;&#xFF0C;&#x901A;&#x8FC7;&#x63D0;&#x4EA4;pull request.</p>
+<h4 class="docs-heading">Clean CSS &#xFF08;&#x6E05;&#x7406;CSS&#xFF09;<span class="anchor-target" id="command-line-usage-clean-css-css-"></span>
+<a href="#command-line-usage-clean-css-css-" name="command-line-usage-clean-css-css-" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x5728;less v2&#x4E2D;&#xFF0C;Clean CSS&#x4E0D;&#x518D;&#x88AB;&#x5305;&#x62EC;&#x8FDB;&#x6765;&#x4F5C;&#x4E3A;&#x5FC5;&#x987B;&#x4F9D;&#x8D56;&#x3002;
+&#x8981;&#x4F7F;&#x7528; lessc &#x7684; Clean CSS &#xFF08;&#x6E05;&#x7406;CSS&#xFF09;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;<a href="javascript:if(confirm('https://github.com/less/less-plugin-clean-css  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-clean-css'" tppabs="https://github.com/less/less-plugin-clean-css">clean css &#x63D2;&#x4EF6;</a>&#x3002;</p>
+<h4 class="docs-heading">Source Map Output Filename &#xFF08;&#x53EF;&#x8F93;&#x51FA;&#x81EA;&#x5B9A;&#x4E49;&#x6587;&#x4EF6;&#x540D;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x6620;&#x5C04;&#xFF09;<span class="anchor-target" id="command-line-usage-source-map-output-filename-"></span>
+<a href="#command-line-usage-source-map-output-filename-" name="command-line-usage-source-map-output-filename-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --source-map
+lessc --source-map=file.map
+</code></pre>
+<p>&#x544A;&#x8BC9;less &#x751F;&#x6210;&#x4E00;&#x4E2A;&#x6E90;&#x4EE3;&#x7801;&#x6620;&#x5C04;&#x6587;&#x4EF6;(sourcemap).&#x5982;&#x679C;&#x4E0D;&#x63D0;&#x4F9B;&#x6587;&#x4EF6;&#x540D;&#x6620;&#x5C04;&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x6E90;less&#x7F16;&#x8BD1;&#x540E;CSS&#x5168;&#x6587;&#x4EF6;&#x540D;&#x6765;&#x4F5C;&#x4E3A;&#x6269;&#x5C55;&#x6620;&#x5C04;&#x540D;&#x79F0;&#x3002;</p>
+<h4 class="docs-heading">Source Map Rootpath &#xFF08;&#x6E90;&#x4EE3;&#x7801;&#x6620;&#x5C04;&#x5E26;&#x6839;&#x8DEF;&#x5F84;&#xFF09;<span class="anchor-target" id="command-line-usage-source-map-rootpath-"></span>
+<a href="#command-line-usage-source-map-rootpath-" name="command-line-usage-source-map-rootpath-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --source-map-rootpath=dev-files/
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6839;&#x8DEF;&#x5F84;&#x6DFB;&#x52A0;&#x5230;&#x6E90;&#x4EE3;&#x7801;&#x6620;&#x5C04;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;less&#x6587;&#x4EF6;&#x8DEF;&#x5F84;,&#x5E76;&#x6DFB;&#x52A0;&#x5230;&#x7F16;&#x8BD1;&#x751F;&#x6210;&#x7684;css&#x6587;&#x4EF6;&#x6E90;&#x4EE3;&#x7801;&#x6620;&#x5C04;&#x6587;&#x4EF6;&#x540D;&#x4E0A;</p>
+<p>&#x56E0;&#x4E3A;basepath&#x9ED8;&#x8BA4;&#x4E3A;&#x5B58;&#x653E;less&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;&#xFF0C;rootpath&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x5F84;&#x4ECE;sourcemap&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x5230;&#x5B58;&#x653E;less&#x6587;&#x4EF6;&#x7684;&#x57FA;&#x672C;&#x76EE;&#x5F55;&#x3002;</p>
+<p>&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#x5982;&#x679C;&#x4F60;&#x751F;&#x6210;&#x7684;css&#x6587;&#x4EF6;&#x5728;Web&#x670D;&#x52A1;&#x5668;&#x6839;&#x76EE;&#x5F55;&#x4E0A;&#xFF0C;&#x4F46;&#x4F60;&#x7684;&#x6E90;Less/Css/map&#x6587;&#x4EF6;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x53EF;&#x80FD;&#x6709;&#x4E0B;&#x9762;&#x7684;&#x7ED3;&#x679C;</p>
+<pre><code class="lang-bash">output.css
+dev-files/output.map
+dev-files/main.less
+</code></pre>
+<h4 class="docs-heading">Source Map Basepath<span class="anchor-target" id="command-line-usage-source-map-basepath"></span>
+<a href="#command-line-usage-source-map-basepath" name="command-line-usage-source-map-basepath" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --source-map-basepath=less-files/
+</code></pre>
+<p>&#x4E0E;&#x6839;&#x8DEF;&#x5F84;&#x76F8;&#x53CD;&#x7684;&#x76F8;&#x53CD;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x5B83;&#x6307;&#x660E;&#x5E94;&#x5F53;&#x4ECE;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;&#x88AB;&#x79FB;&#x9664;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x6B63;&#x5728;&#x7F16;&#x8BD1;<code>less-files</code>&#x76EE;&#x5F55;&#x7684;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x6E90;&#x6587;&#x4EF6;&#x5C06;&#x5728;&#x6839;&#x76EE;&#x5F55;&#x6216;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x7684;Web&#x670D;&#x52A1;&#x5668;&#x6709;&#x6548;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x6B64;&#x9879;&#xFF0C;&#x79FB;&#x9664;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;&#x4E2D;&#x989D;&#x5916;&#x7684;<code>less-files</code>&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>&#x5B83;&#x9ED8;&#x8BA4;&#x662F;&#x5B58;&#x653E;less&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
+<h4 class="docs-heading">Source Map Less Inline<span class="anchor-target" id="command-line-usage-source-map-less-inline"></span>
+<a href="#command-line-usage-source-map-less-inline" name="command-line-usage-source-map-less-inline" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --source-map-less-inline
+</code></pre>
+<p>&#x6B64;&#x9009;&#x9879;&#x6307;&#x5B9A;&#x6240;&#x6709;&#x7684;less&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x90FD;&#x4F1A;&#x5185;&#x5D4C;&#x5728;&#x6E90;&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x4E2D;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x83B7;&#x53D6;&#x4F60;&#x7684;.map&#x6587;&#x4EF6;&#x5C31;&#x80FD;&#x83B7;&#x53D6;less&#x6E90;&#x4EE3;&#x7801;.</p>
+<p>&#x8FD9;&#x53EF;&#x4EE5;&#x4E0E;&#x5185;&#x8054;&#x6620;&#x5C04;&#x9009;&#x9879;&#xFF08;&#x89C1;Source Map Map Inline&#xFF09;&#x4E00;&#x8D77;&#x4F7F;&#x7528;,&#x8FD9;&#x6837;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x989D;&#x5916;&#x7684;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#x3002;</p>
+<h4 class="docs-heading">Source Map Map Inline<span class="anchor-target" id="command-line-usage-source-map-map-inline"></span>
+<a href="#command-line-usage-source-map-map-inline" name="command-line-usage-source-map-map-inline" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --source-map-map-inline
+</code></pre>
+<p>&#x6B64;&#x9009;&#x9879;&#x6307;&#x5B9A;map&#x6587;&#x4EF6;&#xFF08;&#x5305;&#x62EC;less&#x6587;&#x4EF6;&#xFF09;&#x5E94;&#x8BE5;&#x5185;&#x5D4C;&#x5728;&#x8F93;&#x51FA;&#x7684;CSS&#xFF0C;&#x5728;&#x751F;&#x4EA7;&#x4E2D;&#x4E0D;&#x63A8;&#x8350;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF0C;&#x7F16;&#x8BD1;&#x8F93;&#x51FA;&#x5355;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x652F;&#x6301;&#x5B83;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7F16;&#x8BD1;&#x7684;css&#x800C;&#x663E;&#x793A;&#x672A;&#x7F16;&#x8BD1;&#x7684;less&#x8D44;&#x6E90;</p>
+<h4 class="docs-heading">Source Map URL<span class="anchor-target" id="command-line-usage-source-map-url"></span>
+<a href="#command-line-usage-source-map-url" name="command-line-usage-source-map-url" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --source-map-url=../my-map.json
+</code></pre>
+<p>&#x5141;&#x8BB8;&#x4F60;&#x5728;CSS&#x4E2D;&#x91CD;&#x5199;&#x4F60;&#x7684;&#x6307;&#x5411;map&#x6587;&#x4EF6;&#x7684;URL&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x6839;&#x8DEF;&#x5F84;&#x548C;&#x539F;&#x8DEF;&#x5F84;&#x9009;&#x9879;&#x6CA1;&#x6709;&#x51C6;&#x786E;&#x751F;&#x6210;&#x4F60;&#x9700;&#x8981;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<h4 class="docs-heading">Rootpath &#xFF08;&#x6839;&#x8DEF;&#x5F84;&#xFF09;<span class="anchor-target" id="command-line-usage-rootpath-"></span>
+<a href="#command-line-usage-rootpath-" name="command-line-usage-rootpath-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc -rp=resources/
+lessc --rootpath=resources/
+</code></pre>
+<p>&#x5141;&#x8BB8;&#x4F60;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x5BFC;&#x5165;&#x6587;&#x4EF6;&#x548C;Css&#x6587;&#x4EF6;&#x751F;&#x6210;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x8FD9;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;less &#x88AB;&#x7F16;&#x8BD1;&#x7684;&#x5BFC;&#x5165;&#x8BED;&#x53E5;&#xFF0C;&#x4EC5;&#x4EC5;&#x5F71;&#x54CD;&#x505C;&#x7559;&#x5728;&#x8F93;&#x51FA;Css&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x6240;&#x6709;Css&#x5F15;&#x7528;&#x4E86;resources&#x6587;&#x4EF6;&#x7684;&#x56FE;&#x7247;&#xFF0C;&#x4F60;&#x80FD;&#x4F7F;&#x7528;&#x6B64;&#x9009;&#x9879;&#x6DFB;&#x52A0;&#x8DEF;&#x5F84;&#x5230;URL&#xFF0C;&#x7136;&#x540E;&#x6709;&#x4F60;&#x914D;&#x7F6E;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x540D;&#x79F0;&#x3002;</p>
+<h4 class="docs-heading">Relative URLs &#xFF08;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF09;<span class="anchor-target" id="command-line-usage-relative-urls-"></span>
+<a href="#command-line-usage-relative-urls-" name="command-line-usage-relative-urls-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc -ru
+lessc --relative-urls
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;URL&#x662F;&#x4FDD;&#x6301;&#x539F;&#x6837;&#xFF0C;&#x56E0;&#x6B64;&#x5F53;&#x4F60;&#x5BFC;&#x5165;&#x4E00;&#x4E2A;&#x5F15;&#x5165;&#x4E86;&#x56FE;&#x7247;&#x7684;&#x5B50;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x8F93;&#x51FA;Css&#x4E2D;&#x8DEF;&#x5F84;&#x4E5F;&#x4F1A;&#x4FDD;&#x6301;&#x76F8;&#x5BF9;&#x4E00;&#x81F4;&#x3002;&#x6B64;&#x9009;&#x9879;&#x5141;&#x8BB8;&#x60A8;&#x91CD;&#x5199;URL&#xFF0C;&#x5C06;&#x5BFC;&#x5165;&#x7684;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x4F5C;&#x4E3A;&#x56FE;&#x7247;&#x8DEF;&#x5F84;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x786E;&#x4FDD;URL&#x603B;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x57FA;&#x4E8E;&#x5BFC;&#x5165;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x4F8B;&#x5982;</p>
+<pre><code class="lang-less"># main.less
+@import &quot;files/backgrounds.less&quot;;
+# files/backgrounds.less
+.icon-1 {
+  background-image: url(&apos;images/lamp-post.png&apos;);
+}
+</code></pre>
+<p>&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x5C06;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&apos;images/lamp-post.png&apos;</span>);
+}
+</code></pre>
+<p>&#x4F46;&#x662F;&#x4F7F;&#x7528;&#x6B64;&#x9009;&#x9879;&#x5219;&#x751F;&#x6210;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&apos;files/images/lamp-post.png&apos;</span>);
+}
+</code></pre>
+<p>&#x4F60;&#x53EF;&#x80FD;&#x4E5F;&#x60F3;&#x8003;&#x8651;&#x4F7F;&#x7528;&#x80FD;&#x5D4C;&#x5165;&#x56FE;&#x7247;&#x5230;css&#x4E2D;&#x7684; data-uri&#x51FD;&#x6570;&#x66FF;&#x6362;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x3002;</p>
+<h4 class="docs-heading">Strict Math &#xFF08;&#x4E25;&#x683C;&#x7684;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#xFF09;<span class="anchor-target" id="command-line-usage-strict-math-"></span>
+<a href="#command-line-usage-strict-math-" name="command-line-usage-strict-math-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc -sm=on
+lessc --strict-math=on
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</p>
+<p>&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5173;&#x95ED;&#xFF0C; Less&#x5C06;&#x5C1D;&#x8BD5;&#x8BA1;&#x7B97;&#x4F60;Css&#x4E2D;&#x6240;&#x6709;&#x7684;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#xFF0C;&#x4F8B;&#x5982;.</p>
+<pre><code class="lang-less"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">10px</span>);
+}
+</code></pre>
+<p>&#x76EE;&#x524D;&#x80FD;&#x88AB;&#x8BA1;&#x7B97;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5F00;&#x542F;&#x4E25;&#x683C;&#x6570;&#x5B66;&#x8FD0;&#x7B97;, &#x4EC5;&#x4EC5;&#x53EA;&#x6709;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5706;&#x62EC;&#x53F7;&#x53F7;&#x5185;&#x7684;&#x8FD0;&#x7B97;&#x4F1A;&#x88AB;&#x8BA1;&#x7B97;&#xFF0C;&#x4F8B;&#x5982;&#x3002;</p>
+<pre><code class="lang-less"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - (<span class="hljs-number">10px</span>  - <span class="hljs-number">5px</span>));
+  <span class="hljs-attribute">height</span>: (<span class="hljs-number">100px</span> / <span class="hljs-number">4px</span>);
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1</span> / <span class="hljs-number">4</span>;
+}
+</code></pre>
+<pre><code class="lang-css"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">5px</span>);
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1</span> / <span class="hljs-number">4</span>;
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x539F;&#x8BA1;&#x5212;&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#x5728;&#x5C06;&#x6765;,&#x4F46;&#x5B83;&#x4E00;&#x76F4;&#x662F;&#x77DB;&#x76FE;&#x7684;&#x9009;&#x9879;,&#x6211;&#x4EEC;&#x6B63;&#x5728;&#x8003;&#x8651;&#x662F;&#x5426;&#x7528;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x5F0F;&#x89E3;&#x51B3;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;,&#x6216;&#x8005;&#x662F;&#x5426;Less&#x5E94;&#x8BE5;&#x6709;&#x4F8B;&#x5916;&#x60C5;&#x51B5;&#x2018;/&#x2019;&#x662F;&#x6709;&#x6548;&#x7684;&#x6216;Calc &#x662F;&#x6709;&#x7528;&#x7684;</p>
+<h4 class="docs-heading">Strict Units &#xFF08;&#x4E25;&#x683C;&#x7684;&#x5355;&#x4F4D;&#xFF09;<span class="anchor-target" id="command-line-usage-strict-units-"></span>
+<a href="#command-line-usage-strict-units-" name="command-line-usage-strict-units-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc -su=on
+lessc --strict-units=on
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</p>
+<p>&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x9009;&#x9879;, less &#x4F1A;&#x5C1D;&#x8BD5;&#x731C;&#x6570;&#x5B66;&#x4E0A;&#x5355;&#x4F4D;&#x8F93;&#x51FA;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-less"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">property</span>: <span class="hljs-number">1px</span> * <span class="hljs-number">2px</span>;
+}
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4E8B;&#x60C5;&#x5F88;&#x660E;&#x663E;&#x4E0D;&#x5BF9;&#xFF0C;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E58;&#x4EE5;&#x53E6;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x9762;&#x79EF;&#xFF0C;&#x4F46;&#x662F;css&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x79CD;&#x9762;&#x79EF;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x65AD;&#x5B9A;&#x7528;&#x6237;&#x7684;&#x610F;&#x601D;&#x662F;&#x4E00;&#x4E2A;&#x503C;&#x4E58;&#x4EE5;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x957F;&#x5EA6;&#x5355;&#x4F4D;&#xFF0C;&#x56E0;&#x6B64;&#x8F93;&#x51FA; <code>2px</code>.</p>
+<p>&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5F00;&#x542F;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x65AD;&#x5B9A;&#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;bug,&#x7136;&#x540E;&#x62A5;&#x51FA;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x3002;</p>
+<h4 class="docs-heading">Global Variable &#xFF08;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF09;<span class="anchor-target" id="command-line-usage-global-variable-"></span>
+<a href="#command-line-usage-global-variable-" name="command-line-usage-global-variable-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --global-var=<span class="hljs-string">&quot;my-background=red&quot;</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x80FD;&#x88AB;&#x6587;&#x4EF6;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;.&#x9AD8;&#x6548;&#x7684;&#x58F0;&#x660E;&#x662F;&#x653E;&#x7F6E;&#x5728;&#x4F60;&#x57FA;&#x7840;Less&#x6587;&#x4EF6;&#x7684;&#x9876;&#x90E8;,&#x610F;&#x5473;&#x7740;&#x4ED6;&#x80FD;&#x88AB;&#x4F7F;&#x7528;,&#x4F46;&#x4E5F;&#x80FD;&#x88AB;&#x8986;&#x76D6;&#x5982;&#x679C;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;.</p>
+<h4 class="docs-heading">Modify Variable &#xFF08;&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#xFF09;<span class="anchor-target" id="command-line-usage-modify-variable-"></span>
+<a href="#command-line-usage-modify-variable-" name="command-line-usage-modify-variable-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --modify-var=<span class="hljs-string">&quot;my-background=red&quot;</span>
+</code></pre>
+<p>&#x4E0E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x9009;&#x9879;&#x4E0D;&#x540C;&#x7684;&#x662F;,&#x8FD9;&#x5C06;&#x5728;&#x4F60;&#x7684;&#x57FA;&#x7840;&#x6587;&#x4EF6;&#x6700;&#x540E;&#x653E;&#x7F6E;&#x4E00;&#x4E2A;&#x58F0;&#x660E;,&#x610F;&#x5473;&#x7740;&#x5B83;&#x5C06;&#x8986;&#x76D6;&#x4EFB;&#x4F55;Less&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#x3002;</p>
+<h4 class="docs-heading">URL Arguments &#xFF08;URL &#x53C2;&#x6570;&#xFF09;<span class="anchor-target" id="command-line-usage-url-arguments-url-"></span>
+<a href="#command-line-usage-url-arguments-url-" name="command-line-usage-url-arguments-url-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --url-args=<span class="hljs-string">&quot;cache726357&quot;</span>
+</code></pre>
+<p>&#x4E0E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x9009;&#x9879;&#x4E0D;&#x540C;&#x7684;&#x662F;,&#x8FD9;&#x5C06;&#x5728;&#x4F60;&#x7684;&#x57FA;&#x7840;&#x6587;&#x4EF6;&#x6700;&#x540E;&#x653E;&#x7F6E;&#x4E00;&#x4E2A;&#x58F0;&#x660E;,&#x610F;&#x5473;&#x7740;&#x5B83;&#x5C06;&#x8986;&#x76D6;&#x4EFB;&#x4F55;Less&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#x3002;</p>
+<h4 class="docs-heading">Line Numbers &#xFF08;&#x884C;&#x53F7;&#xFF09;<span class="anchor-target" id="command-line-usage-line-numbers-"></span>
+<a href="#command-line-usage-line-numbers-" name="command-line-usage-line-numbers-" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --line-numbers=comments
+lessc --line-numbers=mediaquery
+lessc --line-numbers=all
+</code></pre>
+<p>&#x751F;&#x6210;&#x5185;&#x5D4C;source-mapping. &#x8FD9;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x5F00;&#x59CB;&#x652F;&#x6301;sourcemaps&#x4E4B;&#x524D;&#x552F;&#x4E00;&#x7684;&#x9009;&#x62E9;&#x3002;&#x6211;&#x4EEC;&#x8BA4;&#x4E3A;&#x8FD9;&#x6837;&#x505A;&#x662F;&#x4E0D;&#x597D;&#x7684;,&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x4FDD;&#x7559;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x8BF7;&#x8054;&#x7CFB;&#x6211;&#x4EEC;&#x3002;</p>
+<h4 class="docs-heading">Plugin<span class="anchor-target" id="command-line-usage-plugin"></span>
+<a href="#command-line-usage-plugin" name="command-line-usage-plugin" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">lessc --clean-css
+lessc --plugin=clean-css=<span class="hljs-string">&quot;advanced&quot;</span>
+</code></pre>
+<p>--plugin &#x52A0;&#x8F7D;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;. &#x5982;&#x679C;&#x63D2;&#x4EF6;&#x4EE5;<code>less-plugin</code> &#x5F00;&#x59CB;&#xFF0C;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x7701;&#x7565;<code>--plugin=</code>&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4E00;&#x65E6;&#x5B89;&#x88C5; (npm &#x5B89;&#x88C5; less-plugin-clean-css) <code>less-plugin-clean-css</code> &#x7684;&#x6E05;&#x7406;css&#x63D2;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>--plugin=less-plugin-clean-css</code> &#x6216; <code>--clean-css</code> &#x52A0;&#x8F7D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x540E;&#x9762;&#x6307;&#x5B9A;&#x9009;&#x9879;&#xFF0C;&#x6BD4;&#x5982;<code>--plugin=less-plugin-clean-css=&quot;advanced&quot;</code> &#x6216; <code>--clean-css=&quot;advanced&quot;</code> &#x3002;</p>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Using Less in the Browser<span class="anchor-target" id="using-less-in-the-browser"></span>
+<a href="#using-less-in-the-browser" name="using-less-in-the-browser" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/using-less-in-the-browser.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/using-less-in-the-browser.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/using-less-in-the-browser.md" data-content="using-less-in-the-browsermd" target="_blank"></a>
+<a id="using-less-in-the-browsermd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/using-less-in-the-browser.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/using-less-in-the-browser.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/using-less-in-the-browser.md" target="_blank">Edit the markdown source for &quot;using-less-in-the-browser&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<p>We recommend using less in the browser only for development or when you need to dynamically compile less and cannot do it serverside.
+This is because less is a large javascript file and compiling less before the user can see the page means a delay for the user. In addition,
+consider that mobile devices will compile slower. For development consider if using a watcher and live reload (&#x4F8B;&#x5982;&#xFF1A; with grunt or gulp) would
+be better suited.</p>
+<p>To use less in the browser, you firstly need to include the less script.</p>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- Here: include any less plugin scripts, any required browser shims and optionally set less = any options  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>This will find any less style tags on the page</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;styles.less&quot;</span> /&gt;</span>
+</code></pre>
+<p>and create style tags with the compiled css synchronously.</p>
+<h3 class="docs-heading">Setting options<span class="anchor-target" id="using-less-in-the-browser-setting-options"></span>
+<a href="#using-less-in-the-browser-setting-options" name="using-less-in-the-browser-setting-options" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>You can set options either programmatically, by setting them on a less object before the script tag - this then effects all initial link tags and programmatic usage of less.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+  less = {
+    env: <span class="hljs-string">&quot;development&quot;</span>
+  };
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>The other way is to specify the options on the script tag, &#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+  less = {
+    env: <span class="hljs-string">&quot;development&quot;</span>
+  };
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-env</span>=<span class="hljs-value">&quot;development&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>And you can also do this on link tags to override certain settings (some less settings like verbose are global and can not be overridden).</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">data-dump-line-numbers</span>=<span class="hljs-value">&quot;all&quot;</span> <span class="hljs-attribute">data-global-vars</span>=<span class="hljs-value">&apos;{ myvar: &quot;#ddffee&quot;, mystr: &quot;\&quot;quoted\&quot;&quot; }&apos;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;less/styles.less&quot;</span>&gt;</span>
+</code></pre>
+<p>The important points for attribute options are..</p>
+<ul>
+<li>importance level: window.less &lt; script tag &lt; link tag</li>
+<li>data attributes names are not camelCase (e.g logLevel -&gt; data-log-level)</li>
+<li>link tag options are just render time options (e.g verbose, logLevel ... are not supported)</li>
+<li>non-string data attributes values should be JSON valid (e.g use double quotes instead of single quotes like in <code>data-global-vars=&apos;{ myvar: &quot;#ddffee&quot;, mystr: &quot;\&quot;quoted\&quot;&quot; }&apos;</code>)</li>
+</ul>
+<h3 class="docs-heading">Watch mode &#xFF08;&#x76D1;&#x89C6;&#x6A21;&#x5F0F;&#xFF09;<span class="anchor-target" id="using-less-in-the-browser-watch-mode-"></span>
+<a href="#using-less-in-the-browser-watch-mode-" name="using-less-in-the-browser-watch-mode-" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x542F;&#x7528;&#x76D1;&#x89C6;&#x6A21;&#x5F0F;&#xFF0C; <code>env</code>&#x5FC5;&#x987B;&#x8981;&#x8BBE;&#x7F6E;&#x6210;<code>development</code>&#x3002;&#x7136;&#x540E;&#x5728;&#x5F15;&#x5165;&#x7684;less.js&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x8C03;&#x7528; <code>less.watch()</code>,&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">less = { env: <span class="hljs-string">&apos;development&apos;</span>};</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">less.watch();</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>Alternatively, you can enable Watch mode temporarily by appending <code>#!watch</code> to the URL.</p>
+<h3 class="docs-heading">Modify variables &#xFF08;&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#xFF09;<span class="anchor-target" id="using-less-in-the-browser-modify-variables-"></span>
+<a href="#using-less-in-the-browser-modify-variables-" name="using-less-in-the-browser-modify-variables-" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>&#x4F7F;&#x7528;modifyVars&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4FEE;&#x6539;LESS&#x53D8;&#x91CF;&#x3002;&#x5F53;&#x7528;&#x65B0;&#x7684;&#x53D8;&#x91CF;&#x8C03;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x65F6;&#xFF0C;LESS&#x6587;&#x4EF6;&#x5C06;&#x88AB;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x4F1A;&#x88AB;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x3002;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684;&#x7528;&#x6CD5;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-js">less.modifyVars({
+  <span class="hljs-string">&apos;@buttonFace&apos;</span>: <span class="hljs-string">&apos;#5B83AD&apos;</span>,
+  <span class="hljs-string">&apos;@buttonText&apos;</span>: <span class="hljs-string">&apos;#D9EEF2&apos;</span>
+});
+</code></pre>
+<h3 class="docs-heading">Debugging &#xFF08;&#x8C03;&#x8BD5;&#xFF09;<span class="anchor-target" id="using-less-in-the-browser-debugging-"></span>
+<a href="#using-less-in-the-browser-debugging-" name="using-less-in-the-browser-debugging-" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>&#x6211;&#x4EEC;&#x5728;&#x751F;&#x6210;&#x7684;CSS&#x4E2D;&#x5E26;&#x4E0A;&#x989D;&#x5916;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E00;&#x4E9B;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x5230;LESS&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x884C;&#x6570;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;dumpLineNumbers&#x9009;&#x9879;&#x6216;&#x8005;&#x5728;URL&#x4E2D;&#x6DFB;&#x52A0;!dumpLineNumbers:mediaQuery&#x6765;&#x5F00;&#x542F;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x201C;&#x6CE8;&#x91CA;&#x201D;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;<a href="javascript:if(confirm('https://addons.mozilla.org/en-us/firefox/addon/fireless/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://addons.mozilla.org/en-us/firefox/addon/fireless/'" tppabs="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a>&#x6765;&#x8C03;&#xFF0C;&#x6216;&#x8005;&#x9009;&#x62E9;&#x201C;mediaQuery&#x201D;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;FireBug/Chrome&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#xFF08;&#x88AB;&#x8BC6;&#x522B;&#x4E3A;SCSS media query&#x8C03;&#x8BD5;&#x683C;&#x5F0F;&#xFF09;&#x6765;&#x8C03;&#x8BD5;&#x3002;</p>
+<h3 class="docs-heading">Options &#xFF08;&#x9009;&#x9879;&#xFF09;<span class="anchor-target" id="using-less-in-the-browser-options-"></span>
+<a href="#using-less-in-the-browser-options-" name="using-less-in-the-browser-options-" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>Set options in a global <code>less</code> object <strong>before</strong> loading the less.js script:</p>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- set options before less.js script --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+  less = {
+    env: <span class="hljs-string">&quot;development&quot;</span>,
+    logLevel: <span class="hljs-number">2</span>,
+    async: <span class="hljs-literal">false</span>,
+    fileAsync: <span class="hljs-literal">false</span>,
+    poll: <span class="hljs-number">1000</span>,
+    functions: {},
+    dumpLineNumbers: <span class="hljs-string">&quot;comments&quot;</span>,
+    relativeUrls: <span class="hljs-literal">false</span>,
+    globalVars: {
+      var1: <span class="hljs-string">&apos;&quot;string value&quot;&apos;</span>,
+      var2: <span class="hljs-string">&apos;regular value&apos;</span>
+    },
+    rootpath: <span class="hljs-string">&quot;:/a.com/&quot;</span>
+  };
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<h4 class="docs-heading">async<span class="anchor-target" id="using-less-in-the-browser-async"></span>
+<a href="#using-less-in-the-browser-async" name="using-less-in-the-browser-async" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;: <code>Boolean</code></p>
+<p>&#x9ED8;&#x8BA4;: <code>false</code></p>
+<p>async&#x7684;&#x53C2;&#x6570;&#x662F;&#x7528;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5F02;&#x6B65;&#x5BFC;&#x5165;&#x6587;&#x4EF6;&#x3002; &#x67E5;&#x770B; <a href="#using-less-in-the-browser-fileasync">fileAsync</a>.</p>
+<h4 class="docs-heading">dumpLineNumbers<span class="anchor-target" id="using-less-in-the-browser-dumplinenumbers"></span>
+<a href="#using-less-in-the-browser-dumplinenumbers" name="using-less-in-the-browser-dumplinenumbers" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;: <code>String</code>
+&#x53C2;&#x6570;: <code>&apos;&apos;</code>| <code>&apos;comments&apos;</code>|<code>&apos;mediaquery&apos;</code>|<code>&apos;all&apos;</code>
+&#x9ED8;&#x8BA4;: <code>&apos;&apos;</code></p>
+<p>&#x5F53;&#x8BBE;&#x7F6E;dumpLineNumbers&#x76F4;&#x63A5;&#x8F93;&#x51FA;&#x6E90;&#x884C;&#x4FE1;&#x606F;&#x5230;&#x7F16;&#x8BD1;&#x597D;&#x7684;CSSS&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x65F6;&#xFF0C;&#x6709;&#x5229;&#x4E8E;&#x4F60;&#x8C03;&#x8BD5;&#x6307;&#x5B9A;&#x884C;&#x3002;</p>
+<p><code>comments</code> &#x53C2;&#x6570;&#x7528;&#x4E8E;&#x8F93;&#x51FA;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x800C;<code>mediaquery</code> &#x4F7F;&#x7528;Firefox&#x4E00;&#x4E2A;&#x6269;&#x5C55;&#x6765;&#x89E3;&#x6790;CSS&#x548C;&#x62BD;&#x53D6;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5E0C;&#x671B;comments&#x80FD;&#x88AB;sourcemaps&#x66FF;&#x4EE3;&#x3002;</p>
+<h4 class="docs-heading">env<span class="anchor-target" id="using-less-in-the-browser-env"></span>
+<a href="#using-less-in-the-browser-env" name="using-less-in-the-browser-env" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>String</code>
+&#x9ED8;&#x8BA4;&#xFF1A; &#x53D6;&#x51B3;&#x4E8E;&#x9875;&#x9762;&#x7684;URL</p>
+<p>&#x53EF;&#x4EE5;&#x5728;<code>development</code>&#x6216;&#x662F;<code>production</code>&#x73AF;&#x5883;&#x4E0B;&#x8FD0;&#x884C;&#x3002;</p>
+<p>&#x5728;production&#x73AF;&#x5883;&#x4E0B;&#xFF0C;CSS&#x88AB;&#x7F13;&#x5B58;&#x5728;&#x672C;&#x5730;&#xFF0C;&#x6D88;&#x606F;&#x548C;&#x4FE1;&#x606F;&#x4E0D;&#x80FD;&#x8F93;&#x51FA;&#x5230;console&#x3002;</p>
+<p>&#x6587;&#x6863;&#x7684;URL&#x5F00;&#x5934;&#x662F;<code>file://</code> &#xFF0C;&#x6216;&#x662F;&#x5728;&#x672C;&#x5730;&#x673A;&#x5668;&#x4E2D;&#xFF0C;&#x6216;&#x662F;&#x6709;&#x4E0D;&#x6807;&#x51C6;&#x7AEF;&#x53E3;&#xFF0C;env&#x7684;&#x53C2;&#x6570;&#x5C06;&#x81EA;&#x52A8;&#x8BBE;&#x7F6E;&#x4E3A;<code>development</code>&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-js">less = { env: <span class="hljs-string">&apos;production&apos;</span> };
+</code></pre>
+<h4 class="docs-heading">errorReporting<span class="anchor-target" id="using-less-in-the-browser-errorreporting"></span>
+<a href="#using-less-in-the-browser-errorreporting" name="using-less-in-the-browser-errorreporting" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;: <code>String</code></p>
+<p>&#x53C2;&#x6570;: <code>html</code>|<code>console</code>|<code>function</code></p>
+<p>&#x9ED8;&#x8BA4;: <code>html</code></p>
+<p>&#x5728;LESS&#x7F16;&#x8BD1;&#x5931;&#x8D25;&#x65F6;&#x5019;&#xFF0C;errorReporting&#x4F1A;&#x8BBE;&#x7F6E;&#x9519;&#x8BEF;&#x62A5;&#x544A;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<h4 class="docs-heading">fileAsync<span class="anchor-target" id="using-less-in-the-browser-fileasync"></span>
+<a href="#using-less-in-the-browser-fileasync" name="using-less-in-the-browser-fileasync" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>Boolean</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; <code>false</code></p>
+<p>&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x534F;&#x8BAE;&#x8BBF;&#x95EE;&#x9875;&#x9762;&#x65F6;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x5BFC;&#x5165;&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<h4 class="docs-heading">functions<span class="anchor-target" id="using-less-in-the-browser-functions"></span>
+<a href="#using-less-in-the-browser-functions" name="using-less-in-the-browser-functions" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>object</code></p>
+<p>&#x5728;functions&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;key&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x7684;&#x540D;&#x5B57;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-js">less = {
+    functions: {
+        myfunc: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span>(less.tree.Dimension)(<span class="hljs-number">1</span>);
+        }
+    }
+};
+</code></pre>
+<p>functions&#x53EF;&#x4EE5;&#x50CF;&#x5185;&#x7F6E;&#x7684;LESS&#x51FD;&#x6570;&#x4E00;&#x6837;&#x4F7F;&#x7528;&#x3002;</p>
+<pre><code class="lang-less"><span class="hljs-class">.my-class</span> {
+  <span class="hljs-attribute">border-width</span>: <span class="hljs-function">unit</span>(<span class="hljs-function">myfunc</span>(), px);
+}
+</code></pre>
+<h4 class="docs-heading">logLevel<span class="anchor-target" id="using-less-in-the-browser-loglevel"></span>
+<a href="#using-less-in-the-browser-loglevel" name="using-less-in-the-browser-loglevel" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>Number</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; 2</p>
+<p>javascript&#x63A7;&#x5236;&#x53F0;&#x65E5;&#x5FD7;&#x91CF;&#xFF08;&#x9519;&#x8BEF;&#x7B49;&#x7EA7;&#xFF09;&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x5728;production&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x65E5;&#x5FD7;&#x3002;</p>
+<pre><code class="lang-bash"><span class="hljs-number">2</span> - Information and errors
+<span class="hljs-number">1</span> - Errors
+<span class="hljs-number">0</span> - Nothing
+</code></pre>
+<h4 class="docs-heading">poll<span class="anchor-target" id="using-less-in-the-browser-poll"></span>
+<a href="#using-less-in-the-browser-poll" name="using-less-in-the-browser-poll" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>Integer</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; <code>1000</code></p>
+<p>&#x5728;&#x76D1;&#x89C6;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x6BCF;&#x4E24;&#x6B21;&#x8BF7;&#x6C42;&#x4E4B;&#x95F4;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF08;ms&#xFF09;&#x3002;</p>
+<h3 class="docs-heading">relativeUrls<span class="anchor-target" id="using-less-in-the-browser-relativeurls"></span>
+<a href="#using-less-in-the-browser-relativeurls" name="using-less-in-the-browser-relativeurls" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>Boolean</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; <code>false</code></p>
+<p>&#x662F;&#x5426;&#x8C03;&#x6574;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;&#x5982;&#x679C;&#x4E3A;false&#xFF0C;&#x5219;url&#x5DF2;&#x7ECF;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x5165;&#x53E3;&#x7684;LESS&#x6587;&#x4EF6;&#x3002;</p>
+<h4 class="docs-heading">globalVars<span class="anchor-target" id="using-less-in-the-browser-globalvars"></span>
+<a href="#using-less-in-the-browser-globalvars" name="using-less-in-the-browser-globalvars" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>Object</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; <code>undefined</code></p>
+<p>List of global variables to be injected into the code. Keys of the object are variables names, values are variables values. Variables of &quot;string&quot; type must explicitly include quotes if needed.</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-js">less.globalVars = { myvar: <span class="hljs-string">&quot;#ddffee&quot;</span>, mystr: <span class="hljs-string">&quot;\&quot;quoted\&quot;&quot;</span> };
+</code></pre>
+<p>This option defines a variable that can be referenced by the file. Effectively the declaration is put at the top of your base Less file, meaning it can be used but it also can be overridden if this variable is defined in the file.</p>
+<h4 class="docs-heading">modifyVars<span class="anchor-target" id="using-less-in-the-browser-modifyvars"></span>
+<a href="#using-less-in-the-browser-modifyvars" name="using-less-in-the-browser-modifyvars" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>Object</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; <code>undefined</code></p>
+<p>Same format as <a href="#using-less-in-the-browser-globalvars">globalVars</a>.</p>
+<p>As opposed to the <a href="#using-less-in-the-browser-globalvars">globalVars</a> option, this puts the declaration at the end of your base file, meaning it will override anything defined in your Less file.</p>
+<h4 class="docs-heading">rootpath<span class="anchor-target" id="using-less-in-the-browser-rootpath"></span>
+<a href="#using-less-in-the-browser-rootpath" name="using-less-in-the-browser-rootpath" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>String</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; <code>false</code></p>
+<p>&#x6DFB;&#x52A0;&#x5230;&#x6BCF;&#x4E2A;URL&#x5F00;&#x59CB;&#x5904;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
+<h4 class="docs-heading">useFileCache<span class="anchor-target" id="using-less-in-the-browser-usefilecache"></span>
+<a href="#using-less-in-the-browser-usefilecache" name="using-less-in-the-browser-usefilecache" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>&#x7C7B;&#x578B;&#xFF1A; <code>Boolean</code></p>
+<p>&#x9ED8;&#x8BA4;&#xFF1A; <code>true</code> (previously <code>false</code> in before v2)</p>
+<p>Whether to use the per session file cache. This caches less files so that you can call modifyVars and it will not retrieve all the less files again.
+If you use the watcher or call refresh with reload set to true, then the cache will be cleared before running.</p>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Browser Support<span class="anchor-target" id="browser-support"></span>
+<a href="#browser-support" name="browser-support" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/browser-support.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/browser-support.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/browser-support.md" data-content="browser-supportmd" target="_blank"></a>
+<a id="browser-supportmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/browser-support.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/browser-support.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/browser-support.md" target="_blank">Edit the markdown source for &quot;browser-support&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<p>Less only supports running on modern browsers (recent versions of Chrome, Firefox, Safari and IE). We do not want to encourage client-side usage in production - this is because it adds a performance degradation for the user, who will see a delay (even if it is sub 1 second) while Less styles are compiled to CSS, and may cause cosmetic issues if Javascript errors occur.</p>
+<p>Note that PhantomJS does not currently implement <code>Function.prototype.bind</code> so you will require a es-5 shim for this function to run under PhantomJS (We use PhantomJS for tests and we append an es5-shim to make it work).</p>
+<p>There are reasons to use client-side less in production, such as if you want to allow users to tweak variables which will affect the theme and you want to show it to them in real-time - in this instance a user is not worried about waiting for a style to update before seeing it.</p>
+<p>If you need to run less in an older browser, please use an <a href="javascript:if(confirm('https://github.com/kriskowal/es5-shim  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/kriskowal/es5-shim'" tppabs="https://github.com/kriskowal/es5-shim">es-5 shim</a> which will add the javascript features that less requires.</p>
+<p>In addition, if you use options as attributes on the script or link tags, you will require browser support for <code>JSON.parse</code> or an appropriate polyfill.</p>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Plugins<span class="anchor-target" id="plugins"></span>
+<a href="#plugins" name="plugins" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/plugins.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/plugins.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/plugins.md" data-content="pluginsmd" target="_blank"></a>
+<a id="pluginsmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/plugins.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/plugins.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/plugins.md" target="_blank">Edit the markdown source for &quot;plugins&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<h2 class="docs-heading">How do I use a plugin ? - command line<span class="anchor-target" id="plugins-how-do-i-use-a-plugin-command-line"></span>
+<a href="#plugins-how-do-i-use-a-plugin-command-line" name="plugins-how-do-i-use-a-plugin-command-line" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>If you are using lessc, the first thing you need to do is install that plugin. We reccommend the plugin starts &quot;less-plugin&quot; though that isn&apos;t required. For the clean css plugin you would install <code>npm install less-plugin-clean-css</code>.</p>
+<p>To use the plugin, if you specify a unrecognised option, we attempt to load that, for example</p>
+<pre><code>lessc --clean-css=&quot;advanced&quot;
+</code></pre><p>Will use the plugin you just installed. You can also be more direct, for example</p>
+<pre><code>lessc --plugin=path_to_plugin=options
+</code></pre><h2 class="docs-heading">Using a plugin in code<span class="anchor-target" id="plugins-using-a-plugin-in-code"></span>
+<a href="#plugins-using-a-plugin-in-code" name="plugins-using-a-plugin-in-code" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>In Node, require the plugin and pass it to less in an array as an option plugins. E.g.</p>
+<pre><code>var myPlugin = require(&quot;my-plugin&quot;);
+less.render(myCSS, { plugins: [myPlugin] })
+   .then(function(output) {
+    },
+    function(error) {
+    });
+</code></pre><h2 class="docs-heading">In the browser<span class="anchor-target" id="plugins-in-the-browser"></span>
+<a href="#plugins-in-the-browser" name="plugins-in-the-browser" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>Plugin authors should provide a javascript file, just include that in the page <em>before</em> the less.js script.</p>
+<pre><code>&lt;script src=&quot;plugin.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+less = { 
+    plugins: [plugin]
+};
+&lt;/script&gt;  
+&lt;script src=&quot;less.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h2 class="docs-heading">List of less plugins<span class="anchor-target" id="plugins-list-of-less-plugins"></span>
+<a href="#plugins-list-of-less-plugins" name="plugins-list-of-less-plugins" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('https://github.com/less/less-plugin-clean-css  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-clean-css'" tppabs="https://github.com/less/less-plugin-clean-css">Clean CSS plugin to compress less</a></li>
+<li><a href="javascript:if(confirm('https://github.com/less/less-plugin-autoprefix  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-autoprefix'" tppabs="https://github.com/less/less-plugin-autoprefix">Autoprefixer plugin to add backwards compatibility to your css</a></li>
+<li><a href="javascript:if(confirm('https://github.com/less/less-plugin-inline-urls  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-inline-urls'" tppabs="https://github.com/less/less-plugin-inline-urls">Inline urls - converts <code>url()</code> to a call to <code>data-uri()</code></a></li>
+<li><a href="javascript:if(confirm('https://github.com/less/less-plugin-npm-import  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-npm-import'" tppabs="https://github.com/less/less-plugin-npm-import">Npm Import - import from a sub npm repository</a></li>
+<li><a href="javascript:if(confirm('https://github.com/Mercateo/less-plugin-bower-resolve  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/Mercateo/less-plugin-bower-resolve'" tppabs="https://github.com/Mercateo/less-plugin-bower-resolve">Bower Resolve - import from a Bower package</a></li>
+<li><a href="javascript:if(confirm('https://github.com/bassjobsen/less-plugin-group-css-media-queries  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bassjobsen/less-plugin-group-css-media-queries'" tppabs="https://github.com/bassjobsen/less-plugin-group-css-media-queries">Group CSS Media Queries - group CSS media queries</a></li>
+<li><a href="javascript:if(confirm('https://github.com/bassjobsen/less-plugin-csswring  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bassjobsen/less-plugin-csswring'" tppabs="https://github.com/bassjobsen/less-plugin-csswring">Compresses the css output from Less using csswring</a></li>
+<li><a href="javascript:if(confirm('https://github.com/bassjobsen/less-plugin-css-flip  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bassjobsen/less-plugin-css-flip'" tppabs="https://github.com/bassjobsen/less-plugin-css-flip">Generate left-to-right (LTR) or right-to-left (RTL) CSS from Less using css-flip</a></li>
+<li><a href="javascript:if(confirm('https://github.com/bassjobsen/less-plugin-pleeease  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bassjobsen/less-plugin-pleeease'" tppabs="https://github.com/bassjobsen/less-plugin-pleeease">Postprocess Less using pleeease</a></li>
+<li><a href="javascript:if(confirm('https://github.com/less/less-plugin-advanced-color-functions/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-advanced-color-functions/'" tppabs="https://github.com/less/less-plugin-advanced-color-functions/">Adds some advanced colour functions that helps in finding more contrasting colors</a></li>
+<li><a href="javascript:if(confirm('https://github.com/bassjobsen/less-plugin-cubehelix  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bassjobsen/less-plugin-cubehelix'" tppabs="https://github.com/bassjobsen/less-plugin-cubehelix">The cubehelix(y,a,b,t) function returns a color between the two colors a and b, using a gamma correction value of 1</a>. (Based on <a href="javascript:if(confirm('https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/'" tppabs="https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/">Dave Green&apos;s `cubehelix&apos; colour scheme</a>)</li>
+</ul>
+<h2 class="docs-heading">For plugin authors<span class="anchor-target" id="plugins-for-plugin-authors"></span>
+<a href="#plugins-for-plugin-authors" name="plugins-for-plugin-authors" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>Less supports some entry points that allow an author to integrate with less. We may add some more in the future.</p>
+<p>The plugin itself has a very simple signtaure, like this</p>
+<pre><code>{
+    install: function(less, pluginManager) {
+    },
+    minVersion: [2, 0, 0] /* optional */
+}
+</code></pre><p>So, the plugin gets the less object, which in v2 has more classes on it (making it easy to extend), a plugin manager which provides some hooks to add visitors, file managers and post processors.</p>
+<p>If your plugin supports lessc, there are a few more details and the signature looks like this</p>
+<pre><code>{
+    install: function(less, pluginManager) {
+    },
+    setOptions: function(argumentString) { /* optional */
+    },
+    printUsage: function() { /* optional */
+    },
+    minVersion: [2, 0, 0] /* optional */
+}
+</code></pre><p>The additions are the setOptions function which passes the string the user enters when specifying your plugin and also the printUsage function which you should use to explain your options and how the plugin works.</p>
+<p>Here are some example repos showing the different plugin types
+post-processor: <a href="javascript:if(confirm('https://github.com/less/less-plugin-clean-css  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-clean-css'" tppabs="https://github.com/less/less-plugin-clean-css">https://github.com/less/less-plugin-clean-css</a>
+visitor: <a href="javascript:if(confirm('https://github.com/less/less-plugin-inline-urls  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-inline-urls'" tppabs="https://github.com/less/less-plugin-inline-urls">https://github.com/less/less-plugin-inline-urls</a>
+file-manager: <a href="javascript:if(confirm('https://github.com/less/less-plugin-npm-import  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-plugin-npm-import'" tppabs="https://github.com/less/less-plugin-npm-import">https://github.com/less/less-plugin-npm-import</a></p>
+<p>Note: Plugins are different from creating a version of less for a different environment but they do have similarities, for example node provides 2 file managers by default and browser provides one and that is the main step in getting less to run within a specific environment. The plugin allows you to add file managers.</p>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Programmatic Usage<span class="anchor-target" id="programmatic-usage"></span>
+<a href="#programmatic-usage" name="programmatic-usage" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md" data-content="programmatic-usagemd" target="_blank"></a>
+<a id="programmatic-usagemd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md" target="_blank">Edit the markdown source for &quot;programmatic-usage&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<p>The main entry point into less is the less.render function. This takes the following format</p>
+<pre><code>less.render(lessInput, options)
+    .then(function(output) {
+        // output.css = string of css
+        // output.map = string of sourcemap
+        // output.imports = array of string filenames of the imports referenced
+    },
+    function(error) {
+    });
+
+// or...
+
+less.render(css, options, function(error, output) {})
+</code></pre><p>The options argument is optional. If you specify a callback then a promise will not be returned, where as if you do not specify a callback a promise will be given.
+Under the hood, the callback version is used so that less can be used synchronously.</p>
+<p>If you wanted to render a file, you would first read it into a string (to pass to less.render) and then set the filename field on options to be the filename of the main file. less will handle all the processing of the imports.</p>
+<p>The <code>sourceMap</code> option is an object which enables you to set sub sourcemap options. Available sub options are: <code>sourceMapURL</code>,<code>sourceMapBasepath</code>,<code>sourceMapRootpath</code>,<code>outputSourceFiles</code> and <code>sourceMapFileInline</code>.</p>
+<pre><code>less.render(lessInput)
+    .then(function(output) {
+        // output.css = string of css
+        // output.map = undefined
+}
+//,
+less.render(lessInput)
+    .then(function(output,{sourceMap:{}}) {
+        // output.css = string of css
+        // output.map = string of sourcemap
+}
+//or,
+less.render(lessInput)
+    .then(function(output,{sourceMap: { sourceMapFileInline: true}}) {
+        // output.css = string of css \n /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJ..= */
+        // output.map = undefined
+}
+</code></pre><p>Previously we also recommended creating a less.Parser and then calling toCSS on the result. However this had 2 serious drawbacks - it meant that our parser was in fact tied to all of less and 2nd it meant that the toCSS call had to be synchronous.</p>
+<p>You can still get the less parse tree, but it requires more steps. You can see how this is done <a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/lib/less/render.js  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/lib/less/render.js'" tppabs="https://github.com/less/less.js/blob/master/lib/less/render.js">in the render function</a> but we <em>do not</em> support using less in this way and may change this function in a minor release version bump (we will not break it in a patch release).</p>
+<h3 class="docs-heading">Getting access to the log<span class="anchor-target" id="programmatic-usage-getting-access-to-the-log"></span>
+<a href="#programmatic-usage-getting-access-to-the-log" name="programmatic-usage-getting-access-to-the-log" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>You can add a log listener with the following code</p>
+<pre><code>less.logger.addListener({
+    debug: function(msg) {
+    },
+    info: function(msg) {
+    },
+    warn: function(msg) {
+    },
+    error: function(msg) {
+    }
+});
+</code></pre><p>Note: all functions are optional. An error will not be logged, but instead is passed back to the callback or promise in less.render</p>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Online Less Compilers<span class="anchor-target" id="online-less-compilers"></span>
+<a href="#online-less-compilers" name="online-less-compilers" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/online-less-compilers.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/online-less-compilers.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/online-less-compilers.md" data-content="online-less-compilersmd" target="_blank"></a>
+<a id="online-less-compilersmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/online-less-compilers.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/online-less-compilers.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/online-less-compilers.md" target="_blank">Edit the markdown source for &quot;online-less-compilers&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://less2css.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://less2css.org/'" tppabs="http://less2css.org/">less2css.org</a><span class="anchor-target" id="online-less-compilers--less2css-org-http-less2css-org-"></span>
+<a href="#online-less-compilers--less2css-org-http-less2css-org-" name="online-less-compilers--less2css-org-http-less2css-org-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>&#x6258;&#x7BA1;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x5728;&#x7EBF;&#x96C6;&#x6210;&#x5F00;&#x53D1;&#x73AF;&#x5883;(IDE)&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5B9E;&#x65F6;&#x7F16;&#x8F91;&#x548C;&#x7F16;&#x8BD1;Less&#x4E3A;CSS</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://winless.org/online-less-compiler  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://winless.org/online-less-compiler'" tppabs="http://winless.org/online-less-compiler">winless.org/online-less-compiler</a><span class="anchor-target" id="online-less-compilers--winless-org-online-less-compiler-http-winless-org-online-less-compiler-"></span>
+<a href="#online-less-compilers--winless-org-online-less-compiler-http-winless-org-online-less-compiler-" name="online-less-compilers--winless-org-online-less-compiler-http-winless-org-online-less-compiler-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>&#x8FD9;&#x6B3E;Less&#x7F16;&#x8BD1;&#x5668;&#x6709;&#x52A9;&#x4E8E;&#x4F60;&#x5B66;&#x4E60;Less&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5B66;&#x4E60;&#x91CC;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x6216;&#x8005;&#x5C1D;&#x8BD5;&#x81EA;&#x5DF1;&#x5199;Less&#x4EE3;&#x7801;&#x3002;</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://lesstester.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lesstester.com/'" tppabs="http://lesstester.com/">lesstester.com</a><span class="anchor-target" id="online-less-compilers--lesstester-com-http-lesstester-com-"></span>
+<a href="#online-less-compilers--lesstester-com-http-lesstester-com-" name="online-less-compilers--lesstester-com-http-lesstester-com-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Less CSS&#x5728;&#x7EBF;&#x7F16;&#x8BD1;&#x5668;</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://www.dopefly.com/less-converter/less-converter.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.dopefly.com/less-converter/less-converter.html'" tppabs="http://www.dopefly.com/less-converter/less-converter.html">dopefly.com/less-converter</a><span class="anchor-target" id="online-less-compilers--dopefly-com-less-converter-http-www-dopefly-com-less-converter-less-converter-html-"></span>
+<a href="#online-less-compilers--dopefly-com-less-converter-http-www-dopefly-com-less-converter-less-converter-html-" name="online-less-compilers--dopefly-com-less-converter-http-www-dopefly-com-less-converter-less-converter-html-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>&#x7528; Less JS &#x5B9E;&#x73B0;&#x7684;&#x4E00;&#x6B3E;&#x7B80;&#x6613;&#x7684; Less CSS &#x6587;&#x4EF6;&#x8F6C;&#x6362;&#x5668;</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://lessphp.gpeasy.com/demo  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lessphp.gpeasy.com/demo'" tppabs="http://lessphp.gpeasy.com/demo">lessphp.gpeasy.com/demo</a><span class="anchor-target" id="online-less-compilers--lessphp-gpeasy-com-demo-http-lessphp-gpeasy-com-demo-"></span>
+<a href="#online-less-compilers--lessphp-gpeasy-com-demo-http-lessphp-gpeasy-com-demo-" name="online-less-compilers--lessphp-gpeasy-com-demo-http-lessphp-gpeasy-com-demo-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p><a href="javascript:if(confirm('http://lessphp.gpeasy.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lessphp.gpeasy.com/'" tppabs="http://lessphp.gpeasy.com/">less.php</a> &#x5B9E;&#x73B0;&#x793A;&#x4F8B;.</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://leafo.net/lessphp/editor.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://leafo.net/lessphp/editor.html'" tppabs="http://leafo.net/lessphp/editor.html">leafo.net/lessphp/editor</a><span class="anchor-target" id="online-less-compilers--leafo-net-lessphp-editor-http-leafo-net-lessphp-editor-html-"></span>
+<a href="#online-less-compilers--leafo-net-lessphp-editor-http-leafo-net-lessphp-editor-html-" name="online-less-compilers--leafo-net-lessphp-editor-http-leafo-net-lessphp-editor-html-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p><a href="javascript:if(confirm('http://leafo.net/lessphp/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://leafo.net/lessphp/'" tppabs="http://leafo.net/lessphp/">lessphp</a> &#x5B9E;&#x73B0;&#x793A;&#x4F8B;.</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://precess.co/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://precess.co/'" tppabs="http://precess.co/">precess</a><span class="anchor-target" id="online-less-compilers--precess-http-precess-co-"></span>
+<a href="#online-less-compilers--precess-http-precess-co-" name="online-less-compilers--precess-http-precess-co-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;&#x5B9E;&#x65F6;&#x9884;&#x5904;&#x7406;&#x7F16;&#x8BD1;&#x5668;&#x3002; </p>
+</blockquote>
+<h2 class="docs-heading">Online Web IDEs/Playgrounds with Less support &#xFF08;&#x652F;&#x6301;Less&#x7684;&#x5728;&#x7EBF;IDE&#x548C;&#x5728;&#x7EBF;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#xFF09;<span class="anchor-target" id="online-less-compilers-online-web-ides-playgrounds-with-less-support-less-ide-"></span>
+<a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support-less-ide-" name="online-less-compilers-online-web-ides-playgrounds-with-less-support-less-ide-" class="anchor glyphicon glyphicon-link"></a></h2>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://cssdeck.com/labs  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://cssdeck.com/labs'" tppabs="http://cssdeck.com/labs">CSSDeck Labs</a><span class="anchor-target" id="online-less-compilers--cssdeck-labs-http-cssdeck-com-labs-"></span>
+<a href="#online-less-compilers--cssdeck-labs-http-cssdeck-com-labs-" name="online-less-compilers--cssdeck-labs-http-cssdeck-com-labs-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>CSSDeck Labs&#x662F;&#x4E00;&#x4E2A;&#x4F60;&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x521B;&#x5EFA;&#x5305;&#x542B;HTML&#xFF0C;CSS&#xFF0C;JS&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x4F8B;&#xFF08;&#x6216;&#x662F;&#x6D4B;&#x8BD5;&#x793A;&#x4F8B;&#xFF09;&#x7684;&#x5728;&#x7EBF;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x3002;</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://codepen.io/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">CodePen</a><span class="anchor-target" id="online-less-compilers--codepen-http-codepen-io-"></span>
+<a href="#online-less-compilers--codepen-http-codepen-io-" name="online-less-compilers--codepen-http-codepen-io-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>CodePen&#x662F;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;&#x7F51;&#x7AD9;&#x524D;&#x7AEF;&#x4EE3;&#x7801;&#x8BBE;&#x8BA1;&#x7684;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x3002;</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://fiddlesalad.com/less/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://fiddlesalad.com/less/'" tppabs="http://fiddlesalad.com/less/">Fiddle Salad</a><span class="anchor-target" id="online-less-compilers--fiddle-salad-http-fiddlesalad-com-less-"></span>
+<a href="#online-less-compilers--fiddle-salad-http-fiddlesalad-com-less-" name="online-less-compilers--fiddle-salad-http-fiddlesalad-com-less-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Fiddle Salad&#x662F;&#x4E00;&#x4E2A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x73AF;&#x5883;&#x7684;&#x5728;&#x7EBF;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x3002;</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://jsbin.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JS Bin</a><span class="anchor-target" id="online-less-compilers--js-bin-http-jsbin-com-"></span>
+<a href="#online-less-compilers--js-bin-http-jsbin-com-" name="online-less-compilers--js-bin-http-jsbin-com-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>JSBin&#x662F;&#x4E00;&#x4E2A;Web&#x5E94;&#x7528;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x5E2E;&#x52A9;&#x6D4B;&#x8BD5;JavaScript&#x548C;CSS&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x3002;</p>
+</blockquote>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://jsfiddle.net/T2Xe9/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://jsfiddle.net/T2Xe9/'" tppabs="http://jsfiddle.net/T2Xe9/">jsFiddle</a><span class="anchor-target" id="online-less-compilers--jsfiddle-http-jsfiddle-net-t2xe9-"></span>
+<a href="#online-less-compilers--jsfiddle-http-jsfiddle-net-t2xe9-" name="online-less-compilers--jsfiddle-http-jsfiddle-net-t2xe9-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>&#x5728;&#x7EBF;&#x7F16;&#x8F91;&#x5668;</p>
+</blockquote>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">GUIs for Less<span class="anchor-target" id="guis-for-less"></span>
+<a href="#guis-for-less" name="guis-for-less" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/guis-for-less.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/guis-for-less.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/guis-for-less.md" data-content="guis-for-lessmd" target="_blank"></a>
+<a id="guis-for-lessmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/guis-for-less.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/guis-for-less.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/guis-for-less.md" target="_blank">Edit the markdown source for &quot;guis-for-less&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<p><span class="warning"><strong>Tip</strong>: try out the different Less tools available for your platform to see which one meets your needs.</span></p>
+<p><em>This page focuses on GUI compilers. For command line usage and tools see <a href="#command-line-usage">Command Line Usage</a>.</em></p>
+<h2 class="docs-heading">Cross platform<span class="anchor-target" id="guis-for-less-cross-platform"></span>
+<a href="#guis-for-less-cross-platform" name="guis-for-less-cross-platform" class="anchor glyphicon glyphicon-link"></a></h2>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://crunchapp.net/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://crunchapp.net/'" tppabs="http://crunchapp.net/">Crunch!</a><span class="anchor-target" id="guis-for-less--crunch-http-crunchapp-net-"></span>
+<a href="#guis-for-less--crunch-http-crunchapp-net-" name="guis-for-less--crunch-http-crunchapp-net-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Crunch is not just a Less compiler, it is also a Less editor for Windows and Mac.</p>
+</blockquote>
+<p>If you work a lot with Less files, you should definitely try it out. Crunch is built on the Adobe AIR platform. Get more info: <a href="javascript:if(confirm('http://crunchapp.net/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://crunchapp.net/'" tppabs="http://crunchapp.net/">http://crunchapp.net/</a>.</p>
+<p><img src="../../../../crunchapp.net/wp-content/themes/crunch/img/screenshot2.png" tppabs="http://crunchapp.net/wp-content/themes/crunch/img/screenshot2.png" alt="Crunch screenshot"></p>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://mixture.io/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://mixture.io/'" tppabs="http://mixture.io/">Mixture</a><span class="anchor-target" id="guis-for-less--mixture-http-mixture-io-"></span>
+<a href="#guis-for-less--mixture-http-mixture-io-" name="guis-for-less--mixture-http-mixture-io-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>A rapid prototyping and static site generation tool for designers and developers</p>
+</blockquote>
+<p>Mixture brings together a collection of awesome tools and best practices. It&apos;s quick, no-fuss, super-powerful and works with your favourite editor.</p>
+<p>Get more info: <a href="javascript:if(confirm('http://mixture.io/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://mixture.io/'" tppabs="http://mixture.io/">http://mixture.io/</a></p>
+<p><img src="../../../../s3.amazonaws.com/mixture-mixed/1/775/assets/img/img1.jpg" tppabs="https://s3.amazonaws.com/mixture-mixed/1/775/assets/img/img1.jpg" alt="mixture screenshot"></p>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://wearekiss.com/simpless  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://wearekiss.com/simpless'" tppabs="http://wearekiss.com/simpless">SimpLESS</a><span class="anchor-target" id="guis-for-less--simpless-http-wearekiss-com-simpless-"></span>
+<a href="#guis-for-less--simpless-http-wearekiss-com-simpless-" name="guis-for-less--simpless-http-wearekiss-com-simpless-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>SimpLESS is a minimalistic Less compiler. Just drag, drop and compile.</p>
+</blockquote>
+<p>One of the unique features of SimpLESS is that it supports &apos;prefixing&apos; your CSS by using <a href="javascript:if(confirm('http://prefixr.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://prefixr.com/'" tppabs="http://prefixr.com/">http://prefixr.com.</a>. SimpLESS is built on the Titanium platform. Get more info: <a href="javascript:if(confirm('http://wearekiss.com/simpless  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://wearekiss.com/simpless'" tppabs="http://wearekiss.com/simpless">http://wearekiss.com/simpless</a></p>
+<p><img src="../../../../wearekiss.com/lib/img/simpless/app-windows.png-1.png" tppabs="http://wearekiss.com/lib/img/simpless/app-windows.png?1" alt="SimpLESS screenshot"></p>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://koala-app.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://koala-app.com/'" tppabs="http://koala-app.com/">Koala</a><span class="anchor-target" id="guis-for-less--koala-http-koala-app-com-"></span>
+<a href="#guis-for-less--koala-http-koala-app-com-" name="guis-for-less--koala-http-koala-app-com-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Koala is a cross-platform GUI application for compiling less, sass and coffeescript.</p>
+</blockquote>
+<p>Features: cross platform, compile error notification supports and compile options supports.</p>
+<p>Get more info: <a href="javascript:if(confirm('http://koala-app.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://koala-app.com/'" tppabs="http://koala-app.com/">http://koala-app.com/</a></p>
+<p><img src="../../../../koala-app.com/img/screenshot.png" tppabs="http://koala-app.com/img/screenshot.png" alt="koala screenshot"></p>
+<h2 class="docs-heading">Specific platforms<span class="anchor-target" id="guis-for-less-specific-platforms"></span>
+<a href="#guis-for-less-specific-platforms" name="guis-for-less-specific-platforms" class="anchor glyphicon glyphicon-link"></a></h2>
+<h3 class="docs-heading">Windows<span class="anchor-target" id="guis-for-less-windows"></span>
+<a href="#guis-for-less-windows" name="guis-for-less-windows" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 class="docs-heading"><a href="javascript:if(confirm('http://alphapixels.com/prepros  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://alphapixels.com/prepros'" tppabs="http://alphapixels.com/prepros">Prepros App</a><span class="anchor-target" id="guis-for-less--prepros-app-http-alphapixels-com-prepros-"></span>
+<a href="#guis-for-less--prepros-app-http-alphapixels-com-prepros-" name="guis-for-less--prepros-app-http-alphapixels-com-prepros-" class="anchor glyphicon glyphicon-link"></a></h4>
+<blockquote>
+<p>Prepros is a free and open source app that can compile less, sass, stylus, jade, haml and much more with live browser refresh.</p>
+</blockquote>
+<p>Get more info at <a href="javascript:if(confirm('http://alphapixels.com/prepros  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://alphapixels.com/prepros'" tppabs="http://alphapixels.com/prepros">http://alphapixels.com/prepros</a></p>
+<p><img src="../../../../prepros.io/index.htm" tppabs="http://alphapixels.com/prepros/static/img/prepros.jpg" alt="Prepros screenshot"></p>
+<h4 class="docs-heading"><a href="javascript:if(confirm('https://github.com/marklagendijk/WinLess  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/marklagendijk/WinLess'" tppabs="https://github.com/marklagendijk/WinLess">WinLess</a><span class="anchor-target" id="guis-for-less--winless-https-github-com-marklagendijk-winless-"></span>
+<a href="#guis-for-less--winless-https-github-com-marklagendijk-winless-" name="guis-for-less--winless-https-github-com-marklagendijk-winless-" class="anchor glyphicon glyphicon-link"></a></h4>
+<blockquote>
+<p>WinLess started out as a clone of Less.app, it takes a more feature-complete approach and has several settings. It also supports starting with command line arguments.</p>
+</blockquote>
+<p>Get more info: <a href="javascript:if(confirm('https://github.com/marklagendijk/WinLess  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/marklagendijk/WinLess'" tppabs="https://github.com/marklagendijk/WinLess">https://github.com/marklagendijk/WinLess</a></p>
+<h3 class="docs-heading">OSx<span class="anchor-target" id="guis-for-less-osx"></span>
+<a href="#guis-for-less-osx" name="guis-for-less-osx" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 class="docs-heading"><a href="javascript:if(confirm('http://incident57.com/less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://incident57.com/less'" tppabs="http://incident57.com/less">LESS.app</a><span class="anchor-target" id="guis-for-less--less-app-http-incident57-com-less-"></span>
+<a href="#guis-for-less--less-app-http-incident57-com-less-" name="guis-for-less--less-app-http-incident57-com-less-" class="anchor glyphicon glyphicon-link"></a></h4>
+<blockquote>
+<p>LESS.app was the first GUI compiler for Less. LESS.app has a &apos;Compiler&apos; tab where you can see the compiler results.</p>
+</blockquote>
+<p>Get more info: <a href="javascript:if(confirm('http://incident57.com/less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://incident57.com/less'" tppabs="http://incident57.com/less">http://incident57.com/less</a></p>
+<p><img src="../../../../codekitapp.com/index.html" tppabs="http://incident57.com/less/images/hero-window.png" alt="LESS.app screenshot"></p>
+<h4 class="docs-heading"><a href="javascript:if(confirm('http://incident57.com/codekit  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://incident57.com/codekit'" tppabs="http://incident57.com/codekit">CodeKit</a><span class="anchor-target" id="guis-for-less--codekit-http-incident57-com-codekit-"></span>
+<a href="#guis-for-less--codekit-http-incident57-com-codekit-" name="guis-for-less--codekit-http-incident57-com-codekit-" class="anchor glyphicon glyphicon-link"></a></h4>
+<blockquote>
+<p>CodeKit is the successor to LESS.app, and supports Less among many other preprocessing languages, such as SASS, Jade, Markdown, and many more.</p>
+</blockquote>
+<p>Get more info: <a href="javascript:if(confirm('http://incident57.com/codekit  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://incident57.com/codekit'" tppabs="http://incident57.com/codekit">http://incident57.com/codekit</a></p>
+<p><img src="../../../../incident57.com/codekit/images/screenshot-images-1.jpg" tppabs="http://incident57.com/codekit/images/screenshot-images.jpg" alt="CodeKit screenshot"></p>
+<h4 class="docs-heading"><a href="javascript:if(confirm('http://livereload.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://livereload.com/'" tppabs="http://livereload.com/">LiveReload</a><span class="anchor-target" id="guis-for-less--livereload-http-livereload-com-"></span>
+<a href="#guis-for-less--livereload-http-livereload-com-" name="guis-for-less--livereload-http-livereload-com-" class="anchor glyphicon glyphicon-link"></a></h4>
+<blockquote>
+<p>CSS edits and image changes apply live. CoffeeScript, SASS, Less and others just work.</p>
+</blockquote>
+<p>Get more info: <a href="javascript:if(confirm('http://livereload.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://livereload.com/'" tppabs="http://livereload.com/">http://livereload.com</a></p>
+<p><img src="../../../../assets.livereload.com/embedded-images/LiveReload-LESS-screenshot-on-white.png" tppabs="http://assets.livereload.com/embedded-images/LiveReload-LESS-screenshot-on-white.png" alt="LiveReload screenshot"></p>
+<h3 class="docs-heading">Linux<span class="anchor-target" id="guis-for-less-linux"></span>
+<a href="#guis-for-less-linux" name="guis-for-less-linux" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 class="docs-heading"><a href="javascript:if(confirm('https://github.com/Mte90/Plessc  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/Mte90/Plessc'" tppabs="https://github.com/Mte90/Plessc">Plessc</a><span class="anchor-target" id="guis-for-less--plessc-https-github-com-mte90-plessc-"></span>
+<a href="#guis-for-less--plessc-https-github-com-mte90-plessc-" name="guis-for-less--plessc-https-github-com-mte90-plessc-" class="anchor glyphicon glyphicon-link"></a></h4>
+<blockquote>
+<p>Plessc is a gui fronted made with PyQT.</p>
+</blockquote>
+<p>Auto compile, log viewer, open the less file with the editor choosen, settings for compile the file.
+Get more info: <a href="javascript:if(confirm('https://github.com/Mte90/Plessc  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/Mte90/Plessc'" tppabs="https://github.com/Mte90/Plessc">https://github.com/Mte90/Plessc</a></p>
+<p><img src="../../../../raw.githubusercontent.com/Mte90/Plessc/master/screenshot.png" tppabs="https://github.com/Mte90/Plessc/raw/master/screenshot.png" alt="Plessc screenshot"></p>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Editors and Plugins<span class="anchor-target" id="editors-and-plugins"></span>
+<a href="#editors-and-plugins" name="editors-and-plugins" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/editors-and-plugins.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/editors-and-plugins.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/editors-and-plugins.md" data-content="editors-and-pluginsmd" target="_blank"></a>
+<a id="editors-and-pluginsmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/editors-and-plugins.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/editors-and-plugins.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/editors-and-plugins.md" target="_blank">Edit the markdown source for &quot;editors-and-plugins&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<p>&#x6216;&#x53C2;&#x9605;: <a href="#guis-for-less">GUIs for Less.js</a></p>
+<h2 class="docs-heading">Editors and IDEs &#xFF08;&#x7F16;&#x8F91;&#x5668;&#x548C;IDE&#xFF09;<span class="anchor-target" id="editors-and-plugins-editors-and-ides-ide-"></span>
+<a href="#editors-and-plugins-editors-and-ides-ide-" name="editors-and-plugins-editors-and-ides-ide-" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('http://crunchapp.net/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://crunchapp.net/'" tppabs="http://crunchapp.net/">Crunch!</a> (&#x5185;&#x7F6E;&#x652F;&#x6301;)</li>
+<li><a href="javascript:if(confirm('http://visualstudiogallery.msdn.microsoft.com/2b96d16a-c986-4501-8f97-8008f9db141a  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://visualstudiogallery.msdn.microsoft.com/2b96d16a-c986-4501-8f97-8008f9db141a'" tppabs="http://visualstudiogallery.msdn.microsoft.com/2b96d16a-c986-4501-8f97-8008f9db141a">Mindscape Web Workbench</a> (&#x5185;&#x7F6E;&#x652F;&#x6301;)</li>
+<li><a href="javascript:if(confirm('https://netbeans.org/downloads/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://netbeans.org/downloads/'" tppabs="https://netbeans.org/downloads/">NetBeans</a> (&#x5185;&#x7F6E; <a href="javascript:if(confirm('http://wiki.netbeans.org/NetBeans_74_NewAndNoteworthy  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://wiki.netbeans.org/NetBeans_74_NewAndNoteworthy#CSS_Preprocessors'" tppabs="http://wiki.netbeans.org/NetBeans_74_NewAndNoteworthy#CSS_Preprocessors">syntax highlighting</a>)</li>
+<li><a href="javascript:if(confirm('https://github.com/appden/less.tmbundle  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/appden/less.tmbundle'" tppabs="https://github.com/appden/less.tmbundle">TextMate</a></li>
+<li><a href="javascript:if(confirm('https://github.com/groenewege/vim-less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/groenewege/vim-less'" tppabs="https://github.com/groenewege/vim-less">Vim</a></li>
+<li><a href="javascript:if(confirm('https://github.com/purcell/less-css-mode  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/purcell/less-css-mode'" tppabs="https://github.com/purcell/less-css-mode">Emacs</a></li>
+<li><a href="javascript:if(confirm('http://www.jetbrains.com/webstorm/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.jetbrains.com/webstorm/'" tppabs="http://www.jetbrains.com/webstorm/">jetBrains WebStorm</a> &#x548C; <a href="javascript:if(confirm('http://www.jetbrains.com/phpstorm/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.jetbrains.com/phpstorm/'" tppabs="http://www.jetbrains.com/phpstorm/">PhpStorm</a> (&#x5185;&#x7F6E;&#x652F;&#x6301;)</li>
+<li><a href="javascript:if(confirm('http://brackets.io/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://brackets.io/'" tppabs="http://brackets.io/">Brackets</a> (&#x5185;&#x7F6E;&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;, <a href="javascript:if(confirm('https://github.com/adobe/brackets/wiki/Brackets-Extensions  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/adobe/brackets/wiki/Brackets-Extensions'" tppabs="https://github.com/adobe/brackets/wiki/Brackets-Extensions">several extensions</a> &#x7F16;&#x8BD1;)</li>
+<li><a href="javascript:if(confirm('http://www.codelobster.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.codelobster.com/'" tppabs="http://www.codelobster.com/">CodeLobster</a> (&#x5185;&#x7F6E; <a href="javascript:if(confirm('http://www.codelobster.com/sass_less.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.codelobster.com/sass_less.html'" tppabs="http://www.codelobster.com/sass_less.html">syntax highlighting</a>)</li>
+<li><a href="javascript:if(confirm('http://kineticwing.com/download  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://kineticwing.com/download'" tppabs="http://kineticwing.com/download">KineticWing IDE</a> (&#x5185;&#x7F6E; <a href="javascript:if(confirm('http://kineticwing.com//assets/img/screenshots/LessEditor.png  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://kineticwing.com//assets/img/screenshots/LessEditor.png'" tppabs="http://kineticwing.com//assets/img/screenshots/LessEditor.png">support</a>)</li>
+<li><a href="javascript:if(confirm('https://www.npmjs.org/package/node-mirror  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://www.npmjs.org/package/node-mirror'" tppabs="https://www.npmjs.org/package/node-mirror">nodeMirror</a> (&#x5185;&#x7F6E;&#x652F;&#x6301;, &#x5185;&#x7F6E; HTML/CSS/Less &#x9884;&#x89C8;)</li>
+</ul>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://sublimetext.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://sublimetext.com/'" tppabs="http://sublimetext.com/">Sublime Text 2 &amp; 3</a><span class="anchor-target" id="editors-and-plugins--sublime-text-2-3-http-sublimetext-com-"></span>
+<a href="#editors-and-plugins--sublime-text-2-3-http-sublimetext-com-" name="editors-and-plugins--sublime-text-2-3-http-sublimetext-com-" class="anchor glyphicon glyphicon-link"></a></h3>
+<ul>
+<li><a href="javascript:if(confirm('https://github.com/danro/Less-sublime  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/danro/Less-sublime'" tppabs="https://github.com/danro/Less-sublime" title="Sublime Text Package for Less.js">Less-sublime</a></li>
+<li><a href="javascript:if(confirm('https://github.com/timdouglas/sublime-less2css  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/timdouglas/sublime-less2css'" tppabs="https://github.com/timdouglas/sublime-less2css" title="Sublime Text Package for Less.js">Sublime-Less-to-CSS</a></li>
+<li><a href="javascript:if(confirm('https://github.com/berfarah/Less-build-sublime  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/berfarah/Less-build-sublime'" tppabs="https://github.com/berfarah/Less-build-sublime" title="Sublime Text Package for Less.js">Less-build-sublime</a></li>
+<li><a href="javascript:if(confirm('https://github.com/alexnj/SublimeOnSaveBuild  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/alexnj/SublimeOnSaveBuild'" tppabs="https://github.com/alexnj/SublimeOnSaveBuild" title="Sublime Text Package for Less.js">SublimeOnSaveBuild</a></li>
+</ul>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://www.eclipse.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.eclipse.org/'" tppabs="http://www.eclipse.org/">Eclipse</a><span class="anchor-target" id="editors-and-plugins--eclipse-http-www-eclipse-org-"></span>
+<a href="#editors-and-plugins--eclipse-http-www-eclipse-org-" name="editors-and-plugins--eclipse-http-www-eclipse-org-" class="anchor glyphicon glyphicon-link"></a></h3>
+<ul>
+<li><a href="javascript:if(confirm('http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html'" tppabs="http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html">Eclipse Less Plugin</a> by Vincent Simonet</li>
+<li><a href="javascript:if(confirm('https://github.com/gossi/eclipse-transpiler-plugin  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/gossi/eclipse-transpiler-plugin'" tppabs="https://github.com/gossi/eclipse-transpiler-plugin">Transpiler Plugin</a> by Thomas Gossmann</li>
+</ul>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://www.visualstudio.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.visualstudio.com/'" tppabs="http://www.visualstudio.com/">Visual Studio</a><span class="anchor-target" id="editors-and-plugins--visual-studio-http-www-visualstudio-com-"></span>
+<a href="#editors-and-plugins--visual-studio-http-www-visualstudio-com-" name="editors-and-plugins--visual-studio-http-www-visualstudio-com-" class="anchor glyphicon glyphicon-link"></a></h3>
+<ul>
+<li><a href="javascript:if(confirm('http://visualstudiogallery.msdn.microsoft.com/dd5635b0-3c70-484f-abcb-cbdcabaa9923  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://visualstudiogallery.msdn.microsoft.com/dd5635b0-3c70-484f-abcb-cbdcabaa9923'" tppabs="http://visualstudiogallery.msdn.microsoft.com/dd5635b0-3c70-484f-abcb-cbdcabaa9923">CSS Is Less</a> (Visual Studio)</li>
+<li><a href="javascript:if(confirm('http://tinyurl.com/WebEssentials2012  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://tinyurl.com/WebEssentials2012'" tppabs="http://tinyurl.com/WebEssentials2012">Web Essentials 2012</a> (Visual Studio 2012)</li>
+<li><a href="javascript:if(confirm('http://vswebessentials.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://vswebessentials.com/'" tppabs="http://vswebessentials.com/">Web Essentials 2013</a> (Visual Studio 2013)</li>
+<li><a href="javascript:if(confirm('http://www.asp.net/downloads  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.asp.net/downloads'" tppabs="http://www.asp.net/downloads">Web Tools 2013</a> (Visual Studio)</li>
+</ul>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://www.adobe.com/products/dreamweaver.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.adobe.com/products/dreamweaver.html'" tppabs="http://www.adobe.com/products/dreamweaver.html">Dreamweaver</a><span class="anchor-target" id="editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-"></span>
+<a href="#editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-" name="editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-" class="anchor glyphicon glyphicon-link"></a></h3>
+<ul>
+<li><a href="javascript:if(confirm('http://www.dmxzone.com/go/21514/dmxzone-less-css-compiler-features-unveiled/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.dmxzone.com/go/21514/dmxzone-less-css-compiler-features-unveiled/'" tppabs="http://www.dmxzone.com/go/21514/dmxzone-less-css-compiler-features-unveiled/">DMXzone Less CSS Compiler</a></li>
+</ul>
+<h3 class="docs-heading"><a href="javascript:if(confirm('http://notepad-plus-plus.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://notepad-plus-plus.org/'" tppabs="http://notepad-plus-plus.org/">Notepad++ 6.x</a><span class="anchor-target" id="editors-and-plugins--notepad-6-x-npp-"></span>
+<a href="#editors-and-plugins--notepad-6-x-npp-" name="editors-and-plugins--notepad-6-x-npp-" class="anchor glyphicon glyphicon-link"></a></h3>
+<ul>
+<li><a href="javascript:if(confirm('http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files#L'" tppabs="http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files#L">Less.js &#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;</a> &#x7531; Ra&#xFA;l Salitrero &#x81EA;&#x5B9A;&#x4E49;&#x7684;</li>
+<li><a href="javascript:if(confirm('https://github.com/azrafe7/LESS-for-Notepad-plusplus  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/azrafe7/LESS-for-Notepad-plusplus'" tppabs="https://github.com/azrafe7/LESS-for-Notepad-plusplus">Less.js &#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;</a> &#x7531; azrafe7 &#x81EA;&#x5B9A;&#x4E49;&#x7684;</li>
+<li><a href="javascript:if(confirm('http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files#How_to_install_user_defined_language_files'" tppabs="http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files#How_to_install_user_defined_language_files" title="how to install User Defined Language files">How to Install</a></li>
+</ul>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Third Party Compilers<span class="anchor-target" id="third-party-compilers"></span>
+<a href="#third-party-compilers" name="third-party-compilers" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/third-party-compilers.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/third-party-compilers.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/third-party-compilers.md" data-content="third-party-compilersmd" target="_blank"></a>
+<a id="third-party-compilersmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/third-party-compilers.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/third-party-compilers.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/third-party-compilers.md" target="_blank">Edit the markdown source for &quot;third-party-compilers&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<h2 class="docs-heading">Node.js compilers<span class="anchor-target" id="third-party-compilers-node-js-compilers"></span>
+<a href="#third-party-compilers-node-js-compilers" name="third-party-compilers-node-js-compilers" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><strong><a href="javascript:if(confirm('https://github.com/gruntjs/grunt-contrib-less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/gruntjs/grunt-contrib-less'" tppabs="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a></strong></li>
+<li><strong><a href="javascript:if(confirm('https://github.com/assemble/assemble-less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/assemble/assemble-less'" tppabs="https://github.com/assemble/assemble-less">assemble-less</a></strong>: Full-featured Grunt.js plugin for compiling Less files to CSS, with additional options for maintaining libraries of Less components and themes. For advanced users, this plugin allows you to define and manage Less &quot;packages&quot; or &quot;bundles&quot; using JSON, <a href="javascript:if(confirm('https://github.com/bestiejs/lodash  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bestiejs/lodash'" tppabs="https://github.com/bestiejs/lodash">Lo-dash</a>(underscore) templates (e.g. <code>&lt;%= bootstrap.less %&gt;</code>), and <a href="javascript:if(confirm('https://github.com/isaacs/node-glob  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/isaacs/node-glob'" tppabs="https://github.com/isaacs/node-glob">node-glob</a> / <a href="javascript:if(confirm('https://github.com/isaacs/minimatch  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/isaacs/minimatch'" tppabs="https://github.com/isaacs/minimatch">minimatch</a> (e.g. <code>&apos;../src/**/*.less&quot;</code>). <em>assemble-less</em> also has a number of options including minifying CSS</li>
+<li><strong><a href="javascript:if(confirm('https://github.com/plus3network/gulp-less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/plus3network/gulp-less'" tppabs="https://github.com/plus3network/gulp-less">gulp-less</a></strong>: Please note that this plugin discards <code>source-map</code> options, opting to instead using the <a href="javascript:if(confirm('https://github.com/floridoo/gulp-sourcemaps  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/floridoo/gulp-sourcemaps'" tppabs="https://github.com/floridoo/gulp-sourcemaps">gulp-sourcemaps</a> library.</li>
+<li><strong><a href="javascript:if(confirm('https://github.com/twitter/recess  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/twitter/recess'" tppabs="https://github.com/twitter/recess">RECESS</a></strong>: Twitter&apos;s code quality tool for CSS built on top of Less. RECESS has options for compiling Less to CSS, as well as linting, formatting and minifying CSS.</li>
+<li><strong><a href="javascript:if(confirm('https://github.com/jgonera/autoless  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/jgonera/autoless'" tppabs="https://github.com/jgonera/autoless">autoless</a></strong>: A Less files watcher, with dependency tracking (changes to imported files cause other files to be updated too) and growl notifications.</li>
+<li><strong><a href="javascript:if(confirm('https://github.com/emberfeather/less.js-middleware  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/emberfeather/less.js-middleware'" tppabs="https://github.com/emberfeather/less.js-middleware">Connect Middleware for Less.js</a></strong>: Connect Middleware for Less.js compiling</li>
+</ul>
+<h2 class="docs-heading">Other technologies<span class="anchor-target" id="third-party-compilers-other-technologies"></span>
+<a href="#third-party-compilers-other-technologies" name="third-party-compilers-other-technologies" class="anchor glyphicon glyphicon-link"></a></h2>
+<p><strong>Wro4j Runner CLI</strong>
+Download the <a href="javascript:if(confirm('http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-with-dependencies.jar  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-with-dependencies.jar'" tppabs="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-with-dependencies.jar">wro4j-runner.jar</a> file and run the following command:</p>
+<pre><code class="lang-bash">java -jar wro4j-runner-<span class="hljs-number">1.5</span>.<span class="hljs-number">0</span>-jar-with-dependencies.jar --preProcessors lessCss
+</code></pre>
+<p>More details can be found here: <a href="javascript:if(confirm('http://code.google.com/p/wro4j/wiki/wro4jRunner  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://code.google.com/p/wro4j/wiki/wro4jRunner'" tppabs="http://code.google.com/p/wro4j/wiki/wro4jRunner">Wro4j Runner CLI</a></p>
+<p><strong>CSS::LESSp</strong></p>
+<p><a href="javascript:if(confirm('http://search.cpan.org/~drinchev/CSS-LESSp/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://search.cpan.org/~drinchev/CSS-LESSp/'" tppabs="http://search.cpan.org/~drinchev/CSS-LESSp/">http://search.cpan.org/~drinchev/CSS-LESSp/</a></p>
+<pre><code class="lang-bash">lessp.pl styles.less &gt; styles.css
+</code></pre>
+<p><strong>Windows Script Host</strong></p>
+<p>Note - the official Less node runs on windows, so we are not sure why you would use this.</p>
+<p><a href="javascript:if(confirm('https://github.com/duncansmart/less.js-windows  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/duncansmart/less.js-windows'" tppabs="https://github.com/duncansmart/less.js-windows">Less.js for Windows</a> with this usage:</p>
+<pre><code class="lang-bash">cscript //nologo lessc.wsf input.less [output.css] [-compress]
+</code></pre>
+<p>or</p>
+<pre><code class="lang-bash">lessc input.less [output.css] [-compress]
+</code></pre>
+<p><strong>dotless</strong></p>
+<p><a href="javascript:if(confirm('http://www.dotlesscss.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.dotlesscss.org/'" tppabs="http://www.dotlesscss.org/">dotless for Windows</a> can be run like this:</p>
+<pre><code class="lang-bash">dotless.Compiler.exe [-switches] &lt;inputfile&gt; [outputfile]
+</code></pre>
+<p><strong>Also see:</strong> </p>
+<ul>
+<li><a href="javascript:if(confirm('https://www.html.cn/about/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://www.html.cn/about/#ports'" tppabs="https://www.html.cn/about/#ports">Ports of Less</a></li>
+</ul>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Frameworks Using Less<span class="anchor-target" id="frameworks-using-less"></span>
+<a href="#frameworks-using-less" name="frameworks-using-less" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/frameworks-using-less.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/frameworks-using-less.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/frameworks-using-less.md" data-content="frameworks-using-lessmd" target="_blank"></a>
+<a id="frameworks-using-lessmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/frameworks-using-less.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/frameworks-using-less.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/frameworks-using-less.md" target="_blank">Edit the markdown source for &quot;frameworks-using-less&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<h2 class="docs-heading">UI/Theme Frameworks and Components<span class="anchor-target" id="frameworks-using-less-ui-theme-frameworks-and-components"></span>
+<a href="#frameworks-using-less-ui-theme-frameworks-and-components" name="frameworks-using-less-ui-theme-frameworks-and-components" class="anchor glyphicon glyphicon-link"></a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="javascript:if(confirm('http://rriepe.github.io/1pxdeep/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://rriepe.github.io/1pxdeep/'" tppabs="http://rriepe.github.io/1pxdeep/">1pxdeep</a></td>
+<td>Brings designing by relative visual weight, or designing with color schemes, to Bootstrap</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://www.flathemes.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.flathemes.com/'" tppabs="http://www.flathemes.com/">Bootflat</a></td>
+<td>Open source Flat UI KIT based on Bootstrap</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://getbootstrap.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://getbootstrap.com/'" tppabs="http://getbootstrap.com/">Bootstrap</a></td>
+<td>Front-end framework for developing responsive, mobile first projects on the web</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/bassjobsen/bootstrap-a11y-theme  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bassjobsen/bootstrap-a11y-theme'" tppabs="https://github.com/bassjobsen/bootstrap-a11y-theme">Bootstrap a11y theme</a></td>
+<td>Makes web accessibility easier for Bootstrap developers</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://bootswatch.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://bootswatch.com/'" tppabs="http://bootswatch.com/">Bootswatch</a></td>
+<td>Collection of free themes for Bootstrap</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://cardinalcss.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://cardinalcss.com/'" tppabs="http://cardinalcss.com/">Cardinal</a></td>
+<td>Small &quot;mobile first&quot; CSS framework for front-end developers who build responsive web applications</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/firminoweb/csshorus  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/firminoweb/csshorus'" tppabs="https://github.com/firminoweb/csshorus">CSSH&#xF3;rus</a></td>
+<td>Library for development of responsive and mobile websites</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://designmodo.com/flat-free/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://designmodo.com/flat-free/'" tppabs="http://designmodo.com/flat-free/">Flat UI Free</a></td>
+<td>Theme and framework for Bootstrap</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/vitto/frontsize-less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/vitto/frontsize-less'" tppabs="https://github.com/vitto/frontsize-less">frontsize</a></td>
+<td>CSS front end framework</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://brunodsgn.github.io/InContent/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://brunodsgn.github.io/InContent/'" tppabs="http://brunodsgn.github.io/InContent/">InContent</a></td>
+<td>Image content with description created with CSS</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://ink.sapo.pt/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://ink.sapo.pt/'" tppabs="http://ink.sapo.pt/">Ink</a></td>
+<td>set of tools for quick development of web interfaces</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://jbst.eu/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://jbst.eu/'" tppabs="http://jbst.eu/">JBST</a></td>
+<td>Theme framework that can be used as a standalone website builder or to create WordPress themes</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://www.knacss.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.knacss.com/'" tppabs="http://www.knacss.com/">KNACSS</a></td>
+<td>Minimalist, responsive and extensible style sheet to kick-start your HTML / CSS projects</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://imperavi.com/kube/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://imperavi.com/kube/'" tppabs="http://imperavi.com/kube/">Kube</a></td>
+<td>Minimalistic CSS-framework for developers and designers</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://metroui.org.ua/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://metroui.org.ua/'" tppabs="http://metroui.org.ua/">Metro UI CSS</a></td>
+<td>Set of styles to create a site with an interface similar to Windows 8</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://madscript.com/pre/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://madscript.com/pre/'" tppabs="http://madscript.com/pre/">Pre</a></td>
+<td>CSS framework</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/amazingSurge/prelude  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/amazingSurge/prelude'" tppabs="https://github.com/amazingSurge/prelude">prelude</a></td>
+<td>Lightweight, responsive and extensible front-end framework</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://danmalarkey.github.io/schema/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://danmalarkey.github.io/schema/'" tppabs="http://danmalarkey.github.io/schema/">Schema</a></td>
+<td>Light, responsive, and lean frontend UI framework</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://getuikit.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://getuikit.com/'" tppabs="http://getuikit.com/">UIkit</a></td>
+<td>Lightweight and modular front-end framework for developing web interfaces</td>
+</tr>
+</tbody>
+</table>
+<h2 class="docs-heading">Grid Systems &#xFF08;&#x6805;&#x683C;&#x7CFB;&#x7EDF;&#xFF09;<span class="anchor-target" id="frameworks-using-less-grid-systems-"></span>
+<a href="#frameworks-using-less-grid-systems-" name="frameworks-using-less-grid-systems-" class="anchor glyphicon glyphicon-link"></a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="javascript:if(confirm('http://flexible.gs/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://flexible.gs/'" tppabs="http://flexible.gs/">Flexible Grid System</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/amazingSurge/adaptGrid  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/amazingSurge/adaptGrid'" tppabs="https://github.com/amazingSurge/adaptGrid">adaptGrid</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://fluidable.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://fluidable.com/'" tppabs="http://fluidable.com/">Fluidable</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://goldengridsystem.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://goldengridsystem.com/'" tppabs="http://goldengridsystem.com/">Golden Grid System</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/bassjobsen/LESS-Zen-Grid  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/bassjobsen/LESS-Zen-Grid'" tppabs="https://github.com/bassjobsen/LESS-Zen-Grid">LESS Zen Grid</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/chromice/order.less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/chromice/order.less'" tppabs="https://github.com/chromice/order.less">Order.less</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/BuschFunker/responsibly  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/BuschFunker/responsibly'" tppabs="https://github.com/BuschFunker/responsibly">responsibly</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://responsiveboilerplate.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://responsiveboilerplate.com/'" tppabs="http://responsiveboilerplate.com/">Responsive Boilerplate</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://semantic.gs/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://semantic.gs/'" tppabs="http://semantic.gs/">Semantic.gs</a></td>
+</tr>
+</tbody>
+</table>
+<h2 class="docs-heading">Mixin Libraries &#xFF08;Mixin&#x5E93;&#xFF09;<span class="anchor-target" id="frameworks-using-less-mixin-libraries-mixin-"></span>
+<a href="#frameworks-using-less-mixin-libraries-mixin-" name="frameworks-using-less-mixin-libraries-mixin-" class="anchor glyphicon glyphicon-link"></a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="javascript:if(confirm('http://mateuszkocz.github.io/3l/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://mateuszkocz.github.io/3l/'" tppabs="http://mateuszkocz.github.io/3l/">3L</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/joshuapekera/animate  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/joshuapekera/animate'" tppabs="https://github.com/joshuapekera/animate">animate</a></td>
+<td>Library of CSS3 keyframe animations</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://clearleft.github.io/clearless/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://clearleft.github.io/clearless/'" tppabs="http://clearleft.github.io/clearless/">Clearless</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://chrsr.com/css3lessplease/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://chrsr.com/css3lessplease/'" tppabs="http://chrsr.com/css3lessplease/">Css3LessPlease</a></td>
+<td>Conversion of css3please.com to LESS mixins</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://adodson.com/css-effects/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://adodson.com/css-effects/'" tppabs="http://adodson.com/css-effects/">CssEffects</a></td>
+<td>Collection of CSS style effects</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://cssowl.owl-stars.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://cssowl.owl-stars.com/'" tppabs="http://cssowl.owl-stars.com/">Cssowl</a></td>
+<td>Mixin library</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/sparanoid/cube.less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/sparanoid/cube.less'" tppabs="https://github.com/sparanoid/cube.less">cube.less</a></td>
+<td>Animated 3D cube using only CSS</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/ecomfe/est/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/ecomfe/est/'" tppabs="https://github.com/ecomfe/est/">est</a></td>
+<td>Mixin library</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://db0company.github.io/css-hexagon/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://db0company.github.io/css-hexagon/'" tppabs="http://db0company.github.io/css-hexagon/">Hexagon</a></td>
+<td>Generate CSS hexagons with custom size and color</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://lesselements.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lesselements.com/'" tppabs="http://lesselements.com/">LESS Elements</a></td>
+<td>Set of mixins</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://lesshat.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lesshat.com/'" tppabs="http://lesshat.com/">LESS Hat</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/pixelass/lessley  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/pixelass/lessley'" tppabs="https://github.com/pixelass/lessley">lessley</a></td>
+<td>A jasmine like testing suite written in pure less</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/danielkatz/less-bidi  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/danielkatz/less-bidi'" tppabs="https://github.com/danielkatz/less-bidi">LESS-bidi</a></td>
+<td>Set of mixins for creating bi-directional styling</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://denysdovhan.github.io/LESS-Mix/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://denysdovhan.github.io/LESS-Mix/'" tppabs="http://denysdovhan.github.io/LESS-Mix/">LESS-Mix</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/himedlooff/media-query-to-type  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/himedlooff/media-query-to-type'" tppabs="https://github.com/himedlooff/media-query-to-type">media-query-to-type</a></td>
+<td>Media Queries to Media Types with Less</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://jasonrobb.github.io/More-Colors.less/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://jasonrobb.github.io/More-Colors.less/'" tppabs="http://jasonrobb.github.io/More-Colors.less/">More-Colors.less</a></td>
+<td>Variables for easier color manipulation while you design in the browser</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/roelvanhintum/More-Less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/roelvanhintum/More-Less'" tppabs="https://github.com/roelvanhintum/More-Less">more-less</a></td>
+<td>Mixin lib supporting LESS 1.7</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/weinitz/More.less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/weinitz/More.less'" tppabs="https://github.com/weinitz/More.less">More.less</a></td>
+<td>Mixins, animations, shapes and more</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/pixelass/more-or-less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/pixelass/more-or-less'" tppabs="https://github.com/pixelass/more-or-less">more-or-less</a></td>
+<td>for-loops and other functions + css3 mixins</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://oban.io/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://oban.io/'" tppabs="http://oban.io/">Oban</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('http://getpreboot.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://getpreboot.com/'" tppabs="http://getpreboot.com/">Preboot</a></td>
+<td>Collection of variables and mixins. The precursor to Bootstrap</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/amazingSurge/prelude-mixins  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/amazingSurge/prelude-mixins'" tppabs="https://github.com/amazingSurge/prelude-mixins">prelude-mixins</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/fahad19/shape.less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/fahad19/shape.less'" tppabs="https://github.com/fahad19/shape.less">Shape.LESS</a></td>
+<td>Collection of mixins for various shapes</td>
+</tr>
+<tr>
+<td><a href="javascript:if(confirm('https://github.com/therebelrobot/tRRtoolbelt.less  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/therebelrobot/tRRtoolbelt.less'" tppabs="https://github.com/therebelrobot/tRRtoolbelt.less">tRRtoolbelt.less</a></td>
+<td>Mixins and functions for common actions</td>
+</tr>
+</tbody>
+</table>
+<br>
+</div>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Developing Less<span class="anchor-target" id="developing-less"></span>
+<a href="#developing-less" name="developing-less" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<div class="section-content">
+<a class="glyphicon glyphicon-pencil source-link right" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/developing-less.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/developing-less.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/developing-less.md" data-content="developing-lessmd" target="_blank"></a>
+<a id="developing-lessmd" href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/content/usage/developing-less.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/content/usage/developing-less.md'" tppabs="https://github.com/less/less-docs/blob/master/content/usage/developing-less.md" target="_blank">Edit the markdown source for &quot;developing-less&quot;
+<span class="glyphicon glyphicon-new-window"></span>
+</a>
+<p>&#x611F;&#x8C22;&#x60A8;&#x8003;&#x8651;&#x4E3A;&#x6B64;&#x8D21;&#x732E;&#x3002;&#x8BF7;&#x5148;&#x8BA4;&#x771F;&#x9605;&#x8BFB;<a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/CONTRIBUTING.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/CONTRIBUTING.md'" tppabs="https://github.com/less/less.js/blob/master/CONTRIBUTING.md">&#x8D21;&#x732E;&#x8BF4;&#x660E;</a>&#xFF0C;&#x4EE5;&#x514D;&#x9020;&#x6210;&#x6D6A;&#x8D39;&#x3002;</p>
+<h2 class="docs-heading">Install these tools &#xFF08;&#x5B89;&#x88C5;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#xFF09;<span class="anchor-target" id="developing-less-install-these-tools-"></span>
+<a href="#developing-less-install-these-tools-" name="developing-less-install-these-tools-" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><strong>node</strong> - <a href="javascript:if(confirm('http://nodejs.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://nodejs.org/'" tppabs="http://nodejs.org/">http://nodejs.org/</a></li>
+<li><strong>phantomjs</strong> - <a href="javascript:if(confirm('http://phantomjs.org/download.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://phantomjs.org/download.html'" tppabs="http://phantomjs.org/download.html">http://phantomjs.org/download.html</a></li>
+</ul>
+<p>&#x786E;&#x4FDD;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF08;paths&#xFF09;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x597D;&#x3002; &#x5F53;&#x4F60;&#x6253;&#x5F00;&#x4F60;&#x6700;&#x559C;&#x6B22;&#x7684;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x6267;&#x884C; <code>node -v</code> &#x547D;&#x4EE4;&#xFF0C;&#x4F60;&#x4F1A;&#x770B;&#x5230;node&#x7F16;&#x8BD1;&#x5668;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x6267;&#x884C; <code>phantomjs -v</code> &#x547D;&#x4EE4;&#xFF0C;&#x4F60;&#x4F1A;&#x770B;&#x5230;phantomjs&#x7684;&#x7248;&#x672C;&#x53F7;&#x3002;</p>
+<ul>
+<li>&#x514B;&#x9686;&#x4F60;&#x7684; less.js &#x5E93;&#x5230;&#x672C;&#x5730;</li>
+<li>&#x524D;&#x5F80;&#x4F60;&#x672C;&#x5730;&#x7684; less.js &#x5E93;&#x7136;&#x540E;&#x6267;&#x884C; <code>npm install</code> &#x547D;&#x4EE4;&#xFF0C;&#x8FD9;&#x5C06;&#x4F1A;&#x5B89;&#x88C5; less &#x7684;&#x76F8;&#x5173;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x4F60;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x7528;&#x8FC7;grunt, &#x6267;&#x884C; <code>npm install grunt-cli -g</code> &#x547D;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5404;&#x4E2A;&#x5730;&#x65B9;&#xFF08;&#x5168;&#x5C40;&#xFF09;&#x6267;&#x884C;&#x201C;grunt&#x201D;&#x547D;&#x4EE4;&#x4E86;&#x3002;</li>
+</ul>
+<h2 class="docs-heading">Usage &#xFF08;&#x4F7F;&#x7528;&#xFF09;<span class="anchor-target" id="developing-less-usage-"></span>
+<a href="#developing-less-usage-" name="developing-less-usage-" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>&#x5F53;&#x4F60;&#x53BB;&#x5230;less&#x5E93;&#x7684;&#x6839;&#x76EE;&#x5F55;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x6267;&#x884C; <code>grunt test</code> &#x547D;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x5C06;&#x4F1A;&#x6267;&#x884C;&#x6240;&#x6709;&#x7684;&#x6D4B;&#x8BD5;&#x3002; &#x4E3A;&#x7279;&#x5B9A;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x6267;&#x884C; <code>grunt browsertest</code> &#x547D;&#x4EE4;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x60F3;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x662F;&#x60F3;&#x4F7F;&#x7528;&#x5F53;&#x524D;&#x7248;&#x672C;&#x7684;less&#xFF0C;&#x8BF7;&#x6267;&#x884C; <code>node bin/lessc path/to/file.less</code> &#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x8C03;&#x8BD5;&#xFF0C;&#x6267;&#x884C; <code>grunt browsertest-server</code> &#x547D;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x524D;&#x5F80; <a href="javascript:if(confirm('http://localhost:8088/tmp/browser/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://localhost:8088/tmp/browser/'" tppabs="http://localhost:8088/tmp/browser/">http://localhost:8088/tmp/browser/</a> &#x53BB;&#x770B;&#x6D4B;&#x8BD5;&#x8FD0;&#x884C;&#x7684;&#x9875;&#x9762;&#x3002;</p>
+<p>&#x53EF;&#x9009;: &#x60F3;&#x8981;&#x83B7;&#x5F97;&#x6700;&#x65B0;&#x7684; less &#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x8BF7;&#x6267;&#x884C; <code>npm -g install less</code> &#x547D;&#x4EE4;&#xFF0C; npm &#x662F;node&#x7684;&#x5305;&#x7BA1;&#x7406;&#xFF0C; &quot;-g&quot; &#x8868;&#x793A;&#x5B89;&#x88C5;&#x4E4B;&#x540E;&#x5168;&#x5C40;&#x6709;&#x6548;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x4F60;&#x53EF;&#x4EE5;&#x6267;&#x884C; <code>lessc file.less</code> &#x547D;&#x4EE4;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x76F8;&#x5E94;&#x7684; file.less &#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x5C06;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x4EE5;&#x53CA;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x5185;&#x5BB9;&#x3002; &#x4F60;&#x53EF;&#x4EE5;&#x62FF;&#x5B83;&#x8DDF;&#x901A;&#x8FC7;&#x672C;&#x5730;&#x6267;&#x884C; (<code>node bin/lessc file.less</code>)&#x540E;&#x5F97;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#x4E0B;&#x3002;</p>
+<p>&#x5176;&#x4ED6;grunt&#x547D;&#x4EE4;</p>
+<ul>
+<li><code>grunt benchmark</code> - &#x6267;&#x884C;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x53BB;&#x83B7;&#x5F97;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x6307;&#x6570;</li>
+<li><code>grunt stable</code> - &#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7248;&#x672C;</li>
+<li><code>grunt readme</code> - &#x5728;&#x8DEF;&#x5F84;&#x6839;&#x76EE;&#x5F55;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A; readme.md &#x6587;&#x4EF6;&#xFF08;&#x6BCF;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7248;&#x672C;&#x4E4B;&#x540E;&#xFF09;</li>
+</ul>
+<h2 class="docs-heading">How to run less in other environments &#xFF08;&#x5982;&#x4F55;&#x5728;&#x5176;&#x4ED6;&#x73AF;&#x5883;&#x4E2D;&#x8FD0;&#x884C;less&#xFF09;<span class="anchor-target" id="developing-less-how-to-run-less-in-other-environments-less-"></span>
+<a href="#developing-less-how-to-run-less-in-other-environments-less-" name="developing-less-how-to-run-less-in-other-environments-less-" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>&#x6253;&#x5F00;libs&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>less</code>, <code>less-node</code>, <code>less-browser</code>&#x3002;less&#x76EE;&#x5F55;&#x4E2D;&#x662F;&#x7EAF;&#x7CB9;&#x7684;javascript&#xFF0C;&#x6CA1;&#x6709;&#x5177;&#x4F53;&#x7684;&#x73AF;&#x5883;&#x56E0;&#x7D20;&#x3002;&#x5982;&#x679C;&#x4F60; require <code>less/libs/less</code>, &#x4F60;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#x5BF9;&#x8C61;&#x548C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#x7684;&#x6570;&#x7EC4;&#x3002;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#x662F;&#x76F8;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x4E3A;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> createLess = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;less/libs/less&quot;</span>),
+    myLess = createLess(environment, [myFileManager]);
+</code></pre>
+<p>&#x73AF;&#x5883;API&#x5728;<a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/lib/less/environment/environment-api.js  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/lib/less/environment/environment-api.js'" tppabs="https://github.com/less/less.js/blob/master/lib/less/environment/environment-api.js">less/libs/less/environment/environment-api.js</a>&#x4E2D;&#x6307;&#x5B9A;&#xFF0C;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;API&#x5728;<a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/lib/less/environment/file-manager-api.js  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/lib/less/environment/file-manager-api.js'" tppabs="https://github.com/less/less.js/blob/master/lib/less/environment/file-manager-api.js">less/libs/less/environment/file-manager-api.js</a>&#x4E2D;&#x6307;&#x5B9A;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x60A8;&#x8BBE;&#x7F6E;&#x539F;&#x578B;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x65B0;&#x7684;AbstractFileManager - &#x8FD9;&#x5141;&#x8BB8;&#x60A8;&#x8986;&#x76D6;&#xFF0C;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x65B0;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x7834;&#x574F;&#x73B0;&#x6709;&#x7684;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#x3002;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x770B;2&#x8282;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5B9E;&#x73B0;&#x6216;npm&#x5BFC;&#x5165;&#x63D2;&#x4EF6;&#x5B9E;&#x73B0;&#x3002;</p>
+<h2 class="docs-heading">Guide &#xFF08;&#x6307;&#x5357;&#xFF09;<span class="anchor-target" id="developing-less-guide-"></span>
+<a href="#developing-less-guide-" name="developing-less-guide-" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x770B; <a href="javascript:if(confirm('http://www.gliffy.com/go/publish/4784259  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.gliffy.com/go/publish/4784259'" tppabs="http://www.gliffy.com/go/publish/4784259">http://www.gliffy.com/go/publish/4784259</a>&#xFF0C; &#x8FD9;&#x662F;&#x4E00;&#x4E2A;less&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x6982;&#x89C8;&#x56FE;&#x3002;</p>
+<h2 class="docs-heading">Books<span class="anchor-target" id="developing-less-books"></span>
+<a href="#developing-less-books" name="developing-less-books" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('http://www.packtpub.com/less-web-development-essentials/book  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.packtpub.com/less-web-development-essentials/book'" tppabs="http://www.packtpub.com/less-web-development-essentials/book">Less Web Development Essentials</a>, by Bass Jobsen, Foreword by Alexis Sellier</li>
+</ul>
+<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer" role="contentinfo">
+<div class="container">
+<div class="bs-social">
+<ul class="bs-social-buttons">
+<li>
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=less&repo=less.js&type=watch&count=true" tppabs="http://ghbtns.com/github-btn.html?user=less&repo=less.js&type=watch&count=true" width="100" height="20" title="Star on GitHub"></iframe>
+</li>
+<li>
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=less&repo=less.js&type=fork&count=true" tppabs="http://ghbtns.com/github-btn.html?user=less&repo=less.js&type=fork&count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+</li>
+</ul>
+</div>
+<p>Less.js and these docs are maintained by <a href="../about/index.htm#team" tppabs="https://www.html.cn/doc/less/about/#team">the core less team</a>.</p>
+<p>Documentation source code released under the <a href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/LICENSE-MIT  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/LICENSE-MIT'" tppabs="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="javascript:if(confirm('http://creativecommons.org/licenses/by/3.0/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://creativecommons.org/licenses/by/3.0/'" tppabs="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+<ul class="footer-links">
+<li>Currently v2.2.0</li>
+<li class="muted">&#xB7;</li>
+<li><a href="javascript:if(confirm('https://github.com/less/less.js/issues  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/issues'" tppabs="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+<li class="muted">&#xB7;</li>
+<li><a href="javascript:if(confirm('https://github.com/less/less-docs/issues?&state=open  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/issues?&state=open'" tppabs="https://github.com/less/less-docs/issues?&state=open">Less Docs Issues</a></li>
+<li class="muted">&#xB7;</li>
+<li><a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/CHANGELOG.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/CHANGELOG.md'" tppabs="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
+</ul>
+</div>
+</footer>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../../hm.baidu.com/hm.js-e9ccdced32867527733a2550ec94eee6"/*tpa=https://hm.baidu.com/hm.js?e9ccdced32867527733a2550ec94eee6*/;
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../../www.google-analytics.com/analytics.js'/*tpa=https://www.google-analytics.com/analytics.js*/,'ga');
+
+  ga('create', 'UA-43525385-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script src="../../../../code.jquery.com/jquery-1.10.2.min.js" tppabs="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="../../../../netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" tppabs="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="../../../../cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js" tppabs="https://cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
+<script src="../public/js/application.js" tppabs="https://www.html.cn/doc/less/public/js/application.js"></script>
+</body>
+</html>

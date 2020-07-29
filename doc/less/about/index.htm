@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Less &#x6269;&#x5145;&#x4E86; CSS &#x8BED;&#x8A00;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x8BF8;&#x5982;&#x53D8;&#x91CF;&#x3001;&#x6DF7;&#x5408;&#xFF08;mixin&#xFF09;&#x3001;&#x8FD0;&#x7B97;&#x3001;&#x51FD;&#x6570;&#x7B49;&#x3002;  Less &#x65E2;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF08;Node.js &#x548C; Rhino &#x5E73;&#x53F0;&#xFF09;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x6D4F;&#x89C8;&#x5668;&#xFF09;&#x3002;
+">
+<meta name="keywords" content="Less,Lesscss,CSS,SASS,sass-lang,&#x6837;&#x5F0F;&#x8868;,&#x9884;&#x5904;&#x7406;,&#x9884;&#x7F16;&#x8BD1;
+">
+<meta name="author" content="The Core Less Team">
+<title>
+About | Less.js &#x4E2D;&#x6587;&#x6587;&#x6863;
+</title>
+<link href="../public/css/index.css" tppabs="https://www.html.cn/doc/less/public/css/index.css" rel="stylesheet">
+<script type="text/javascript">
+  WebFontConfig = {google: {families: ['PT+Sans:400,700,400italic,700italic', 'PT+Mono&subset=latin,cyrillic'] }};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+<!--[if lt IE 9]>
+  <script src="../../../../oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" tppabs="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="../../../../oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js" tppabs="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
+</head>
+<body class="about">
+<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+<div class="container">
+<div class="navbar-header">
+<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a href="../index.htm#" tppabs="https://www.html.cn/doc/less/#" class="navbar-brand" alt="Less">
+<img src="../public/img/logo.png" tppabs="https://www.html.cn/doc/less/public/img/logo.png">
+</a>
+</div>
+<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+<ul class="nav navbar-nav">
+<li>
+<a href="../features/index.htm" tppabs="https://www.html.cn/doc/less/features/">&#x8BED;&#x8A00;&#x7279;&#x6027;</a>
+</li>
+<li>
+<a href="../functions/index.htm" tppabs="https://www.html.cn/doc/less/functions/">&#x51FD;&#x6570;&#x53C2;&#x8003;</a>
+</li>
+<li>
+<a href="../usage/index.htm" tppabs="https://www.html.cn/doc/less/usage/">&#x7528;&#x6CD5;</a>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="active">
+<a href="index.htm" tppabs="https://www.html.cn/doc/less/about/">&#x5173;&#x4E8E;</a>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li> <a href="javascript:if(confirm('https://github.com/less/less-docs  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs'" tppabs="https://github.com/less/less-docs">Docs Repo</a> </li>
+<li> <a href="javascript:if(confirm('https://github.com/less/less-docs/issues?&state=open  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/issues?&state=open'" tppabs="https://github.com/less/less-docs/issues?&state=open">Docs Issues</a> </li>
+<li class="divider"></li>
+<li> <a href="javascript:if(confirm('https://github.com/less/less.js.git  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js.git'" tppabs="https://github.com/less/less.js.git">Less.js Repo</a> </li>
+<li> <a href="javascript:if(confirm('https://github.com/less/less.js/issues  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/issues'" tppabs="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="docs-header" id="content">
+<div class="container">
+<h1>About</h1>
+<p>Learn about the history of Less, meet the core team, and check out the ever-growing community resources.</p>
+</div>
+</div>
+<div class="banner">
+<div class="container">
+less v2.2.0 has been released -
+<strong>
+<a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/CHANGELOG.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/CHANGELOG.md'" tppabs="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
+</strong>
+</div>
+</div>
+<div class="container docs-container">
+<div class="row">
+<div class="col-md-3">
+<div class="sidebar hidden-print" role="complementary">
+<div id="navigation">
+<ul class="nav sidenav"><li><a href="#history">History</a></li>
+<li><a href="#team">Core team</a></li>
+<li><a href="#community">Community</a></li>
+<li><a href="#ports">Ports of Less.js</a><ul class="nav"><li><a href="#ports-java">Java</a></li>
+<li><a href="#ports--net">.Net</a></li>
+<li><a href="#ports-php">PHP</a></li>
+<li><a href="#ports-python">Python</a></li>
+<li><a href="#ports-ruby">Ruby</a></li></ul></li>
+<li><a href="#translations">Translations</a></li></ul></div>
+</div>
+</div>
+<div class="col-md-9" role="main">
+<div class="panel docs-content">
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">History<span class="anchor-target" id="history"></span>
+<a href="#history" name="history" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<p>Less &#x7531; <a href="javascript:if(confirm('https://github.com/cloudhead  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/cloudhead'" tppabs="https://github.com/cloudhead">Alexis Sellier</a> &#x521B;&#x5EFA;&#x4E8E; 2009 &#x5E74;&#xFF0C;&#x5728; Twitter &#x4E0A;&#x53EB;&#x505A; <a href="javascript:if(confirm('https://twitter.com/cloudhead  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://twitter.com/cloudhead'" tppabs="https://twitter.com/cloudhead">@cloudhead</a>&#x3002;Less &#x6700;&#x521D;&#x4F7F;&#x7528; Ruby &#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x540E;&#x6765;&#x79FB;&#x690D;&#x5230;&#x4E86; JavaScript &#x5E73;&#x53F0;&#x3002;</p>
+<p>&#x5728; 2012 &#x5E74; 5 &#x6708; Alexis &#x5C06;&#x63A7;&#x5236;&#x6743;&#x4EA4;&#x7ED9;&#x4E86;&#x73B0;&#x5728;&#x7684;&#x6838;&#x5FC3;&#x7EF4;&#x62A4;&#x5C0F;&#x7EC4;&#xFF0C;&#x4ED6;&#x4EEC;&#x4E00;&#x76F4;&#x5728;&#x52AA;&#x529B;&#x5F00;&#x53D1;&#x548C;&#x6269;&#x5C55;&#x8FD9;&#x95E8;&#x8BED;&#x8A00;&#x3002;</p>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Core team<span class="anchor-target" id="team"></span>
+<a href="#team" name="team" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<p class="lead">Less is maintained by a group of invaluable core contributors, with the massive support and involvement of our community. No one person is in charge and everyone has their own areas and donates the time they can afford. In alphabetical order:</p>
+<div class="list-group less-team">
+<div class="list-group-item">
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=cloudhead&type=follow" tppabs="http://ghbtns.com/github-btn.html?user=cloudhead&type=follow"></iframe>
+<a class="team-member" href="javascript:if(confirm('https://github.com/cloudhead  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/cloudhead'" tppabs="https://github.com/cloudhead">
+<img src="../../../../www.gravatar.com/avatar/a8a0061962c41735ca87789720da46c8.png" tppabs="http://www.gravatar.com/avatar/a8a0061962c41735ca87789720da46c8" alt="@cloudhead">
+<strong>Alexis Sellier</strong> Original Author, Language Design <small>@cloudhead</small>
+</a>
+</div>
+<div class="list-group-item">
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=jonschlinkert&type=follow" tppabs="http://ghbtns.com/github-btn.html?user=jonschlinkert&type=follow"></iframe>
+<a class="team-member" href="javascript:if(confirm('https://github.com/jonschlinkert  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/jonschlinkert'" tppabs="https://github.com/jonschlinkert">
+<img src="../../../../www.gravatar.com/avatar/1bba28be5506009e85fb9dde1dd66535.jpg" tppabs="http://www.gravatar.com/avatar/1bba28be5506009e85fb9dde1dd66535" alt="@jonschlinkert">
+<strong>Jon Schlinkert</strong> Language Design, Documentation, Community <small>@jonschlinkert</small>
+</a>
+</div>
+<div class="list-group-item">
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=lukeapage&type=follow" tppabs="http://ghbtns.com/github-btn.html?user=lukeapage&type=follow"></iframe>
+<a class="team-member" href="javascript:if(confirm('https://github.com/lukeapage  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/lukeapage'" tppabs="https://github.com/lukeapage">
+<img src="../../../../www.gravatar.com/avatar/a80ab1a8297225d70baffc52adf6aefd.png" tppabs="http://www.gravatar.com/avatar/a80ab1a8297225d70baffc52adf6aefd" alt="@lukeapage">
+<strong>Luke Page</strong> Development, Language Design, Documentation, Releasing <small>@lukeapage</small>
+</a>
+</div>
+<div class="list-group-item">
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=synchro&type=follow" tppabs="http://ghbtns.com/github-btn.html?user=synchro&type=follow"></iframe>
+<a class="team-member" href="javascript:if(confirm('https://github.com/Synchro  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/Synchro'" tppabs="https://github.com/Synchro">
+<img src="../../../../www.gravatar.com/avatar/b4814d6790e91f01c77cac9d25db12b6.png" tppabs="http://www.gravatar.com/avatar/b4814d6790e91f01c77cac9d25db12b6" alt="@Synchro">
+<strong>Marcus Bointon</strong> Color Functions <small>@Synchro</small>
+</a>
+</div>
+<div class="list-group-item">
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=sommeri&type=follow" tppabs="http://ghbtns.com/github-btn.html?user=sommeri&type=follow"></iframe>
+<a class="team-member" href="javascript:if(confirm('https://github.com/sommeri  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/sommeri'" tppabs="https://github.com/sommeri">
+<img src="../../../../www.gravatar.com/avatar/52cf28b41537a1255243f6ba9b5baedc.jpg" tppabs="http://www.gravatar.com/avatar/52cf28b41537a1255243f6ba9b5baedc" alt="@sommeri">
+<strong>M&#xE1;ria Jur&#x10D;ovi&#x10D;ov&#xE1;</strong> Language Design, Java Port <small>@sommeri</small>
+</a>
+</div>
+<div class="list-group-item">
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=matthew-dean&type=follow" tppabs="http://ghbtns.com/github-btn.html?user=matthew-dean&type=follow"></iframe>
+<a class="team-member" href="javascript:if(confirm('https://github.com/matthew-dean  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/matthew-dean'" tppabs="https://github.com/matthew-dean">
+<img src="../../../../www.gravatar.com/avatar/09caa4a26a5e57031146b5e06b4d7a8c.jpg" tppabs="http://www.gravatar.com/avatar/09caa4a26a5e57031146b5e06b4d7a8c" alt="@matthew-dean">
+<strong>Matthew Dean</strong> Language Design, Community <small>@matthew-dean</small>
+</a>
+</div>
+<div class="list-group-item">
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=seven-phases-max&type=follow" tppabs="http://ghbtns.com/github-btn.html?user=seven-phases-max&type=follow"></iframe>
+<a class="team-member" href="javascript:if(confirm('https://github.com/seven-phases-max  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/seven-phases-max'" tppabs="https://github.com/seven-phases-max">
+<img src="../../../../www.gravatar.com/avatar/f7c830e90f5d6a740ab908365dcd3849.png" tppabs="http://www.gravatar.com/avatar/f7c830e90f5d6a740ab908365dcd3849" alt="@seven-phases-max">
+<strong>Max Mikhailov</strong> Development, Documentation, Language Design <small>@seven-phases-max</small>
+</a>
+</div>
+</div>
+<p>Get involved with Less.js development by <a href="javascript:if(confirm('https://github.com/less/less.js/issues/new  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/issues/new'" tppabs="https://github.com/less/less.js/issues/new">opening an issue</a> or submitting a pull request (if it&apos;s a feature request, please open an issue first). </p>
+<p>Read our <a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/CONTRIBUTING.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/CONTRIBUTING.md'" tppabs="https://github.com/less/less.js/blob/master/CONTRIBUTING.md">contributing guidelines</a> and the <a href="../usage/index.htm#developing-less" tppabs="https://www.html.cn/doc/less/usage/#developing-less">developing section</a> of our usage page.</p>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Community<span class="anchor-target" id="community"></span>
+<a href="#community" name="community" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<p class="lead">Stay up to date on the development of Less.js and reach out to the community with these helpful resources.</p>
+<ul>
+<li>Have a feature request or bug report? <a href="javascript:if(confirm('https://github.com/less/less.js/issues  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/issues'" tppabs="https://github.com/less/less.js/issues">Let us know on our GitHub Issues</a>.</li>
+</ul>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Ports of Less.js<span class="anchor-target" id="ports"></span>
+<a href="#ports" name="ports" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<p class="lead">Less has been ported to several other programming languages.</p>
+<h2 class="docs-heading">Java<span class="anchor-target" id="ports-java"></span>
+<a href="#ports-java" name="ports-java" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('https://github.com/houbie/lesscss  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/houbie/lesscss'" tppabs="https://github.com/houbie/lesscss">Lesscss</a> (Runs less.js using Rhino, Nasshorn or node.js engine; 1.7.0 compliant)</li>
+<li><a href="javascript:if(confirm('https://github.com/houbie/lesscss-gradle-plugin  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/houbie/lesscss-gradle-plugin'" tppabs="https://github.com/houbie/lesscss-gradle-plugin">Lesscss gradle plugin</a> (Gradle plugin based on Lesscss)</li>
+<li><a href="javascript:if(confirm('https://github.com/Asual/lesscss-engine  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/Asual/lesscss-engine'" tppabs="https://github.com/Asual/lesscss-engine">Less Engine</a> (&#x5728;&#x57FA;&#x4E8E; JVM &#x7684; JavaScript &#x89E3;&#x6790;&#x5668; Rhino &#x4E2D;&#x8FD0;&#x884C; less.js)</li>
+<li><a href="javascript:if(confirm('https://github.com/marceloverdijk/lesscss-java  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/marceloverdijk/lesscss-java'" tppabs="https://github.com/marceloverdijk/lesscss-java">Less CSS Compiler for Java</a> (&#x5728;&#x57FA;&#x4E8E; JVM &#x7684; JavaScript &#x89E3;&#x6790;&#x5668; Rhino &#x4E2D;&#x8FD0;&#x884C; less.js)</li>
+<li><a href="javascript:if(confirm('https://github.com/SomMeri/less4j  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/SomMeri/less4j'" tppabs="https://github.com/SomMeri/less4j">Less4j</a> (&#x539F;&#x751F; Java &#x5B9E;&#x73B0;)</li>
+</ul>
+<h2 class="docs-heading">.Net<span class="anchor-target" id="ports--net"></span>
+<a href="#ports--net" name="ports--net" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('http://www.dotlesscss.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.dotlesscss.org/'" tppabs="http://www.dotlesscss.org/">Less CSS for .Net</a></li>
+</ul>
+<h2 class="docs-heading">PHP<span class="anchor-target" id="ports-php"></span>
+<a href="#ports-php" name="ports-php" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('http://leafo.net/lessphp/docs/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://leafo.net/lessphp/docs/'" tppabs="http://leafo.net/lessphp/docs/">lessphp</a></li>
+<li><a href="javascript:if(confirm('http://wordpress.org/extend/plugins/bw-less-css/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://wordpress.org/extend/plugins/bw-less-css/'" tppabs="http://wordpress.org/extend/plugins/bw-less-css/">BW Less CSS</a> (WordPress &#x63D2;&#x4EF6;)</li>
+<li><a href="javascript:if(confirm('http://lessphp.gpeasy.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lessphp.gpeasy.com/'" tppabs="http://lessphp.gpeasy.com/">less.php</a></li>
+<li><a href="javascript:if(confirm('https://github.com/mishal/iless  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/mishal/iless'" tppabs="https://github.com/mishal/iless">ILess</a></li>
+</ul>
+<h2 class="docs-heading">Python<span class="anchor-target" id="ports-python"></span>
+<a href="#ports-python" name="ports-python" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('https://github.com/lesscpy/lesscpy  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/lesscpy/lesscpy'" tppabs="https://github.com/lesscpy/lesscpy">Python Less Compiler</a></li>
+</ul>
+<h2 class="docs-heading">Ruby<span class="anchor-target" id="ports-ruby"></span>
+<a href="#ports-ruby" name="ports-ruby" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="javascript:if(confirm('https://github.com/cowboyd/less.rb  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/cowboyd/less.rb'" tppabs="https://github.com/cowboyd/less.rb">Less.js In Ruby&apos;s V8 Engine</a></li>
+</ul>
+<p>&#x5982;&#x679C;&#x4F60;&#x8FD8;&#x77E5;&#x9053;&#x5176;&#x4ED6;&#x79FB;&#x690D;&#x7248;&#x5E94;&#x8BE5;&#x6DFB;&#x52A0;&#x5230;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x4E2D;? &#x8BF7; <a href="javascript:if(confirm('https://github.com/less/less-docs/issues/new  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/issues/new'" tppabs="https://github.com/less/less-docs/issues/new">&#x8BA9;&#x6211;&#x4EEC;&#x77E5;&#x9053;</a>&#x3002;</p>
+</div>
+<div class="docs-section">
+<div class="page-header">
+<h1 class="docs-heading">Translations<span class="anchor-target" id="translations"></span>
+<a href="#translations" name="translations" class="anchor glyphicon glyphicon-link"></a></h1>
+</div>
+<p class="lead">Community members have translated Less.js&apos;s documentation into various languages.</p>
+<div class="callout callout-warning">
+<h4>Community submitted.</h4>
+<p>None of the translations are officially supported and <strong>may not always be up to date</strong>.</p>
+</div>
+<ul class="list-bullets">
+<li> <strong>Belarusian: </strong> <a href="javascript:if(confirm('http://www.designcontest.com/show/lesscss-be  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.designcontest.com/show/lesscss-be'" tppabs="http://www.designcontest.com/show/lesscss-be"> http://www.designcontest.com/show/lesscss-be </a> </li>
+<li> <strong>Chinese: </strong> <a href="javascript:if(confirm('http://lesscss.net/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lesscss.net/'" tppabs="http://lesscss.net/"> http://lesscss.net </a> </li>
+<li> <strong>Danish: </strong> <a href="javascript:if(confirm('http://lesscss.dk/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lesscss.dk/'" tppabs="http://lesscss.dk/"> http://lesscss.dk </a> </li>
+<li> <strong>French: </strong> <a href="javascript:if(confirm('http://luckymarmot.com/lesscss  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://luckymarmot.com/lesscss'" tppabs="http://luckymarmot.com/lesscss"> http://luckymarmot.com/lesscss </a> </li>
+<li> <strong>German: </strong> <a href="javascript:if(confirm('http://www.lesscss.de/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://www.lesscss.de/'" tppabs="http://www.lesscss.de/"> http://www.lesscss.de </a> </li>
+<li> <strong>Indonesian: </strong> <a href="javascript:if(confirm('http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia'" tppabs="http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia"> http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia </a> </li>
+<li> <strong>Iranian: </strong> <a href="javascript:if(confirm('http://less-css.ir/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://less-css.ir/'" tppabs="http://less-css.ir/"> http://less-css.ir </a> </li>
+<li> <strong>Japanese: </strong> <a href="javascript:if(confirm('http://less-ja.studiomohawk.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://less-ja.studiomohawk.com/'" tppabs="http://less-ja.studiomohawk.com/"> http://less-ja.studiomohawk.com/ </a> </li>
+<li> <strong>Polish: </strong> <a href="javascript:if(confirm('http://ciembor.github.com/lesscss.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://ciembor.github.com/lesscss.org/'" tppabs="http://ciembor.github.com/lesscss.org/"> http://ciembor.github.com/lesscss.org/ </a> </li>
+<li> <strong>Portuguese: </strong> <a href="javascript:if(confirm('http://giovanneafonso.github.io/lesscss.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://giovanneafonso.github.io/lesscss.org/'" tppabs="http://giovanneafonso.github.io/lesscss.org/"> http://giovanneafonso.github.io/lesscss.org/ </a> </li>
+<li> <strong>Russian: </strong> <a href="javascript:if(confirm('http://lesscss.ru/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://lesscss.ru/'" tppabs="http://lesscss.ru/"> http://lesscss.ru </a> </li>
+<li> <strong>Spanish: </strong> <a href="javascript:if(confirm('http://amatellanes.github.io/lesscss.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://amatellanes.github.io/lesscss.org/'" tppabs="http://amatellanes.github.io/lesscss.org/"> http://amatellanes.github.io/lesscss.org/ </a> </li>
+<li> <strong>Ukrainian: </strong> <a href="javascript:if(confirm('http://komaval.github.com/lesscss.org/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://komaval.github.com/lesscss.org/'" tppabs="http://komaval.github.com/lesscss.org/"> http://komaval.github.com/lesscss.org/ </a> </li>
+<li> <strong>Vietnamese: </strong> <a href="javascript:if(confirm('http://less.eten.vn/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://less.eten.vn/'" tppabs="http://less.eten.vn/"> http://less.eten.vn/ </a> </li>
+<li> <strong>&#x4E2D;&#x6587; (Chinese): </strong> <a href="javascript:if(confirm('http://less.bootcss.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://less.bootcss.com/'" tppabs="http://less.bootcss.com/"> http://less.bootcss.com </a> </li>
+</ul>
+<p>Have another language to add, or perhaps a different or better translation? Let us know by <a href="javascript:if(confirm('https://github.com/less/less.js/issues/new  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/issues/new'" tppabs="https://github.com/less/less.js/issues/new">opening an issue</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer" role="contentinfo">
+<div class="container">
+<div class="bs-social">
+<ul class="bs-social-buttons">
+<li>
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=less&repo=less.js&type=watch&count=true" tppabs="http://ghbtns.com/github-btn.html?user=less&repo=less.js&type=watch&count=true" width="100" height="20" title="Star on GitHub"></iframe>
+</li>
+<li>
+<iframe class="github-btn" src="../../../../ghbtns.com/github-btn.html-user=less&repo=less.js&type=fork&count=true" tppabs="http://ghbtns.com/github-btn.html?user=less&repo=less.js&type=fork&count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+</li>
+</ul>
+</div>
+<p>Less.js and these docs are maintained by <a href="index.htm#team" tppabs="https://www.html.cn/doc/less/about/#team">the core less team</a>.</p>
+<p>Documentation source code released under the <a href="javascript:if(confirm('https://github.com/less/less-docs/blob/master/LICENSE-MIT  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/blob/master/LICENSE-MIT'" tppabs="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="javascript:if(confirm('http://creativecommons.org/licenses/by/3.0/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://creativecommons.org/licenses/by/3.0/'" tppabs="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+<ul class="footer-links">
+<li>Currently v2.2.0</li>
+<li class="muted">&#xB7;</li>
+<li><a href="javascript:if(confirm('https://github.com/less/less.js/issues  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/issues'" tppabs="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+<li class="muted">&#xB7;</li>
+<li><a href="javascript:if(confirm('https://github.com/less/less-docs/issues?&state=open  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less-docs/issues?&state=open'" tppabs="https://github.com/less/less-docs/issues?&state=open">Less Docs Issues</a></li>
+<li class="muted">&#xB7;</li>
+<li><a href="javascript:if(confirm('https://github.com/less/less.js/blob/master/CHANGELOG.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/less/less.js/blob/master/CHANGELOG.md'" tppabs="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
+</ul>
+</div>
+</footer>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../../hm.baidu.com/hm.js-e9ccdced32867527733a2550ec94eee6"/*tpa=https://hm.baidu.com/hm.js?e9ccdced32867527733a2550ec94eee6*/;
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../../www.google-analytics.com/analytics.js'/*tpa=https://www.google-analytics.com/analytics.js*/,'ga');
+
+  ga('create', 'UA-43525385-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script src="../../../../code.jquery.com/jquery-1.10.2.min.js" tppabs="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="../../../../netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" tppabs="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="../../../../cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js" tppabs="https://cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
+<script src="../public/js/application.js" tppabs="https://www.html.cn/doc/less/public/js/application.js"></script>
+</body>
+</html>
