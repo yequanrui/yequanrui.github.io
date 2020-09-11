@@ -1,0 +1,278 @@
+<!-- saved from url=(0057)./title.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="toclink" href="./title.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter01.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <meta name="viewport" content="width = device-width; initial-scale=1; maximum-scale=1; user-scalable=no;">
+    <title>HTML Canvas 深入浅出</title>
+    <style type="text/css">
+    h1 {
+        /*	text-shadow: 2px -2px 0px black;*/
+        color: white;
+        font-size: 500%;
+        margin-bottom: 0;
+        text-shadow: 3px -3px 0px black;
+    }
+    
+    .subtitle {
+        color: black;
+        /*	text-shadow: 0px 1px 0px;*/
+        font-size: 200%;
+        margin-top: 0;
+        /*	text-shadow: 0px 1px 0px rgba(0,0,0,0.5);*/
+        font-style: italic;
+    }
+    
+    #header {
+        padding-bottom: 1em;
+        padding-top: 3em;
+    }
+    /*
+body {
+    width:300px !important;
+    border: 1px solid red;
+    padding: 0px;
+}
+*/
+    
+    canvas {
+        border: 0px solid black;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+    <div id="header">
+        <h1><font><font>HTML Canvas 深入浅出</font></font></h1>
+        <p class="subtitle">
+            <font>
+                <font>附录</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>Josh Marinacci </font>
+            </font>
+            <br>
+            <font>
+                <font>@joshmarinacci </font>
+            </font>
+            <br>
+            <font>
+                <font>Josh on Design.com</font>
+            </font>
+            <br>
+            <font>
+                <font>翻译: mickle.zy</font>
+            </font>
+        </p>
+    </div>
+    <div id="content">
+        <p>
+            <font>
+                <font>您正在阅读的电子书实验。</font>
+                <font>它是建立以展示现代Web标准，交互式电子文本的权力。</font>
+                <font>你看到的一切与HTML，CSS和Javascript进行; </font>
+                <font>捆绑到使用开源工具书的形式。</font>
+                <font>通过每一章向下滚动或使用导航页脚在屏幕的底部阅读。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>本书是一本</font>
+            </font><b><font><font>EverBook</font></font></b>
+            <font>
+                <font>，我的任期为一本书是完整的，但将继续更新。</font>
+                <font>因为它是作为一个应用程序卖给你将永远得到免费更新。</font>
+                <font>只是检查你的设备的应用商店/目录下。</font>
+                <font>如果您发现了bug或者要我介绍一个新的功能，请让我知道在我的博客或Twitter。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>HTML Canvas是内置于所有现代web浏览器一个惊人的绘画工艺。</font>
+                <font class="">用Canvas 可以绘制形状，处理照片，建立游戏和动画几乎任何东西; </font>
+                <font>所有正确的Web标准。</font>
+                <font>你甚至可以创建移动应用它。</font>
+            </font>
+        </p>
+        <p><i><font><font>HTML Canvas 深入浅出</font></font></i>
+            <font>
+                <font>是介绍画布的实用手册。</font>
+                <font>随书，沿着代码互动的例子玩。</font>
+                <font>当你读完这短短的一部分 你将有能力使该集成到现有的网络内容图，效果图，和游戏。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>这本书被组织为两种节。</font>
+                <font>还有，我描述了一个API是如何工作的，并给您互动的例子阅读部分。</font>
+                <font>再就是教训你简单做完，并建立自己的画布应用。</font>
+                <font>这些部分的代码可供您下载，并在自己的计算机上运行。</font>
+                <font>在技能方面，你只需要知道一些基本的JavaScript和HTML。</font>
+                <font>您只需要在您的计算机上为Chrome或Safari和你最喜欢的文本编辑器的副本。</font>
+                <font>Canvas是非常容易使用：不需要的IDE。</font>
+            </font>
+        </p>
+    </div>
+    <canvas id="sim" width="250" height="500"></canvas>
+    <script type="text/javascript" class="bookscript">
+    console.log("inside the title code init");
+    console.log("unloaders = " + window.ebook.unloaders);
+
+    function ParticleSimulator() {
+        AminoNode.call(this);
+        this.parts = [];
+        this.max = 50;
+        this.tick = 0;
+        this.paint = function(ctx) {
+            //create
+            if (this.parts.length < this.max) {
+                var p = this.create();
+                if (p != null) {
+                    this.parts.push(p);
+                }
+            }
+
+            //update
+            for (var i = 0; i < this.parts.length; i++) {
+                this.update(this.parts[i]);
+            }
+
+            //draw
+            ctx.save();
+            for (var i = 0; i < this.parts.length; i++) {
+                this.render(ctx, this.parts[i]);
+            }
+            ctx.restore();
+
+            //destroy / recycle
+            for (var i = 0; i < this.parts.length; i++) {
+                this.recycle(this.parts[i]);
+            }
+            this.tick++;
+        };
+    }
+    ParticleSimulator.extend(AminoNode);
+
+
+    var engine = new Amino();
+    engine.autoPaint = true;
+    var canvas = engine.addCanvas("sim");
+    canvas.setTransparent(true);
+    //canvas.add(new Rect().set(0,0,50,50).setFill("red"));
+
+
+    var sim = new ParticleSimulator();
+    sim.max = 10;
+    var rate = 10;
+    sim.create = function() {
+        if (this.tick % (60 * 4) != 0) return null;
+        return {
+            x: 30 + Math.random() * 190,
+            y: 500,
+            v: 2 + Math.random() * 2
+        }
+    };
+    sim.update = function(p) {
+        p.y -= p.v / 8.6;
+    };
+    sim.render = function(ctx, p) {
+        ctx.fillStyle = "white";
+        ctx.globalAlpha = 0.9;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.v * 7, 0, 360);
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "white";
+        ctx.stroke();
+        console.log("repainting");
+    }
+    sim.recycle = function(p) {
+        if (p.y < -30) p.y = 500;
+    }
+    canvas.add(sim);
+
+    canvas.autoSize = false;
+    engine.start();
+
+    window.ebook.unloaders.push(function() {
+        console.log('stopping the engine');
+        engine.stop();
+    });
+    </script>
+    <div class="chapnav bottom">
+        <a class="toclink" href="./title.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter01.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9436360-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <div id="goog-gt-tt" class="goog-tooltip skiptranslate" dir="ltr" style="visibility: hidden; left: 684px; top: 585px; display: none;">
+        <div style="padding: 8px;">
+            <div>
+                <div class="logo"><img src="./title/translate_24dp.png" width="20" height="20"></div>
+            </div>
+        </div>
+        <div class="top" style="padding: 8px; float: left; width: 100%;">
+            <h1 class="title gray">原文</h1></div>
+        <div class="middle" style="padding: 8px;">
+            <div class="original-text">With Canvas you can draw shapes, manipulate photos, build games, and animate virtually anything;</div>
+        </div>
+        <div class="bottom" style="padding: 8px;">
+            <div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div>
+            <div class="started-activity-container">
+                <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
+                <div class="activity-root"></div>
+            </div>
+        </div>
+        <div class="status-message" style="display: none; opacity: 0;"></div>
+    </div>
+</body>
+
+</html>

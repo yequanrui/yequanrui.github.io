@@ -1,0 +1,410 @@
+<!-- saved from url=(0061)./chapter04.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./chapter03.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter05.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第4章</font></font></h2>
+        <h1><font><font>动画</font></font></h1>
+    </div>
+    <div id="content">
+        <h3><a id="settimeout"><font><font>使用requestAnimationFrame动画</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在，我们知道如何抽签的很酷的事情，让它们的动画。</font>
+                <font>了解动画的第一件事是，它只是绘制同样的事情一遍又一遍。</font>
+                <font>当你调用一个绘制函数将立即把在屏幕上。</font>
+                <font>如果你想动画的东西，只是等待几milleseconds并重新绘制它。</font>
+                <font>现在，你当然不希望在繁忙的环坐，因为这会阻止浏览器。</font>
+                <font>相反，你应该画点什么，然后要求浏览器给您回电话在几毫秒。</font>
+                <font>要做到这一点，最简单的方法是使用JavaScript的setInterval（）函数。</font>
+                <font>它会调用你的绘图功能每隔N毫秒。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>但是，我们绝不能实际使用的setInterval。</font>
+                <font>的setInterval将总是绘制以相同的速度，而不管用户具有什么样的电脑，任何其他用户在做什么，并且该页面是否是目前在前台。</font>
+                <font>总之，它的工作原理，但它是有效的。</font>
+                <font>相反，我们应该使用新的API requestAnimationFrame。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>requestAnimationFrame的建立是为了使动画流畅和省电。</font>
+                <font>你和你的绘图函数的引用调用它。</font>
+                <font>在未来的一段时间内，浏览器会打电话给你的绘图功能时，</font>
+            </font><i><font><font>浏览器</font></font></i>
+            <font>
+                <font>已准备就绪。</font>
+                <font>这给了图纸，以便需要时可以降低帧率浏览器的完全控制。</font>
+                <font>它也可以使动画通过它锁定到每画面的第二刷新速率的60帧平滑。</font>
+                <font>为了使requestAnimationFrame循环叫它为递归的第一件事。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>requestAnimationFrame正在成为一个标准，但大多数浏览器只支持它自己的前缀版本。</font>
+                <font>例如，Chrome使用webkitRequestAnimationFrame和Mozilla支持mozRequestAnimationFrame。</font>
+                <font>为了解决这个问题，我们将使用</font>
+            </font>
+            <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">
+                <font>
+                    <font>保罗爱尔兰的垫片脚本</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+                <font>这正好映射到一个新的功能的不同变化：</font>
+            </font><code><font><font>requestAnimFrame</font></font></code>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>用的setTimeout //垫片层后备</font></font></span><span><font><font>window.requestAnimFrame =（函数（）{ </font></font></span><span><font><font>  返回window.requestAnimationFrame ||   </font></font></span><span><font><font>          window.webkitRequestAnimationFrame ||   </font></font></span><span><font><font>          window.mozRequestAnimationFrame ||   </font></font></span><span><font><font>          window.oRequestAnimationFrame ||   </font></font></span><span><font><font>          window.msRequestAnimationFrame ||   </font></font></span><span><font><font>          函数（回调）{ </font></font></span><span><font><font>            window.setTimeout （回调，1000至1060年）; </font></font></span><span><font><font>          }; </font></font></span><span><font><font>}）（）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>让我们尝试一个简单的例子，我们的动画在屏幕上的矩形。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>VAR X = 0; </font></font></span><span><font><font>功能drawIt（）{ </font></font></span><span><font><font>    window.requestAnimFrame（drawIt）; </font></font></span><span><font><font>    VARCanvas =的document.getElementById（'画布'）; </font></font></span><span><font><font>    VAR C = canvas.getContext（'2D'）; </font></font></span><span><font><font>    c.fillStyle =“红”; </font></font></span><span><font><font>    &#199; .fillRect（X，100200100），</font></font></span><span><font><font>    X + = 5; </font></font></span><span><font><font>} </font></font></span><span><font><font>window.requestAnimFrame（drawIt）;</font></font></span><span> </span></code></pre>
+        <div class="photo">
+            <a class="examplelink noborder" href="./examples/setinterval1.htm"><img src="./style/setinterval1.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font> requestAnimFrame（）的例子</font>
+                </font>
+            </p>
+            <p><i><font><font>基本动画矩形使用requestAnimFrame（点击运行）</font></font></i></p>
+        </div>
+        <h3><a id="clearbackground"><font><font>清除背景</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在，你会发现一个问题。</font>
+                <font>我们的矩形并在屏幕上走，由五个像素每100 millesconds（或10FPS）更新，但旧的矩形仍然存在。</font>
+                <font>它看起来像矩形只是越来越长。</font>
+                <font>请记住，在画布只是一个像素缓冲区。</font>
+                <font>如果设置一些像素，直到你改变他们，他们将呆在那里。</font>
+                <font>所以，让我们明确每个画框上，我们绘制矩形前。
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>VAR X = 0; </font></font></span><span><font><font>功能drawIt（）{ </font></font></span><span><font><font>    window.requestAnimFrame（drawIt）; </font></font></span><span><font><font>    VARCanvas =的document.getElementById（'画布'）; </font></font></span><span><font><font>    VAR C = canvas.getContext（'2D'）; </font></font></span><span><font><font>    c.clearRect（0,0，Canvas .WIDTH，canvas.height）; </font></font></span><span><font><font>    c.fillStyle =“红”; </font></font></span><span><font><font>    c.fillRect（X，100200100），</font></font></span><span><font><font>    X + = 5; </font></font></span><span><font><font>} </font></font></span><span> </span><span><font><font>window.requestAnimFrame（drawIt）;</font></font></span></code></pre>
+        <div class="photo">
+            <a class="examplelink noborder" href="./examples/setinterval2.htm"><img src="./style/setinterval2.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font> requestAnimFrame例子</font>
+                </font>
+            </p>
+            <p><i><font><font>绘制矩形背景清（点击运行）</font></font></i></p>
+        </div>
+        <h3><a id="particlesimulator"><font><font>颗粒模拟器</font></font></a></h3>
+        <p>
+            <font>
+                <font>所以这就是所有要做的动画。</font>
+                <font>在绘制一遍又一遍。</font>
+                <font>让我们尝试一些更复杂的：一个粒子模拟器。</font>
+                <font>我们希望有一些粒子落下如雪屏幕。</font>
+                <font>要做到这一点，我们将实现经典粒子模拟算法：
+                </font>
+            </font>
+        </p>
+        <div class="photo"><img src="./style/particles.png"></div>
+        <p>
+            <font>
+                <font>一个粒子模拟器有颗粒的列表，它遍历。</font>
+                <font>在每帧它更新基于一些方程的每个粒子的位置，然后杀死/基于一些条件根据需要创建颗粒。</font>
+                <font>然后它绘制粒子。</font>
+                <font>下面是一个简单的例子雪。
+                </font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>VARCanvas =的document.getElementById（'画布'）; </font></font></span><span><font><font>VAR粒子= []; </font></font></span><span><font><font>VAR剔= 0; </font></font></span><span><font><font>函数循环（） { </font></font></span><span><font><font>    window.requestAnimFrame(loop); </font></font></span><span><font><font>    createParticles(); </font></font></span><span><font><font>    updateParticles(); </font></font></span><span><font><font>    killParticles(); </font></font></span><span><font><font>    drawParticles(); </font></font></span><span><font><font>} </font></font></span><span><font><font>window.requestAnimFrame(loop);</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>首先，我们将创建一个粒子模拟的精髓。</font>
+                <font>这是被称为每30毫秒一个循环的功能。</font>
+                <font>我们需要的唯一的数据结构是粒子的空数组和一个时钟周期计数器。</font>
+                <font>通过循环每次它将执行四个部分。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>功能createParticles（）{ </font></font></span><span><font><font>    //检查每10滴答检查</font></font></span><span><font><font>    ，如果（打勾％10 == 0）{ </font></font></span><span><font><font>        //如果少于100粒添加</font></font></span><span><font><font>        如果（particles.length &lt;100）{ </font></font></span><span><font><font>            particles.push（{ </font></font></span><span><font><font>                    X：的Math.random （）* canvas.width，// 0和画布宽度之间</font></font></span><span><font><font>                    Y：0，</font></font></span><span><font><font>                    速度：2 +的Math.random（）* 3 // 2和5之间</font></font></span><span><font><font>                    半径：5 +的Math.random（）* 5，// 5和10之间</font></font></span><span><font><font>                    的颜色：“白”，</font></font></span><span><font><font>            }）; </font></font></span><span><font><font>        } </font></font></span><span><font><font>    } </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>该</font>
+            </font><code><font><font>createParticles</font></font></code>
+            <font>
+                <font>功能会检查是否有小于100的颗粒。</font>
+                <font>如果是的话它会创建一个新的粒子。</font>
+                <font>请注意，它只能执行每10打勾。</font>
+                <font>这让屏幕开始空，并慢慢建立，而不是就在开始创建所有的100的颗粒。</font>
+                <font>你会这取决于你要的效果调整。</font>
+                <font>我使用</font>
+            </font><code><font><font>的Math.random（）</font></font></code>
+            <font>
+                <font>
+                    和算术，以确保雪花处于不同的位置，不看起来是一样的。</font>
+                <font>这将使雪感觉更自然。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能updateParticles（）{ </font></font></span><span><font><font>    为（VAR我在颗粒）{ </font></font></span><span><font><font>        VAR部分=颗粒[I]; </font></font></span><span><font><font>        part.y + = part.speed; </font></font></span><span><font><font>    } </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>该</font>
+            </font><code><font><font>updateParticles</font></font></code>
+            <font>
+                <font>功能很简单。</font>
+                <font>它只是通过更新添加它的速度每个粒子的y坐标。</font>
+                <font>这将移动雪花下来的画面。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能killParticles（）{ </font></font></span><span><font><font>    对于（变种i的粒子）{ </font></font></span><span><font><font>        无功部分=颗粒[I]; </font></font></span><span><font><font>        若（part.y&gt; canvas.height）{ </font></font></span><span><font><font>            part.y = 0; </font></font></span><span><font><font>        } </font></font></span><span><font><font>    } </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>这里是</font>
+            </font><code><font><font>killParticles</font></font></code>
+            <font>
+                <font>。</font>
+                <font>它检查如果颗粒是画布的底部的下方。</font>
+                <font>在某些模拟器，你会杀了粒子，并从列表中删除。</font>
+                <font>由于这个程序将显示连续降雪，而不是我们将通过设置在y回到0回收颗粒</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能drawParticles（）{ </font></font></span><span><font><font>    VAR C = canvas.getContext（'2D'）; </font></font></span><span><font><font>    c.fillStyle =“黑色”; </font></font></span><span><font><font>    c.fillRect（0,0，canvas.width，canvas.height）; </font></font></span><span><font><font>    为（VAR我在颗粒）{ </font></font></span><span><font><font>        VAR的部分=颗粒[I]; </font></font></span><span><font><font>        c.beginPath（）; </font></font></span><span><font><font>        c.arc（part.x，part.y，part.radius，0，Math.PI * 2）; </font></font></span><span><font><font>        c.closePath（）; </font></font></span><span><font><font>        c.fillStyle =部分。颜色; </font></font></span><span><font><font>        c.fill（）; </font></font></span><span><font><font>    } </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>最后，我们得出的颗粒。</font>
+                <font>这就非常简单：清除背景，然后绘制与当前粒子的x，y，半径和颜色的圆圈。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>现在，这里是什么样子</font>
+            </font>
+        </p>
+        <div class="photo">
+            <a class="examplelink noborder" href="./examples/snowsim.htm"><img src="./style/snowsim.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font>雪模拟器</font>
+                </font>
+            </p>
+            <p><i><font><font>雪粒子模拟下降。</font><font>（点击运行）</font></font></i></p>
+        </div>
+        <p>
+            <font>
+                <font>就是我喜欢粒子模拟的是，你可以创建非常复杂和有机的，自然的动画非常简单的数学，结合位精心挑选的随意性。</font>
+            </font>
+        </p>
+        <h3><a id="spriteanimation"><font><font>精灵动画</font></font></a></h3>
+        <h4><font><font>什么是雪碧？</font></font></h4>
+        <p>
+            <font>
+                <font>最后的主要类型的动画是精灵动画。</font>
+                <font>那么，什么是精灵？</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>一个精灵是可以快速绘制到屏幕上的小图像。</font>
+                <font>通常一个精灵实际上是切断称为精灵表或主图像的放大图像。</font>
+                <font>此表中可能包含不同的东西多精灵，就像在游戏中不同的字符。</font>
+                <font>精灵表单也可能包含不同的姿势相同的字符。</font>
+                <font>这是给你的动画不同的帧。</font>
+                <font>这是动画的经典翻盖书风格：通过不同的图纸遍地简单翻转。</font>
+            </font>
+        </p>
+        <h4><font><font>为什么以及何时使用精灵？</font></font></h4>
+        <p>
+            <font>
+                <font>精灵是好几个事情。</font>
+            </font>
+        </p>
+        <ul>
+            <li>
+                <font>
+                    <font>首先，精灵是一个图像，因此可能会得出快于载体，特别是如果这些复杂的载体。 </font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>其次，精灵是伟大的，当你需要一遍又一遍地画出同样的事情。</font>
+                    <font>例如，在太空侵略者样的游戏你可能有屏幕，看起来都一样的一堆子弹。</font>
+                    <font>这是非常快的一次加载子弹精灵又一遍地绘制它。</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>第三：精灵的下载速度快，并绘制成片状的一部分。</font>
+                    <font>它可以让你下载一个单一的形象为您的整个精灵，这将下载比得到了一堆独立的图像快得多的。</font>
+                    <font>他们通常也压缩更好。</font>
+                    <font>最后，它使用较少的内存有一个大的图像比一堆规模较小的。</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>最后，精灵是伟大与散发出来的绘图工具，如Photoshop动画工作。</font>
+                    <font>代码只是图像之间翻转，但它并不关心是什么形象。</font>
+                    <font>这意味着你的艺术家可以很容易地更新图形和动画而不触及代码。</font>
+                    <font>刚落一个新的精灵表和你的设置。</font>
+                </font>
+            </li>
+        </ul>
+        <h4><font><font>绘制精灵</font></font></h4>
+        <p>
+            <font>
+                <font>精灵很容易使用绘制</font>
+            </font><code><font><font>的drawImage</font></font></code>
+            <font>
+                <font>功能。</font>
+                <font>这个功能可以绘制和通过指定不同的源和目的地的坐标伸展的图像的一部分。</font>
+                <font>例如，假设我们有这个精灵表，我们只是想画在中心（左五），精灵。</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/sprite.png" height="60"></p>
+        <p>
+            <font>
+                <font>我们可以通过指定坐标源画出眼前这个精灵：</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>context.drawImage（</font></font></span><span><font><font>    IMG，//精灵片的形象</font></font></span><span><font><font>    65,0,13,13，//源坐标（X，Y，W，H）</font></font></span><span><font><font>     0,0,13,13，//目的地坐标（x， Y，W，H）</font></font></span><span><font><font>    ）;</font></font></span></code></pre>
+        <h4><font><font>精灵动画</font></font></h4>
+        <p>
+            <font>
+                <font>正如你可以在完全精灵表看到，这是真的动画的不同帧绘制相同的对象，所以现在让我们翻阅不同的精灵，使其动画。</font>
+                <font>我们将通过使用一个时钟计数器保持当前帧的轨迹做到这一点。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>VAR框架=剔％10;   </font></font></span><span><font><font>VAR X =帧* 13; </font></font></span><span><font><font>context.drawImage（</font></font></span><span><font><font>    IMG，//精灵片的图像</font></font></span><span><font><font>    X，0,13,13，//源坐标（X，Y，W，H）</font></font></span><span><font><font>    0 ，0,13,13，//目标坐标（X，Y，W，H）</font></font></span><span><font><font>    ）; </font></font></span><span><font><font>剔++;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>每次更新屏幕时，我们通过观察刻度计算当前帧的动画。</font>
+                <font>做一个MOD（％）10操作是指从0到9遍地的框架将循环。</font>
+                <font>然后我们计算基于帧号的x坐标。</font>
+                <font>然后绘制图像，并更新刻度计数器。</font>
+                <font>当然，这可能会去的也快，所以你可以用2或3的MOD分前打勾，使其运行速度较慢。</font>
+            </font>
+        </p>
+        <div class="photo">
+            <a class="examplelink noborder" href="./examples/spriteanim.htm"><img src="./style/spriteanim.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font>精灵动画</font>
+                </font>
+            </p>
+            <p><i><font><font>经过10帧动画，放大查看详细（点击运行）</font></font></i></p>
+        </div>
+        <p>
+            <font>
+                <font>在下一章中，我们将构建一个简单的游戏。</font>
+                <font>这场比赛将演示如何使用基本和精灵动画，键盘事件，以及爆炸一个简单的粒子模拟器。</font>
+            </font>
+        </p>
+    </div>
+    <div id="examplewrap" style="display: none;">
+        <iframe id="exampleframe" src="./style/saved_resource.htm"></iframe>
+    </div>
+    <script type="text/javascript" class="bookscript">
+    $(".examplelink").click(function(e) {
+        console.log("opening the big view " + this);
+        e.preventDefault();
+        $("#exampleframe").attr("src", $(this).attr("href"));
+        $("#examplewrap").show();
+    });
+
+    $("#examplewrap").hide();
+    $("#examplewrap").click(function(e) {
+        console.log("hiding");
+        e.preventDefault();
+        $("#exampleframe").attr("src", "");
+        $("#examplewrap").hide();
+        console.log("done hiding");
+    });
+    </script>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./chapter03.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter05.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9436360-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <div id="goog-gt-tt" class="skiptranslate" dir="ltr">
+        <div style="padding: 8px;">
+            <div>
+                <div class="logo"><img src="./style/translate_24dp.png" width="20" height="20"></div>
+            </div>
+        </div>
+        
+        <div class="status-message" style="display: none;"></div>
+    </div>
+</body>
+
+</html>

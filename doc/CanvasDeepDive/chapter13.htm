@@ -1,0 +1,410 @@
+<!-- saved from url=(0061)./chapter12.htm -->
+<html class="translated-ltr">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="./style/master.css">
+  <script type="text/javascript" async="" src="./style/ga.js"></script>
+  <script src="./style/jquery.js"></script>
+  <style type="text/css"></style>
+  <script src="./style/setup.js"></script>
+  <script src="./style/jangle.js"></script>
+  <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+      top: 18px !important;
+      left: 50% !important;
+      margin-left: -100px !important;
+      width: 200px !important;
+      border: 2px rgba(255, 255, 255, .38) solid !important;
+      border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+      margin-left: 0px !important;
+    }
+  </style>
+  <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+
+  <div class="chapnav top">
+    <a class="prevchap" href="./chapter12.html">
+      <font>
+        <font>上</font>
+      </font>
+    </a>
+    <a class="toclink" href="./index.htm">
+      <font>
+        <font>一个目录</font>
+      </font>
+    </a>
+    <a class="nextchap" href="./chapter07.html">
+      <font>
+        <font>下一个</font>
+      </font>
+    </a>
+  </div>
+
+
+
+  <div id="header">
+    <h2>
+      <font>
+        <font>第13章</font>
+      </font>
+    </h2>
+    <h1>
+      <font>
+        <font>使用getUserMedia（）的WebCam访问</font>
+      </font>
+    </h1>
+  </div>
+
+  <div id="content">
+
+    <h3>
+      <a id="overview">
+        <font>
+          <font>getUserMedia</font>
+        </font>
+      </a>
+    </h3>
+
+    <p>
+      <font>
+        <font>历史上，与网络上的本地资源进行交互的唯一方法是上传文件。</font>
+        <font>您可以真正互动的唯一本地设备是鼠标和键盘。</font>
+        <font>幸运的是，情况并非如此。</font>
+        <font>在上一章中，我们看到了如何操纵音频。</font>
+        <font>在本章中，我们将与用户的网络摄像头进行交谈。</font>
+      </font>
+    </p>
+
+    <p>
+      <font>
+        <font>首先我想强调，这是非常高的alpha。</font>
+        <font>用于与本地设备通话的API已经发生了许多次改变，可能会在标准化之前再次更改。</font>
+        <font>此外，只有桌面Chrome和Opera才能真正支持与网络摄像头交谈[Firefox？</font>
+        <font>苹果浏览器？]。</font>
+        <font>几乎没有移动支持。</font>
+        <font>使用本章可以看到将来会发生什么，玩得很开心，但绝对不要试图在任何生产代码中使用它。</font>
+        <font>那说，让我们有一些乐趣！</font>
+      </font>
+    </p>
+
+    <p>
+      <font>
+        <font>从网页访问本地设备有一个漫长的格子过去。</font>
+        <font>传统上，这只是本地插件，如Flash和Java。</font>
+        <font>尽管如此，去年的缝合情况发生了很大变化。</font>
+        <font>的</font>
+      </font>
+      <a href="http://www.webrtc.org/">
+        <font>
+          <font>的WebRTC</font>
+        </font>
+      </a>
+      <font>
+        <font>组的目标是使网络上的实时通信。</font>
+        <font>考虑视频聊天和现场直播音乐会。</font>
+        <font>实现这一愿景所需的组件之一是访问网络摄像头。</font>
+        <font>今天我们可以这样做</font>
+      </font><code>navigator.getUserMedia()</code>
+      <font>
+        <font>。</font>
+      </font>
+    </p>
+
+
+    <p>
+      <font>
+        <font>我将向您展示最新的Chrome测试版（截至2012年7月13日的v21）的方法。</font>
+        <font>要获得更强大的解决方案，请参阅</font>
+      </font>
+      <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">
+        <font>
+          <font>有关HTML 5 Rocks的文章</font>
+        </font>
+      </a>
+      <font>
+        <font>。</font>
+        <font>另请注意，</font>
+      </font><code>getUserMedia</code>
+      <font>
+        <font>本地文件系统将无法正常工作。</font>
+        <font>您必须通过本地Web服务器运行它。</font>
+      </font>
+    </p>
+
+    <p>
+      <font>
+        <font>首先，我们需要页面中的视频元素。</font>
+        <font>这是网络摄像头显示的地方。</font>
+      </font>
+    </p>
+
+    <pre><code><span>&lt;video autoplay&gt;&lt;/video&gt;  </span></code></pre>
+
+    <p>
+      <font>
+        <font>要访问网络摄像头，我们必须先查看是否存在支持</font>
+      </font><code>navigator.webkitGetUserMedia != null</code>
+      <font>
+        <font>。</font>
+        <font>如果确实存在，我们可以请求访问。</font>
+        <font>这些选项决定了我们是想要音频，视频还是两者。</font>
+        <font>在撰写音频时，只有Chrome才能正常工作。</font>
+      </font>
+    </p>
+
+    <pre><code><span>if(navigator.webkitGetUserMedia!=null) {     var options = {         video:true,         audio:true     };          //request webcam access     navigator.webkitGetUserMedia(options,         function(stream) {             //get the video tag             var video = document.querySelector('video');             //turn the stream into a magic URL             video.src = window.webkitURL.createObjectURL(stream);         },         function(e) {             console.log("error happened");         }     ); }  </span></code></pre>
+
+    <p>
+      <font>
+        <font>当</font>
+      </font><code>webkitGetUserMedia</code>
+      <font>
+        <font>被调用时，它将打开一个对话框来询问用户是否可以访问我们的页面。</font>
+        <font>如果用户批准，那么第一个功能将被调用。</font>
+        <font>如果有任何问题，则会调用错误函数。</font>
+      </font>
+    </p>
+
+    <p>
+      <font>
+        <font>现在我们有了流，我们可以使用一种神奇的url来附加到页面中的视频元素</font>
+      </font><code>webkitURL.createObjectURL()</code>
+      <font>
+        <font>。</font>
+        <font>一旦挂接，视频元素将显示网络摄像头的实时视图。</font>
+      </font>
+    </p>
+
+    <p>
+      <font>
+        <font>这是它的样子</font>
+      </font>
+    </p>
+
+    <div class="photo">
+      <img src="./style/simplewebcam.png">
+      <p><b><font><font>截图</font></font></b>
+        <font>
+          <font>简单的网络摄像头</font>
+        </font>
+      </p>
+      <p><i></i></p>
+    </div>
+
+
+    <h3>
+      <a id="snapshot">
+        <font>
+          <font>拍摄快照</font>
+        </font>
+      </a>
+    </h3>
+
+    <p>
+      <font>
+        <font>那么现在我们有一个实时的网络摄像头，我们可以用它做什么呢？</font>
+        <font>正因为如此，视频元素与画布很好地播放。</font>
+        <font>我们可以通过将其绘制到2D画布元素中来获取网络摄像头的快照：</font>
+      </font>
+    </p>
+
+    <pre><code><span>&lt;form&gt;&lt;input type='button' id='snapshot' value="snapshot"/&gt;&lt;/form&gt;  &lt;canvas id='canvas' width='100' height='100'&gt;&lt;/canvas&gt;  &lt;script language='javascript'&gt; document.getElementById('snapshot').onclick = function() {     var video = document.querySelector('video');     var canvas = document.getElementById('canvas');     var ctx = canvas.getContext('2d');     ctx.drawImage(video,0,0); } &lt;/script&gt;  </span></code></pre>
+
+    <p>
+      <font>
+        <font>当按钮被点击时，事件处理程序将从页面抓取视频元素并将其绘制到画布上。</font>
+        <font>我们使用与静态图像一样使用的drawImage（）调用。</font>
+        <font>因为它是相同的功能，我们可以像图像一样操作它。</font>
+        <font>拉伸它改变drawImage调用看起来像这样：</font>
+      </font>
+    </p>
+
+    <pre><code><span>//draw video source resized to 100x100     ctx.drawImage(video,0,0,100,100);  </span></code></pre>
+
+    <div class="photo">
+      <img src="./style/stretchwebcam.png">
+      <p><b><font><font>截图</font></font></b>
+        <font>
+          <font>拉伸快照</font>
+        </font>
+      </p>
+      <p><i><font><font>来自实时网络摄像头的快照，用Canvas 2D延伸</font></font></i></p>
+    </div>
+
+    <p>
+      <font>
+        <font>这就是它的一切。</font>
+        <font>网络摄像头只是一个图像。</font>
+        <font>我们可以使用像素缓冲区一章中描述的一些效果修改它。</font>
+        <font>下面的代码将反转快照。</font>
+      </font>
+    </p>
+
+    <pre><code><span>    var video = document.querySelector('video');     var canvas = document.getElementById('canvas');     var ctx = canvas.getContext('2d');     ctx.drawImage(video,0,0);     //get the canvas data      var data = ctx.getImageData(0,0,canvas.width,canvas.height);      //invert each pixel      for(n=0; n&lt;data.width*data.height; n++) {          var index = n*4;           data.data[index+0] = 255-data.data[index+0];          data.data[index+1] = 255-data.data[index+1];          data.data[index+2] = 255-data.data[index+2];          //don't touch the alpha      }            //set the data back      ctx.putImageData(data,0,0);      </span></code></pre>
+
+
+    <div class="photo">
+      <img src="./style/invertwebcam.png">
+      <p><b><font><font>截图</font></font></b>
+        <font>
+          <font>反转快照</font>
+        </font>
+      </p>
+      <p><i><font><font>来自实时网络摄像头的快照，与像素操纵相反</font></font></i></p>
+    </div>
+
+
+
+    <p>
+      <font>
+        <font>您可以通过反复捕获视频而不是仅在用户按下按钮时才能使其生效。</font>
+      </font>
+    </p>
+
+
+    <h3>
+      <a id="examples">
+        <font>
+          <font>更酷的黑客</font>
+        </font>
+      </a>
+    </h3>
+
+
+    <p>
+      <font>
+        <font>我所看到的只是可能的冰山一角。</font>
+        <font>这里还有其他有才华的开发者创造的其他几个例子。</font>
+      </font>
+    </p>
+
+
+    <p>
+      <font>
+        <font>Neave.com的网络摄像头玩具实时摄像头像素效果，类似于Instagram滤镜。</font>
+      </font>
+    </p>
+
+    <div class="photo">
+      <img src="./style/webcamtoy.png">
+      <p><b><font><font>链接</font></font></b>
+        <a href="http://neave.com/webcam/html5/">
+          <font>
+            <font>Neave.com网络摄像头玩具。</font>
+          </font>
+        </a>
+      </p>
+      <p><i><font><font>具有实时效果的摄像头玩具</font></font></i></p>
+    </div>
+
+    <p>
+      <font>
+        <font>Soundstep.com创建了一个只能通过在网络摄像头前移动双手控制的木琴。</font>
+        <font>注意右下角的运动检测查看器。</font>
+      </font>
+    </p>
+
+    <div class="photo">
+      <img src="./style/musicwebcam.png">
+      <p><b><font><font>链接</font></font></b>
+        <a href="http://www.soundstep.com/blog/experiments/jsdetection/">
+          <font>
+            <font>Soundstep的WebCam Xylophone</font>
+          </font>
+        </a>
+      </p>
+      <p><i><font><font>通过移动你的手控制的木琴</font></font></i></p>
+    </div>
+
+
+    <!--
+  game pad access: (try a demo with my controller?)
+  put a link to buy such a controller on amazon with my referrer code
+
+  -->
+
+
+    <p>
+      <font>
+        <font>
+          麦克风还没有真正工作。</font>
+        <font>你不能挂钩到网络音频的东西，但希望很快。</font>
+        <font>有铬已经存在，这样会发生这种情况。</font>
+        <font>希望到年底，特别是因为需要真正使webRTC工作。</font>
+      </font>
+    </p>
+
+
+
+
+  </div>
+
+
+  <div class="chapnav bottom">
+    <a class="prevchap" href="./chapter12.html">
+      <font>
+        <font>上</font>
+      </font>
+    </a>
+    <a class="toclink" href="./index.htm">
+      <font>
+        <font>一个目录</font>
+      </font>
+    </a>
+    <a class="nextchap" href="./chapter07.html">
+      <font>
+        <font>下一个</font>
+      </font>
+    </a>
+  </div>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9436360-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <div id="goog-gt-tt" class="skiptranslate" dir="ltr">
+    <div style="padding: 8px;">
+      <div>
+        <div class="logo"><img src="./style/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div>
+      </div>
+    </div>
+    <div class="top" style="padding: 8px; float: left; width: 100%;">
+      <h1 class="title gray">原文</h1>
+    </div>
+    <div class="middle" style="padding: 8px;">
+      <div class="original-text"></div>
+    </div>
+    <div class="bottom" style="padding: 8px;">
+      <div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div>
+      <div class="started-activity-container">
+        <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
+        <div class="activity-root"></div>
+      </div>
+    </div>
+    <div class="status-message" style="display: none;"></div>
+  </div>
+
+
+  <div class="goog-te-spinner-pos">
+    <div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>
+  </div>
+</body>
+
+</html>

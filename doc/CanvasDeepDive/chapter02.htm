@@ -1,0 +1,348 @@
+<!-- saved from url=(0061)./chapter02.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./chapter01.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter03.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第2章</font></font></h2>
+        <h1><font><font>牵手：制作图表</font></font></h1>
+    </div>
+    <div id="content">
+        <p class="note">
+            <font>
+                <font>源此手项目，在这本书中的所有项目，可以发现</font>
+            </font>
+            <a href="http://joshondesign.com/canvasbook/">
+                <font>
+                    <font>在这里</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <p class="note">
+            <font>
+                <font>请注意，在本章中，我们将直接从本地硬盘驱动器，而不是通过一个Web服务器加载代码。</font>
+                <font>您可能需要因为这个开发过程中在Chrome中禁用安全性。</font>
+                <font>如果您有直接从磁盘装载Chrome的图片或其他文件的问题，尝试加入一些安全标志命令行：</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在Mac OS X，这将是</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>/应用/谷歌\ Chrome.app/Contents/MacOS/Google \铬--allow-文件访问从 - 文件 - 禁用 - 网络安全 </font></font></span></code></pre>
+        <p>
+            <font>
+                <font>在Linux上，这将是</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>铬浏览器 - 禁用 - 网络安全 </font></font></span></code></pre>
+        <p>
+            <font>
+                <font>在Windows中，这将是</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>--disable的chrome.exe的Web安全 </font></font></span></code></pre>
+        <p>
+            <font>
+                <font>另外，您也可以加载通过本地网络服务器的页面。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在本章中，我们将通过绘制自定义图表绘制的一些数据。</font>
+                <font>它会告诉你线条，形状和文本的基本绘图; </font>
+                <font>那么我们将与渐变的饼图。</font>
+            </font>
+        </p>
+        <h3><a id="new_page"><font><font>创建新页面</font></font></a></h3>
+        <p>
+            <font>
+                <font>通过创建一个新的名为文本文件启动</font>
+            </font><code><font><font>barchart.htm</font></font></code>
+            <font>
+                <font>并键入：</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>&lt;HTML&gt; </font></font></span><span><font><font>&lt;BODY&gt; </font></font></span><span><font><font>&lt;画布宽度=“500”HEIGHT =“500”ID =“画布”&gt; &lt;/ canvas&gt;的</font></font></span><span><font><font>&lt;SCRIPT&gt; </font></font></span><span> </span><span><font><font>VAR数据= [16，68，20，30，54]; </font></font></span><span> </span><span><font><font>&lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;/ body&gt; </font></font></span><span><font><font>&lt;/ HTML&gt;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>上面的页面包含一个Canvas 和</font>
+            </font><code><font><font>脚本</font></font></code>
+            <font>
+                <font>元素。</font>
+                <font>canvas元素是实际在屏幕上的矩形，其中的内容将被绘制。</font>
+                <font>在</font>
+            </font><code><font><font>宽度</font></font></code>
+            <font>
+                <font>和</font>
+            </font><code><font><font>高度</font></font></code>
+            <font>
+                <font>确定这将是多么大了。</font>
+                <font>canvas元素类似于一个DIV块级别的DOM元素，所以你可以风格它或将它就像在你的页面别的位置。
+                </font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>该</font>
+            </font><code><font><font>数据</font></font></code>
+            <font>
+                <font>在脚本标记变量是一组我们将在条形图中得出的数据点。
+                </font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>现在，让我们得到画布参考，并填写与灰色的背景。</font>
+                <font>数据变量在此之后加入script标签。
+                </font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//获取到画布上的参考</font></font></span><span><font><font>VARCanvas =的document.getElementById（'画布'）; </font></font></span><span> </span><span><font><font>//获取绘图上下文的引用</font></font></span><span><font><font>变种C = canvas.getContext（'2D'）; </font></font></span><span> </span><span><font><font>//画</font></font></span><span><font><font>c.fillStyle =“灰“ </font></font></span><span><font><font>c.fillRect（0,0,500,500）;</font></font></span></code></pre>
+        <h3><a id="add_data"><font><font>添加数据</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在，你可以得出一些数据。</font>
+                <font>通过循环数据阵列上执行此操作。</font>
+                <font>对于每个数据点填写与由阵列索引和由数据值所确定的高度来确定在x的矩形。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//绘制数据</font></font></span><span><font><font>c.fillStyle =“蓝色”; </font></font></span><span><font><font>为（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>    VAR DP =数据[I]; </font></font></span><span><font><font>    c.fillRect（25 + I * 100，30，50， DP * 5）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在，在你的网页浏览器加载这个页面了。</font>
+                <font>它应该是这样的：</font>
+            </font>
+        </p>
+        <div class="photo"><img src="./style/barchart1.png">
+            <p><b><font><font>截图</font></font></b>
+                <font>
+                    <font>纯数据条</font>
+                </font>
+            </p>
+        </div>
+        <p>
+            <font>
+                <font>第一个问题是，该杆从顶部而不是底部下来。</font>
+                <font>请记住，y轴顶部为0，随你去。</font>
+                <font>为了使棒上来从底部变化的y值被计算为在画布（500）减去杆（DP * 5）的高度的高度，然后减去关闭额外30以使其适合。</font>
+            </font>
+        </p>
+        <pre><code><span> </span><span><font><font>//绘制数据</font></font></span><span><font><font>c.fillStyle =“蓝色”; </font></font></span><span><font><font>为（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>    VAR DP =数据[I]; </font></font></span><span><font><font>    c.fillRect（25 + I * 100，500 * DP 5 - 30，50，DP * 5）; </font></font></span><span><font><font>}</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>现在，它看起来像这样：</font>
+            </font>
+        </p>
+        <div class="photo"><img src="./style/barchart2.png">
+            <p><b><font><font>截图</font></font></b>
+                <font>
+                    <font>固定方向</font>
+                </font>
+            </p>
+        </div>
+        <h3><a id="axislines"><font><font>轴线和标签</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在通过抚摸从顶部开始的路径，向下的左侧添加一些轴线，并在底部。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//绘制轴线</font></font></span><span><font><font>c.fillStyle =“黑色”; </font></font></span><span><font><font>c.lineWidth = 2.0; </font></font></span><span><font><font>c.beginPath（）; </font></font></span><span><font><font>c.moveTo（30,10）; </font></font></span><span><font><font>c.lineTo（30460）; </font></font></span><span><font><font>c.lineTo（490460）; </font></font></span><span><font><font>℃。行程（）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在添加值标签和对勾标记左侧向下。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//绘制文本和垂直线</font></font></span><span><font><font>c.fillStyle =“黑色”; </font></font></span><span><font><font>为（VAR I = 0;我&lt;6;我++）{ </font></font></span><span><font><font>    c.fillText（（5-I）* 20 +“”; 4，我* 80 + 60）; </font></font></span><span><font><font>    c.beginPath（）; </font></font></span><span><font><font>    c.moveTo（25，我* 80 + 60）; </font></font></span><span><font><font>    c.lineTo（30，我* 80 + 60）; </font></font></span><span><font><font>    c.stroke（）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>最后在底部添加标签为前五个月的一年</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>VAR标签=“JAN”，“FEB”，“MAR”，“年利率”，“可能”]; </font></font></span><span><font><font>//绘制HORIZ文本</font></font></span><span><font><font>为（VAR I = 0;我&lt;5;我++）{ </font></font></span><span><font><font>    c.fillText（标签[我]，我超过50 * 100，475）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>结果如下：</font>
+            </font>
+        </p>
+        <div class="photo"><img src="./style/barchart2_5.png">
+            <p><b><font><font>截屏</font></font></b>
+                <font>
+                    <font>图与轴线和标签</font>
+                </font>
+            </p>
+        </div>
+        <p>
+            <font>
+                <font>不坏，但也有我们应该作一些调整。</font>
+                <font>让我们来改变背景为白色，因此似乎没有沉闷呢，然后调节杆的位置稍有所以他们实际上是在0,0开头。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//绘制背景</font></font></span><span><font><font>c.fillStyle =“白”; </font></font></span><span><font><font>c.fillRect（0,0,500,500）; </font></font></span><span> </span><span><font><font>//绘制数据</font></font></span><span><font><font>c.fillStyle =“蓝色”; </font></font></span><span><font><font>为（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>    VAR DP =数据[I]; </font></font></span><span><font><font>    c.fillRect（40 + I * 100，460 * DP 5，50，DP * 5）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在，最终图表如下：</font>
+            </font>
+        </p>
+        <div class="photo"><img src="./style/barchart3.png">
+            <p><b><font><font>截图</font></font></b>
+                <font>
+                    <font>漂亮柱状图</font>
+                </font>
+            </p>
+        </div>
+        <h3><a id="piechart"><font><font>饼形图</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在让我们相同的数据，并绘制成饼图来代替。</font>
+                <font>代码非常相似。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>创建一个名为新文件</font>
+            </font><code><font><font>piechart.htm</font></font></code>
+            <font>
+                <font>包含此：</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>&lt;HTML&gt; </font></font></span><span><font><font>&lt;BODY&gt; </font></font></span><span><font><font>&lt;画布宽度=“500”HEIGHT =“500”ID =“画布”&gt; &lt;/ canvas&gt;的</font></font></span><span><font><font>&lt;SCRIPT&gt; </font></font></span><span><font><font>//初始化数据集</font></font></span><span><font><font>VAR数据= [100，68，20，30，100] ; </font></font></span><span> </span><span><font><font>VARCanvas =的document.getElementById（'画布'）; </font></font></span><span><font><font>VAR C = canvas.getContext（'2D'）; </font></font></span><span><font><font>//绘制背景</font></font></span><span><font><font>c.fillStyle =“白”; </font></font></span><span><font><font>c.fillRect（0,0,500,500）; </font></font></span><span> </span><span><font><font>&lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;/ body&gt; </font></font></span><span><font><font>&lt;/ HTML&gt;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在加上颜色列表（每个数据点）并计算所有数据的总值。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//一个颜色列表</font></font></span><span><font><font>VAR颜色= [“橙色”，“绿”，“蓝”，“黄”，“水鸭”]; </font></font></span><span> </span><span><font><font>//计算总的所有数据</font></font></span><span><font><font>无功总= 0; </font></font></span><span><font><font>为（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>    总+ =数据[I]; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>绘制实际扇形看似复杂，但它实际上是很容易的。</font>
+                <font>为在圆（250,250）的中央各切片开始然后从先前的角度到新的角度绘制圆弧。</font>
+                <font>的角度是这样的数据点表示馅饼，换算成弧度的部分。</font>
+                <font>先前的角度是从通过循环上一个时间（从0开始）的角度。</font>
+                <font>电弧在250,250中心，拥有100半径再画一条线回到中心，并填写和中风的形状。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//画大饼数据</font></font></span><span><font><font>VAR prevAngle = 0; </font></font></span><span><font><font>为（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>    //分数，这pieslice代表</font></font></span><span><font><font>    VAR分数=数据[I] /总; </font></font></span><span><font><font>    //计算起始角</font></font></span><span><font><font>    无功角= prevAngle +分数* Math.PI * 2; </font></font></span><span>     </span><span><font><font>    //绘制扇形区</font></font></span><span><font><font>    c.fillStyle =颜色由[i]; </font></font></span><span>     </span><span><font><font>    //创建一个路径</font></font></span><span><font><font>    c.beginPath（）; </font></font></span><span><font><font>    c.moveTo（250,250）; </font></font></span><span><font><font>    c.arc（250,250， 100，prevAngle，角度，FALSE）; </font></font></span><span><font><font>    c.lineTo（250,250）; </font></font></span><span>     </span><span><font><font>    //填充</font></font></span><span><font><font>    c.fill（）; </font></font></span><span>     </span><span><font><font>    //中风它</font></font></span><span><font><font>    c.strokeStyle =“黑色”; </font></font></span><span><font><font>    c.stroke（）; </font></font></span><span>     </span><span><font><font>    下一次更新//通过循环</font></font></span><span><font><font>    prevAngle =角; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在，终于在图形下方添加一些文字。</font>
+                <font>要居中，您必须先计算文本的宽度全文：</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//绘制居中文本</font></font></span><span><font><font>c.fillStyle =“黑色” </font></font></span><span><font><font>; c.font =“24PT无衬线” </font></font></span><span><font><font>“，从2025年销售数据”文本VAR =; </font></font></span><span><font><font>VAR指标= c.measureText（文本）; </font></font></span><span><font><font>c.fillText（文字， 250 metrics.width / 2，400）;</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>这是它的样子：</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/piechart1.png"></p>
+        <h3><a id="add_gradients"><font><font>添加一些渐变</font></font></a></h3>
+        <p>
+            <font>
+                <font>为了使图看起来有点snazzier您可以填写每片有这样的径向渐变：</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>    //画出扇形</font></font></span><span><font><font>    //c.fillStyle =颜色由[i]; </font></font></span><span> </span><span><font><font>    //填充径向渐变</font></font></span><span><font><font>    VAR毕业= c.createRadialGradient（250,250，10，250,250，100）; </font></font></span><span><font><font>    grad.addColorStop（0，“白”） ; </font></font></span><span><font><font>    grad.addColorStop（1，颜色由[i]）; </font></font></span><span><font><font>    c.fillStyle =毕业生;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>渐变填充片在中心到边缘颜色由白去，增加了更多的位深度的图表。</font>
+                <font>它应该是这样的：</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/piechart2.png"></p>
+        <p>
+            <font>
+                <font>为了使这个图表更加有用这里有一些更多的改进，你可以尝试制作：</font>
+            </font>
+        </p>
+        <ul>
+            <li>
+                <font>
+                    <font>添加数据并更改数学从而使柱状图有12个全月的数据</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>构建绘制每个数据点为圆心线图，再画一个多段线来连接所有的圆圈。</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>使具有渐变填充的柱状图漂亮，圆润的边角，或黑色的轮廓。</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>借鉴每个扇形的标签</font>
+                </font>
+            </li>
+        </ul>
+    </div>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./chapter01.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter03.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    
+</body>
+
+</html>

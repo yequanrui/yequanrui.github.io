@@ -1,0 +1,473 @@
+<!-- saved from url=(0061)./chapter05.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./chapter04.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter06.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第5章</font></font></h2>
+        <h1><font><font>制作游戏</font></font></h1>
+    </div>
+    <div id="content">
+        <p>
+            <font>
+                <font>在这一课中，你将用你已经学会创建一个简单的太空侵略者风格的游戏动画和先进的绘画技巧。</font>
+                <font>所以，你可以专注于图形我已经提供了游戏的骨架。</font>
+                <font>用户有他们可以将左，右方向键与火空格键飞船。</font>
+                <font>在屏幕顶部的外国人来回移动，而随机拍摄飞弹。</font>
+                <font>该代码简单的碰撞检测杀外星人当用户的冲击波击中它，如果飞船击中外星导弹杀死玩家。</font>
+                <font>所有图形呈现简单的矩形。</font>
+                <font>快速浏览一下，然后我们将开始使漂亮。</font>
+            </font>
+        </p>
+        <div class="photo">
+            <a class="examplelink" href="./examples/game1.htm"><img src="./style/v1.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font>游戏版本1</font>
+                </font>
+            </p>
+            <p><i><font><font>简单的矩形图形（点击播放）</font></font></i></p>
+        </div>
+        <h3><a id="drawspaceship"><font><font>绘制飞船与图像雪碧</font></font></a></h3>
+        <p>
+            <font>
+                <font>在这一文件和游戏* .htm文件的目录，创建一个新的HTML文件名为mygame.htm复制game1.htm进去。</font>
+                <font>这包含您在上面看到了游戏的最初版本。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>我们会做的第一件事就是给玩家的飞船的升级。</font>
+                <font>要做到这一点，我们将使用我从惊人的网站采取了一个形象</font>
+            </font>
+            <a href="http://lostgarden.com/" target="blank">
+                <font>
+                    <font>LostGarden.com</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/Hunter1.png" style="width:292px">
+            <br><i><font><font>图片/ Hunter1.png（缩放4倍）</font></font></i></p>
+        <p>
+            <font>
+                <font>首先，我们需要改变播放器的大小以适应图像。</font>
+                <font>我们只希望它是46x46像素的图像中的上中心精灵，所以添加此代码邻近game.htm的顶部设置选手对象的大小。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>VAR可以=的document.getElementById（“Canvas ”）; </font></font></span><span><font><font>VAR C = can.getContext（'2D'）; </font></font></span><span> </span><span><font><font>//新代码</font></font></span><span><font><font>player.width = 46;   </font></font></span><span><font><font>player.height = 46;</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>现在，我们需要将图像加载到一个对象，所以我们可以使用它。</font>
+                <font>创建的变量称为</font>
+            </font><code><font><font>ship_image</font></font></code>
+            <font>
+                <font>则</font>
+            </font><code><font><font>loadResources（）</font></font></code>
+            <font>
+                <font>函数来在启动时加载的图像。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span> </span><span><font><font>player.width = 46;   </font></font></span><span><font><font>player.height = 46; </font></font></span><span> </span><span><font><font>//新代码</font></font></span><span><font><font>变种ship_image; </font></font></span><span> </span><span><font><font>loadResources（）; </font></font></span><span> </span><span><font><font>函数loadResources（）{ </font></font></span><span><font><font>    ship_image =新的图像（）; </font></font></span><span><font><font>    ship_image.src =“图像/ Hunter1.png”; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在再往</font>
+            </font><code><font><font>drawPlayer</font></font></code>
+            <font>
+                <font>功能。</font>
+                <font>我们将改变过去的两行，这样，而不是填充一个矩形，将绘制图像。</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>c.fillStyle =“红”; </font></font></span><span><font><font> c.fillRect（player.x，player.y，player.width，player.height）; </font></font></span><span> </span><span><font><font>c.drawImage（ship_image，   </font></font></span><span><font><font>        25,1，23,23，// SRC COORDS </font></font></span><span><font><font>        player.x ，player.y，player.width，player.height // DST COORDS </font></font></span><span><font><font>     ）;</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>让我们来看看这是什么在做什么。</font>
+                <font>我们的形象实际上有8个版本的飞船，但我们只是想提请其中之一。</font>
+                <font>会的drawImage通过传递的源和目标坐标绘制图像的小节。</font>
+                <font>源坐标定义什么形象的一部分，将采取从像素。</font>
+                <font>目标坐标确定，其中，Canvas 上的像素将被绘制，以及如何大。</font>
+                <font>通过改变这些数字，你可以轻松地创建有趣strecthing，裁剪和缩放效果。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>对于这个例子，我们将得出是从左侧边缘25的像素，并在23个像素的图像的那部分。</font>
+                <font>然后我们得出子图像到画布一个玩家的x，y，宽度和高度。</font>
+                <font>请注意，我们设定的宽度和高度更早46x46。</font>
+            </font><b><font><font>这正是双23x23的源尺寸</font></font></b>
+            <font>
+                <font>。</font>
+                <font>我这样做，故意的。</font>
+                <font>这意味着是一个复古风格的游戏，所以我想扩展图形一个有趣的像素化的外观。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>现在保存文件并重新加载浏览器。</font>
+                <font>它应该是这样的：</font>
+            </font>
+        </p>
+        <div class="photo">
+            <a class="examplelink" href="./examples/game2.htm"><img src="./style/v2.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font>游戏版2</font>
+                </font>
+            </p>
+            <p><i><font><font>与精灵绘制船（点击播放）</font></font></i></p>
+        </div>
+        <h3><a id="bulletsandbombs"><font><font>精灵动画的子弹和炸弹</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在，我们需要对飞船子弹和炸弹外星人精灵一些。</font>
+                <font>我们再次将图像加载成变量。</font>
+                <font>附近的代码的顶端更新看起来像这样（新代码以粗体显示）。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>VAR ship_image; </font></font></span><span><font><font>VAR bomb_image; </font></font></span><span><font><font>VAR bullet_image; </font></font></span><span> </span><span><font><font>loadResources（）; </font></font></span><span> </span><span><font><font>函数loadResources（）{ </font></font></span><span><font><font>    ship_image =新的图像（）; </font></font></span><span><font><font>    ship_image.src =“图像/ Hunter1.png” </font></font></span><span>     </span><span><font><font>    bomb_image =新的图像（）; </font></font></span><span><font><font>    bomb_image.src =“图片/bomb.png“ </font></font></span><span>     </span><span><font><font>    bullet_image =新的图像（）; </font></font></span><span><font><font>    bullet_image.src =”图像/ bullets.png“; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>这将加载这些图片：</font>
+            </font>
+        </p>
+        <div class="photo">
+            <img src="./style/bullets.png" style="width:388px">
+            <p><b><font><font>截屏</font></font></b>
+                <font>
+                    <font>图像/ bullets.png（缩放4倍）</font>
+                </font>
+            </p>
+        </div>
+        <div class="photo">
+            <img src="./style/bomb.png" style="width:484px">
+            <p><b><font><font>截屏</font></font></b>
+                <font>
+                    <font>图像/ bomb.png（缩放4倍）</font>
+                </font>
+            </p>
+        </div>
+        <p>
+            <font>
+                <font>你会发现这些图像也有他们多精灵。</font>
+                <font>然而，在这种情况下，我们想用</font>
+            </font><b><font><font>所有的精灵</font></font></b>
+            <font>
+                <font>。</font>
+                <font>每一个是动画的一帧。</font>
+                <font>通过精灵的循环，我们将创建动画在屏幕上的错觉。</font>
+                <font>我们将做到这一点和以前一样，通过绘制主映像的款，但这次我们将改变每一帧上的坐标。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能drawPlayerBullets（三）{ </font></font></span><span><font><font>    c.fillStyle =“蓝色”; </font></font></span><span><font><font>    为（i的playerBullets）{ </font></font></span><span><font><font>        VAR子弹= playerBullets [I]; </font></font></span><span><font><font>        VAR数= Math.floor（bullet.counter / 4）; </font></font></span><span><font><font>        VAR XOFF =（计4％ ）* 24; </font></font></span><span><font><font>        //c.fillRect(bullet.x，bullet.y， bullet.width,bullet.height); </font></font></span><span><font><font>        c.drawImage( </font></font></span><span><font><font>            bullet_image, </font></font></span><span><font><font>            xoff+10,0+9,8,8,//src </font></font></span><span><font><font>            bullet.x,bullet.y,bullet.width,bullet.height//dst </font></font></span><span><font><font>        ); </font></font></span><span><font><font>    } </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>上面的代码类似于我们之前做过除XOFF，计数和bullet.counter变量。</font>
+                <font>每颗子弹上有一个柜台。</font>
+                <font>这是一个数字被创建并在每一帧增加1子弹，当它从0开始。</font>
+                <font>计数仅仅是计数器除以四。</font>
+                <font>在60fps运行只有几帧的动画将太快地看到，因此，这减慢它由四个因素。 </font>
+            </font>
+        </p>
+        <p><code><font><font>XOFF</font></font></code>
+            <font>
+                <font>是计数模4，这意味着它现在是一个数字，从0到3和循环。</font>
+                <font>然后，我们用24乘以它，这是每个精灵的宽度。 </font>
+            </font><code><font><font>XOFF</font></font></code>
+            <font>
+                <font>将通过值0，24，48，72循环一遍又一遍，给我们一个不断改变x偏移主映像。</font>
+                <font>（额外+10是考虑到额外的空间上的主图像的左边缘）。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>上面的代码添加精灵动画的子弹。</font>
+                <font>现在我们将做与下面的代码更改createEnemyBullet和drawEnemyBullets炸弹一样。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能createEnemyBullet（敌人）{ </font></font></span><span><font><font>    回报{ </font></font></span><span><font><font>        X：enemy.x，</font></font></span><span><font><font>        Y：enemy.y + enemy.height，</font></font></span><span><font><font>        宽度：4，</font></font></span><span><font><font>        高度：12，</font></font></span><span><font><font>        宽30，</font></font></span><span><font><font>        高30，</font></font></span><span><font><font>        计数器：0，</font></font></span><span><font><font>    } </font></font></span><span><font><font>} </font></font></span><span> </span><span><font><font>功能drawEnemyBullets（C ）{ </font></font></span><span><font><font>    为（VAR我在enemyBullets）{ </font></font></span><span><font><font>        VAR子弹= enemyBullets [I]; </font></font></span><span><font><font>        c.fillStyle =“黄”; </font></font></span><span><font><font>        c.fillRect（bullet.x，bullet.y，bullet.width，bullet.height）; </font></font></span><span><font><font>        VAR XOFF = （bullet.counter％9）* 12 + 1; </font></font></span><span><font><font>        VAR YOFF = 1; </font></font></span><span><font><font>        c.drawImage（bomb_image，</font></font></span><span><font><font>            XOFF，YOFF，11,11，// SRC </font></font></span><span><font><font>            bullet.x，bullet.y，bullet.width，bullet.height / / DEST </font></font></span><span><font><font>            ）; </font></font></span><span><font><font>    } </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>请注意，在上面的代码，我们不得不改变敌人的炸弹的默认大小为30。这是为了让碰撞检测例程将使用同样大小的图像。</font>
+                <font>我们需要做在firePlayerBullet函数飞船子弹相同。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能firePlayerBullet（）{ </font></font></span><span><font><font>  //创建一个新的子弹</font></font></span><span><font><font>   playerBullets.push（{ </font></font></span><span><font><font>        X：player.x，</font></font></span><span><font><font>      X：player.x + 14，</font></font></span><span><font><font>     Y：player.y - 5，</font></font></span><span><font><font>      宽度：10，</font></font></span><span><font><font>       高度：10，</font></font></span><span><font><font>       宽20，</font></font></span><span><font><font>     高度：20，</font></font></span><span><font><font>       计数器：0，</font></font></span><span><font><font>   }）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在，我们的游戏看起来是这样的。</font>
+                <font>如果您有任何问题，比较你的代码到</font>
+            </font><code><font><font>game3.htm</font></font></code>
+            <font>
+                <font>文件包含在此实验室。</font>
+                <font>它们应该是相同的。</font>
+            </font>
+        </p>
+        <div class="photo">
+            <a class="examplelink" href="./examples/game3.htm"><img src="./style/v3.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font>游戏第3版</font>
+                </font>
+            </p>
+            <p><i><font><font>与精灵绘制的敌人（点击播放）</font></font></i></p>
+        </div>
+        <h3><a id="aliens"><font><font>外侨程序图形</font></font></a></h3>
+        <p>
+            <font>
+                <font>让我们改变我们如何画外星人。</font>
+                <font>而不是使用的精灵，我们将做到这一点程序上，这意味着所有的绘图将通过代码，而不是事先在绘图程序来完成。</font>
+                <font>我们的目标是一个绿色的圆圈充满了在一个循环中漂浮的白色小天体流。</font>
+                <font>他们是这样的：</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/new_alien.png"></p>
+        <p>
+            <font>
+                <font>由于这将是向敌人绘图代码从根本上改变创建一个名为新功能</font>
+            </font><code><font><font>drawEnemy（） </font></font></code>
+            <font>
+                <font>。</font>
+                <font>首先修改</font>
+            </font><code><font><font>drawEnemies（）</font></font></code>
+            <font>
+                <font>委托给</font>
+            </font><code><font><font>drawEnemy</font></font></code>
+            <font>
+                <font>功能：</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能drawEnemies（C）{ </font></font></span><span><font><font>    为（VAR我的敌人）{ </font></font></span><span><font><font>        VAR敌人的敌人= [I]; </font></font></span><span><font><font>        如果（enemy.state ==“活着”）{ </font></font></span><span><font><font>            c.fillStyle =“绿色”; </font></font></span><span><font><font>            drawEnemy（C，敌人，15） ; </font></font></span><span><font><font>        } </font></font></span><span><font><font>        如果（enemy.state ==“命中”）{ </font></font></span><span><font><font>            c.fillStyle =“紫色” </font></font></span><span><font><font>            enemy.shrink--; </font></font></span><span><font><font>            drawEnemy（C，敌人，enemy.shrink）; </font></font></span><span><font><font>        } </font></font></span><span><font><font>        //这可能将永远不会被调用。</font></font></span><span><font><font>        如果（enemy.state ==“死的”）{ </font></font></span><span><font><font>            c.fillStyle =“黑色”; </font></font></span><span><font><font>            c.drawEnemy（三，敌，15）; </font></font></span><span><font><font>        } </font></font></span><span><font><font>    } </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在创建</font>
+            </font><code><font><font>drawEnemy（）</font></font></code>
+            <font>
+                <font>这样的功能：</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能drawEnemy（C，敌人，半径）{ </font></font></span><span><font><font>    如果（半径&lt;= 0）半径= 1; </font></font></span><span><font><font>    VAR THETA = enemy.counter;          </font></font></span><span><font><font>    c.save（）; </font></font></span><span><font><font>    c.translate（0,30）; </font></font></span><span><font><font>    //绘制背景圈</font></font></span><span><font><font>    circlePath （C，enemy.x，enemy.y，半径* 2）; </font></font></span><span><font><font>    c.fill（）; </font></font></span><span><font><font>    //绘制波状点</font></font></span><span><font><font>    为（变量I = 0; I &lt;10;我++）{ </font></font></span><span><font><font>        无功XOFF = Math.sin（toRadians （THETA + I * 36 * 2））*半径; </font></font></span><span><font><font>        VAR YOFF = Math.sin（toRadians（THETA + I * 36 * 1.5））*半径; </font></font></span><span><font><font>        circlePath（C，enemy.x + XOFF，enemy.y + YOFF， 3）; </font></font></span><span><font><font>        c.fillStyle =“白”; </font></font></span><span><font><font>        c.fill（）; </font></font></span><span><font><font>    } </font></font></span><span><font><font>    c.restore（）; </font></font></span><span><font><font>} </font></font></span><span><font><font>功能toRadians（D）{ </font></font></span><span><font><font>    回报D * Math.PI * 2.0 / 360.0; </font></font></span><span><font><font>} </font></font></span><span><font><font>功能circlePath（C，X， Y，R）{ </font></font></span><span><font><font>    c.beginPath（）; </font></font></span><span><font><font>    c.moveTo（X，Y）; </font></font></span><span><font><font>    c.arc（X，Y，R，0，Math.PI * 2）;      </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>上面的代码是一个有点复杂让我们通过仔细的一步。</font>
+                <font>该drawEnemy函数有三个参数：绘图上下文（</font>
+            </font><code><font><font>&#199;</font></font></code>
+            <font>
+                <font>），敌人画画，和旋转球体的半径。</font>
+                <font>首先计算角度</font>
+            </font><code><font><font>THETA</font></font></code>
+            <font>
+                <font>根据敌人的内部计数器。</font>
+                <font>这将使天体位置每一帧略有转变。</font>
+                <font>接下来的程序代码绘制一个圆的背景与当前的填充颜色。</font>
+            </font><code><font><font>circlePath</font></font></code>
+            <font>
+                <font>是一个小工具功能来画一个圆。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>最后，循环十次绘制的小白色圆圈。</font>
+                <font>每一圆圈的位置来源于值XOFF和YOFF。</font>
+                <font>它看起来comlicated但实际上它是非常简单的。</font>
+                <font>x值是当前的角度倍半径的罪。</font>
+                <font>Y值也是当前角度倍半径的罪。</font>
+                <font>为了使这些值与每一帧我们转移添加值THETA：我* 36 * 2。</font>
+                <font>调整的y值是相似的：我* 36 * 1.5。</font>
+                <font>如果adjustements是相同的则点会在一条直线上移动。</font>
+                <font>通过使他们稍有不同，我们已经创建了一个旋涡状的图案。</font>
+                <font>我只是通过与价值观玩弄选择这些特殊的数字。</font>
+                <font>基本触发可以创造大量的野趣的运动，你就必须直到你找到你喜欢的东西来玩耍。</font>
+                <font>试着改变1.5到3.0，看看它是如何影响输出。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>波兰语的最后一个位，让使游戏结束/群击败文本淡入，而不只是出现。</font>
+                <font>已经有一个</font>
+            </font><code><font><font>覆盖</font></font></code>
+            <font>
+                <font>了柜台，我们可以用一段时间来调整阿尔法对象。</font>
+                <font>我们只需要重写</font>
+            </font><code><font><font>drawOverlay</font></font></code>
+            <font>
+                <font>设置globalAlpha的价值和绘制文本：
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能drawOverlay（三）{ </font></font></span><span><font><font>    如果（overlay.counter == -1）返回; </font></font></span><span>     </span><span><font><font>    //淡入</font></font></span><span><font><font>    VAR阿尔法= overlay.counter / 50.0; </font></font></span><span><font><font>    如果（阿尔法&gt; 1）的α= 1; </font></font></span><span><font><font>    c.globalAlpha =阿尔法; </font></font></span><span>     </span><span><font><font>    c.save （）; </font></font></span><span><font><font>    c.fillStyle =“白”; </font></font></span><span><font><font>    c.font =“粗体40pt宋体”; </font></font></span><span><font><font>    c.fillText（overlay.title，140,200）; </font></font></span><span><font><font>    c.font =“宋体14pt”; </font></font></span><span><font><font>    c.fillText（overlay.subtitle，190250 ）; </font></font></span><span><font><font>    c.restore（）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>以下是本场比赛是什么样子了。</font>
+                <font>点击把它兜风。</font>
+            </font>
+        </p>
+        <div class="photo">
+            <a class="examplelink" href="./examples/game4.htm"><img src="./style/v4.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font>游戏版本4</font>
+                </font>
+            </p>
+            <p><i><font><font>程序性动画外国人（点击播放）</font></font></i></p>
+        </div>
+        <h3><a id="explosions"><font><font>粒子模拟器爆炸</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在，让我们最后用粒子当玩家死亡添加一个真正的爆炸。</font>
+                <font>首先，我们将玩家爆移动到这样一个单独的函数：</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能drawPlayer（三）{ </font></font></span><span><font><font>    如果（player.state ==“死”）返回; </font></font></span><span>     </span><span><font><font>    如果（player.state ==“命中”）{ </font></font></span><span><font><font>        c.fillStyle =“黄”; </font></font></span><span><font><font>        c.fillRect（player.x，player.y ，player.width，player.height）; </font></font></span><span><font><font>        drawPlayerExplosion（C）; </font></font></span><span><font><font>        回报; </font></font></span><span><font><font>    } </font></font></span><span><font><font>    c.drawImage（ship_image，   </font></font></span><span><font><font>        25,1，23,23，// SRC COORDS </font></font></span><span><font><font>        player.x，player.y，player.width，播放器。高度// DST COORDS </font></font></span><span><font><font>    ）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在，我们将创建一个简单的粒子系统。</font>
+                <font>从一个粒子系统只是我们更新并绘制每一帧上简单的粒子对象列表的回忆讲义。</font>
+                <font>对于爆炸。</font>
+                <font>我们希望的颗粒开始，其中玩家和在随机速度在随机方向向外膨胀。</font>
+                <font>创建粒子的代码如下所示</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>VAR粒子= []; </font></font></span><span><font><font>功能drawPlayerExplosion（三）{ </font></font></span><span><font><font>    //启动</font></font></span><span><font><font>    ，如果（player.counter == 0）{ </font></font></span><span><font><font>        粒子= []; </font><font>//清除任何旧值</font></font></span><span><font><font>        的（VAR I = 0; I &lt;50;我++）{ </font></font></span><span><font><font>            particles.push（{ </font></font></span><span><font><font>                    X：player.x + player.width / 2，</font></font></span><span><font><font>                    Y：player.y + player.height / 2，</font></font></span><span><font><font>                    XV ：（的Math.random（） - 0.5）* 2.0 * 5.0，//点ˉx速度</font></font></span><span><font><font>                    YV：（的Math.random（） - 0.5）* 2.0 * 5.0，//&#255;速度</font></font></span><span><font><font>                    年龄：0，</font></font></span><span><font><font>            }）; </font></font></span><span><font><font>        } </font></font></span><span><font><font>    }</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>请注意，该速度值开始的随机数。</font>
+                <font>的Math.random总是从0返回一个值1。通过减去0.5再乘以2，我们现在已经从-1到1之间的随机数。然后我们可以把它扩展到东西，似乎不够快的游戏。</font>
+                <font>随意调整的5.0值。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>现在，我们需要更新，并绘制每个粒子：</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>    //更新和借鉴</font></font></span><span><font><font>    如果（player.counter&gt; 0）{ </font></font></span><span><font><font>        为（VAR I = 0;我&lt;particles.length;我++）{ </font></font></span><span><font><font>            VAR P =粒子[I]; </font></font></span><span><font><font>            PX + = p.xv; </font></font></span><span><font><font>            PY + = P。 YV; </font></font></span><span><font><font>            变种v = 255-p.age * 3; </font></font></span><span><font><font>            c.fillStyle =“RGB（”+ v +“，”+ v +“，”+ v +“）”; </font></font></span><span><font><font>            c.fillRect（PX，PY，3,3）; </font></font></span><span><font><font>            p.age ++; </font></font></span><span><font><font>        } </font></font></span><span><font><font>    } </font></font></span><span><font><font>};</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>每个粒子的新位置是老位置加上速度。</font>
+                <font>然后，我们还计算一个颜色值</font>
+            </font><b><font><font>v</font></font></b>
+            <font>
+                <font>基于粒子的年龄。</font>
+                <font>由于我们处理的RGB值，我们希望有一个数字，开始于255，下降一段时间。</font>
+                <font>这将使颜色开始在白朝黑色褪色。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>这里的最后一场比赛是什么样子。</font>
+            </font>
+        </p>
+        <div class="photo">
+            <a class="examplelink" href="./examples/game5.htm"><img src="./style/v5.png"></a>
+            <p><b><font><font>互动</font></font></b>
+                <font>
+                    <font>游戏版5</font>
+                </font>
+            </p>
+            <p><i><font><font>完成游戏（点击播放）</font></font></i></p>
+        </div>
+        <h3><font><font>结论</font></font></h3>
+        <p>
+            <font>
+                <font>实验室的章这双手刚好碰到什么是可能的HTML Canvas标签。</font>
+                <font>我鼓励你多增加一个背景，改变颜色，调整动画速度，以及选择新的精灵玩弄这个游戏样本。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>全套失落园的图像可</font>
+            </font>
+            <a target="blank" href="http://www.lostgarden.com/2005/03/download-complete-set-of-sweet-8-bit.htm">
+                <font>
+                    <font>在这里</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+                <font>LostGarden.com免费游戏艺术的大集合，以及对游戏的设计令人惊叹吨散文。</font>
+                <font>我强烈建议你读它。</font>
+            </font>
+        </p>
+    </div>
+    <div id="examplewrap" style="display: none;">
+        <iframe id="exampleframe" src="./style/saved_resource.htm"></iframe>
+    </div>
+    <script type="text/javascript" class="bookscript">
+    $("#examplewrap").hide();
+    $("#examplewrap").click(function() {
+        $("#exampleframe").attr("src", "");
+        $("#examplewrap").hide();
+    });
+
+    $(".examplelink").click(function(e) {
+        e.preventDefault();
+        $("#exampleframe").attr("src", $(this).attr("href"));
+        $("#examplewrap").show();
+    });
+    </script>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./chapter04.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter06.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    
+</body>
+
+</html>

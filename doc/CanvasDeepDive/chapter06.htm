@@ -1,0 +1,233 @@
+<!-- saved from url=(0061)./chapter06.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./chapter05.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter10.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第6章</font></font></h2>
+        <h1><font><font>像素缓冲区和其他影响</font></font></h1>
+    </div>
+    <div id="content">
+        <p>
+            <font>
+                <font>到目前为止，我们所做的一切，已经使用图像或形状。</font>
+                <font>它已经相当高的水平。</font>
+                <font>然而，Canvas 也给你，如果你想要的像素的直接访问。</font>
+                <font>你可以得到的像素为整个画布或只是一个部分，操纵这些像素，然后将他们回来。</font>
+                <font>这使您可以做各种有趣的效果。
+                </font>
+            </font>
+        </p>
+        <h3><a id="generativetextures"><font><font>生成纹理</font></font></a></h3>
+        <p>
+            <font>
+                <font>假设我们想产生一个棋盘质感。</font>
+                <font>这种质地将是300×200像素。
+                </font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>//创建一个新的300×300像素缓冲区</font></font></span><span><font><font>VAR数据= c.createImageData（300,200）; </font></font></span><span> </span><span><font><font>//遍历每个像素</font></font></span><span><font><font>的（VAR X = 0; X &lt;data.width; X ++）{ </font></font></span><span><font><font>    为（VAR Y = 0; Y &lt;data.height; Y ++）{ </font></font></span><span>         </span><span><font><font>        VAR VAL = 0; </font></font></span><span><font><font>        VAR HORZ =（Math.floor（X / 4）％2 == 0）; </font><font>//循环每4个像素</font></font></span><span><font><font>        VAR VERT =（Math.floor（Y / 4）％2 == 0）; </font><font>//循环每隔4个像素</font></font></span><span><font><font>        ，如果（（HORZ &amp;&amp; VERT）||（HORZ &amp;&amp; VERT）！）{ </font></font></span><span><font><font>            VAL = 255; </font></font></span><span><font><font>        }其他{ </font></font></span><span><font><font>            VAL = 0; </font></font></span><span><font><font>        } </font></font></span><span>         </span><span><font><font>        变种指数=（γ* data.width + X）* 4 ; </font><font>//计算指标</font></font></span><span><font><font>        数据。数据[指数] = VAL; </font><font>//红色的</font></font></span><span><font><font>        数据。数据[索引+ 1] = VAL; </font><font>//绿色</font></font></span><span><font><font>        数据。数据[指数+ 2] = VAL; </font><font>//蓝</font></font></span><span><font><font>        数据。数据[指数+ 3] = 255; </font><font>//力阿尔法100％</font></font></span><span><font><font>    } </font></font></span><span><font><font>} </font></font></span><span><font><font>//设置数据回</font></font></span><span><font><font>c.putImageData（数据，0,0）;</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>很简单。</font>
+                <font>我们创建了一个新的缓冲区，遍历所有的像素设置基础上的X和Y坐标的颜色，然后设置画布上的缓冲区。</font>
+                <font>现在你会发现，即使我们在做二维图形，缓冲只是一个一维数组。</font>
+                <font>我们要计算像素坐标的索引自己。
+                </font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>画布数据仅仅是一个很长的一维阵列与每个象素元件的整数值。</font>
+                <font>象素由红，绿，蓝，和alpha分量，按照这个顺序，因此计算一个特定像素的红色分量的索引你必须计算下面的等式：（γ*宽+ x）的* 4.在一个位图，它是宽20个像素，这将是象素8,10 </font>
+            </font><code><font><font>（10 * 20 + 8）* 4</font></font></code>
+            <font>
+                <font>。的</font>
+            </font><code><font><font>* 4</font></font></code>
+            <font>
+                <font>是因为每个像素具有四个彩色分量（RGB和不透明度或“阿尔法”组分）。</font>
+                <font>数据对象包含图像的宽度，这样你就可以写为</font>
+            </font><code><font><font>（10 * data.width + 8）* 4</font></font></code>
+            <font>
+                <font>。</font>
+                <font>一旦找到红色成分可以通过递增索引找到其他的，如上面的绿，蓝，和alpha分量的代码。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>这里是上面的代码的结果。</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/checkerboard.png"></p>
+        <h3><a id="addnoise"><font><font>添加杂色</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在，让我们修改此，使其感觉更加粗糙一点。</font>
+                <font>让我们通过随机使得一些像素的颜色略有不同增加一点噪声。
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>如果（VAL == 0）{ </font></font></span><span><font><font>    VAL =的Math.random（）* 100; </font></font></span><span><font><font>}其他{ </font></font></span><span><font><font>    VAL = 255的Math.random（）* 100; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p class="photo"><img src="./style/checkerboard_noise.png"></p>
+        <p>
+            <font>
+                <font>那里。</font>
+                <font>这弄脏它一点。</font>
+            </font>
+        </p>
+        <h3><a id="photoinversion"><font><font>照片反演</font></font></a></h3>
+        <p>
+            <font>
+                <font>所以这是与像素缓冲器产生新的图像。</font>
+                <font>我们也可以操纵现有画布的数据。</font>
+                <font>几乎任何这意味着排序Photoshop滤镜或调整的可能用Canvas 做。</font>
+                <font>例如，假设要反转的图像。</font>
+                <font>反相是一个简单的等式。</font>
+                <font>像素是由RGBA元件值，每一个从0到255要反转，我们刚刚从255减去每个组件下面是什么样子：
+                </font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/baby_original.png"></p>
+        <pre><code><span><font><font>VAR IMG =新的图像（）; </font></font></span><span><font><font>img.onload =功能（）{ </font></font></span><span><font><font>    //将图像绘制在画布</font></font></span><span><font><font>    c.drawImage（IMG，0,0）; </font></font></span><span><font><font>    //获取画布数据</font></font></span><span><font><font>    VAR数据= c.getImageData（0， 0，canvas.width，canvas.height）; </font></font></span><span><font><font>    //反转每个像素</font></font></span><span><font><font>    的（N = 0; N &lt;data.width * data.height; N ++）{ </font></font></span><span><font><font>        VAR指数= N * 4;   </font></font></span><span><font><font>        数据。数据[指数] = 255 -data.data [指数] </font></font></span><span><font><font>        数据。数据[索引+ 1] = 255个数据。数据[索引+ 1]; </font></font></span><span><font><font>        数据。数据[指数+ 2] = 255-数据。数据[索引+ 2]; </font></font></span><span><font><font>        //不要触摸阿尔法</font></font></span><span><font><font>    } </font></font></span><span>     </span><span><font><font>    //重新设置数据</font></font></span><span><font><font>    c.putImageData（数据，0,0）; </font></font></span><span><font><font>} </font></font></span><span><font><font>img.src =“baby_original.png”;</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>请注意，我们只修改RGB分量。</font>
+                <font>我们离开了阿尔法独自因为我们只需要修改颜色。</font>
+                <font>这里是什么样子。</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/baby_inverted.png"></p>
+        <h3><a id="desaturation"><font><font>去饱和</font></font></a></h3>
+        <p>
+            <font>
+                <font>下面是另一个例子。</font>
+                <font>它本质上是相同的代码，只是一个不同的方程。</font>
+                <font>这其中会变成彩色图像为黑白两色。
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>为（N = 0; N &lt;data.width * data.height; N ++）{ </font></font></span><span><font><font>    VAR指数= N * 4;   </font></font></span><span><font><font>    变种R =数据。数据[指数]; </font></font></span><span><font><font>    VAR G =数据。数据[索引+ 1]; </font></font></span><span><font><font>    变种b =数据。数据[指数+ 2]; </font></font></span><span><font><font>    VAR v = R * 0.21 + G * 0.71 + b * 0.07; </font><font>//加权平均</font></font></span><span><font><font>    数据。数据[指数] = v的</font></font></span><span><font><font>    数据。数据[索引+ 1] = v的</font></font></span><span><font><font>    数据。数据[指数+ 2] = V; </font></font></span><span><font><font>    //不要触摸阿尔法</font></font></span><span><font><font>}</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>请注意，我们不要简单平均的颜色选择灰度值。</font>
+                <font>我原来我们的眼睛对某些颜色比其他人更敏感，所以公式考虑到这一点通过加权比其他部件的绿色多。</font>
+                <font>这里是最终的结果。</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/baby_bw.png"></p>
+        <p>
+            <font>
+                <font>随着像素的缓冲区，你就可以绘制或操作图形任何你喜欢的方式，唯一的限制是速度。</font>
+                <font>不幸的是操纵二进制数据是不是JavaScript的强项之一，但浏览器不断越走越快所以今天有些款式的Photoshop图像处理是可能的。</font>
+                <font>后来在工具部分，我会告诉你一些库，让这样的事情更容易和更快。
+                </font>
+            </font>
+        </p>
+        <h3><a id="compositemodes"><font><font>复合模式</font></font></a></h3>
+        <p>
+            <font>
+                <font>Canvas 也支持复合模式。</font>
+                <font>这些都是一些类似的混合模式，你会在Photoshop中找到的。</font>
+                <font>每次绘制的形状的每个像素进行比较，以现有的象素，那么它会计算基于一些方程最终像素。</font>
+                <font>通常我们使用的是</font>
+            </font><code><font><font>SrcOver</font></font></code>
+            <font>
+                <font>，这意味着源像素（一个你正在绘制）将被绘制</font>
+            </font><b><font><font>在</font></font></b>
+            <font>
+                <font>目标像素。</font>
+                <font>如果源像素是部分透明的，然后两个将正比于透明度进行混合。</font>
+                <font>SrcOver只是众多混合模式之一，但是。</font>
+                <font>下面是使用的例子</font>
+            </font><code><font><font>打火机</font></font></code>
+            <font>
+                <font>绘制重叠的圆时的模式。</font>
+            </font><code><font><font>打火机</font></font></code>
+            <font>
+                <font>将</font>
+            </font><i><font><font>增加</font></font></i>
+            <font>
+                <font>两个像素在一起，用白色最大信号值。
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>c.globalCompositeOperation =“较轻”; </font><font>//设置混合模式</font></font></span><span><font><font>c.fillStyle =“＃ff6699” </font><font>//用粉红色填充</font></font></span><span> </span><span><font><font>//随机画50圈</font></font></span><span><font><font>为（VAR I = 0; I &lt;50;我++）{ </font></font></span><span><font><font>    c.beginPath（）; </font></font></span><span><font><font>    c.arc（</font></font></span><span><font><font>        的Math.random（）* 400，//随机点ˉx </font></font></span><span><font><font>        数学。随机的（）* 400，//随机&#255; </font></font></span><span><font><font>        40 //半径</font></font></span><span><font><font>        0，Math.PI * 2）; </font><font>//整圈</font></font></span><span><font><font>    c.closePath（）; </font></font></span><span><font><font>    c.fill（）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p class="photo"><img src="./style/lighter_blendmode.png"></p>
+        <h3><a id="shadows"><font><font>阴影效果</font></font></a></h3>
+        <p>
+            <font>
+                <font>Canvas 也支持阴影，类同CSS。</font>
+                <font>您可以设置颜色，偏移和阴影的模糊半径，以模拟不同的效果。</font>
+                <font>这是在做后面的一些绿色文字白色光晕的例子。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>c.fillStyle =“黑色”; </font></font></span><span><font><font>c.fillRect（0,0，canvas.width，canvas.height）; </font></font></span><span> </span><span><font><font>c.shadowColor =“白”; </font></font></span><span><font><font>c.shadowOffsetX = 0; </font></font></span><span><font><font>c.shadowOffsetY = 0; </font></font></span><span><font><font>c.shadowBlur = 30 ; </font></font></span><span> </span><span><font><font>c.font ='大胆80pt宋体'; </font></font></span><span><font><font>c.fillStyle =“＃55cc55” </font></font></span><span><font><font>c.fillText（“异形”，30200）;</font></font></span></code></pre>
+        <p class="photo"><img src="./style/shadow_text.png"></p>
+        <!--
+<h3><a id="buffers">Drawing to Offscreen Buffers</a></h3>
+-->
+    </div>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./chapter05.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter10.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    
+</body>
+
+</html>

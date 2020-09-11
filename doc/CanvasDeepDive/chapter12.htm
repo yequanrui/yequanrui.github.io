@@ -1,0 +1,557 @@
+<!-- saved from url=(0061)./chapter12.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./chapter11.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter13.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第12章</font></font></h2>
+        <h1><font><font>简介WebAudio</font></font></h1>
+    </div>
+    <div id="content">
+        <h3><a id="overview"><font><font>概要</font></font></a></h3>
+        <p>
+            <font>
+                <font>到目前为止，我已经向您的2D绘图，动画，以及硬件加速3D。</font>
+                <font>当你建立一些与这些技术，你可能会注意到缺少的东西：声音！</font>
+                <font>传统上，网络上的好声音无插件已经可怕的，不可能之间变化，但最近改变归功于被称为一个新的声音API </font>
+            </font>
+            <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.htm">
+                <font>
+                    <font>WebAudio。</font>
+                </font>
+            </a>
+        </p>
+        <p>
+            <font>
+                <font>请注意，这个API是</font>
+            </font><i><font><font>仍然在不断变化</font></font></i>
+            <font>
+                <font>，但它比以前要稳定得多。</font>
+                <font>使用WebAudio用于实验，但不是在生产代码，至少在没有回退到Flash。</font>
+                <font>尝试</font>
+            </font>
+            <a href="http://www.schillmania.com/projects/soundmanager2/">
+                <font>
+                    <font>SoundManager2</font>
+                </font>
+            </a>
+            <font>
+                <font>作为后备方案。</font>
+            </font>
+        </p>
+        <h3><a id="audiovswebaudio"><font><font>音频单元VS WebAudio</font></font></a></h3>
+        <p>
+            <font>
+                <font>你可能听说过一些所谓的</font>
+            </font><i><font><font>音频单元</font></font></i>
+            <font>
+                <font>。</font>
+                <font>这是一个新的元素添加到HTML 5，看起来像这样</font>
+            </font><code><font><font>&lt;音频SRC =“的music.mp3”/&gt; </font></font></code>
+            <font>
+                <font>。</font>
+                <font>音频元素是非常适合播放歌曲。</font>
+                <font>你只需在你的页面中包括同样的方式，你会包括图像。</font>
+                <font>浏览器与播放控制显示它和你是关闭和运行。</font>
+                <font>它也有一个最小的JavaScript的API。</font>
+                <font>不幸的是，音频组件是真的只为音乐播放不错。</font>
+                <font>你不能轻易打短的声音，大多数实现只让你一次播放一个声音。</font>
+                <font>更重要的是不能在运行中生成的音频或访问该声音样本进行进一步的处理。</font>
+                <font>音频元素有利于它做什么：播放音乐，但它是非常有限的。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>为了克服这些缺点的浏览器制造商已经推出了一款名为WebAudio API新规范。</font>
+                <font>它定义了一个完整的声音处理API完成一代，过滤器，水槽和样本的访问。</font>
+                <font>如果你想播放背景音乐使用的音频组件。</font>
+                <font>如果你想要更多的控制使用WebAudio API。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>完整的WebAudio API太大在这个环节涵盖，所以我将只涵盖可能会感兴趣的画布开发商的部分：声音效果和视觉处理。</font>
+            </font>
+        </p>
+        <font>
+            <font>
+                [浏览器支持？]
+            </font>
+        </font>
+        <h3><a id="playback"><font><font>简单回放</font></font></a></h3>
+        <p>
+            <font>
+                <font>对于图形，我们使用一个图形上下文。</font>
+                <font>音频是相同的方式。</font>
+                <font>我们需要一个音频内容。</font>
+                <font>由于该规范是不是一个标准的但我们不得不使用webkitAudioContext（）。</font>
+                <font>可以肯定后页面加载，因为它可能需要一段时间来初始化音响系统来创建它。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>VAR CTX; </font><font>//音频方面</font></font></span><span><font><font>VAR BUF; </font><font>//音频缓冲</font></font></span><span> </span><span><font><font>//初始化音响系统</font></font></span><span><font><font>功能的init（）{ </font></font></span><span><font><font>    执行console.log（“在INIT”）; </font></font></span><span><font><font>    尝试{ </font></font></span><span><font><font>        CTX =新webkitAudioContext（）; </font><font>//是有这更好的API？</font></font></span><span><font><font>        的loadFile（）; </font></font></span><span><font><font>    }赶上（E）{ </font></font></span><span><font><font>        警报（'你需要webaudio支持'）; </font></font></span><span><font><font>    } </font></font></span><span><font><font>} </font></font></span><span><font><font>window.addEventListener（'负荷'，初始化，FALSE）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>一旦环境被创建，我们可以加载声音。</font>
+                <font>我们载入的声音就像任何其他的远程资源，使用XMLHttpRequest。</font>
+                <font>然而，我们必须将类型设置为“arraybuffer'，而不是文本，XML或JSON。</font>
+                <font>由于JQuery的不支持'arraybuffer“但[这是真的吗？]我们必须直接调用了XMLHttpRequest API。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//负荷和解码MP3文件</font></font></span><span><font><font>功能的loadFile（）{ </font></font></span><span><font><font>    VAR REQ =新的XMLHttpRequest（）; </font></font></span><span><font><font>    req.open（“GET”，“的music.mp3”，真正的）; </font></font></span><span><font><font>    req.responseType =“arraybuffer”; </font></font></span><span><font><font>    req.onload =功能（）{ </font></font></span><span><font><font>        //解码加载的数据</font></font></span><span><font><font>        ctx.decodeAudioData（req.response，函数（缓冲）{ </font></font></span><span><font><font>            BUF =缓冲; </font></font></span><span><font><font>            发挥（）; </font></font></span><span><font><font>        }）; </font></font></span><span><font><font>    }; </font></font></span><span><font><font>    req.send（）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>一旦文件被加载它必须被解码为原始声音缓冲器。</font>
+                <font>上面的代码做这与另一个回调函数。</font>
+                <font>一旦解码，我们实际上可以播放声音。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//播放加载文件</font></font></span><span><font><font>功能播放（）{ </font></font></span><span><font><font>    //创建缓冲区源节点</font></font></span><span><font><font>    变种SRC = ctx.createBufferSource（）;   </font></font></span><span><font><font>    src.buffer = BUF; </font></font></span><span><font><font>    //连接到最终输出节点（扬声器）</font></font></span><span><font><font>    src.connect （ctx.destination）; </font></font></span><span><font><font>    //立即播放</font></font></span><span><font><font>    src.noteOn（0）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>我要通过这个代码片断非常小心行走，因为它，你明白是怎么回事是很重要的。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在WebAudio一切都围绕着概念</font>
+            </font><i><font><font>节点</font></font></i>
+            <font>
+                <font>。</font>
+                <font>操作声音，我们将节点连接在一起成一条链或图形然后开始处理。</font>
+                <font>做简单的音频播放我们需要一个</font>
+            </font><i><font><font>源</font></font></i>
+            <font>
+                <font>节点和一个
+                </font>
+            </font><i><font><font>目的</font></font></i>
+            <font>
+                <font>节点。</font>
+            </font><code><font><font>ctx.createBufferSource（）</font></font></code>
+            <font>
+                <font>创建我们可以附加到与我们的声音频缓冲器源节点。
+                </font>
+            </font><code><font><font>ctx.destination</font></font></code>
+            <font>
+                <font>是含有标准目的地的输出，这通常是一个属性装置的计算机的扬声器。</font>
+                <font>这两个节点与连接的</font>
+            </font><code><font><font>连接</font></font></code>
+            <font>
+                <font>功能。</font>
+                <font>一旦连接，我们可以通过调用播放声音</font>
+            </font><code><font><font>noteOn（0）</font></font></code>
+            <font>
+                <font>的来源。</font>
+            </font>
+        </p>
+        <h3><a id="nodes"><font><font>WebAudio节点</font></font></a></h3>
+        <p>
+            <font>
+                <font>到目前为止，我们所看到的只是一个源节点和目的节点，但WebAudio有许多其他的节点类型的。</font>
+                <font>创建一个鼓应用可以创建多个源节点，一个用于每个鼓，连接到使用单个输出
+                </font>
+            </font><code><font><font>AudioChannelMerger</font></font></code>
+            <font>
+                <font>。</font>
+                <font>我们还可以改变使用各滚筒的增益</font>
+            </font><code><font><font>AudioGainNode</font></font></code>
+            <font>
+                <font>第</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>更多WebAudio节点：</font>
+            </font>
+        </p>
+        <ul>
+            <li>
+                <font>
+                    <font>JavaScriptAudioNode：使用JavaScript直接加工</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>BiquadFilterNode：低和高通滤波。</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>DelayNode：引进时间延迟</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>ConvolverNode：像混响实时非线性效应</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>RealtimeAnalyserNode：声音可视化</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>AudioPannerNode：操纵甾，多通道，以及3D音效</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>AudioChannelSplitter和AudioChannelMerger</font>
+                </font>
+            </li>
+            <li>
+                <font>
+                    <font>振荡器：直接生成波形</font>
+                </font>
+            </li>
+        </ul>
+        <h3><a id="clips"><font><font>声音特效</font></font></a></h3>
+        <p>
+            <font>
+                <font>常规HTML </font>
+            </font><code><font><font>音频</font></font></code>
+            <font>
+                <font>元素可用于声音效果，但它不是很擅长。</font>
+                <font>您不必在音频播放究竟如何以及何时太多的控制权。</font>
+                <font>某些实现甚至不会让你在同一时间播放多个声音。</font>
+                <font>这使得行歌曲但几乎没用用于在游戏音效。</font>
+                <font>该WebAudio API，让您安排的声音剪辑在精确的时间玩，甚至包裹。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>要播放一个声音多次，我们没有做什么特别的; </font>
+                <font>我们只是创建多个缓冲源。</font>
+                <font>下面的代码定义了一个</font>
+            </font><code><font><font>戏</font></font></code>
+            <font>
+                <font>创建缓冲区源每次调用时间，并立即播放它的功能。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//播放加载文件</font></font></span><span><font><font>功能播放（）{ </font></font></span><span><font><font>    //创建缓冲区源节点</font></font></span><span><font><font>    变种SRC = ctx.createBufferSource（）;   </font></font></span><span><font><font>    src.buffer = BUF; </font></font></span><span><font><font>    //连接到最终输出节点（扬声器）</font></font></span><span><font><font>    src.connect （ctx.destination）; </font></font></span><span><font><font>    //立即播放</font></font></span><span><font><font>    src.noteOn（0）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>您可以尝试演示</font>
+            </font>
+            <a href="./-examples/WebAudio/FFT/effects.htm">
+                <font>
+                    <font>在这里</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+                <font>每次按下按钮时，它会起到一个短的激光的声音。</font>
+                <font>的（礼貌</font>
+            </font>
+            <a href="http://www.freesound.org/people/inferno/sounds/18379/">
+                <font>
+                    <font>魔族对freesound.org</font>
+                </font>
+            </a>
+            <font>
+                <font>如果按按钮，可以快速，你会听到这听起来叠起来，正确地重叠。我们并没有做什么特别的东西来做到这一点。网络音频自动处理它。在游戏中，我们可以调用播放功能的每一个字符激发他们的枪时间，如果四名球员开火，同时正确的事情会发生。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>我们也可以通过故意重叠的声音创造新的声音。</font>
+                <font>该noteOn（）函数接受一个时间戳播放声音，以秒为单位。</font>
+                <font>要创建一个新的声音，我们可以打激光夹子四次，每次用一秒钟的1/4的偏移。</font>
+                <font>因此，他们将干净重叠，创造了新的效果。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>        无功时间= ctx.currentTime; </font></font></span><span><font><font>        对于（变量I = 0; I &lt;4;我++）{ </font></font></span><span><font><font>            无功SRC = ctx.createBufferSource（）;   </font></font></span><span><font><font>            src.buffer = buf中; </font></font></span><span><font><font>            //连接到最终输出节点（扬声器）</font></font></span><span><font><font>            的src。连接（ctx.destination）; </font></font></span><span><font><font>            //立即播放</font></font></span><span><font><font>            src.noteOn（时间+ I / 4）; </font></font></span><span><font><font>        }</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>注意，我们必须从音频上下文到偏移添加当前时间来为每个剪辑的最后时间。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>试用的最终版本</font>
+            </font>
+            <a href="./-examples/WebAudio/FFT/effects.htm">
+                <font>
+                    <font>在这里</font>
+                </font>
+            </a>
+        </p>
+        <h3><a id="visualization"><font><font>音频可视化</font></font></a></h3>
+        <p>
+            <font>
+                <font>有什么好玩的是显卡，如果你不能直接绑到您的声音？</font>
+                <font>我一直喜欢的声音可视化。</font>
+                <font>如果你曾经使用Winamp或iTunes的可视化，那么你是熟悉。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>所有展示台做工用基本相同的过程：为动画的每一帧，他们抓住当前正在播放的声音的频率分析，然后以某种有趣的方式提请本频率。</font>
+                <font>该WebAudio API使得这很容易与</font>
+            </font><code><font><font>RealtimeAnalyserNode</font></font></code>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>首先，我们如之前装载音频相同的方式。</font>
+                <font>我已经添加了一些额外的变量称为</font>
+            </font><code><font><font>FFT，样品</font></font></code>
+            <font>
+                <font>和</font>
+            </font><code><font><font>设置</font></font></code>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>VAR CTX; </font><font>//音频方面</font></font></span><span><font><font>VAR BUF; </font><font>//音频缓冲</font></font></span><span><font><font>VAR FFT; </font><font>// FFT音频节点</font></font></span><span><font><font>变种样本= 128; </font></font></span><span><font><font>VAR设置= FALSE; </font><font>//表示如果声音设置尚未</font></font></span><span> </span><span> </span><span><font><font>//初始化音响系统</font></font></span><span><font><font>功能的init（）{ </font></font></span><span><font><font>    执行console.log（“在INIT”）; </font></font></span><span><font><font>    尝试{ </font></font></span><span><font><font>        CTX =新webkitAudioContext（）; </font><font>//是有这更好的API？</font></font></span><span><font><font>        setupCanvas（）; </font></font></span><span><font><font>        使用loadFile（）; </font></font></span><span><font><font>    }赶上（E）{ </font></font></span><span><font><font>        警报（'你需要webaudio支持'+ E）; </font></font></span><span><font><font>    } </font></font></span><span><font><font>} </font></font></span><span><font><font>window.addEventListener（'负荷'，初始化，FALSE） ; </font></font></span><span> </span><span><font><font>//加载MP3文件</font></font></span><span><font><font>功能的loadFile（）{ </font></font></span><span><font><font>    VAR REQ =新的XMLHttpRequest（）; </font></font></span><span><font><font>    req.open（“GET”，“的music.mp3”，真正的）; </font></font></span><span><font><font>    //因为我们需要arraybuffer我们不能使用jQuery键入</font></font></span><span><font><font>    req.responseType =“arraybuffer”; </font></font></span><span><font><font>    req.onload =功能（）{ </font></font></span><span><font><font>        //解码加载的数据</font></font></span><span><font><font>        ctx.decodeAudioData（req.response，函数（缓冲）{ </font></font></span><span><font><font>            BUF =缓冲; </font></font></span><span><font><font>            发挥（）; </font></font></span><span><font><font>        }）; </font></font></span><span><font><font>    }; </font></font></span><span><font><font>    REQ 。发送（）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>我们将发挥音乐使用源节点和目的节点之前，但是这一次我们将会把一个分析器节点之间。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能播放（）{ </font></font></span><span><font><font>    //创建缓冲区源节点</font></font></span><span><font><font>    变种SRC = ctx.createBufferSource（）;   </font></font></span><span><font><font>    src.buffer = BUF; </font></font></span><span>     </span><span><font><font>    //创建FFT </font></font></span><span><font><font>    FFT = ctx.createAnalyser（）; </font></font></span><span><font><font>    fft.fftSize =样本; </font></font></span><span>     </span><span><font><font>    //连接它们成链</font></font></span><span><font><font>    src.connect（FFT）; </font></font></span><span><font><font>    fft.connect（ctx.destination）; </font></font></span><span>     </span><span><font><font>    //立即播放</font></font></span><span><font><font>    src.noteOn（0）; </font></font></span><span><font><font>    设置= TRUE; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>注意，以创建分析节点的功能是createAnalyser与一个“s”，而不是一个'z'。</font>
+                <font>这引起了我的第一次。</font>
+                <font>（另一位美国VS英式英语的区别？）</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>我叫分析器节点</font>
+            </font><code><font><font>FFT</font></font></code>
+            <font>
+                <font>这是短期的快速傅立叶变换。</font>
+            </font>
+        </p>
+        <p><i><font><font>快速转入疯狂的声音数学。</font></font></i></p>
+        <p>
+            <font>
+                <font>如果你看一下，其中包含你会看到只是一堆样品的声音，最有可能的每秒44000样本缓冲区。</font>
+                <font>它们代表离散的幅度值。</font>
+                <font>要做到可视化的音乐，我们不想直接的样本，而是波浪的形式。</font>
+                <font>当您听到某个音你真正听到的是一堆重叠斩这些样本的振幅随着时间的推移波形式。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>我们要的频率，振幅不是一个列表，所以我们需要一种方法来转换。</font>
+                <font>声音开始在时域中。</font>
+                <font>离散傅立叶从时域到频域变换转换。</font>
+                <font>快速傅立叶变换，或FFT，是一种特殊的算法，可以非常迅速地做到这一点的转换。</font>
+                <font>做到这一点的数学可能会非常棘手，但在Chrome团队聪明人在分析节点已经做到了我们。</font>
+                <font>我们只是当我们希望他们来获取最终值。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>对于离散傅立叶变换和FFT的，请参阅更完整的解释，</font>
+            </font>
+            <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">
+                <font>
+                    <font>维基百科</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <h3><a id="drawing"><font><font>绘制频率</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在让我们来画点什么。</font>
+                <font>为此，我们将回到我们在动画章教训。</font>
+                <font>创建画布，得到的范围内，然后调用的每个帧的绘图功能。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>VAR GFX; </font></font></span><span><font><font>功能setupCanvas（）{ </font></font></span><span><font><font>    VARCanvas =的document.getElementById（'画布'）; </font></font></span><span><font><font>    GFX = canvas.getContext（'2D'）; </font></font></span><span><font><font>    webkitRequestAnimationFrame（更新）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>要获得音频数据，我们需要把它放在一个地方。</font>
+                <font>我们将使用一个Uint8Array，这是为支持音频和3D新的JavaScript类型。</font>
+                <font>而不是一个典型的JavaScript数组，可容纳任何东西，一个Uint8Array是专门设计用来容纳无符号的八位整数，即：一个字节数组。</font>
+                <font>JavaScript的推出这些新的数组类型，以支持像3D缓冲器，音频采样和视频帧的二进制数据的快速访问。</font>
+                <font>获取数据我们称之为</font>
+            </font><code><font><font>fft.getByteFrequencyData（数据）</font></font></code>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能更新（）{ </font></font></span><span><font><font>    webkitRequestAnimationFrame（更新）; </font></font></span><span><font><font>    （！设置），如果回报; </font></font></span><span><font><font>    gfx.clearRect（0,0,800,600）; </font></font></span><span><font><font>    gfx.fillStyle ='灰色'; </font></font></span><span><font><font>    gfx.fillRect（0,0,800,600）; </font></font></span><span>     </span><span><font><font>    VAR的数据=新Uint8Array（样本）; </font></font></span><span><font><font>    fft.getByteFrequencyData（数据）; </font></font></span><span><font><font>    gfx.fillStyle ='红'; </font></font></span><span><font><font>    为（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>        gfx.fillRect（100 + I * 4100 + 256-数据[I] * 2,3,100）; </font></font></span><span><font><font>    } </font></font></span><span>     </span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>一旦我们有了数据我们可以得出它。</font>
+                <font>为了保持它的简单，我只是画它作为一个系列的酒吧，在那里的y位置是根据样本数据的当前值。</font>
+                <font>由于我们使用的是Uint8Array每个值将是0和255之间，所以我用两个相乘它做动作更大。</font>
+                <font>这里是什么样子：</font>
+            </font>
+        </p>
+        <div class="photo">
+            <img src="./style/webaudio_bars.png">
+            <p><b><font><font>演示</font></font></b>
+                <font>
+                    <font>音乐酒吧（</font>
+                </font>
+                <a href="./-examples/WebAudio/FFT/test2.htm">
+                    <font>
+                        <font>运行</font>
+                    </font>
+                </a>
+                <font>
+                    <font>）</font>
+                </font>
+            </p>
+            <p><i><font><font>矩形128实时FFT抽取样本</font></font></i></p>
+        </div>
+        <p>
+            <font>
+                <font>不坏的JavaScript几行。</font>
+                <font>（我不知道为什么还下半年是平的，一个甾/单声道的bug吧？）下面是一个票友版本。</font>
+                <font>音频编码是一样的，我只是改变了我画的样本</font>
+            </font>
+        </p>
+        <div class="photo">
+            <img src="./style/webaudio_blur.png">
+            <p><b><font><font>演示</font></font></b>
+                <font>
+                    <font> WinAMP的风格可视化（</font>
+                </font>
+                <a href="./-examples/WebAudio/FFT/blur.htm">
+                    <font>
+                        <font>运行</font>
+                    </font>
+                </a>
+                <font>
+                    <font>）</font>
+                </font>
+            </p>
+            <p><i><font><font>从线128实时FFT样本抽取，以舒展复制</font></font></i></p>
+        </div>
+        <h3><a href="./nextsteps"><font><font>下一步</font></font></a></h3>
+        <p>
+            <font>
+                <font>有这么多你可以用比WebAudio我在这里做覆盖。</font>
+                <font>首先，我建议你去通过HTML5岩石教程：</font>
+            </font>
+        </p>
+        <ul>
+            <li>
+                <a href="http://www.htm5rocks.com/en/tutorials/webaudio/intro/">
+                    <font>
+                        <font>简介WebAudio</font>
+                    </font>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.htm5rocks.com/en/tutorials/webaudio/games/">
+                    <font>
+                        <font>WebAudio的游戏</font>
+                    </font>
+                </a>
+            </li>
+        </ul>
+        <p>
+            <font>
+                <font>接下来看看0xFE时的</font>
+            </font>
+            <a href="http://0xfe.blogspot.com/2011/08/generating-tones-with-web-audio-api.htm">
+                <font>
+                    <font>与网络音频API产生音色</font>
+                </font>
+            </a>
+            <font>
+                <font>，以了解如何直接生成波形数学声音。</font>
+                <font>另外</font>
+            </font>
+            <a href="http://0xfe.blogspot.com/2011/08/web-audio-spectrum-analyzer.htm">
+                <font>
+                    <font>一个Web音频频谱分析仪</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>全（草案）</font>
+            </font>
+            <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.htm">
+                <font>
+                    <font>WebAudio规范</font>
+                </font>
+            </a>
+        </p>
+        <p>
+            <font>
+                <font>在下一章中，我们将着眼于访问用户的摄像头。</font>
+            </font>
+        </p>
+    </div>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./chapter11.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter13.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    
+</body>
+
+</html>

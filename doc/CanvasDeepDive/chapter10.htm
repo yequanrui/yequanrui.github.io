@@ -1,0 +1,684 @@
+<!-- saved from url=(0061)./chapter10.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./chapter06.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter11.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第10章</font></font></h2>
+        <h1><font><font>与WebGL和ThreeJS 3D图形</font></font></h1>
+    </div>
+    <div id="content">
+        <h3><a id="overview"><font><font>概要</font></font></a></h3>
+        <p>
+            <font>
+                <font>WebGL是为Web 3D。</font>
+                <font>和顾名思义，它关系到OpenGL，硬件的行业标准API加速3D图形。</font>
+                <font>3D是一个很多比2D更复杂。</font>
+                <font>我们不仅要处理一个完整的三维坐标系统和所有与它去数学的，但我们不得不担心了很多关于图形上下文的状态。</font>
+                <font>远远地，远远超过了基本的颜色和2D背景的变换。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在我们的2D绘制的路径形状，然后用填充样式填充。</font>
+                <font>这很简单。</font>
+                <font>3D另一方面，涉及到一个非常复杂的多阶段过程：</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>首先，我们必须在几何形式的形状，在3D空间中的点的名单称为“载体”。</font>
+                <font>接下来，我们可具有用于形状的附加信息。</font>
+                <font>表面法线，例如，描述了光反弹的形状的方向。</font>
+                <font>然后，我们必须设置灯光和摄像机。</font>
+                <font>相机定义的观点。</font>
+                <font>灯光只是他们听起来像，在指定光线是来自空间中的点。</font>
+                <font>有了这一切成立，我们应用的着色器。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>着色器拿相机，光线，法线和几何作为输入绘制的实际像素。</font>
+                <font>（我意识到这是OpenGL的一个非常简单的解释，但请多多包涵。）有两种着色器，一种用于修改向量创建最终的光反射和另一个绘制的实际像素。</font>
+                <font>这后一种着色被称为像素着色，由于明显的原因。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>着色器本质上是写在看起来像C.形式这段代码是不是很容易写，因为它必须是大规模并行一种特殊的OpenGL语言微小的程序。</font>
+                <font>现代图形处理器本质上是一种特殊的超并行多核心芯片，做一件事非常有效：渲染大量的像素非常快。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>着色器是现代图形背后的权力，但他们是不容易的工作。</font>
+                <font>从积极的一面您的应用程序可以安装自己的着色器做很多令人惊奇的事情，但是消极方面是你的应用程序</font>
+            </font><i><font><font>有</font></font></i>
+            <font>
+                <font>安装其自己的着色器。</font>
+                <font>有没有着色器预先内置于WebGL的标准。</font>
+                <font>你必须把你自己的。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>以上是一个简化版本的OpenGL ES 2.0和OpenGL 3个工作（旧版本的OpenGL没有着色器）。这是一个复杂而灵活的系统如何。</font>
+                <font>WebGL是基本相同的，只是一个JavaScript API，而不是C.</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>我们根本没有时间让我来教你的OpenGL。</font>
+                <font>我们可以很容易地填满整个为期一周的会议学习的OpenGL。</font>
+                <font>即使我们有时间，你可能不会编写代码这种方式。</font>
+                <font>它会带你成千上万的线条，使一个相当简单的游戏。</font>
+                <font>相反，你可以使用图书馆或图形引擎做低层次的东西给你，让你专注于你的应用程序实际上不会。</font>
+                <font>在WebGL的世界里，最流行 的此类库是一个开源项目</font>
+            </font>
+            <a href="http://mrdoob.github.com/three.js/">
+                <font>
+                    <font>ThreeJS</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+                <font>它大大简化了构建交互式3D应用程序，并配有自己的一套可重复使用的着色器。</font>
+                <font>这就是我要教你今天：ThreeJS。</font>
+            </font>
+        </p>
+        <h3><a id="examples"><font><font>例子</font></font></a></h3>
+        <p>
+            <font>
+                <font>首先的几个例子。</font>
+            </font>
+        </p>
+        <p>
+            <a href="http://yagiz.me/zombiesvscow/"><img src="./style/cowvszombie.png"></a>
+        </p>
+        <p>
+            <font>
+                <font>这是一个被称为僵尸VS在您使用箭头键，使奶牛避免被僵尸吃掉越来越牛简单的游戏。</font>
+                <font>它是完全3D和硬件加速。</font>
+                <font>它看起来像一个专业的游戏，你可以在Wii上看到的，但它是在Web浏览器中完成的。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>这里是给你一个谷歌地球般的体验，而无需安装一个单独的应用程序的另一个例子。</font>
+            </font>
+        </p>
+        <p>
+            <a href="http://www.webglearth.com/"><img src="./style/webgl_earth.png"></a>
+        </p>
+        <p>
+            <font>
+                <font>下面是不带3D音效有趣的可视化的另一个例子。</font>
+            </font>
+        </p>
+        <p>
+            <a href="http://jeromeetienne.github.com/webaudio.js/examples/histotquery.htm">
+                <img src="./style/sound_vis_gl.png"></a>
+        </p>
+        <p>
+            <font>
+                <font>所有这些都与three.js所和WebGL创建</font>
+            </font>
+        </p>
+        <h3><a id="browsersupport"><font><font>浏览器支持</font></font></a></h3>
+        <p>
+            <font>
+                <font>在我们深入，对浏览器的支持一个字。</font>
+                <font>歌剧，Firefox和所有桌面基于WebKit的浏览器支持WebGL。</font>
+                <font>通常情况下它们映射到本地的OpenGL堆栈。</font>
+                <font>这里的大洞是IE浏览器。</font>
+                <font>虽然IE 10具有2D画布很好的支持，它不支持WebGL。</font>
+                <font>此外，微软还没有宣布任何计划，以支持它的未来。</font>
+                <font>目前还不清楚这会产生怎样的影响在Windows 8的世界里，第三方浏览器和插件都不允许。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在移动产品方面有实质上，对WebGL的不支持。</font>
+                <font>iOS的支持，但只能作为iAd的一部分，而不是在常规的浏览器。</font>
+                <font>这表明，苹果可能会增加但在将来，。</font>
+                <font>一些Android手机支持WebGL，但通常只有在安装如Firefox或Opera的替代浏览器。</font>
+                <font>由于桌面版Chrome WebGL的支持，而谷歌正在Chrome浏览器在Android默认的，希望我们将得到的WebGL为Android上的标准也是如此。</font>
+                <font>唯一的移动设备附带的良好支持WebGL的开箱即用的其实是黑莓Playbook。</font>
+                <font>因此，虽然支持不是很大移动它可能会获得在未来一年左右为佳。</font>
+                <font>WebGL的将是未来网络标准的一部分，背后都有一些大牌明星，所以现在是开始的好时机。</font>
+            </font>
+        </p>
+        <h3><a id="template"><font><font>一个ThreeJS模板</font></font></a></h3>
+        <p>
+            <font>
+                <font>ThreeJS是创造性的编码器创建一个开源库非凡，</font>
+            </font>
+            <a href="http://mrdoob.com/">
+                <font>
+                    <font>先生 </font>
+                    <font>杜布</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+                <font>他的真名是里卡多·卡韦略，但如果搜索杜布先生，你会发现他的冷静显卡的黑客可以追溯到至少十年。</font>
+                <font>ThreeJS是对WebGL的上面的一个库。</font>
+                <font>它可自动建立烦人的事情，所以你可以专注于您的应用程序。</font>
+                <font>为了使它更容易与杰罗姆·艾蒂安的工作，创造了</font>
+            </font>
+            <a href="http://jeromeetienne.github.com/threejsboilerplatebuilder/">
+                <font>
+                    <font>锅炉板制造商</font>
+                </font>
+            </a>
+            <font>
+                <font>，会给你一个领先地位。</font>
+                <font>它填补了所有的像摄像头，鼠标输入和渲染的共同的东西，这样就可以用一个工作ThreeJS应用程序启动。</font>
+                <font>该模板生成器有多种选择，但这些项目你可以保留默认值。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>让我们来看看它多么容易。</font>
+                <font>进入</font>
+            </font>
+            <a href="http://jeromeetienne.github.com/threejsboilerplatebuilder/">
+                <font>
+                    <font>ThreeJS锅炉板生成器</font>
+                </font>
+            </a>
+            <font>
+                <font>并下载一个新的模板。</font>
+                <font>将它解压缩，并在浏览器中打开index.htm页，以确保它的工作原理。</font>
+                <font>您应该看到这样的事情：</font>
+            </font>
+        </p>
+        <p><img src="./style/webgl_boilerplate.png"></p>
+        <p>
+            <font>
+                <font>现在打开</font>
+            </font><code><font><font>的index.htm</font></font></code>
+            <font>
+                <font>在文本编辑器文件。</font>
+                <font>请注意，模板是相当有据可查的。</font>
+                <font>让我们先从</font>
+            </font><code><font><font>初始化</font></font></code>
+            <font>
+                <font>功能。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//初始化场景</font></font></span><span><font><font>功能的init（）{ </font></font></span><span> </span><span><font><font>如果（Detector.webgl）{ </font></font></span><span><font><font>    渲染=新THREE.WebGLRenderer（{ </font></font></span><span><font><font>        反锯齿：真，//以便获得更流畅的输出</font></font></span><span><font><font>        preserveDrawingBuffer：//真正让屏幕截图</font></font></span><span><font><font>    }）; </font></font></span><span><font><font>    renderer.setClearColorHex（ 0xBBBBBB，1）; </font></font></span><span><font><font>//取消注释如果WebGL是需要</font></font></span><span><font><font>//}其他{ </font></font></span><span><font><font>// Detector.addGetWebGLMessage（）; </font></font></span><span><font><font>//返回true; </font></font></span><span><font><font>}其他{ </font></font></span><span><font><font>    渲染器=新THREE.CanvasRenderer（）; </font></font></span><span><font><font>} </font></font></span><span><font><font>renderer.setSize（window.innerWidth ，window.innerHeight）</font></font></span><span><font><font>的document.getElementById（'集装箱'）的appendChild（renderer.domElement）。</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>首先，模板初始化系统。</font>
+                <font>它试图创建一个WebGL的渲染器，因为实际上ThreeJS支持一些其它后端喜欢2D画布。</font>
+                <font>为此，我们只希望WebGL的。</font>
+                <font>如果不能建立一个</font>
+            </font><code><font><font>WebGLRenderer</font></font></code>
+            <font>
+                <font>将回落到2D画布。</font>
+                <font>虽然Canvas 就会慢很多可能是不是显示没有好。</font>
+                <font>随你便。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>然后，它设置画布的大小，并将其添加到页面的子</font>
+            </font><code><font><font>容器</font></font></code>
+            <font>
+                <font>（一个DIV在文件中声明。）
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//添加Stats.js - https://github.com/mrdoob/stats.js </font></font></span><span><font><font>统计=新的统计（）; </font></font></span><span><font><font>stats.domElement.style.position ='绝对'; </font></font></span><span><font><font>stats.domElement.style.bottom ='0像素“ ; </font></font></span><span><font><font>document.body.appendChild（stats.domElement）;</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>接下来，它会创建一个</font>
+            </font><code><font><font>统计</font></font></code>
+            <font>
+                <font>对象，并将其添加到现场。</font>
+                <font>这将显示我们的我们的代码是如何快速奔跑。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//创建一个场景</font></font></span><span><font><font>的场景=新THREE.Scene（）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>最后，它创建一个</font>
+            </font><code><font><font>场景</font></font></code>
+            <font>
+                <font>。</font>
+                <font>ThreeJS使用称为场景图的树结构。</font>
+                <font>该</font>
+            </font><code><font><font>场面</font></font></code>
+            <font>
+                <font>是这棵树的根。</font>
+                <font>我们在场景中创造一切都会在场景树的子节点。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//把相机在场景</font></font></span><span><font><font>相机=新THREE.PerspectiveCamera（35，window.innerWidth / window.innerHeight，1，10000）; </font></font></span><span><font><font>camera.position.set（0,0，5）; </font></font></span><span><font><font>scene.add（照相机）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>接下来是相机。</font>
+                <font>这是一个立体照相机。</font>
+                <font>一般来说，你可以独自离开这些值，但它是可能的，如果你想改变相机的位置。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//创建一个摄像机控逆变</font></font></span><span><font><font>cameraControls =新THREEx.DragPanControls（摄像头）</font></font></span></code></pre>
+        <p><code><font><font>DragPanControls</font></font></code>
+            <font>
+                <font>是一种实用工具对象拖动鼠标，将移动相机周围。</font>
+                <font>如果你想一些其他类型的控制，你可以将其删除。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//透明地支持窗口调整</font></font></span><span><font><font>THREEx.WindowResize.bind（渲染器，摄像头）; </font></font></span><span><font><font>//允许'P'进行截图</font></font></span><span><font><font>THREEx.Screenshot.bindKey（渲染）; </font></font></span><span><font><font>//允许'F'去哪里该功能支持全屏</font></font></span><span><font><font>，如果（THREEx.FullScreen.available（））{ </font></font></span><span><font><font>    THREEx.FullScreen.bindKey（）;		  </font></font></span><span><font><font>    的document.getElementById（'inlineDoc'）的innerHTML + =“ - f表示全屏”; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>通常情况下，我们要处理窗口中手动调整，但</font>
+            </font><code><font><font>Threex.WindowResize</font></font></code>
+            <font>
+                <font>对象（由模板提供的，而不是ThreeJS）将处理它为我们。</font>
+                <font>这将调整现场以适合窗口。</font>
+                <font>下一行添加使用“F”键并使用“P”键截图全屏模式。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>好了，现在我们是过去锅炉板，我们可以一个形状添加到现场。</font>
+                <font>我们将与开始</font>
+            </font>
+            <a href="http://en.wikipedia.org/wiki/Torus">
+                <font>
+                    <font>圆环</font>
+                </font>
+            </a>
+            <font>
+                <font>，这是一个环形的形状。</font>
+                <font>ThreeJS有几个标准的形状，包括环面的支持。
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//在这里添加你的对象</font></font></span><span><font><font>// -你很可能会被自己取代这部分</font></font></span><span><font><font>变种几何形状=新THREE.TorusGeometry（1 0.42）; </font></font></span><span><font><font>VAR材料=新THREE.MeshNormalMaterial（）; </font></font></span><span><font><font>VAR网=新THREE.Mesh （几何形状，材料）; </font></font></span><span><font><font>scene.add（目）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>在场景中的对象被称为一个</font>
+            </font><i><font><font>网孔</font></font></i>
+            <font>
+                <font>。</font>
+                <font>网格是由两部分组成：几何形状和材料。</font>
+                <font>该模板使用圆环形状和标准的正常物质，它总是反射光线perpedicularly到几何表面。</font>
+                <font>它反映了光，但不具有设定颜色。</font>
+                <font>这是模板是如何创建的网格并将其添加到现场。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//动画循环</font></font></span><span><font><font>功能动画（）{ </font></font></span><span> </span><span><font><font>    //要求动画循环回路</font></font></span><span><font><font>    // -它必须是在函数的开头</font></font></span><span><font><font>    // -看细节处 </font></font></span><span><font><font>    动画）; </font></font></span><span> </span><span><font><font>    //不渲染</font></font></span><span><font><font>    渲染（）; </font></font></span><span> </span><span><font><font>    //更新统计</font></font></span><span><font><font>    stats.update（）; </font></font></span><span><font><font>}</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>现在，让我们向下移动到</font>
+            </font><code><font><font>动画</font></font></code>
+            <font>
+                <font>功能，</font>
+            </font><code><font><font>动画</font></font></code>
+            <font>
+                <font>与调用本身</font>
+            </font><code><font><font>requestAnimationFrame</font></font></code>
+            <font>
+                <font>（我们了解了动漫章）调用</font>
+            </font><code><font><font>渲染（）</font></font></code>
+            <font>
+                <font>和更新的统计数据。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//渲染场景</font></font></span><span><font><font>功能渲染（）{ </font></font></span><span> </span><span><font><font>    //更新摄像机控制</font></font></span><span><font><font>    cameraControls.update（）; </font></font></span><span> </span><span><font><font>    //实际渲染场景</font></font></span><span><font><font>    renderer.render（场景，摄像头）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>该</font>
+            </font><code><font><font>渲染</font></font></code>
+            <font>
+                <font>功能被称为动画的每一帧。</font>
+                <font>第一，它调用更新上，摄像机控制，以使响应于鼠标和键盘输入的相机移动。</font>
+                <font>然后，它调用</font>
+            </font><code><font><font>renderer.render</font></font></code>
+            <font>
+                <font>实际在屏幕上绘制了现场。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>而已。</font>
+                <font>这里是什么样子：</font>
+            </font>
+        </p>
+        <p><img src="./style/webgl_boilerplate.png"></p>
+        <h3><a id="customizing"><font><font>自定义模板</font></font></a></h3>
+        <p>
+            <font>
+                <font>现在让我们来定制它一下。</font>
+                <font>场景中的每个物体能够基本缩放，旋转和位置变换。</font>
+                <font>让我们用旋转圆环</font>
+            </font><code><font><font>mesh.rotation.y = Math.PI / 2</font></font></code>
+            <font>
+                <font>。</font>
+                <font>需要注意的是旋转的弧度，不度。</font>
+                <font>Math.PI / 2为90度。 </font>
+            </font>
+        </p>
+        <pre><code><span> </span><span><font><font>VAR几何=新THREE.TorusGeometry（1 0.42）; </font></font></span><span><font><font>VAR材料=新THREE.MeshNormalMaterial（）; </font></font></span><span><font><font>VAR网=新THREE.Mesh（几何形状，材料）; </font></font></span><span><font><font>mesh.rotation.y = Math.PI / 2; </font><font>// 90度</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>现在，让我们注释掉圆环和更复杂的东西取代它。</font>
+                <font>ThreeJS可以使用晶圆厂预模型，以及所产生的像圆环。</font>
+                <font>在</font>
+            </font>
+            <a href="http://en.wikipedia.org/wiki/Utah_teapot">
+                <font>
+                    <font>犹他茶壶</font>
+                </font>
+            </a>
+            <font>
+                <font>是“Hello World”的图形世界，让我们先从这一点。</font>
+                <font>茶壶形状编码为JSON文件。</font>
+                <font>我们下载</font>
+            </font><code><font><font>teapot.js</font></font></code>
+            <font>
+                <font>从</font>
+            </font>
+            <a href="./-examples/WebGL/">
+                <font>
+                    <font>例子回购</font>
+                </font>
+            </a>
+            <font>
+                <font>并将其放置在同一目录中</font>
+            </font><code><font><font>的index.htm</font></font></code>
+            <font>
+                <font>。</font>
+                <font>接下来，我们与加载它</font>
+            </font><code><font><font>THREE.JSONLoader（）。load（）方法</font></font></code>
+            <font>
+                <font>。</font>
+                <font>当它完成加载，我们把它添加到场景作为一个新的网格模型，再采用一个标准的正常材料。</font>
+                <font>（</font>
+            </font><code><font><font>teapot.js</font></font></code>
+            <font>
+                <font>最初来自</font>
+            </font>
+            <a href="https://github.com/jeromeetienne/threex/tree/master/examples/threex.domevent/models">
+                <font>
+                    <font>杰罗姆的回购</font>
+                </font>
+            </a>
+            <font>
+                <font>）。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//scene.add（目）; </font></font></span><span> </span><span><font><font>新THREE.JSONLoader（）负载（'teapot.js'，函数（几何）{ </font></font></span><span><font><font>    VAR材料=新THREE.MeshNormalMaterial（）; </font></font></span><span><font><font>    VAR网=新THREE.Mesh（几何形状，材料）; </font></font></span><span><font><font>    scene.add（目）; </font></font></span><span><font><font>    茶壶=网格; </font></font></span><span><font><font>}）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在，让我们添加一些动画，使每一帧上的茶壶旋转。</font>
+                <font>我们只需设置一个茶壶可变的，由0.01每一帧调整其旋转。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//更新摄像机控制</font></font></span><span><font><font>cameraControls.update（）; </font></font></span><span><font><font>teapot.rotation.y + = 0.01;</font></font></span></code></pre>
+        <h3><a id="shadereffects"><font><font>渲染效果</font></font></a></h3>
+        <p>
+            <font>
+                <font>最后，我们将添加一些后期处理的效果。</font>
+                <font>他们被称为</font>
+            </font><i><font><font>后处理</font></font></i>
+            <font>
+                <font>，因为他们的主要渲染阶段之后发生。</font>
+                <font>在ThreeJS API的这些部分是有点实验性质，不记录很好，但我还是要去向他们展示给你，因为他们是非常强大的。</font>
+                <font>后处理需要添加更多的脚本的网页。</font>
+                <font>我们需要</font>
+            </font><code><font><font>ShaderExtras.js</font></font></code>
+            <font>
+                <font>，</font>
+            </font><code><font><font>RenderPass.js</font></font></code>
+            <font>
+                <font>，</font>
+            </font><code><font><font>BloomPass.js</font></font></code>
+            <font>
+                <font>，</font>
+            </font><code><font><font>ShaderPass.js</font></font></code>
+            <font>
+                <font>，</font>
+            </font><code><font><font>EffectComposer.js</font></font></code>
+            <font>
+                <font>，</font>
+            </font><code><font><font>DotScreenPass.js</font></font></code>
+            <font>
+                <font>和</font>
+            </font><code><font><font>MaskPass.js</font></font></code>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>&lt;SCRIPT SRC =“供应商/ three.js所/ ShaderExtras.js”&gt; &lt;/ SCRIPT&gt; </font></font></span><span> </span><span><font><font>&lt;SCRIPT SRC =“供应商/ three.js所/后处理/ RenderPass.js”&gt; &lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;SCRIPT SRC =“供应商/三相.js文件/后处理/ BloomPass.js“&gt; &lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;SCRIPT SRC =”供应商/ three.js所/后处理/ ShaderPass.js“&gt; &lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;SCRIPT SRC =”供应商/ three.js所/后处理/ EffectComposer .js文件“&gt; &lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;SCRIPT SRC =”供应商/ three.js所/后处理/ DotScreenPass.js“&gt; &lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;SCRIPT SRC =”供应商/ three.js所/后处理/ MaskPass.js“&gt; &lt;/ SCRIPT&gt;</font></font></span><span> </span></code></pre>
+        <p>
+            <font>
+                <font>首先，我们创建了一个名为新功能</font>
+            </font><code><font><font>initPostProcessing（） </font></font></code>
+            <font>
+                <font>。</font>
+                <font>里面，我们将创建一个效果作曲家。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>功能initPostProcessing（）{ </font></font></span><span> </span><span><font><font>    作曲家=新THREE.EffectComposer（渲染）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>接下来，我们将添加一个渲染通道，将渲染整个场景到纹理图像。</font>
+                <font>我们必须告诉它不会被渲染到屏幕上，然后将其添加到作曲家。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>renderModel =新THREE.RenderPass（场景，摄像头）;		      </font></font></span><span><font><font>renderModel.renderToScreen = FALSE; </font></font></span><span><font><font>composer.addPass（renderModel）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>接下来，我们将创建一个点屏幕通行证。</font>
+                <font>这些都是一些不错的默认值，但可以调整它们来获得不同的效果。</font>
+                <font>该过程</font>
+            </font><i><font><font>将</font></font></i>
+            <font>
+                <font>去到屏幕上，所以我们将设置</font>
+            </font><code><font><font>renderToScreen</font></font></code>
+            <font>
+                <font>为true，并将其添加到作曲家。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>变种effectDotScreen =新THREE.DotScreenPass（</font></font></span><span><font><font>    新THREE.Vector2（0,0），0.5，0.8）; </font></font></span><span><font><font>effectDotScreen.renderToScreen =真; </font></font></span><span><font><font>composer.addPass（effectDotScreen）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>现在，我们需要更新</font>
+            </font><code><font><font>渲染</font></font></code>
+            <font>
+                <font>功能。</font>
+                <font>而不是调用的</font>
+            </font><code><font><font>renderer.render（） </font></font></code>
+            <font>
+                <font>，</font>
+                <font>我们将调用</font>
+            </font><code><font><font>renderer.clear（）</font></font></code>
+            <font>
+                <font>和</font>
+            </font><code><font><font>composer.render（）</font></font></code>
+            <font>
+                <font> ; </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>//实际上渲染场景</font></font></span><span><font><font>//renderer.render（场景，摄像头）; </font></font></span><span> </span><span><font><font>// ALT形式</font></font></span><span><font><font>renderer.clear（）; </font></font></span><span><font><font>composer.render（）;</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>我们还必须调用</font>
+            </font><code><font><font>initPostProcessing</font></font></code>
+            <font>
+                <font>作为init函数的最后一行。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>initPostProcessing（）; </font></font></span></code></pre>
+        <p>
+            <font>
+                <font>这里是什么样子。</font>
+                <font>疯狂吧！</font>
+            </font>
+        </p>
+        <div class="photo">
+            <img src="./style/dot_screen_teapot.png">
+            <p><b><font><font>演示</font></font></b>
+                <font>
+                    <font>茶壶（</font>
+                </font>
+                <a href="./-examples/WebGL/effects.htm">
+                    <font>
+                        <font>运行</font>
+                    </font>
+                </a>
+                <font>
+                    <font>）</font>
+                </font>
+            </p>
+            <p><i><font><font>着色器的代码创建点的画面效果</font></font></i></p>
+        </div>
+        <p>
+            <font>
+                <font>只是出于好奇，如果我们打开了</font>
+            </font><code><font><font>ShaderExtras.js</font></font></code>
+            <font>
+                <font>我们可以看到实际的渲染运算，这就造成了圆点图案，并产生每个像素的最终颜色。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>fragmentShader： </font></font></span><span> </span><span><font><font>    “ </font><font>制服VEC2中心;”， </font></font></span><span><font><font>    “ </font><font>统一浮动角”， </font></font></span><span><font><font>    “ </font><font>统一浮动规模;”， </font></font></span><span><font><font>    “ </font><font>统一VEC2 t大小;”， </font></font></span><span> </span><span><font><font>    “ </font><font>统一sampler2D tDiffuse;”， </font></font></span><span> </span><span><font><font>    “ </font><font>不同VEC2真空紫外;”， </font></font></span><span> </span><span><font><font>    “ </font><font>浮动模式（） {“， </font></font></span><span> </span><span><font><font>        ” </font><font>浮动S =罪（角），C = COS（角度 ）;“，</font></font></span><span> </span><span><font><font>        ”VEC2 TEX = VUV * t大小-中心;“，</font></font></span><span><font><font>        ”VEC2点= VEC2（C * tex.x - S * tex.y ，S * tex.x + C * tex.y）*规模;“， </font></font></span><span> </span><span><font><font>        ” </font><font>回报（SIN（point.x）*罪（point.y））* 4.0;“，</font></font></span><span> </span><span><font><font>    ”}“， </font></font></span><span> </span><span><font><font>    ” </font><font>无效的主要（）{ “，</font></font></span><span> </span><span><font><font>        ”vec4颜色=的Texture2D（tDiffuse，VUV）;“， </font></font></span><span> </span><span><font><font>        ” </font><font>浮动平均=（color.r + color.g + color.b）/ 3.0;“，</font></font></span><span> </span><span><font><font>        ”gl_FragColor = vec4（VEC3（平均10.0 * - 5.0 +图案（）），color.a）;“，</font></font></span><span> </span><span><font><font>    ”}“ </font></font></span><span> </span><span><font><font>]。加入（”\ N“）</font></font></span></code></pre>
+        <h3><a id="moredetails"><font><font>更多的细节</font></font></a></h3>
+        <p>
+            <font>
+                <font>就像OpenGL的，WebGL的不直接支持文本。</font>
+                <font>相反，你必须使用一个2D画布绘制文本，然后将其添加为一个纹理到一个平面上。</font>
+                <font>（见</font>
+            </font>
+            <a href="http://webglfactory.blogspot.com/2011/06/render-text-with-canvas-2d.htm">
+                <font>
+                    <font>WebGL的因素的解释</font>
+                </font>
+            </a>
+            <font>
+                <font>。）</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>这里是建设快速图形用户界面称为库</font>
+            </font><b><font><font>的DAT贵</font></font></b>
+            <font>
+                <font>。</font>
+                <font>该项目页面</font>
+            </font>
+            <a href="http://code.google.com/p/dat-gui/">
+                <font>
+                    <font>在这里</font>
+                </font>
+            </a>
+            <font>
+                <font>。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>有一个很大的格式模型装载机。</font>
+                <font>你可能会使用的Collada或JSON装载机。</font>
+                <font>（DAE文件是对</font>
+            </font>
+            <a href="http://en.wikipedia.org/wiki/COLLADA">
+                <font>
+                    <font>的Collada</font>
+                </font>
+            </a>
+            <font>
+                <font>）。</font>
+                <font>有些人只是几何形状，有的包括纹理和动画，像怪物装载机。</font>
+                <font>装载机是重要的，因为最复杂的几何形状不会在代码中创建的，而不是你会使用他人创建的几何体，可能使用像搅拌机或玛雅的3D建模工具。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在大多数情况下，对OpenGL的一般表现技巧适用于WebGL的。</font>
+                <font>例如，你应该始终缓存在GPU的几何形状和材料。</font>
+            </font>
+        </p>
+        <p>
+            <a href="http://creativejs.com/">
+                <font>
+                    <font>CreativeJS</font>
+                </font>
+            </a>
+            <font>
+                <font>有很多2D画布和WebGL的好例子。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在下一章中，你会做一个手的实验室中，你将创建一个新的应用程序拥有一部汽车，一个星空下推动在一个大草地周围。</font>
+            </font>
+        </p>
+    </div>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./chapter06.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter11.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    
+</body>
+
+</html>

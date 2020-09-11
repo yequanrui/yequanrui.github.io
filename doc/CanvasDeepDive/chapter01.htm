@@ -1,0 +1,949 @@
+<!-- saved from url=(0070)./chapter01.htm#overview -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./title.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter02.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第1章</font></font></h2>
+        <h1><font><font>基本绘图</font></font></h1>
+    </div>
+    <div id="content">
+        <h3><a id="overview"><font><font>概要</font></font></a></h3>
+        <p>
+            <font>
+                <font>Canvas是最近添加到HTML和大多数浏览器（甚至是Internet Explorer 9的测试版），支持2D绘图API。</font>
+                <font>画布可以绘制要直接在Web浏览器中任何没有使用像Flash或Java插件。</font>
+                <font>凭借其看似简单的API，可帆布彻底改变我们如何构建Web应用程序的所有设备，而不仅仅是桌面。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>这些截图只给你什么是可能与画布的味道。</font>
+            </font>
+        </p>
+        <div id="gallery" class="gallery" style="width:480px;">
+            <h5><font><font>与HTML帆布制成的Apps</font></font></h5>
+            <div id="slider" class="swipe">
+                <ul>
+                    <li><img src="./style/screenshot1.png"></li>
+                    <li style="display:none;"><img src="./style/screenshot2.png"></li>
+                    <li style="display:none;"><img src="./style/screenshot3.png"></li>
+                    <li style="display:none;"><img src="./style/screenshot4.png"></li>
+                    <li style="display:none;"><img src="./style/screenshot5.png"></li>
+                    <li style="display:none;"><img src="./style/screenshot6.png"></li>
+                </ul>
+            </div>
+            <nav>
+                <a>
+                    <font>
+                        <font>首页&lt;上页</font>
+                    </font>
+                </a><span id="position"><em class="on"><font><font>&#8226; </font></font></em><em><font><font>&#8226; </font></font></em><em><font><font>&#8226; </font></font></em><em><font><font>&#8226; </font></font></em><em><font><font>&#8226; </font></font></em><em><font><font>&#8226;</font></font></em></span>
+                <a>
+                    <font>
+                        <font>下一页&gt;</font>
+                    </font>
+                </a>
+            </nav>
+        </div>
+        <h3><a id="what_is_canvas"><font><font>什么是油画？</font></font></a></h3>
+        <p>
+            <font>
+                <font>Canvas是一个2D绘图API。</font>
+                <font>本质上，浏览器给你，你可以绘制到屏幕上的一个矩形区域。</font>
+                <font>您可以绘制线条，形状，图像，文本; </font>
+                <font>你想相当多的东西。</font>
+                <font>画布最初是由苹果公司为它创建</font>
+            </font><span class="glossary" title="Mac OS X中的一个特点，因为10.4。 启用写在HTML，JavaScript和CSS的桌面小工具"><font><font>仪表盘</font></font></span>
+            <font>
+                <font>窗口小部件，但它已被通过所有主要的浏览器厂商，现在是HTML 5规范的一部分。</font>
+                <font>下面是一些什么帆布代码看起来像一个简单的例子：</font>
+            </font>
+        </p>
+        <pre class="wrap"><code><span><font><font>&lt;HTML&gt; </font></font></span><span><font><font>&lt;BODY&gt; </font></font></span><span><font><font>&lt;画布宽度=“800”HEIGHT =“600”ID =“画布”&gt; &lt;/ canvas&gt;的</font></font></span><span><font><font>&lt;SCRIPT&gt; </font></font></span><span><font><font>VAR帆布=的document.getElementById（'画布'）; </font></font></span><span><font><font>VAR C = canvas.getContext（ '2D'）; </font></font></span><span><font><font>c.fillStyle =“红”; </font></font></span><span><font><font>c.fillRect（100100400300）; </font></font></span><span><font><font>&lt;/ SCRIPT&gt; </font></font></span><span><font><font>&lt;/ body&gt; </font></font></span><span><font><font>&lt;/ HTML&gt;</font></font></span></code></pre>
+        <div class="photo">
+            <img src="./style/redrect.png">
+            <p><b><font><font>截图</font></font></b>
+                <font>
+                    <font>简单的红色矩形</font>
+                </font>
+            </p>
+            <p><i><font><font>这个矩形绘制与context.fillRect（）函数。</font></font></i></p>
+        </div>
+        <p>
+            <font>
+                <font>要明白，Canvas是用于绘制像素是很重要的。</font>
+                <font>它不具有形状或载体。</font>
+                <font>有没有对象，事件处理程序附加到。</font>
+                <font>它只是绘制像素到屏幕上。</font>
+                <font>正如我们看到的这既是优势也是劣势。</font>
+            </font>
+        </p>
+        <h3><a id="canvas_vs_svg_vs_dom"><font><font>那么，它适合与网络的其他部分？</font></font></a></h3>
+        <p>
+            <font>
+                <font>有四种方法来绘制网络上的东西：画布，SVG，CSS和DOM直接动画。</font>
+                <font>帆布与其它三个不同：</font>
+            </font>
+        </p>
+        <p><b><font><font>SVG</font></font></b>
+            <font>
+                <font>：</font>
+            </font><span class="glossary" title="可伸缩矢量图形的缩写。 矢量图形如矩形，曲线，文本基于XML的开放文件格式。"><font><font>SVG</font></font></span>
+            <font>
+                <font>是一个矢量API绘制形状。</font>
+                <font>每种形状都有一个对象，可以附加事件处理程序。</font>
+                <font>如果您在外形放大保持平滑，而帆布将成为像素化。
+                </font>
+            </font>
+        </p>
+        <p><b><font><font>CSS</font></font></b>
+            <font>
+                <font>：</font>
+            </font><span class="glossary" title="级联样式表。 一种技术，添加风格原始的HTML页面。 允许作者在多个页面中控制颜色，字体，边框和布局。"><font><font>CSS</font></font></span>
+            <font>
+                <font>实际上是关于造型的DOM元素。</font>
+                <font>因为有事情没有DOM对象您在画布绘制不能使用CSS样式它。</font>
+                <font>CSS只会影响画布本身的矩形区域，这样你就可以设置边框和背景颜色，但仅此而已。
+                </font>
+            </font>
+        </p>
+        <p><b><font><font>DOM动画</font></font></b>
+            <font>
+                <font>：在</font>
+            </font><span class="glossary" title="文档对象模型。 树结构，构成了一个网页。 在页面每一件事情是通过在树的一个或多个元件，诸如链接，段落，标题，和图像代表。"><font><font>DOM</font></font></span>
+            <font>
+                <font>，或文档对象模型，定义了屏幕上的所有对象。</font>
+                <font>DOM动画，通过使用CSS或JavaScript左右移动的物体，可以在某些情况下比用帆布做的更平滑，但它取决于你的浏览器的实现。
+                </font>
+            </font>
+        </p>
+        <h3><a id="whichwhatwhen"><font><font>哪一个？</font><font>什么？</font><font>什么时候？</font></font></a></h3>
+        <p>
+            <font>
+                <font>所以，你应该什么时候使用过帆布SVG，CSS或DOM元素？</font>
+                <font>那么，Canvas是比别人低的水平，所以你可以有画了更多的控制和使用更少的内存，但不必多写代码的成本。</font>
+                <font>当你有要呈现在屏幕上，这样就出来了Adobe Illustrator中的地图现有形状使用SVG。</font>
+                <font>当你有，你想制作动画，或者如果你想使用3D变换大的静态领域使用CSS或DOM动画。</font>
+                <font>对于图表，图形，图表动态，当然视频游戏，Canvas是一个不错的选择。</font>
+                <font>，稍后我们将讨论一些库，让你使用Canvas越矢量/面向对象的东西。
+                </font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>我们再往前走之前，我要澄清的是，当我谈论帆布我指的是</font>
+            </font><b><font><font>2D</font></font></b>
+            <font>
+                <font> API。</font>
+                <font>也有称为WebGL的作品一个3D API。</font>
+                <font>我不打算在这里盖，因为它仍处于开发阶段，浏览器的支持比较差。</font>
+                <font>此外，它本质上是OpenGL的JavaScript中，使得它比帆布较低水平，更难使用。</font>
+                <font>当WebGL的日趋成熟，我们将在后面的章节中重新讨论。
+                </font>
+            </font>
+        </p>
+        <h3><a id="browser_support"><font><font>浏览器支持</font></font></a></h3>
+        <p>
+            <font>
+                <font>最后，在我们深入与帆布的工作，让我们来谈谈</font>
+            </font><b><font><font>在这里</font></font></b>
+            <font>
+                <font>你可以使用它。</font>
+                <font>幸运的是帆布现在是一个稳定的API，最现代的浏览器支持它在一定程度上。</font>
+                <font>即使Internet Explorer支持它首先是IE 9，其实现是非常好的。
+                </font>
+            </font>
+        </p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>
+                        <font>
+                            <font>桌面浏览器</font>
+                        </font>
+                    </th>
+                    <th>
+                        <font>
+                            <font>版</font>
+                        </font>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>Safari浏览器</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>3.0+</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>铬</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>10+</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>歌剧</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>9+</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>火狐</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>4.0+</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>IE浏览器</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>9.0+</font>
+                        </font>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <font>
+                <font>在移动产品方面最智能手机平台支持它，因为大部分都是基于WebKit，这早已有很好的支持。</font>
+                <font>我知道肯定的webOS，iOS和Android的支持它。</font>
+                <font>我相信黑莓确实，至少在PlayBook的。</font>
+                <font>Windows Phone 7的不对，但它可能会在以后的更新。
+                </font>
+            </font>
+        </p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>
+                        <font>
+                            <font>移动浏览器</font>
+                        </font>
+                    </th>
+                    <th>
+                        <font>
+                            <font>版</font>
+                        </font>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>iOS版</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>所有</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>webOS的</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>所有</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>Android版</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>2.0+</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>黑莓</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>剧本和OS 6.0+</font>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font>
+                            <font>Windows Phone 7的</font>
+                        </font>
+                    </td>
+                    <td>
+                        <font>
+                            <font>没有</font>
+                        </font>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <font>
+                <font>现在，不是每一个移动设备具有非常完整的或</font>
+            </font><i><font><font>快</font></font></i>
+            <font>
+                <font>于画布的支持，让我们来看看如何优化我们的代码，在该会话的性能部分后的移动设备。
+                </font>
+            </font>
+        </p>
+        <h3><a id="simple_drawing"><font><font>简单的绘图</font></font></a></h3>
+        <p>
+            <font>
+                <font>正如我之前说的，画布是一个简单的2D API。</font>
+                <font>如果你已经做了Flash或Java 2D任何编码工作，它应该似乎相当familar。</font>
+                <font>你得到一个图形上下文的引用，设置像当前填充或描边颜色的一些属性，然后绘制一些形状。</font>
+                <font>这里有几个例子。
+                </font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>在这个例子中，我们设置当前颜色为红色，并绘制一个矩形。
+                </font>
+            </font><b><font><font>在代码中拖动号码更改值，看看它是如何影响矩形。</font></font></b></p>
+        <div id="simplerect" class="jangle">
+            <canvas width="300" height="100"></canvas>
+            <pre><font><font>ctx.fillStyle =“红”;</font></font><font></font><font><font>
+//的x，y，宽度，高度</font></font><font></font><font><font>
+ctx.fillRect（</font></font><b id="simplerect_var1"><font><font>20</font></font></b><font><font>，</font></font><b id="simplerect_var2"><font><font>30</font></font></b><font><font>，</font></font><b id="simplerect_var3"><font><font>40</font></font></b><font><font>，</font></font><b id="simplerect_var4"><font><font>50</font></font></b><font><font>）;
+</font></font></pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            function drawit(ctx, var1, var2, var3, var4) {
+                ctx.fillStyle = "red";
+                //x, y, width, height
+                ctx.fillRect(var1, var2, var3, var4);
+            }
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                var1: 20,
+                var2: 30,
+                var3: 40,
+                var4: 50,
+            };
+            tangle.setup("simplerect");
+        });
+        </script>
+        <p>
+            <font>
+                <font>这里是另外一个。</font>
+            </font>
+        </p>
+        <div id="simple_triangle" class="jangle">
+            <canvas width="300" height="100"></canvas>
+            <pre><font><font>c.fillStyle ='#ccddff';</font></font><font></font><font><font>
+c.beginPath（）;</font></font><font></font><font><font>
+c.moveTo（50,20）;</font></font><font></font><font><font>
+c.lineTo（200,50）;</font></font><font></font><font><font>
+c.lineTo（</font></font><b id="simple_triangle_var1"><font><font>150</font></font></b><font><font>，</font></font><b id="simple_triangle_var2"><font><font>80</font></font></b><font><font>）;</font></font><font></font><font><font>
+c.closePath（）;</font></font><font></font><font><font>
+c.fill（）;</font></font><font></font><font><font>
+c.strokeStyle ='RGB（0,128,0）';</font></font><font></font><font><font>
+c.lineWidth = </font></font><b id="simple_triangle_var3"><font><font>5</font></font></b><font><font> ;</font></font><font></font><font><font>
+c.stroke（）;</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+            function drawit2(c, var1, var2, var3) {
+                c.fillStyle = '#ccddff';
+                c.beginPath();
+                c.moveTo(50, 20);
+                c.lineTo(200, 50);
+                c.lineTo(var1, var2);
+                c.closePath();
+                c.fill();
+                c.strokeStyle = 'rgb(0,128,0)';
+                c.lineWidth = var3;
+                c.stroke();
+            }
+            var jangle2 = new Jangle();
+            jangle2.drawfun = drawit2;
+            jangle2.vars = {
+                var1: 150,
+                var2: 80,
+                var3: 5
+            };
+            jangle2.setup("simple_triangle");
+        });
+        </script>
+        <p>
+            <font>
+                <font>在这个例子中，我们设置当前填充颜色，创建路径，然后填写和中风它。</font>
+                <font>注意，上下文跟踪的填充颜色与单独的行程的颜色。</font>
+                <font>还要注意不同形式的指定颜色。</font>
+            </font><code><font><font>填充样式</font></font></code>
+            <font>
+                <font>和</font>
+            </font><code><font><font>的StrokeStyle</font></font></code>
+            <font>
+                <font>可以是任何有效的CSS颜色符号像六角，名称或</font>
+            </font><code><font><font>RGB（）</font></font></code>
+            <font>
+                <font>函数。</font>
+            </font>
+        </p>
+        <h3><a id="paths"><font><font>路径</font></font></a></h3>
+        <p>
+            <font>
+                <font>帆布只能直接支持矩形形状。</font>
+                <font>要绘制任何其他形状，您必须使用路径绘制它自己。</font>
+                <font>路径是由一束直线或曲线线段的创建的形状。</font>
+                <font>在画布，你必须首先定义一个路径</font>
+            </font><code><font><font>beginPath方法（） </font></font></code>
+            <font>
+                <font>，</font>
+                <font>那么你就可以填满它，中风，或使用它作为一个剪辑。</font>
+                <font>你定义一个函数一样每条线段</font>
+            </font><code><font><font>的moveTo（） </font></font></code>
+            <font>
+                <font>，</font>
+            </font><code><font><font>了lineTo（） </font></font></code>
+            <font>
+                <font>，</font>
+                <font>和</font>
+            </font><code><font><font>bezierCurveTo（） </font></font></code>
+            <font>
+                <font>。</font>
+                <font>这个例子绘制一个形状一招，其次是贝塞尔曲线段，然后一些行。</font>
+                <font>创建路径后，它被填满，并招了。</font>
+            </font>
+        </p>
+        <div id="simple_curve" class="jangle">
+            <canvas width="300" height="100"></canvas>
+            <pre><font><font>c.fillStyle ='红';</font></font><font></font><font><font>
+c.beginPath（）;</font></font><font></font><font><font>
+c.moveTo（10,30）;</font></font><font></font><font><font>
+c.bezierCurveTo（</font></font><b id="simple_curve_varcx1"><font><font>50</font></font></b><font><font>，</font></font><b id="simple_curve_varcy1"><font><font>90</font></font></b><font><font>，</font></font><b id="simple_curve_varcx2"><font><font>159</font></font></b><font><font>，</font></font><b id="simple_curve_varcy2"><font><font>-30</font></font></b><font><font>，200,30）;</font></font><font></font><font><font>
+c.lineTo（200,90）;</font></font><font></font><font><font>
+c.lineTo（10,90）;</font></font><font></font><font><font>
+c.closePath（）;</font></font><font></font><font><font>
+c.fill（）;</font></font><font></font><font><font>
+c.lineWidth = 4;</font></font><font></font><font><font>
+c.strokeStyle ='黑';</font></font><font></font><font><font>
+c.stroke（）;    </font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+            function drawit3(c, varcx1, varcy1, varcx2, varcy2) {
+                c.fillStyle = 'red';
+                c.beginPath();
+                c.moveTo(10, 30);
+                c.bezierCurveTo(varcx1, varcy1, varcx2, varcy2, 200, 30);
+                c.lineTo(200, 90);
+                c.lineTo(10, 90);
+                c.closePath();
+                c.fill();
+                c.lineWidth = 4;
+                c.strokeStyle = 'black';
+                c.stroke();
+            }
+            var jangle3 = new Jangle();
+            jangle3.drawfun = drawit3;
+            jangle3.vars = {
+                varcx1: 50,
+                varcy1: 90,
+                varcx2: 159,
+                varcy2: -30
+            };
+            jangle3.setup("simple_curve");
+        });
+        </script>
+        <h3><a id="coordinate_system"><font><font>坐标系</font></font></a></h3>
+        <p>
+            <font>
+                <font>一个快字上的坐标系。</font>
+                <font>印刷品具有在与y轴下降左上角的原点。</font>
+                <font>这是传统的计算机图形，但如果你想有一个不同的产地，你可以做到这一点与转换，我们会在后面介绍。</font>
+                <font>另一个重要的事情是，画布规格在一个像素的左上角定义的坐标。</font>
+                <font>这意味着，如果你画一个像素宽的垂直线起始于5,0那么它实际上会跨越相邻像素（4.5至5.5）的一半。</font>
+                <font>为了解决这个偏移你的X 0.5坐标。</font>
+                <font>然后将跨越0.5&#12316;5.5左右的，给你的电话线变为从5.0至6.0。</font>
+                <font>或者，你可以使用一个连宽度线，如2或4。</font>
+            </font>
+        </p>
+        <p class="photo"><img src="./style/coords.png"></p>
+        <h3><a id="images"><font><font>图片</font></font></a></h3>
+        <p>
+            <font>
+                <font>帆布可以用绘制图像</font>
+            </font><code><font><font>的drawImage</font></font></code>
+            <font>
+                <font>功能。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>有几种形式的</font>
+            </font><code><font><font>的drawImage</font></font></code>
+            <font>
+                <font>。</font>
+                <font>您可以在正常的规模直接绘制图像在屏幕上，或拉伸，切片它，你怎么样。</font>
+                <font>因为图像插值往往是速度远远超过其他各种方式缩放切片和伸展图像可以在游戏中的特效非常方便。</font>
+            </font>
+        </p>
+        <div id="imagedemo" class="jangle">
+            <canvas width="400" height="100"></canvas>
+            <pre><font><font>ctx.drawImage（IMG，0,0）; </font><font>//正常绘图</font></font><font></font><font><font>
+ctx.drawImage（IMG，//拉伸抽签</font></font><font></font><font><font>
+    0,0,66,66，//源（X，Y，W，H）</font></font><font></font><font><font>
+    100,0，</font></font><b id="imagedemo_var1"><font><font>100</font></font></b><font><font>，</font></font><b id="imagedemo_var2"><font><font>100</font></font></b><font><font> //目的地（X，Y，W，H）</font></font><font></font><font><font>
+    ）;</font></font><font></font><font><font>
+ctx.drawImage（IMG，//绘制切片</font></font><font></font>
+    <b id="imagedemo_s1"><font><font>20</font></font></b><font><font>，</font></font><b id="imagedemo_s2"><font><font>10</font></font></b><font><font>，</font></font><b id="imagedemo_s3"><font><font>20</font></font></b><font><font>，</font></font><b id="imagedemo_s4"><font><font>20</font></font></b><font><font>，//源COORDS（X，Y，W，H）</font></font><font></font><font><font>
+    250,0,250,50 //目的地COORDS（X，Y，W，H）</font></font><font></font><font><font>
+    ）;</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+            var img = new Image();
+            img.onload = function() {
+                function drawit(ctx, var1, var2, s1, s2, s3, s4) {
+                    ctx.drawImage(img, 0, 0); //normal drawing
+                    ctx.drawImage(img, //draw stretched
+                        0, 0, 66, 66, //source (x,y,w,h)
+                        100, 0, var1, var2 //destination (x,y,w,h)
+                    );
+                    ctx.drawImage(img, //draw a slice
+                        s1, s2, s3, s4, //source coords (x,y,w,h)
+                        250, 0, 250, 50 //destination coords (x,y,w,h)
+                    );
+                }
+
+                var jangle = new Jangle();
+                jangle.drawfun = drawit;
+                jangle.vars = {
+                    var1: 100,
+                    var2: 100,
+                    s1: 20,
+                    s2: 10,
+                    s3: 20,
+                    s4: 20
+                };
+                jangle.setup("imagedemo");
+            }
+            img.src = 'images/smile.png';
+
+        });
+        </script>
+        <p>
+            <font>
+                <font>尝试改变变量怎么看拉伸和切片的作品。</font>
+                <font>伸展图像您必须指定源和目标坐标。</font>
+                <font>该人士告诉协调的drawImage从哪里图像中拉像素。</font>
+                <font>由于上面的图片是67x67像素，使用0,0,66,66将退出整个图像。</font>
+                <font>目标的坐标告诉的drawImage放在哪里像素在屏幕上。</font>
+                <font>通过改变W和H COORDS可以伸展和收缩的图像。
+                </font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>切片是同样的事情，但使用不覆盖整个图像源坐标。</font>
+                <font>当你把图像的切片可以肯定你不去源范围之外，否则图像将消失。</font>
+                <font>例如，如果您拖动源宽度过去46，那么它会尝试访问像素超越了图像的右边缘。</font>
+                <font>使用负源的x坐标将做同样的</font>
+            </font>
+        </p>
+        <h3><a id="text"><font><font>文本</font></font></a></h3>
+        <p>
+            <font>
+                <font>画布可以绘制文本。</font>
+                <font>字体属性相同的CSS相等的，所以你可以设置styleg，大小和字体系列。</font>
+                <font>注意，
+                </font>
+            </font><code><font><font>fillText方法（字符串，X，Y）</font></font></code>
+            <font>
+                <font>函数绘制使用</font>
+            </font><b><font><font>基线</font></font></b>
+            <font>
+                <font>的文本，而不是顶部。</font>
+                <font>如果你把你的文字在0,0那么它将被绘制在屏幕的顶部。</font>
+                <font>务必通过适当量，以降低在y</font>
+            </font>
+        </p>
+        <div id="textdemo" class="jangle">
+            <canvas width="300" height="200"></canvas>
+            <pre><font><font>ctx.fillStyle =“黑色”;</font></font><font></font><font><font>
+ctx.font =“斜体”+ </font></font><b id="textdemo_var1"><font><font>96</font></font></b><font><font> +“PT宋体”;</font></font><font></font><font><font>
+ctx.fillText（“这是文”，</font></font><b id="textdemo_var2"><font><font>20</font></font></b><font><font>，</font></font><b id="textdemo_var3"><font><font>150</font></font></b><font><font>）;
+</font></font></pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            function drawit(ctx, var1, var2, var3) {
+                ctx.fillStyle = "black";
+                ctx.font = "italic " + var1 + "pt Arial ";
+                ctx.fillText("this is text", var2, var3);
+            }
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                var1: 96,
+                var2: 20,
+                var3: 150
+            };
+            tangle.setup("textdemo");
+        });
+        </script>
+        <h3><a id="gradient_fills"><font><font>渐变</font></font></a></h3>
+        <p>
+            <font>
+                <font>帆布也可以填写形状与渐变，而不是颜色。</font>
+                <font>这里有一个线性渐变：</font>
+            </font>
+        </p>
+        <div id="graddemo1" class="jangle">
+            <canvas width="400" height="200"></canvas>
+            <pre><font><font>变种毕业= ctx.createLinearGradient（0,0，</font></font><b id="graddemo1_var1"><font><font>200</font></font></b><font><font>，</font></font><b id="graddemo1_var2"><font><font>0</font></font></b><font><font>）;</font></font><font></font><font><font>
+grad.addColorStop（0，“白”）;</font></font><font></font><font><font>
+grad.addColorStop（0.5，“红”）;</font></font><font></font><font><font>
+grad.addColorStop（1，“黑”）;</font></font><font></font>
+<font></font><font><font>
+ctx.fillStyle =毕业生;</font></font><font></font><font><font>
+ctx.fillRect（0,0,400,200）;</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            function drawit(ctx, var1, var2) {
+                var grad = ctx.createLinearGradient(0, 0, var1, var2);
+                grad.addColorStop(0, "white");
+                grad.addColorStop(0.5, "red");
+                grad.addColorStop(1, "black");
+
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, 400, 200);
+            }
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                var1: 200,
+                var2: 0
+            };
+            tangle.setup("graddemo1");
+        });
+        </script>
+        <p>
+            <font>
+                <font>这里要注意的一个重要的事情是，梯度，该形状被吸入，而不是形状的内部坐标的坐标系中绘。</font>
+                <font>在本实施例的形状在0,0绘制。</font>
+                <font>如果我们改变了形状是在100,100梯度仍然会在屏幕的原点，所以较少的渐变的将被拉伸，这样的：</font>
+            </font>
+        </p>
+        <!--
+<pre><code>var grad = c.createLinearGradient(0,0,200,200);
+grad.addColorStop(0, "white");
+grad.addColorStop(1, "black");
+
+c.fillStyle = grad;
+c.fillRect(100,100,400,300);</code></pre>
+
+<div class='photo'><img src="images/gradient_bad.png"/></div>
+-->
+        <div id="graddemo2" class="jangle">
+            <canvas width="400" height="200"></canvas>
+            <pre><font><font>    变种毕业= ctx.createLinearGradient（0,0，</font></font><b id="graddemo2_var1"><font><font>200</font></font></b><font><font>，</font></font><b id="graddemo2_var2"><font><font>0</font></font></b><font><font>）;</font></font><font></font><font><font>
+    grad.addColorStop（0，“白”）;</font></font><font></font><font><font>
+    grad.addColorStop（0.5，“红”）;</font></font><font></font><font><font>
+    grad.addColorStop（1，“黑”）;</font></font><font></font>
+    <font></font><font><font>
+    ctx.fillStyle =毕业生;</font></font><font></font><font><font>
+    ctx.fillRect（100100400200）;</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            function drawit(ctx, var1, var2) {
+                var grad = ctx.createLinearGradient(0, 0, var1, var2);
+                grad.addColorStop(0, "white");
+                grad.addColorStop(0.5, "red");
+                grad.addColorStop(1, "black");
+
+                ctx.fillStyle = grad;
+                ctx.fillRect(100, 100, 400, 200);
+            }
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                var1: 200,
+                var2: 0
+            };
+            tangle.setup("graddemo2");
+        });
+        </script>
+        <p>
+            <font>
+                <font>所以，如果你进入，你以为你是填充形状渐变，但只看到单一颜色的情况下，这可能是因为你的坐标是关闭。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>所以这是它基本的绘图。</font>
+                <font>让我们停在那里，并在下一章中做一些练习。</font>
+                <font>你应该已经安装一个网页浏览器和文本编辑器。</font>
+                <font>我建议使用</font>
+            </font>
+            <a target="blank" href="https://www.google.com/chrome">
+                <font>
+                    <font>Chrome浏览器</font>
+                </font>
+            </a>
+            <font>
+                <font>，因为它有很好的调试工具和</font>
+            </font>
+            <a target="blank" href="http://www.jedit.org/">
+                <font>
+                    <font>jEdit的</font>
+                </font>
+            </a>
+            <font>
+                <font>，因为它是免费的，跨平台的; </font>
+                <font>但你可以使用你所选择的浏览器和编辑器。
+                </font>
+            </font>
+        </p>
+        <div id="glossary_popup" class="shadow" style="display: none;">
+            <h4><font><font>富</font></font></h4>
+            <p>
+                <font>
+                    <font>胡说</font>
+                </font>
+            </p>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        setupPhotoGallery("gallery");
+
+        function setupPhotoGallery(id) {
+
+            var gal = document.getElementById(id);
+            var nav = document.createElement("nav")
+            gal.appendChild(nav);
+
+
+            //add previous button
+            var prev = document.createElement("a");
+            prev.innerHTML = "&lt; prev"
+            $(prev).click(function(e) {
+                slider.prev();
+            });
+            nav.appendChild(prev);
+
+
+            //create span with the bullets
+            var span = document.createElement("span");
+            span.id = "position";
+            var imageCount = gal.getElementsByTagName("ul")[0].getElementsByTagName("img").length;
+            span.innerHTML = "<em class='on'>&bull;</em>";
+            for (var i = 1; i < imageCount; i++) {
+                span.innerHTML += "<em>&bull;</em>";
+            }
+            nav.appendChild(span);
+
+
+            //add next button
+            var next = document.createElement("a");
+            next.innerHTML = "next &gt;";
+            $(next).click(function(e) {
+                slider.next();
+            });
+
+            nav.appendChild(next);
+
+            // slider
+            //var bullets = document.getElementById('position').getElementsByTagName('em');
+            var bullets = span.getElementsByTagName('em');
+            //    console.log("bullets num = " + bullets.length);
+            var slider = new Swipe(document.getElementById('slider'), {
+                callback: function(e, pos) {
+
+                    var i = bullets.length;
+                    while (i--) {
+                        bullets[i].className = ' ';
+                    }
+                    bullets[pos].className = 'on';
+
+                }
+            });
+        }
+        </script>
+    </div>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./title.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter02.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <script type="text/javascript" async="true" src="http://joshy.org:3056/ping.js?referrer="></script>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9436360-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <div id="goog-gt-tt" class="skiptranslate" dir="ltr">
+        <div style="padding: 8px;">
+            <div>
+                <div class="logo"><img src="./style/translate_24dp.png" width="20" height="20"></div>
+            </div>
+        </div>
+        <div class="top" style="padding: 8px; float: left; width: 100%;">
+            <h1 class="title gray">原文</h1></div>
+        <div class="middle" style="padding: 8px;">
+            <div class="original-text"></div>
+        </div>
+        <div class="bottom" style="padding: 8px;">
+            <div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div>
+            <div class="started-activity-container">
+                <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
+                <div class="activity-root"></div>
+            </div>
+        </div>
+        <div class="status-message" style="display: none;"></div>
+    </div>
+</body>
+
+</html>

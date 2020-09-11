@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>深入浅出Webpack</title>
+    <meta name="description" content="webpack使用学习(吴浩麟版)">
+    <link rel="icon" href="/webpackLearn/favicon.ico">
+  <link rel="manifest" href="/webpackLearn/manifest.json">
+    
+    <link rel="preload" href="/webpackLearn/assets/css/styles.77d280ee.css" as="style"><link rel="preload" href="/webpackLearn/assets/js/app.77d280ee.js" as="script"><link rel="preload" href="/webpackLearn/assets/js/35.cfff3ee7.js" as="script"><link rel="prefetch" href="/webpackLearn/assets/js/1.f37f7214.js"><link rel="prefetch" href="/webpackLearn/assets/js/10.15a163ee.js"><link rel="prefetch" href="/webpackLearn/assets/js/11.d8cde28c.js"><link rel="prefetch" href="/webpackLearn/assets/js/12.6e485d95.js"><link rel="prefetch" href="/webpackLearn/assets/js/13.8167464c.js"><link rel="prefetch" href="/webpackLearn/assets/js/14.7e75c412.js"><link rel="prefetch" href="/webpackLearn/assets/js/15.593f55f2.js"><link rel="prefetch" href="/webpackLearn/assets/js/16.31248cfb.js"><link rel="prefetch" href="/webpackLearn/assets/js/17.c428f9be.js"><link rel="prefetch" href="/webpackLearn/assets/js/18.1a442e25.js"><link rel="prefetch" href="/webpackLearn/assets/js/19.d2aaef13.js"><link rel="prefetch" href="/webpackLearn/assets/js/2.d7cdf3d2.js"><link rel="prefetch" href="/webpackLearn/assets/js/20.d7645fb0.js"><link rel="prefetch" href="/webpackLearn/assets/js/21.d80e0286.js"><link rel="prefetch" href="/webpackLearn/assets/js/22.b41f3cbc.js"><link rel="prefetch" href="/webpackLearn/assets/js/23.f8779f82.js"><link rel="prefetch" href="/webpackLearn/assets/js/24.958d3c85.js"><link rel="prefetch" href="/webpackLearn/assets/js/25.2e076f51.js"><link rel="prefetch" href="/webpackLearn/assets/js/26.eff2c3e5.js"><link rel="prefetch" href="/webpackLearn/assets/js/27.40064e0e.js"><link rel="prefetch" href="/webpackLearn/assets/js/28.9ad06b95.js"><link rel="prefetch" href="/webpackLearn/assets/js/29.3a0865a0.js"><link rel="prefetch" href="/webpackLearn/assets/js/3.128b6292.js"><link rel="prefetch" href="/webpackLearn/assets/js/30.25c4f77e.js"><link rel="prefetch" href="/webpackLearn/assets/js/31.80207808.js"><link rel="prefetch" href="/webpackLearn/assets/js/32.20b8aa68.js"><link rel="prefetch" href="/webpackLearn/assets/js/33.414db07e.js"><link rel="prefetch" href="/webpackLearn/assets/js/34.3c015b40.js"><link rel="prefetch" href="/webpackLearn/assets/js/36.5693324e.js"><link rel="prefetch" href="/webpackLearn/assets/js/37.11302d4c.js"><link rel="prefetch" href="/webpackLearn/assets/js/38.5f09cd6d.js"><link rel="prefetch" href="/webpackLearn/assets/js/39.b8a318d2.js"><link rel="prefetch" href="/webpackLearn/assets/js/4.7fbde3f9.js"><link rel="prefetch" href="/webpackLearn/assets/js/40.010eca0d.js"><link rel="prefetch" href="/webpackLearn/assets/js/41.ed550296.js"><link rel="prefetch" href="/webpackLearn/assets/js/42.bf111eba.js"><link rel="prefetch" href="/webpackLearn/assets/js/43.4178a489.js"><link rel="prefetch" href="/webpackLearn/assets/js/44.f9b7d3d8.js"><link rel="prefetch" href="/webpackLearn/assets/js/45.4aa3e07a.js"><link rel="prefetch" href="/webpackLearn/assets/js/46.766fddaf.js"><link rel="prefetch" href="/webpackLearn/assets/js/47.7a16de60.js"><link rel="prefetch" href="/webpackLearn/assets/js/48.ec0b2eb5.js"><link rel="prefetch" href="/webpackLearn/assets/js/49.9ba3c919.js"><link rel="prefetch" href="/webpackLearn/assets/js/5.7aab97c6.js"><link rel="prefetch" href="/webpackLearn/assets/js/50.fe7bdfef.js"><link rel="prefetch" href="/webpackLearn/assets/js/51.b5d4459d.js"><link rel="prefetch" href="/webpackLearn/assets/js/52.aa5814ff.js"><link rel="prefetch" href="/webpackLearn/assets/js/53.8ad00778.js"><link rel="prefetch" href="/webpackLearn/assets/js/54.92f9cbd1.js"><link rel="prefetch" href="/webpackLearn/assets/js/55.d04ea61a.js"><link rel="prefetch" href="/webpackLearn/assets/js/56.4b17dc92.js"><link rel="prefetch" href="/webpackLearn/assets/js/57.82800a68.js"><link rel="prefetch" href="/webpackLearn/assets/js/58.b4482327.js"><link rel="prefetch" href="/webpackLearn/assets/js/59.40bf3560.js"><link rel="prefetch" href="/webpackLearn/assets/js/6.e891bd55.js"><link rel="prefetch" href="/webpackLearn/assets/js/60.3a147a38.js"><link rel="prefetch" href="/webpackLearn/assets/js/61.9fab59f3.js"><link rel="prefetch" href="/webpackLearn/assets/js/62.7aacd083.js"><link rel="prefetch" href="/webpackLearn/assets/js/63.7e09e4d8.js"><link rel="prefetch" href="/webpackLearn/assets/js/64.b3113e47.js"><link rel="prefetch" href="/webpackLearn/assets/js/65.d1030852.js"><link rel="prefetch" href="/webpackLearn/assets/js/66.799e920a.js"><link rel="prefetch" href="/webpackLearn/assets/js/67.a898b698.js"><link rel="prefetch" href="/webpackLearn/assets/js/68.92cd43e9.js"><link rel="prefetch" href="/webpackLearn/assets/js/69.262008ea.js"><link rel="prefetch" href="/webpackLearn/assets/js/7.22611dc1.js"><link rel="prefetch" href="/webpackLearn/assets/js/70.afff8df7.js"><link rel="prefetch" href="/webpackLearn/assets/js/71.7818a2c2.js"><link rel="prefetch" href="/webpackLearn/assets/js/8.5b18428a.js"><link rel="prefetch" href="/webpackLearn/assets/js/9.9ef066a0.js">
+    <link rel="stylesheet" href="/webpackLearn/assets/css/styles.77d280ee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/webpackLearn/" class="home-link router-link-active"><!----><span class="site-name">
+      深入浅出Webpack
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/webpackLearn/" class="nav-link">首页</a></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/webpackLearn/" class="nav-link">首页</a></div><!----></nav><ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>入门</span><!----></p><ul class="sidebar-group-items"><li><a href="/webpackLearn/intro.html" class="sidebar-link">前言</a></li><li><a href="/webpackLearn/intro/intro-1.html" class="sidebar-link">前端的发展</a></li><li><a href="/webpackLearn/intro/intro-2.html" class="sidebar-link">前端常用构建工具</a></li><li><a href="/webpackLearn/intro/intro-3.html" class="sidebar-link">webpack安装使用</a></li><li><a href="/webpackLearn/intro/intro-4.html" class="sidebar-link">使用Loader</a></li><li><a href="/webpackLearn/intro/intro-5.html" class="sidebar-link">使用Plugin</a></li><li><a href="/webpackLearn/intro/intro-6.html" class="sidebar-link">使用DevServer</a></li><li><a href="/webpackLearn/intro/intro-7.html" class="sidebar-link">核心概念</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>配置</span><span class="arrow right"></span></p><!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>实战</span><span class="arrow right"></span></p><!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>优化</span><span class="arrow right"></span></p><!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>原理</span><span class="arrow right"></span></p><!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>附录</span><span class="arrow right"></span></p><!----></div></li></ul></div><div class="page"><div class="content"><p>Webpack 4 虽然发布了，但没有文档，只能看源代码
+Webpack 4 相关插件没有及时适配, 需要提issue，让作者适配，需要等待
+配置适配兼容，包括 mode, commonsChunk, 默认插件
+骨架升级测试, 会遇到一些奇怪问题，然后去升级对应的插件</p><h2 id="webpack-4-最新问题"><a href="#webpack-4-最新问题" aria-hidden="true" class="header-anchor">#</a> Webpack 4 最新问题</h2><p>目前 extract-text-webpack-plugin 最新版本不支持 Webpack 4.3.0 版本. webpack 4.2.0 以下可用。
+目前从 <code>extract-text-webpack-plugin</code> issues 了解， 未来 <code>extract-text-webpack-plugin</code> 将废弃，作者建议使用 <code>mini-css-extract-plugin</code> 插件。</p><h2 id="webpack-4-版本特性"><a href="#webpack-4-版本特性" aria-hidden="true" class="header-anchor">#</a> Webpack 4 版本特性</h2><ul><li>配置默认初始化一些配置, 比如 entry 默认 './src'</li><li>开发模式和发布模式, 插件默认内置</li><li>CommonsChunk 配置简化</li><li>使用 ES6 语法，比如 Map, Set, includes</li><li>新增 WebAssembly 构建支持</li><li>如果要使用 webpack cli 命令，需要单独再安装 webpack-cli</li></ul><p>默认配置
+在 Webpack 4 中，不再强制要求指定 entry 和 output 路径。webpack 4 会默认 entry 为 ./src，output 为 ./dist</p><p>构建模式 mode:
+Webpack 4 配置, 必须配置 mode 属性， 可选值有 development,production,none</p><p>development 默认开启插件(无需配置):
+NamedModulesPlugin-&gt;optimization.namedModules
+development 模式 使用 eval 构建 module，用来提升构建速度
+webpack.DefinePlugin 插件的 process.env.NODE_ENV 的值不需要再定义，默认是 development
+production 默认开启插件(无需配置):
+NoEmitOnErrorsPlugin-&gt;optimization.noEmitOnErrors
+ModuleConcatenationPlugin-&gt;optimization.concatenateModules
+webpack.DefinePlugin 插件的 process.env.NODE_ENV 的值不需要再定义，默认是 production
+公共代码提取
+Webpack3的commonschunk hash问题非常的不雅，使用复杂, Webpack 4 直接将
+CommonsChunkPlugin 插件直接改为 optimization.splitChunks
+和 optimization.runtimeChunk 两个配置</p><p>Webpack 3
+plugins:[
+new webpack.optimize.CommonsChunkPlugin({ names: 'common'}),
+new webpack.optimize.CommonsChunkPlugin({ name: 'runtime', chunks:['common']})
+]
+Webpack 4
+optimization: {
+splitChunks: {
+chunks: 'all',
+name: 'common',
+},
+runtimeChunk: {
+name: 'runtime',
+}
+}
+压缩
+压缩插件更新到 uglifyjs-webpack-plugin 1.0 版本，支持多进程压缩，缓存以及es6语法，无需单独安装转换器。当 mode='production' 默认开启压缩，无需配置。可以通过 optimization.minimize 和 optimization.minimizer 自定义配置。测试发现,第二次打包时间是第一次打包的一半左右。</p><p>optimization.minimize 是否启用压缩
+optimization.minimizer 制定压缩库, 默认 uglifyjs-webpack-plugin 1.0
+optimization: {
+minimize:true
+}
+Webpack4 代码： WebpackOptionsDefaulte.js#L261</p><p>优化配置
+Webpack 4 默认内置了一些配置, 但额外又增加了一些配置，比如 optimization 配置属性，差不多 20 各左右的属性配置, 具体看webpack/schemas/WebpackOptions.json</p><p>sideEffects 构建大小优化
+Webpack 4 提供了 sideEffects 的配置，引入的第三方插件在 package.json 里面配置 sideEffects:false 后，据说是可以大幅度地减小打包出的文件的体积，具体待验证。</p><p>目前初步了解 sideEffects 的信息：sideEffects:false 表示该模块无副作用。当你需要导入，但不需要导出任何东西时，但需要在导入时做其他事情(必然初始化，pollyfill等)，这就是导入模块的副作用. 目前对这个理解的不多，具体在第三方库的构建上面没有一个直观的感受，需要继续深入了解。</p><p>目前查到的资料：https://stackoverflow.com/questions/41127479/es6-import-for-side-effects-meaning</p><p>插件事件注册与调用
+Webpack4 代码层面最大的变化是整个Plugin的事件注册和事件触发机制完全重写了，导致大部分第三方插件都要修改才能用，有些插件作者一两年都没有更新，提了issue只能耐心等待，如果要用只能自己硬着头皮去翻源码然后PR了。 到目前为止, 常用的插件都已经适配。</p><p>Webpack3:
+注册：</p><p>compiler.plugin(‘done’,callback)
+触发：</p><p>compilitation.applyPlugins(‘done’,params)
+Webpack4:
+注册：
+compiler.hooks.done.tap(‘mypluinname’,callback)
+触发：
+compiler.hooks.done.call()
+常用插件版本升级
+eslint-loader: ^ 2.0.0
+file-loader:^1.1.10
+vue-loader: ^14.1.1
+webpack-hot-middleware
+extract-text-webpack-plugin: ^4.0.0-beta.0
+html-webpack-plugin : ^3.0.6</p><p>工程化支持
+easywebpack 前端工程化方案已经支持 Webpack4 配置, 对应方案是 ^4.x.x 版本。
+如果你之前已经使用 easywebpack(webpack3)工程化方案, 你只需要按照版本发布指引升级或删除 package.json 对应插件依赖即可。 webpack.config.js 无需修改，easywebpack 4 已经向下兼容了。已经适配 Webpack4 的骨架项目代码在对应的 webpack4 分支，有需要可以玩玩。详细版本请见：easywebpack 版本发布历史</p><p>egg-vue-webpack-boilerplate 基于 Egg + Vue + Webpack4 多页面SSR项目
+egg-react-webpack-boilerplate 基于 Egg + React + Webpack4 多页面SSR项目
+webpack-static-html HTML静态多页面 Webpack 构建工程化解决方案骨架</p></div><div class="page-edit"><!----><!----></div><!----></div></div></div>
+    <script src="/webpackLearn/assets/js/app.77d280ee.js" defer></script><script src="/webpackLearn/assets/js/35.cfff3ee7.js" defer></script>
+  </body>
+</html>

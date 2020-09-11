@@ -1,0 +1,577 @@
+<!-- saved from url=(0061)./chapter03.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    
+    <script src="./style/jquery.js"></script>
+    <style type="text/css"></style>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+    
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+    
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div class="chapnav top">
+        <a class="prevchap" href="./chapter02.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter04.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <div id="header">
+        <h2><font><font>第3章</font></font></h2>
+        <h1><font><font>先进的绘图和事件</font></font></h1>
+    </div>
+    <div id="content">
+        <h3><a id="image_fills"><font><font>图像填充</font></font></a></h3>
+        <p>
+            <font>
+                <font>在</font>
+            </font>
+            <a href="./chapter01.htm">
+                <font>
+                    <font>第一章</font>
+                </font>
+            </a>
+            <font>
+                <font>，我们了解到，Canvas 可以填充颜色和渐变的形状。</font>
+                <font>您还可以通过限定图案填充的图像形状。</font>
+                <font class="">您可以控制模式是如何重复相同的，你会在CSS背景图像。</font>
+            </font>
+        </p>
+        <!--
+
+<pre><code>var img = new Image();
+img.onload = function() {
+    
+    var canvas = document.getElementById('can');
+    var c = canvas.getContext('2d');
+    var pat = c.createPattern(img,'repeat');    
+    c.fillStyle = pat;
+    c.fillRect(10,10,80,80);    
+    
+    var canvas2 = document.getElementById('can2');
+    var c2 = canvas2.getContext('2d');
+    var pat2 = c2.createPattern(img,'repeat-y');    
+    c2.fillStyle = pat2;
+    c2.fillRect(10,10,80,80);    
+    
+}
+img.src = 'smile.png';</code></pre>
+
+<div class='photo'><img src="images/image_fill.png"/></div>
+-->
+        <p>
+            <font>
+                <font>作为与渐变，图案被相对于当前坐标系绘制。</font>
+                <font>这就是为什么我有200像素的权利绘制第二个矩形前翻译。</font>
+                <font>因为它没有在X方向重复，只有Y，使得填充区域更大实际上不会吸引更多的格局。</font>
+            </font><b><font><font>试着拖动周围的价值观，看看它是如何工作的。</font></font></b></p>
+        <div id="imagefill" class="jangle">
+            <canvas width="400" height="100"></canvas>
+            <pre><font><font>VAR PAT1 = ctx.createPattern（IMG，'重复'）;    </font></font><font></font><font><font>
+ctx.fillStyle = PAT1;</font></font><font></font><font><font>
+ctx.fillRect（</font></font><b id="imagefill_var1"><font><font>0</font></font></b><font><font>，0，</font></font><b id="imagefill_var2"><font><font>100</font></font></b><font><font>，100）;    </font></font><font></font>
+<font></font><font><font>
+VAR PAT2 = ctx.createPattern（IMG，“重复-Y'）;    </font></font><font></font><font><font>
+ctx.fillStyle = PAT2;</font></font><font></font><font><font>
+ctx.translate（200,0）;</font></font><font></font><font><font>
+ctx.fillRect（</font></font><b id="imagefill_var3"><font><font>0</font></font></b><font><font>，0，</font></font><b id="imagefill_var4"><font><font>100</font></font></b><font><font>，100）;    
+</font></font></pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+            var img = new Image();
+
+            function drawit(ctx, var1, var2, var3, var4) {
+                var pat1 = ctx.createPattern(img, 'repeat');
+                ctx.fillStyle = pat1;
+                ctx.fillRect(var1, 0, var2, 100);
+
+                var pat2 = ctx.createPattern(img, 'repeat-y');
+                ctx.fillStyle = pat2;
+                ctx.translate(200, 0);
+                ctx.fillRect(var3, 0, var4, 100);
+            }
+
+            img.onload = function() {
+                console.log('image was loaded');
+                var tangle = new Jangle();
+                tangle.drawfun = drawit;
+                tangle.vars = {
+                    var1: 0,
+                    var2: 100,
+                    var3: 0,
+                    var4: 100
+                };
+                tangle.setup("imagefill");
+            };
+
+            console.log('setting up the smile stuff ' + img);
+            img.src = './images/tile.png';
+        });
+        </script>
+        <p>
+            <font>
+                <font>注意：如果图像已经装载了与图像纹理填充才能正常运行，所以一定要从图像的做绘图</font>
+            </font><code><font><font>的onload</font></font></code>
+            <font>
+                <font>回调。</font>
+            </font>
+        </p>
+        <h3><a id="opacity"><font><font>不透明度</font></font></a></h3>
+        <p>
+            <font>
+                <font>画布API允许你控制的任何绘图功能的不透明度</font>
+            </font><code><font><font>globalAlpha的</font></font></code>
+            <font>
+                <font>财产。</font>
+                <font>下一个演示绘制了两个红色方块与背景显示通过每个绘图操作之前，改变globalAlpha的重叠通过。</font>
+            </font>
+        </p>
+        <div id="opacitydemo" class="jangle">
+            <canvas width="400" height="100"></canvas>
+            <pre><font><font>ctx.fillStyle ='红';</font></font><font></font><font><font>
+//除以100得到0和1之间的分数</font></font><font></font><font><font>
+ctx.globalAlpha = </font></font><b id="opacitydemo_var1"><font><font>50个</font></font></b><font><font> / 100;</font></font><font></font><font><font>
+ctx.fillRect（0,0,50,50）;</font></font><font></font><font><font>
+ctx.globalAlpha = </font></font><b id="opacitydemo_var2"><font><font>30个</font></font></b><font><font> / 100;</font></font><font></font><font><font>
+ctx.fillRect（25,25,50,50）;</font></font><font></font><font><font>
+ctx.globalAlpha = 1.0;</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            function drawit(ctx, var1, var2, var3, var4) {
+                ctx.fillStyle = 'red';
+                //divide by 100 to get a fraction between 0 and 1
+                ctx.globalAlpha = var1 / 100;
+                ctx.fillRect(0, 0, 50, 50);
+                ctx.globalAlpha = var2 / 100;
+                ctx.fillRect(25, 25, 50, 50);
+                ctx.globalAlpha = 1.0;
+            }
+
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                var1: 50,
+                var2: 30
+            };
+            tangle.setup("opacitydemo");
+
+        });
+        </script>
+        <p>
+            <font>
+                <font>这种不透明的设置与所有绘图操作的作品。</font>
+            </font><b><font><font>请尝试更改上面的不透明度值来看看效果。</font></font></b>
+            <font>
+                <font>一定要设置回1.0当你这样做，它不会影响到后面拉。</font>
+                <font>该</font>
+            </font><code><font><font>globalAlpha的</font></font></code>
+            <font>
+                <font>属性必须是0和1之间，否则将忽略它的值（或可能在某些平台上意外的行为）。</font>
+            </font>
+        </p>
+        <h3><a id="transforms"><font><font>变换</font></font></a></h3>
+        <p>
+            <font>
+                <font>在条形图章中，我们只是用不同的x和y坐标遍地画相同的矩形一次。</font>
+                <font>而不是修改这些坐标，我们可以使用一个转换功能。</font>
+                <font>通过每一次循环中，我们可以通过一个额外的100像素转换成搬过来下一栏的右侧。
+                </font>
+            </font>
+        </p>
+        <div id="translatedemo" class="jangle">
+            <canvas width="500" height="100"></canvas>
+            <pre><font><font>ctx.fillStyle =“红”;</font></font><font></font><font><font>
+对于（VAR I = 0; I &lt;data.length;我++）{</font></font><font></font><font><font>
+    VAR DP =数据[I]</font></font><font></font><font><font>
+    ctx.translate（</font></font><b id="translatedemo_var1"><font><font>100</font></font></b><font><font>，0）;</font></font><font></font><font><font>
+    ctx.fillRect（0,0,50，DP）;</font></font><font></font><font><font>
+}</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            var data = [10, 20, 60, 5];
+
+            function drawit(ctx, var1, var2, var3, var4) {
+                ctx.fillStyle = "red";
+                for (var i = 0; i < data.length; i++) {
+                    var dp = data[i];
+                    ctx.translate(var1, 0);
+                    ctx.fillRect(0, 0, 50, dp);
+                }
+            }
+
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                var1: 100
+            };
+            tangle.setup("translatedemo");
+
+        });
+        </script>
+        <p><b><font><font>尝试拖动的X转换变量</font></font></b>
+            <font>
+                <font>看到效果在图表怎么结合。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>像许多2D的API，Canvas 先后为标准的支持平移，旋转和缩放变换。</font>
+                <font>这可让您在屏幕上绘制围绕转变的形状，而无需手工计算新点。</font>
+                <font>Canvas 做数学你。</font>
+                <font>您也可以通过调用它们的顺序组合变换。</font>
+                <font>例如，为了绘制翻译为中心，然后转动30度，你会做一个矩形：</font>
+            </font>
+        </p>
+        <div id="rotatedemo" class="jangle">
+            <canvas width="200" height="200"></canvas>
+            <pre><font><font>ctx.fillStyle =“红”;</font></font><font></font><font><font>
+ctx.translate（</font></font><b id="rotatedemo_x1"><font><font>50</font></font></b><font><font>，</font></font><b id="rotatedemo_y1"><font><font>50</font></font></b><font><font>）;</font></font><font></font><font><font>
+//转换度弧度</font></font><font></font><font><font>
+变种拉德= </font></font><b id="rotatedemo_rot1"><font><font>30</font></font></b><font><font> * Math.PI * 2.0 / 360.0;</font></font><font></font><font><font>
+ctx.rotate（拉德）</font></font><font></font><font><font>
+ctx.fillRect（0,0,100,100）;</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            function drawit(ctx, x1, y1, rot1) {
+                ctx.fillStyle = "red";
+                ctx.translate(x1, y1);
+                //convert degrees to radians
+                var rads = rot1 * Math.PI * 2.0 / 360.0;
+                ctx.rotate(rads)
+                ctx.fillRect(0, 0, 100, 100);
+            }
+
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                x1: 50,
+                y1: 50,
+                rot1: 30
+            };
+            tangle.setup("rotatedemo");
+
+        });
+        </script>
+        <p>
+            <font>
+                <font>每次调用平移，旋转或缩放的时间把它添加到先前的转型。</font>
+                <font>随着时间的推移，这可能会造成混淆，当然。</font>
+                <font>你可以取消这样的转换：
+                </font>
+            </font>
+        </p>
+        <pre><code><span><font><font>对于（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>    c.translate（40 + I * 100，460 * DP 4）; </font></font></span><span><font><font>    VAR DP =数据[I]; </font></font></span><span><font><font>    c.fillRect（0,0,50 ，DP * 4）; </font></font></span><span><font><font>    c.translate（-40-I * 100，-450 + DP * 4）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>但是这是一个很大的恼人的代码来写。</font>
+                <font>如果您忘记了只有一次撤消它，那么你可以拧花时间通过您的代码寻找一个错误。</font>
+                <font>（不，</font>
+            </font><i><font><font>我</font></font></i>
+            <font>
+                <font>没有做到这一点，当然！）代替画布提供了一个状态保存API。</font>
+            </font>
+        </p>
+        <h3><a id="statesaving"><font><font>状态保存</font></font></a></h3>
+        <p>
+            <font>
+                <font>该context2D对象代表当前的图形状态。</font>
+                <font>在这本书中，我总是用</font>
+            </font><code><font><font>CTX</font></font></code>
+            <font>
+                <font>变量来保存这样的背景下。</font>
+                <font>状态包括当前变换，填充和笔触颜色，当前字体，和其他一些变量。</font>
+                <font>您可以通过将其推到使用堆栈保存此状态下</font>
+            </font><code><font><font>保存（）</font></font></code>
+            <font>
+                <font>函数。</font>
+                <font>保存后，您可以进行修改状态，然后恢复到与上一个状态
+                </font>
+            </font><code><font><font>恢复（）</font></font></code>
+            <font>
+                <font>函数。</font>
+                <font>Canvas 负责簿记的为您服务。</font>
+                <font>下面是节能状态，而不是写在前面的例子。</font>
+                <font>请注意，我们没有做未转换步骤。</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>对于（VAR I = 0; I &lt;data.length;我++）{ </font></font></span><span><font><font>    c.save（）; </font></font></span><span><font><font>    c.translate（40 + I * 100，460 * DP 4）; </font></font></span><span><font><font>    VAR DP =数据[I]; </font></font></span><span><font><font>    c.fillRect （0,0,50，DP * 4）; </font></font></span><span><font><font>    c.restore（）; </font></font></span><span><font><font>}</font></font></span></code></pre>
+        <h3><a id="clipping"><font><font>剪裁</font></font></a></h3>
+        <p>
+            <font>
+                <font>有时你可能想画只是形状的一部分。</font>
+                <font>你可以用夹子功能做到这一点。</font>
+                <font>它需要当前形状，并使用它作为进一步拉伸的掩模。</font>
+                <font>这意味着，任何绘图只会发生</font>
+            </font><i><font><font>内部</font></font></i>
+            <font>
+                <font>的剪辑。</font>
+                <font>你画什么</font>
+            </font><i><font><font>外面</font></font></i>
+            <font>
+                <font>的剪辑不会显示在屏幕上。</font>
+                <font>当你想通过组合的形状来创建复杂的图形，或当你想更新只是在屏幕性能的原因的一部分，这可能是很有用的。</font>
+                <font>这里就是我们画了一堆用圆圈裁剪正方形的例子：
+                </font>
+            </font>
+        </p>
+        <!--
+<pre><code>c.strokeStyle = &quot;black&quot;;
+c.lineWidth = 10;
+c.fillStyle = &quot;red&quot;;
+
+<i>// draw rect the first time</i>
+c.fillRect(0,0,600,200);
+
+c.save();
+
+<i>// create triangle path</i>
+c.beginPath();
+c.moveTo(200,100);
+c.lineTo(300,300);
+c.lineTo(100,300);
+c.closePath();
+
+<i>// stroke the triangle so we can see it</i>
+c.stroke();
+
+<i>// use triangle as clip, then fill rect in again with yellow</i>
+c.clip();
+c.fillStyle = &quot;yellow&quot;;
+c.fillRect(0,0,600,200);
+c.restore();</code></pre>
+
+<p class='photo'><img src="images/clipping.png"/></p>
+-->
+        <div id="clippingdemo" class="jangle">
+            <canvas width="400" height="200"></canvas>
+            <pre><font><font>//绘制矩形第一次</font></font><font></font><font><font>
+ctx.fillStyle ='红';</font></font><font></font><font><font>
+ctx.fillRect（0,0,400,100）;</font></font><font></font>
+<font></font><font><font>
+//创建三角形路径</font></font><font></font><font><font>
+ctx.beginPath（）;</font></font><font></font><font><font>
+ctx.moveTo（200，</font></font><b id="clippingdemo_var1"><font><font>50</font></font></b><font><font>）;</font></font><font></font><font><font>
+ctx.lineTo（250150）;</font></font><font></font><font><font>
+ctx.lineTo（150,150）;</font></font><font></font><font><font>
+ctx.closePath（）;</font></font><font></font>
+<font></font><font><font>
+//中风的三角形，所以我们可以看到它</font></font><font></font><font><font>
+ctx.lineWidth = 10;</font></font><font></font><font><font>
+ctx.stroke（）;</font></font><font></font>
+<font></font><font><font>
+//使用三角形夹， </font></font><font></font><font><font>
+ctx.clip（）;</font></font><font></font><font><font>
+//使用黄色重新填写RECT</font></font><font></font><font><font>
+ctx.fillStyle ='黄色';</font></font><font></font><font><font>
+ctx.fillRect（0,0,400,100）;</font></font><font></font>
+</pre>
+            <div class="popup shadow" style="display: none;">
+                <font>
+                    <font>000</font>
+                </font>
+            </div>
+        </div>
+        <script type="text/javascript" class="bookscript">
+        $(document).ready(function() {
+
+            function drawit(ctx, var1, var2, var3) {
+                // draw rect the first time
+                ctx.fillStyle = 'red';
+                ctx.fillRect(0, 0, 400, 100);
+
+                // create triangle path
+                ctx.beginPath();
+                ctx.moveTo(200, var1);
+                ctx.lineTo(250, 150);
+                ctx.lineTo(150, 150);
+                ctx.closePath();
+
+                // stroke the triangle so we can see it
+                ctx.lineWidth = 10;
+                ctx.stroke();
+
+                // use triangle as clip, 
+                ctx.clip();
+                //fill rect in again with yellow
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(0, 0, 400, 100);
+            }
+
+            var tangle = new Jangle();
+            tangle.drawfun = drawit;
+            tangle.vars = {
+                var1: 50
+            };
+            tangle.setup("clippingdemo");
+
+        });
+        </script>
+        <p>
+            <font>
+                <font>注意黄色矩形如何填充红色矩形和三角形的交叉点。</font>
+                <font>还注意到该三角形的下部具有厚的边界，但上部具有更薄边框。</font>
+                <font>这是因为在边界上的三角形形状的实际几何边缘居中。</font>
+                <font>黄色掩盖了，当它是由几何三角剪裁里面的边界，但外部边框遗漏部分。</font>
+            </font>
+        </p>
+        <h3><a id="events"><font><font>活动</font></font></a></h3>
+        <p>
+            <font>
+                <font>Canvas 没有定义任何新的事件。</font>
+                <font>你可以听，你会跟其他地方的工作相同的鼠标和触摸事件。</font>
+                <font>这是有好有坏。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>画布看起来就像像素到浏览器的其余部分的矩形区域。</font>
+                <font>浏览器不知道所绘制的任何形状。</font>
+                <font>如果您拖动鼠标光标在画布那么浏览器就会寄给你标准拖动事件到画布作为一个整体，没有任何东西</font>
+            </font><i><font><font>在</font></font></i>
+            <font>
+                <font>画布上。</font>
+                <font>这意味着，如果你想要做喜欢做的按钮或绘图工具特色的东西，你将不得不转换成浏览器可让您将自己的数据模型的原始鼠标事件做了事件处理自己。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>计算其形状的鼠标光标下可能是非常困难的。</font>
+                <font>幸运的是Canvas 有一个API的帮助：</font>
+            </font><code><font><font>isPointInPath</font></font></code>
+            <font>
+                <font>。</font>
+                <font>此功能会告诉你，如果一个给定的坐标为当前路径内。</font>
+                <font>这里有一个简单的例子：</font>
+            </font>
+        </p>
+        <pre><code><span><font><font>c.beginPath（）; </font></font></span><span><font><font>c.arc（</font></font></span><span><font><font>    100,100，40，// 40 PIX半径圆在100,100 </font></font></span><span><font><font>    0，Math.PI * 2，// 0到360度的全圆</font></font></span><span><font><font>）; </font></font></span><span><font><font>c.closePath（）; </font></font></span><span><font><font>无功一= c.isPointInPath（80,0）; </font><font>//返回true </font></font></span><span><font><font>变种B = c.isPointInPath（200,100）; </font><font>//返回false</font></font></span></code></pre>
+        <p>
+            <font>
+                <font>另一种选择是使用一个场景图库，如</font>
+            </font>
+            <a href="http://goamino.org/" target="_blank">
+                <font>
+                    <font>氨基酸</font>
+                </font>
+            </a>
+            <font>
+                <font>，它可以让你的形状，而不是像素方面工作。</font>
+                <font>它会执行事件处理并重新绘制你。
+                </font>
+            </font>
+        </p>
+    </div>
+    <div class="chapnav bottom">
+        <a class="prevchap" href="./chapter02.htm">
+            <font>
+                <font>上一个</font>
+            </font>
+        </a>
+        <a class="toclink" href="./index.htm">
+            <font>
+                <font>目录</font>
+            </font>
+        </a>
+        <a class="nextchap" href="./chapter04.htm">
+            <font>
+                <font>下一个</font>
+            </font>
+        </a>
+    </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9436360-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <div id="goog-gt-tt" class="goog-tooltip skiptranslate" dir="ltr" style="visibility: hidden; left: 729px; top: 355px; display: none;">
+        <div style="padding: 8px;">
+            <div>
+                <div class="logo"><img src="./style/translate_24dp.png" width="20" height="20"></div>
+            </div>
+        </div>
+        <div class="top" style="padding: 8px; float: left; width: 100%;">
+            <h1 class="title gray">原文</h1></div>
+        <div class="middle" style="padding: 8px;">
+            <div class="original-text">You can control how the pattern is repeated the same as you would with background images in CSS.</div>
+        </div>
+        <div class="bottom" style="padding: 8px;">
+            <div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div>
+            <div class="started-activity-container">
+                <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
+                <div class="activity-root"></div>
+            </div>
+        </div>
+        <div class="status-message" style="display: none; opacity: 0;"></div>
+    </div>
+</body>
+
+</html>

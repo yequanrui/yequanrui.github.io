@@ -1,0 +1,142 @@
+<!-- saved from url=(0061)./chapter08.htm -->
+<html class="translated-ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/master.css">
+    <script type="text/javascript" async="" src="./style/ga.js"></script>
+    <script src="./style/jquery.js"></script>
+    <script src="./style/setup.js"></script>
+    <script src="./style/jangle.js"></script>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./style/translateelement.css">
+</head>
+
+<body>
+    <div id="goog-gt-tt" class="skiptranslate" dir="ltr">
+        <div style="padding: 8px;">
+            <div>
+                <div class="logo"><img src="./style/translate_24dp.png" width="20" height="20"></div>
+            </div>
+        </div>
+        
+        <div class="status-message" style="display: none;"></div>
+    </div>
+    <div class="chapnav">
+        <a id="prevchap" href="./chapter07.htm">
+            <font>
+                <font>以前</font>
+            </font>
+        </a>
+        <div>
+            <div id="header">
+                <h2><font><font>第8章</font></font></h2>
+                <h1><font><font>移动设备和性能优化</font></font></h1>
+            </div>
+            <div id="content">
+                <p>
+                    <font>
+                        <font>现在，让我们来谈谈移动设备和优化。</font>
+                        <font>有Canvas 没有移动版，但只是画布。</font>
+                        <font>这是对桌面和移动设备相同的API。</font>
+                        <font>移动设备有时缺少的功能，但是，通常速度较慢; </font>
+                        <font>但同样可以在较早的桌面和浏览器如此。</font>
+                        <font>所以每当你正在画布应用程序必须考虑性能和不同的方法来优化你的代码是很重要的。</font>
+                    </font>
+                </p>
+                <h3><a id="drawless"><font><font>抽取更少</font></font></a></h3>
+                <p>
+                    <font>
+                        <font>性能一般的口头禅是</font>
+                    </font><i><font><font>平局较少</font></font></i>
+                    <font>
+                        <font>。</font>
+                    </font>
+                </p>
+                <p><b><font><font>不画隐藏的东西</font></font></b>
+                    <font>
+                        <font>。</font>
+                        <font>如果你有信息，四屏，但只有一个是可见的时间，那么不画别人。</font>
+                    </font>
+                </p>
+                <p><b><font><font>使用图像，而不是形状</font></font></b>
+                    <font>
+                        <font>。</font>
+                        <font>如果您有永远不会改变或进行调整一些图形，然后再考虑使用类似的Photoshop绘制它变成一个图像在编译时。</font>
+                        <font>一般来说图像可以更快地被吸引到屏幕上比矢量图形。</font>
+                        <font>如果你有一些图形将被一遍又一遍粉刷再次像在游戏中的精灵这是尤其如此。</font>
+                    </font>
+                </p>
+                <p><b><font><font>缓存使用屏幕外的画布</font></font></b>
+                    <font>
+                        <font>。</font>
+                        <font>您可以在运行时创建画布对象的新实例是不显示在屏幕上。</font>
+                        <font>您可以使用这些屏幕外canvasas作为缓存。</font>
+                        <font>当你的应用程序启动绘制图形到屏幕外的画布上，然后只复制一遍又一遍地绘制它。</font>
+                        <font>这给你同样的速度比使用形状图像，但你生成这些图像在运行时，如果需要，可能改变他们。</font>
+                    </font>
+                </p>
+                <p><b><font><font>图像拉伸</font></font></b>
+                    <font>
+                        <font>。</font>
+                        <font>由于我们使用的图像为许多东西已经考虑伸展他们的影响。</font>
+                        <font>大多数Canvas 实现都高度优化的代码，缩放和裁剪图像所以它应该是相当快。</font>
+                        <font>还有的drawImage的几个版本，让您绘制图像的小节。</font>
+                        <font>使用这些API，你可以做聪明的事情就像缓存一群精灵成一个单一的形象，或对广泛的影响时髦的拉伸图像。</font>
+                        <font>[截图]</font>
+                    </font>
+                </p>
+                <p><b><font><font>重绘您需要的屏幕部分</font></font></b>
+                    <font>
+                        <font>。</font>
+                        <font>根据您的应用程序有可能只是重绘屏幕的一部分。</font>
+                        <font>举例来说，如果我有一个球蹦跳着我不需要擦除和重绘整个背景。</font>
+                        <font>相反，我只是需要重新绘制球的位置以及它是前一帧。</font>
+                        <font>对于某些应用，这可能是一个巨大的加速。</font>
+                    </font>
+                </p>
+                <p><b><font><font>绘制较少的框架</font></font></b>
+                    <font>
+                        <font>现在你正在绘制低至每帧尽可能尝试绘制更少的帧。</font>
+                        <font>为了让你可能想画100FPS的流畅的动画，但是大多数电脑最大输出以60fps的屏幕刷新率。</font>
+                        <font>有一个在吸引更多的帧，因为用户将不会看到它们没有任何意义。</font>
+                        <font>那么，你如何同步与屏幕刷新？</font>
+                        <font>Mozilla和WebKit的具有实验性API请求浏览器请下屏幕刷新你的代码。</font>
+                        <font>这将取代你给setInterval或setTimeout的呼叫。</font>
+                        <font>现在浏览器是负责给你一个一致的帧率，这将确保您不会超过60fps的。</font>
+                        <font>它也可以做聪明事一样，如果用户切换到不同的选项卡降低帧率。</font>
+                        <font>移动浏览器都开始推行这个问题，以及使后台应用程序会被节流回来，节省了电池的使用寿命。</font>
+                    </font>
+                </p>
+                <p><b><font><font>吸取少，最好的办法是不画它。</font></font></b>
+                    <font>
+                        <font>如果你有一个静态背景，然后将其移出Canvas ，并与刚刚在浏览器中的图像绘制。</font>
+                        <font>你可以做一个画布的背景透明，这样背景图像将显示出来。</font>
+                        <font>如果您有大量的图像走动你会发现，他们移动速度更快，更流畅的使用CSS转换，而不是在画布的JavaScript这样做。</font>
+                        <font>一般来说CSS转换会更快，因为它们是用C实现的，而不是JS，但你的里程可能会有所不同，所以测试测试测试。</font>
+                        <font>说到这的：浏览器和Mozilla有很大的工具来帮助您调试和测试你的JavaScript。</font>
+                        <font>[名称？</font>
+                        <font>例子？]</font>
+                    </font>
+                </p>
+                <p><b><font><font>像素排列的图像</font></font></b>
+                    <font>
+                        <font>。</font>
+                        <font>如果他们是借鉴像素边界的最后一个尖端，在一些实现图像和形状将绘制更快。</font>
+                        <font>有些测试显示2 3倍加速在iPad上Canvas IMPL [确认]如果在像素排列你的精灵。</font>
+                    </font>
+                </p>
+                <!--
+<h3><a id="resizing">Resizing the canvas for smaller screens</a></h3>
+
+
+<a href="http://jsperf.com/drawimage-whole-pixels">JS perf article</a>
+<a href="http://sebleedelisle.com/2011/02/html5-canvas-sprite-optimisation/">sprite optimization</a>
+
+-->
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
