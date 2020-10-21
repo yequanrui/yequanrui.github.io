@@ -1,0 +1,3435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">AsyncSubject | RxJS 中文文档</title>
+  <meta name="description" content="RxJS 中文文档 - RxJS 5 官方文档中文版，此中文文档与官方文档保持同步更新!RxJS 中文社区致力于为广大国内 RxJS 爱好者提供更好的学习环境，其中包括无语言障碍的中文文档及其他中文学习资料!">
+  <meta name="keywords" content="RxJS中文文档,RxJS5中文文档,RxJS,RxJS5,RxJS-CN,RxJS中文社区,Observable">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-Rx.js"></script>
+<script data-ice="userScript" src="user/script/1-devtools-welcome.js"></script>
+<script data-ice="userScript" src="user/script/2-custom-manual-styles.js"></script>
+<script data-ice="userScript" src="user/script/3-decision-tree-widget.min.js"></script>
+<script data-ice="userScript" src="user/script/4-theme-toggler.js"></script>
+<script data-ice="userScript" src="user/script/5-translate.js"></script>
+<script data-ice="userScript" src="user/script/6-link-hash.js"></script>
+<script data-ice="userScript" src="user/script/7-language.js"></script>
+<script data-ice="userScript" src="user/script/8-about-link.js"></script>
+<script data-ice="userScript" src="user/script/9-wechat-share.js"></script>
+<script data-ice="userScript" src="user/script/10-rxjs-spy.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-main.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/ReactiveX/RxJS" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/AsyncSubject.js~AsyncSubject.html">AsyncSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/BehaviorSubject.js~BehaviorSubject.html">BehaviorSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/ReplaySubject.js~ReplaySubject.html">ReplaySubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~AnonymousSubject.html">AnonymousSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~Subject.html">Subject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~SubjectSubscriber.html">SubjectSubscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~TeardownLogicDoc.html">TeardownLogic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Scheduler">Rx.Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Symbol">Rx.Symbol</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable/dom</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxError.html">AjaxError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxResponse.html">AjaxResponse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxTimeoutError.html">AjaxTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/observable/dom/MiscJSDoc.js~AjaxRequestDoc.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operator</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">scheduler</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/scheduler/Action.js~Action.html">Action</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-animationFrame">animationFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-asap">asap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-async">async</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-queue">queue</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">symbol</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$iterator">$$iterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$observable">$$observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$rxSubscriber">$$rxSubscriber</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ArgumentOutOfRangeError.js~ArgumentOutOfRangeError.html">ArgumentOutOfRangeError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/EmptyError.js~EmptyError.html">EmptyError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ObjectUnsubscribedError.js~ObjectUnsubscribedError.html">ObjectUnsubscribedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/TimeoutError.js~TimeoutError.html">TimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/UnsubscriptionError.js~UnsubscriptionError.html">UnsubscriptionError</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {AsyncSubject} from &apos;<span><a href="file/es6/AsyncSubject.js.html#lineNumber6">@reactivex/rxjs/es6/AsyncSubject.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/es6/AsyncSubject.js.html#lineNumber6">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">AsyncSubject</h1>
+
+  
+
+  
+  
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/es6/Observable.js~Observable.html">Observable</a></span> &#x2192; <span><a href="class/es6/Subject.js~Subject.html">Subject</a></span> &#x2192; AsyncSubject</div></div>
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec-js/subjects/AsyncSubject-spec.js.html#lineNumber21">AsyncSubject</a></span></li>
+</ul>
+  </div>
+
+  
+</div>
+
+
+
+
+
+
+
+<div class="inherited-summary" data-ice="inheritedSummary"><h2>Inherited Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-bindCallback">bindCallback</a></span></span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(...params: <span>*</span>)</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x628A;&#x56DE;&#x8C03;API&#x8F6C;&#x5316;&#x4E3A;&#x8FD4;&#x56DE;Observable&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-bindNodeCallback">bindNodeCallback</a></span></span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x628A; Node.js &#x5F0F;&#x56DE;&#x8C03;API&#x8F6C;&#x6362;&#x4E3A;&#x8FD4;&#x56DE; Observable &#x7684;&#x51FD;&#x6570;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-combineLatest">combineLatest</a></span></span><span data-ice="signature">(observable1: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, observable2: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, project: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x7EC4;&#x5408;&#x591A;&#x4E2A; Observables &#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x8BE5; Observable &#x7684;&#x503C;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x8F93;&#x5165; Observable &#x7684;&#x6700;&#x65B0;&#x503C;&#x8BA1;&#x7B97;&#x5F97;&#x51FA;&#x7684;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-concat">concat</a></span></span><span data-ice="signature">(input1: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, input2: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8F93;&#x51FA; Observable&#xFF0C;&#x8BE5; Observable &#x987A;&#x5E8F;&#x7684;&#x53D1;&#x51FA;&#x6BCF;&#x4E2A;&#x8F93;&#x5165; Observable &#x7684;&#x6240;&#x6709;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-create">create</a></span></span><span data-ice="signature">(onSubscription: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(observer: <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span>)</span>: <span><a href="class/es6/MiscJSDoc.js~TeardownLogicDoc.html">TeardownLogic</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Observable &#xFF0C;&#x5F53;&#x89C2;&#x5BDF;&#x8005;( <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> )&#x8BA2;&#x9605;&#x8BE5; Observable &#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x6267;&#x884C;&#x6307;&#x5B9A;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-defer">defer</a></span></span><span data-ice="signature">(observableFactory: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable&#xFF0C;&#x5F53;&#x88AB;&#x8BA2;&#x9605;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8C03;&#x7528; Observable &#x5DE5;&#x5382;&#x4E3A;&#x6BCF;&#x4E2A;&#x89C2;&#x5BDF;&#x8005;&#x521B;&#x5EFA;&#x65B0;&#x7684; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-empty">empty</a></span></span><span data-ice="signature">(scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4EC0;&#x4E48;&#x6570;&#x636E;&#x90FD;&#x4E0D;&#x53D1;&#x51FA;&#x5E76;&#x4E14;&#x7ACB;&#x9A6C;&#x5B8C;&#x6210;&#x7684; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-forkJoin">forkJoin</a></span></span><span data-ice="signature">(sources: <span>*</span>): <span>any</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-from">from</a></span></span><span data-ice="signature">(ish: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>&lt;<span>T</span>&gt;, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4ECE;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x3001;&#x7C7B;&#x6570;&#x7EC4;&#x5BF9;&#x8C61;&#x3001;Promise&#x3001;&#x8FED;&#x4EE3;&#x5668;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x7C7B; Observable &#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-fromEvent">fromEvent</a></span></span><span data-ice="signature">(target: <span>EventTargetLike</span>, eventName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, options: <span>EventListenerOptions</span>, selector: <span>SelectorMethodSignature</span>&lt;<span>T</span>&gt;): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable&#xFF0C;&#x8BE5; Observable &#x53D1;&#x51FA;&#x6765;&#x81EA;&#x7ED9;&#x5B9A;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#x4E8B;&#x4EF6;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-fromEventPattern">fromEventPattern</a></span></span><span data-ice="signature">(addHandler: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(handler: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>)</span>: <span>any</span></span>, removeHandler: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(handler: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, signal?: <span>any</span>)</span>: <span>void</span></span>, selector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(...args: <span>any</span>)</span>: <span>T</span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4ECE;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E; addHandler/removeHandler &#x65B9;&#x6CD5;&#x7684;API&#x521B;&#x5EFA; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-fromPromise">fromPromise</a></span></span><span data-ice="signature">(promise: <span>PromiseLike</span>&lt;<span>T</span>&gt;, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06; Promise &#x8F6C;&#x5316;&#x4E3A; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-interval">interval</a></span></span><span data-ice="signature">(period: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x8BE5; Observable &#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684; IScheduler &#xFF0C;&#x5E76;&#x4EE5;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x53D1;&#x51FA;&#x8FDE;&#x7EED;&#x7684;&#x6570;&#x5B57;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-merge">merge</a></span></span><span data-ice="signature">(observables: ...<span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, concurrent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8F93;&#x51FA; Observable &#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x53D1;&#x51FA;&#x6BCF;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x8F93;&#x5165; Observable &#x4E2D;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-never">never</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0D;&#x5411;&#x89C2;&#x5BDF;&#x8005;&#x53D1;&#x51FA;&#x4EFB;&#x4F55;&#x9879;&#x7684; Observable &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-of">of</a></span></span><span data-ice="signature">(values: ...<span>T</span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable&#xFF0C;&#x5B83;&#x4F1A;&#x4F9D;&#x6B21;&#x53D1;&#x51FA;&#x7531;&#x4F60;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x6700;&#x540E;&#x53D1;&#x51FA;&#x5B8C;&#x6210;&#x901A;&#x77E5;&#x3002;
+<span class="informal">&#x53D1;&#x51FA;&#x4F60;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x5B8C;&#x6210;&#x3002;
+</span></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-range">range</a></span></span><span data-ice="signature">(start: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, count: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x5B83;&#x53D1;&#x51FA;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6570;&#x5B57;&#x5E8F;&#x5217;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-throw">throw</a></span></span><span data-ice="signature">(&#x5C06;&#x5177;&#x4F53;&#x7684;: <span>any</span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0D;&#x53D1;&#x9001;&#x6570;&#x636E;&#x7ED9;&#x89C2;&#x5BDF;&#x8005;&#x5E76;&#x4E14;&#x7ACB;&#x9A6C;&#x53D1;&#x51FA;&#x9519;&#x8BEF;&#x901A;&#x77E5;&#x7684; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-timer">timer</a></span></span><span data-ice="signature">(initialDelay: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></span>, period: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable&#xFF0C;&#x8BE5; Observable &#x5728;&#x521D;&#x59CB;&#x5EF6;&#x65F6;&#xFF08;<code>initialDelay</code>&#xFF09;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x53D1;&#x9001;&#x5E76;&#x4E14;&#x5728;&#x6BCF;&#x4E2A;&#x65F6;&#x95F4;&#x5468;&#x671F;&#xFF08; <code>period</code>&#xFF09;&#x540E;&#x53D1;&#x51FA;&#x81EA;&#x589E;&#x7684;&#x6570;&#x5B57;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-webSocket">webSocket</a></span></span><span data-ice="signature">(urlConfigOrSource: <span>string </span> | <span> WebSocketSubjectConfig</span>): <span><a href="class/es6/observable/dom/WebSocketSubject.js~WebSocketSubject.html">WebSocketSubject</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5305;&#x88C5;&#x6D4F;&#x89C8;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x517C;&#x5BB9;w3c&#x7684;WebSocket&#x5BF9;&#x8C61;.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#static-method-zip">zip</a></span></span><span data-ice="signature">(observables: <span>*</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x591A;&#x4E2A; Observable &#x7EC4;&#x5408;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable&#xFF0C;&#x8BE5; Observable &#x7684;&#x503C;&#x662F;&#x7531;&#x6240;&#x6709;&#x8F93;&#x5165; Observables &#x7684;&#x503C;&#x6309;&#x987A;&#x5E8F;&#x8BA1;&#x7B97;&#x800C;&#x6765;&#x7684;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-[Symbol_observable]">[Symbol_observable]</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>An interop point defined by the es7-observable spec <a href="https://github.com/zenparsing/es-observable">https://github.com/zenparsing/es-observable</a></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-audit">audit</a></span></span><span data-ice="signature">(durationSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5728;&#x53E6;&#x4E00;&#x4E2A; Observable &#x51B3;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x6BB5;&#x91CC;&#x5FFD;&#x7565;&#x6E90;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x51FA;&#x6E90; Observable &#x4E2D;&#x6700;&#x65B0;&#x53D1;&#x51FA;&#x7684;&#x503C;&#xFF0C;
+&#x7136;&#x540E;&#x91CD;&#x590D;&#x6B64;&#x8FC7;&#x7A0B;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-auditTime">auditTime</a></span></span><span data-ice="signature">(duration: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>duration &#x6BEB;&#x79D2;&#x5185;&#x5FFD;&#x7565;&#x6E90;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x51FA;&#x6E90; Observable &#x7684;&#x6700;&#x65B0;&#x503C;&#xFF0C; &#x5E76;&#x4E14;&#x91CD;&#x590D;&#x6B64;&#x8FC7;&#x7A0B;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-buffer">buffer</a></span></span><span data-ice="signature">(closingNotifier: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>any</span>&gt;): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x7F13;&#x51B2;&#x6E90; Observable &#x7684;&#x503C;&#x76F4;&#x5230; <code>closingNotifier</code> &#x53D1;&#x51FA;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-bufferCount">bufferCount</a></span></span><span data-ice="signature">(bufferSize: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, startBufferEvery: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x7F13;&#x51B2;&#x6E90; Observable &#x7684;&#x503C;&#x76F4;&#x5230;&#x7F13;&#x51B2;&#x6570;&#x91CF;&#x5230;&#x8FBE;&#x8BBE;&#x5B9A;&#x7684; <code>bufferSize</code>.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-bufferTime">bufferTime</a></span></span><span data-ice="signature">(bufferTimeSpan: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, bufferCreationInterval: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, maxBufferSize: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5728;&#x7279;&#x5B9A;&#x65F6;&#x95F4;&#x5468;&#x671F;&#x5185;&#x7F13;&#x51B2;&#x6E90; Observable &#x7684;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-bufferToggle">bufferToggle</a></span></span><span data-ice="signature">(openings: <span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span>&lt;<span>O</span>&gt;, closingSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>O</span>)</span>: <span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p> &#x7F13;&#x51B2;&#x6E90; Observable &#x7684;&#x503C;&#xFF0C;<code>openings</code> &#x53D1;&#x9001;&#x7684;&#x65F6;&#x5019;&#x5F00;&#x59CB;&#x7F13;&#x51B2;&#xFF0C;<code>closingSelector</code> &#x53D1;&#x9001;&#x7684;&#x65F6;&#x5019;&#x7ED3;&#x675F;&#x7F13;&#x51B2;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-bufferWhen">bufferWhen</a></span></span><span data-ice="signature">(closingSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x7F13;&#x51B2;&#x6E90; Observable &#x7684;&#x503C;, &#x4F7F;&#x7528;&#x5173;&#x95ED; Observable &#x7684;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x6765;&#x51B3;&#x5B9A;&#x4F55;&#x65F6;&#x5173;&#x95ED;&#x3001;&#x53D1;&#x51FA;&#x548C;&#x91CD;&#x7F6E;&#x7F13;&#x51B2;&#x533A;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-catch">catch</a></span></span><span data-ice="signature">(selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x6355;&#x83B7; observable &#x4E2D;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684; observable &#x6216;&#x8005;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x5BF9;&#x8C61;&#x6765;&#x5904;&#x7406;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-combineAll">combineAll</a></span></span><span data-ice="signature">(project: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x901A;&#x8FC7;&#x7B49;&#x5F85;&#x5916;&#x90E8; Observable &#x5B8C;&#x6210;&#x7136;&#x540E;&#x5E94;&#x7528; <span><a href="class/es6/Observable.js~Observable.html#static-method-combineLatest">combineLatest</a></span> &#xFF0C;&#x5C06;&#x9AD8;&#x9636; Observable &#x8F6C;&#x5316;&#x4E3A;&#x4E00;&#x9636; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-combineLatest">combineLatest</a></span></span><span data-ice="signature">(other: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, project: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x7EC4;&#x5408;&#x591A;&#x4E2A; Observables &#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x8BE5; Observable &#x7684;&#x503C;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x8F93;&#x5165; Observable &#x7684;&#x6700;&#x65B0;&#x503C;&#x8BA1;&#x7B97;&#x5F97;&#x51FA;&#x7684;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-concat">concat</a></span></span><span data-ice="signature">(other: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8F93;&#x51FA; Observable&#xFF0C;&#x5B83;&#x5728;&#x5F53;&#x524D; Observable &#x4E4B;&#x540E;&#x987A;&#x5E8F;&#x5730;&#x53D1;&#x51FA;&#x6BCF;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x8F93;&#x5165; Observable &#x4E2D;&#x7684;&#x6240;&#x6709;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-concatAll">concatAll</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x901A;&#x8FC7;&#x987A;&#x5E8F;&#x5730;&#x8FDE;&#x63A5;&#x5185;&#x90E8; Observable&#xFF0C;&#x5C06;&#x9AD8;&#x9636; Observable &#x8F6C;&#x5316;&#x4E3A;&#x4E00;&#x9636; Observable &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-concatMap">concatMap</a></span></span><span data-ice="signature">(project: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, ?index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(outerValue: <span>T</span>, innerValue: <span>I</span>, outerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, innerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>any</span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x4E3A;&#x4E00;&#x4E2A;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x7684; Observable,&#x4EE5;&#x4E32;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x7B49;&#x5F85;&#x524D;&#x4E00;&#x4E2A;&#x5B8C;&#x6210;&#x518D;&#x5408;&#x5E76;&#x4E0B;&#x4E00;&#x4E2A;
+Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-concatMapTo">concatMapTo</a></span></span><span data-ice="signature">(innerObservable: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(outerValue: <span>T</span>, innerValue: <span>I</span>, outerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, innerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>any</span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x6210;&#x540C;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x8BE5; Observable &#x4F1A;&#x4EE5;&#x4E32;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x591A;&#x6B21;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D; &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-count">count</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, i: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, source: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8BA1;&#x7B97;&#x6E90;&#x7684;&#x53D1;&#x9001;&#x6570;&#x91CF;&#xFF0C;&#x5E76;&#x5F53;&#x6E90;&#x5B8C;&#x6210;&#x65F6;&#x53D1;&#x51FA;&#x8BE5;&#x6570;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-debounce">debounce</a></span></span><span data-ice="signature">(durationSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x6709;&#x5728;&#x53E6;&#x4E00;&#x4E2A; Observable &#x51B3;&#x5B9A;&#x7684;&#x4E00;&#x6BB5;&#x7279;&#x5B9A;&#x65F6;&#x95F4;&#x7ECF;&#x8FC7;&#x540E;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x53D1;&#x51FA;&#x53E6;&#x4E00;&#x4E2A;&#x6E90;&#x503C;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x4ECE;&#x6E90; Observable &#x4E2D;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-debounceTime">debounceTime</a></span></span><span data-ice="signature">(dueTime: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x6709;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x7ECF;&#x8FC7;&#x540E;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x53D1;&#x51FA;&#x53E6;&#x4E00;&#x4E2A;&#x6E90;&#x503C;&#xFF0C;&#x624D;&#x4ECE;&#x6E90; Observable &#x4E2D;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-defaultIfEmpty">defaultIfEmpty</a></span></span><span data-ice="signature">(defaultValue: <span>any</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5982;&#x679C;&#x6E90; Observable &#x5728;&#x5B8C;&#x6210;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x53D1;&#x51FA;&#x4EFB;&#x4F55; next &#x503C;&#xFF0C;&#x5219;&#x53D1;&#x51FA;&#x7ED9;&#x5B9A;&#x7684;&#x503C;&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE; Observable &#x7684;&#x955C;&#x50CF;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-delay">delay</a></span></span><span data-ice="signature">(delay: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x901A;&#x8FC7;&#x7ED9;&#x5B9A;&#x7684;&#x8D85;&#x65F6;&#x6216;&#x8005;&#x76F4;&#x5230;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x6765;&#x5EF6;&#x8FDF;&#x6E90; Observable &#x7684;&#x53D1;&#x9001;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-delayWhen">delayWhen</a></span></span><span data-ice="signature">(delayDurationSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>, subscriptionDelay: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5728;&#x7ED9;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x5EF6;&#x8FDF;&#x6E90; Observable &#x6240;&#x6709;&#x6570;&#x636E;&#x9879;&#x7684;&#x53D1;&#x9001;&#xFF0C;&#x8BE5;&#x65F6;&#x95F4;&#x6BB5;&#x7531;&#x53E6;&#x4E00;&#x4E2A; Observable &#x7684;&#x53D1;&#x9001;&#x51B3;&#x5B9A;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-dematerialize">dematerialize</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06; <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span> &#x5BF9;&#x8C61;&#x7684; Observable &#x8F6C;&#x6362;&#x6210;&#x5B83;&#x4EEC;&#x6240;&#x4EE3;&#x8868;&#x7684;&#x53D1;&#x9001;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-distinct">distinct</a></span></span><span data-ice="signature">(keySelector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, flushes: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE; Observable&#xFF0C;&#x5B83;&#x53D1;&#x51FA;&#x7531;&#x6E90; Observable &#x6240;&#x53D1;&#x51FA;&#x7684;&#x6240;&#x6709;&#x4E0E;&#x4E4B;&#x524D;&#x7684;&#x9879;&#x90FD;&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x9879;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-distinctUntilChanged">distinctUntilChanged</a></span></span><span data-ice="signature">(compare: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE; Observable&#xFF0C;&#x5B83;&#x53D1;&#x51FA;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x6240;&#x6709;&#x4E0E;&#x524D;&#x4E00;&#x9879;&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x9879;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-distinctUntilKeyChanged">distinctUntilKeyChanged</a></span></span><span data-ice="signature">(key: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, compare: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE; Observable&#xFF0C;&#x5B83;&#x53D1;&#x51FA;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x6240;&#x6709;&#x4E0E;&#x524D;&#x4E00;&#x9879;&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x9879;&#xFF0C;&#x4F7F;&#x7528;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x7684; key &#x8BBF;&#x95EE;&#x5230;&#x7684;&#x5C5E;&#x6027;&#x6765;&#x68C0;&#x67E5;&#x4E24;&#x4E2A;&#x9879;&#x662F;&#x5426;&#x4E0D;&#x540C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-do">do</a></span></span><span data-ice="signature">(nextOrObserver: <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, error: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, complete: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4E3A;&#x6E90; Observable &#x4E0A;&#x7684;&#x6BCF;&#x6B21;&#x53D1;&#x9001;&#x6267;&#x884C;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x4F46;&#x8FD4;&#x56DE;&#x7684; Observable &#x4E0E;&#x6E90; Observable &#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-elementAt">elementAt</a></span></span><span data-ice="signature">(index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, defaultValue: <span>T</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x53D1;&#x51FA;&#x5355;&#x4E2A;&#x503C;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x4F4D;&#x4E8E;&#x6E90; Observable &#x7684;&#x53D1;&#x9001;&#x5E8F;&#x5217;&#x4E2D;&#x7684;&#x6307;&#x5B9A; <code>index</code> &#x5904;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-every">every</a></span></span><span data-ice="signature">(predicate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, thisArg: <span>any</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observable &#x53D1;&#x51FA;&#x662F;&#x5426;&#x6E90; Observable &#x7684;&#x6BCF;&#x9879;&#x90FD;&#x6EE1;&#x8DB3;&#x6307;&#x5B9A;&#x7684;&#x6761;&#x4EF6;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-exhaust">exhaust</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5F53;&#x524D;&#x4E00;&#x4E2A;&#x5185;&#x90E8; Observable &#x8FD8;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x901A;&#x8FC7;&#x4E22;&#x5F03;&#x5185;&#x90E8; Observable &#x4F7F;&#x5F97;
+&#x9AD8;&#x9636; Observable &#x8F6C;&#x6362;&#x6210;&#x4E00;&#x9636; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-exhaustMap">exhaustMap</a></span></span><span data-ice="signature">(project: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, ?index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(outerValue: <span>T</span>, innerValue: <span>I</span>, outerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, innerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>any</span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x6210; Observable&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x524D;&#x4E00;&#x4E2A;&#x6295;&#x5C04;&#x7684; Observable &#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#xFF0C;
+&#x8FD9;&#x4E2A; Observable &#x624D;&#x4F1A;&#x88AB;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-expand">expand</a></span></span><span data-ice="signature">(project: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span></span>, concurrent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x9012;&#x5F52;&#x5730;&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x6210; Observable&#xFF0C;&#x8FD9;&#x4E2A; Observable &#x4F1A;&#x88AB;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-filter">filter</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>, thisArg: <span>any</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x901A;&#x8FC7;&#x53EA;&#x53D1;&#x9001;&#x6E90; Observable &#x7684;&#x4E2D;&#x6EE1;&#x8DB3;&#x6307;&#x5B9A; predicate &#x51FD;&#x6570;&#x7684;&#x9879;&#x6765;&#x8FDB;&#x884C;&#x8FC7;&#x6EE4;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-find">find</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, source: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>, thisArg: <span>any</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x53D1;&#x51FA;&#x6E90; Observable &#x6240;&#x53D1;&#x51FA;&#x7684;&#x503C;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-findIndex">findIndex</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, source: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>, thisArg: <span>any</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x53D1;&#x51FA;&#x6E90; Observable &#x6240;&#x53D1;&#x51FA;&#x7684;&#x503C;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x503C;&#x7684;&#x7D22;&#x5F15;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-first">first</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, source: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>R</span></span>, defaultValue: <span>R</span>): <span>Observable&lt;T</span> | <span>R&gt;</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x53D1;&#x51FA;&#x7531;&#x6E90; Observable &#x6240;&#x53D1;&#x51FA;&#x7684;&#x503C;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;(&#x6216;&#x7B2C;&#x4E00;&#x4E2A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x503C;)&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-forEach">forEach</a></span></span><span data-ice="signature">(next: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, PromiseCtor: <span>PromiseConstructor</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-groupBy">groupBy</a></span></span><span data-ice="signature">(keySelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>K</span></span>, elementSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>R</span></span>, durationSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(grouped: <span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span>&lt;<span>K</span>, <span>R</span>&gt;)</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>any</span>&gt;</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span>&lt;<span>K</span>, <span>R</span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x6839;&#x636E;&#x6307;&#x5B9A;&#x6761;&#x4EF6;&#x5C06;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x5E76;&#x5C06;&#x8FD9;&#x4E9B;&#x5206;&#x7EC4;&#x4F5C;&#x4E3A; <code>GroupedObservables</code>
+&#x53D1;&#x51FA;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x7EC4;&#x90FD;&#x662F;&#x4E00;&#x4E2A; <span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span> &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-ignoreElements">ignoreElements</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5FFD;&#x7565;&#x6E90; Observable &#x6240;&#x53D1;&#x9001;&#x7684;&#x6240;&#x6709;&#x9879;&#xFF0C;&#x53EA;&#x4F20;&#x9012; <code>complete</code> &#x6216; <code>error</code> &#x7684;&#x8C03;&#x7528;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-isEmpty">isEmpty</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5982;&#x679C;&#x6E90; Observable &#x662F;&#x7A7A;&#x7684;&#x8BDD;&#xFF0C;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53D1;&#x51FA; true &#x7684; Observable&#xFF0C;&#x5426;&#x5219;&#x53D1;&#x51FA; false &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-last">last</a></span></span><span data-ice="signature">(predicate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observable &#x53EA;&#x53D1;&#x51FA;&#x7531;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x503C;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7684; predicate &#x51FD;&#x6570;&#x4F5C;&#x4E3A;
+&#x53C2;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x4F20;&#x5165; predicate &#x7684;&#x8BDD;&#x5219;&#x53D1;&#x9001;&#x7684;&#x4E0D;&#x662F;&#x6E90; Observable &#x7684;&#x6700;&#x540E;&#x4E00;&#x9879;&#xFF0C;&#x800C;&#x662F;&#x53D1;&#x51FA;&#x6E90; Observable &#x4E2D;
+&#x6EE1;&#x8DB3; predicate &#x51FD;&#x6570;&#x7684;&#x6700;&#x540E;&#x4E00;&#x9879;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-letProto">letProto</a></span></span><span data-ice="signature">(func: <span>*</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-lift">lift</a></span></span><span data-ice="signature">(operator: <span>Operator</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Observable&#xFF0C;&#x4EE5;&#x5B83;&#x4F5C;&#x4E3A;&#x6E90;&#xFF0C;&#x5E76;&#x4F20;&#x9012;&#x64CD;&#x4F5C;&#x7B26;&#x7684;&#x5B9A;&#x4E49;&#x4F5C;&#x4E3A;&#x65B0;&#x7684; observable &#x64CD;&#x4F5C;&#x7B26;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-map">map</a></span></span><span data-ice="signature">(project: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>R</span></span>, thisArg: <span>any</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x7ED9;&#x5B9A;&#x7684; <code>project</code> &#x51FD;&#x6570;&#x5E94;&#x7528;&#x4E8E;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x6BCF;&#x4E2A;&#x503C;&#xFF0C;&#x5E76;&#x5C06;&#x7ED3;&#x679C;&#x503C;&#x4F5C;&#x4E3A;
+Observable &#x53D1;&#x51FA;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-mapTo">mapTo</a></span></span><span data-ice="signature">(value: <span>any</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x6BCF;&#x6B21;&#x6E90; Observble &#x53D1;&#x51FA;&#x503C;&#x65F6;&#xFF0C;&#x90FD;&#x5728;&#x8F93;&#x51FA; Observable &#x4E0A;&#x53D1;&#x51FA;&#x7ED9;&#x5B9A;&#x7684;&#x5E38;&#x91CF;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-materialize">materialize</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>T</span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8868;&#x793A;&#x6E90; Observable &#x4E2D;&#x7684;&#x6240;&#x6709;&#x901A;&#x77E5;&#xFF0C;&#x6BCF;&#x4E2A;&#x901A;&#x77E5;&#x90FD;&#x4F1A;&#x5728; <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span> &#x5BF9;&#x8C61;&#x4E2D;&#x6807;&#x8BB0;&#x4E3A;
+&#x5B83;&#x4EEC;&#x539F;&#x59CB;&#x7684;&#x901A;&#x77E5;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4F1A;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA; Observable &#x7684; <code>next</code> &#x901A;&#x77E5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-max">max</a></span></span><span data-ice="signature">(comparer: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p><code>max</code> &#x64CD;&#x4F5C;&#x7B26;&#x64CD;&#x4F5C;&#x7684; Observable &#x53D1;&#x51FA;&#x6570;&#x5B57;(&#x6216;&#x53EF;&#x4EE5;&#x4E0E;&#x63D0;&#x4F9B;&#x7684;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x7684;&#x9879;)&#x5E76;&#x4E14;&#x5F53;&#x6E90; Observable &#x5B8C;&#x6210;&#x65F6;&#x5B83;&#x53D1;&#x51FA;&#x5355;&#x4E00;&#x9879;&#xFF1A;&#x6700;&#x5927;&#x503C;&#x7684;&#x9879;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-merge">merge</a></span></span><span data-ice="signature">(other: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, concurrent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8F93;&#x51FA; Observable &#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x53D1;&#x51FA;&#x6BCF;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x8F93;&#x5165; Observable &#x4E2D;&#x7684;&#x6240;&#x6709;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-mergeAll">mergeAll</a></span></span><span data-ice="signature">(concurrent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x9AD8;&#x9636; Observable &#x8F6C;&#x6362;&#x6210;&#x4E00;&#x9636; Observable &#xFF0C;&#x4E00;&#x9636; Observable &#x4F1A;&#x540C;&#x65F6;&#x53D1;&#x51FA;&#x5728;&#x5185;&#x90E8;
+Observables &#x4E0A;&#x53D1;&#x51FA;&#x7684;&#x6240;&#x6709;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-mergeMap">mergeMap</a></span></span><span data-ice="signature">(project: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, ?index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(outerValue: <span>T</span>, innerValue: <span>I</span>, outerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, innerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>any</span></span>, concurrent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x6210; Observable &#xFF0C;&#x8BE5; Observable &#x4F1A;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-mergeMapTo">mergeMapTo</a></span></span><span data-ice="signature">(innerObservable: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(outerValue: <span>T</span>, innerValue: <span>I</span>, outerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, innerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>any</span></span>, concurrent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x6210;&#x540C;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x8BE5; Observable &#x4F1A;&#x591A;&#x6B21;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-mergeScan">mergeScan</a></span></span><span data-ice="signature">(accumulator: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(acc: <span>R</span>, value: <span>T</span>)</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>, seed: <span>*</span>, concurrent: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5728;&#x6E90; Observable &#x4E0A;&#x5E94;&#x7528; accumulator &#x51FD;&#x6570;&#xFF0C;&#x5176;&#x4E2D; accumulator &#x51FD;&#x6570;&#x672C;&#x8EAB;&#x8FD4;&#x56DE;
+Observable &#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x4E2A;&#x8FD4;&#x56DE;&#x7684;&#x4E2D;&#x95F4; Observable &#x4F1A;&#x88AB;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-min">min</a></span></span><span data-ice="signature">(comparer: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p><code>min</code> &#x64CD;&#x4F5C;&#x7B26;&#x64CD;&#x4F5C;&#x7684; Observable &#x53D1;&#x51FA;&#x6570;&#x5B57;(&#x6216;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x63D0;&#x4F9B;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x7684;&#x9879;)&#x5E76;&#x4E14;&#x5F53;&#x6E90; Observable &#x5B8C;&#x6210;&#x65F6;&#x5B83;&#x53D1;&#x51FA;&#x5355;&#x4E00;&#x9879;&#xFF1A;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x9879;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-multicast">multicast</a></span></span><span data-ice="signature">(subjectOrSubjectFactory: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span> | <span><a href="class/es6/Subject.js~Subject.html">Subject</a></span>, selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observable &#x53D1;&#x51FA;&#x5BF9; ConnectableObservable &#x53D1;&#x51FA;&#x7684;&#x9879;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684; selector &#x51FD;&#x6570;&#x7684;&#x7ED3;&#x679C;&#xFF0C;
+ConnectableObservable &#x53EF;&#x4EE5;&#x5728;&#x6F5C;&#x5728;&#x7684;&#x591A;&#x4E2A;&#x6D41;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x5355;&#x4E2A; subscription &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-observeOn">observeOn</a></span></span><span data-ice="signature">(scheduler: <span>IScheduler</span>, delay: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x8C03;&#x5EA6;&#x5668;&#x6765;&#x91CD;&#x65B0;&#x53D1;&#x51FA;&#x6E90; Observable &#x7684;&#x6240;&#x6709;&#x901A;&#x77E5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-onErrorResumeNext">onErrorResumeNext</a></span></span><span data-ice="signature">(observables: ...<span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5F53;&#x4EFB;&#x4F55;&#x63D0;&#x4F9B;&#x7684; Observable &#x53D1;&#x51FA;&#x5B8C;&#x6210;&#x6216;&#x9519;&#x8BEF;&#x901A;&#x77E5;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x7ACB;&#x5373;&#x5730;&#x8BA2;&#x9605;&#x5DF2;&#x4F20;&#x5165;&#x4E0B;&#x4E00;&#x4E2A; Observable &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-pairwise">pairwise</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span>T</span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x4E00;&#x7CFB;&#x5217;&#x8FDE;&#x7EED;&#x7684;&#x53D1;&#x9001;&#x6210;&#x5BF9;&#x7684;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x5E76;&#x5C06;&#x8FD9;&#x4E9B;&#x5206;&#x7EC4;&#x4F5C;&#x4E3A;&#x4E24;&#x4E2A;&#x503C;&#x7684;&#x6570;&#x7EC4;&#x53D1;&#x51FA;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-partition">partition</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>, thisArg: <span>any</span>): <span>[Observable&lt;T&gt;, Observable&lt;T&gt;]</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6E90; Observable &#x4E00;&#x5206;&#x4E3A;&#x4E8C;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x6240;&#x6709;&#x6EE1;&#x8DB3; predicate &#x51FD;&#x6570;&#x7684;&#x503C;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x6240;&#x6709;
+&#x4E0D;&#x6EE1;&#x8DB3; predicate &#x7684;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-pluck">pluck</a></span></span><span data-ice="signature">(properties: ...<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;(&#x5BF9;&#x8C61;)&#x6620;&#x5C04;&#x6210;&#x5B83;&#x6307;&#x5B9A;&#x7684;&#x5D4C;&#x5957;&#x5C5E;&#x6027;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-publish">publish</a></span></span><span data-ice="signature">(selector: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE; ConnectableObservable&#xFF0C;&#x5B83;&#x662F; Observable &#x7684;&#x53D8;&#x79CD;&#xFF0C;&#x5B83;&#x4F1A;&#x4E00;&#x76F4;&#x7B49;&#x5F85;&#xFF0C;&#x76F4;&#x5230; connnect &#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x624D;&#x4F1A;&#x5F00;&#x59CB;&#x628A;&#x503C;&#x53D1;&#x9001;&#x7ED9;&#x90A3;&#x4E9B;&#x8BA2;&#x9605;&#x5B83;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-publishBehavior">publishBehavior</a></span></span><span data-ice="signature">(value: <span>*</span>): <span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-publishLast">publishLast</a></span></span><span data-ice="signature">(): <span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-publishReplay">publishReplay</a></span></span><span data-ice="signature">(bufferSize: <span>*</span>, windowTime: <span>*</span>, scheduler: <span>*</span>): <span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-race">race</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE; Observable&#xFF0C;&#x8BE5; Observable &#x662F;&#x6E90; Observable &#x548C;&#x63D0;&#x4F9B;&#x7684; Observables &#x7684;&#x7EC4;&#x5408;&#x4E2D;
+&#x7B2C;&#x4E00;&#x4E2A;&#x53D1;&#x51FA;&#x9879;&#x7684; Observable &#x7684;&#x955C;&#x50CF;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-reduce">reduce</a></span></span><span data-ice="signature">(accumulator: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(acc: <span>R</span>, value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>R</span></span>, seed: <span>R</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5728;&#x6E90; Observalbe &#x4E0A;&#x5E94;&#x7528; accumulator (&#x7D2F;&#x52A0;&#x5668;) &#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x5F53;&#x6E90; Observable &#x5B8C;&#x6210;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;
+&#x7D2F;&#x52A0;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7684; seed &#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-repeat">repeat</a></span></span><span data-ice="signature">(count: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observable &#x91CD;&#x590D;&#x7531;&#x6E90; Observable &#x6240;&#x53D1;&#x51FA;&#x7684;&#x9879;&#x7684;&#x6D41;&#xFF0C;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x91CD;&#x590D; count &#x6B21;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-repeatWhen">repeatWhen</a></span></span><span data-ice="signature">(notifier: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(notifications: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>)</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observalbe &#x662F;&#x6E90; Observable &#x7684;&#x955C;&#x50CF;&#xFF0C;&#x9664;&#x4E86; <code>complete</code> &#x3002;&#x5982;&#x679C;&#x6E90; Observable &#x8C03;&#x7528;&#x4E86; <code>complete</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x53D1;&#x51FA;&#x7ED9; <code>notifier</code>
+&#x8FD4;&#x56DE;&#x7684; Observable &#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E2A; Observale &#x8C03;&#x7528;&#x4E86; <code>complete</code> &#x6216; <code>error</code>&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5B50; subscription &#x4E0A;&#x8C03;&#x7528;
+<code>complete</code> &#x6216; <code>error</code> &#x3002;&#x5426;&#x5219;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x5C06;&#x91CD;&#x65B0;&#x8BA2;&#x9605;&#x6E90; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-retry">retry</a></span></span><span data-ice="signature">(count: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Observable&#xFF0C; &#x8BE5; Observable &#x662F;&#x6E90; Observable &#x4E0D;&#x5305;&#x542B;&#x9519;&#x8BEF;&#x5F02;&#x5E38;&#x7684;&#x955C;&#x50CF;&#x3002; &#x5982;&#x679C;&#x6E90; Observable &#x53D1;&#x751F;&#x9519;&#x8BEF;, &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x4F20;&#x64AD;&#x9519;&#x8BEF;&#x800C;&#x662F;&#x4F1A;&#x4E0D;
+&#x65AD;&#x7684;&#x91CD;&#x65B0;&#x8BA2;&#x9605;&#x6E90; Observable &#x76F4;&#x5230;&#x8FBE;&#x5230;&#x6700;&#x5927;&#x91CD;&#x8BD5;&#x6B21;&#x6570; (&#x7531;&#x6570;&#x5B57;&#x53C2;&#x6570;&#x6307;&#x5B9A;)&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-retryWhen">retryWhen</a></span></span><span data-ice="signature">(notifier: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(errors: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>)</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Observable&#xFF0C; &#x8BE5; Observable &#x662F;&#x6E90; Observable &#x4E0D;&#x5305;&#x542B;&#x9519;&#x8BEF;&#x5F02;&#x5E38;&#x7684;&#x955C;&#x50CF;&#x3002; &#x5982;&#x679C;&#x6E90;&#x5934; Observable &#x89E6;&#x53D1;
+<code>error</code>&#xFF0C; &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x53D1;&#x51FA;&#x5F15;&#x8D77;&#x9519;&#x8BEF;&#x7684; Throwable &#x7ED9; <code>notifier</code> &#x8FD4;&#x56DE;&#x7684; Observable&#x3002; &#x5982;&#x679C;&#x8BE5; Observable &#x89E6;&#x53D1; <code>complete</code> &#x6216;&#x8005; <code>error</code>
+&#x5219;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x4F7F;&#x5B50;&#x8BA2;&#x9605;&#x89E6;&#x53D1; <code>complete</code> &#x548C; <code>error</code>&#x3002; &#x5426;&#x5219;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x91CD;&#x65B0;&#x8BA2;&#x9605;&#x6E90; Observable&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-sample">sample</a></span></span><span data-ice="signature">(notifier: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>any</span>&gt;): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53D1;&#x51FA;&#x6E90; Observable &#x6700;&#x65B0;&#x53D1;&#x51FA;&#x7684;&#x503C;&#x5F53;&#x53E6;&#x4E00;&#x4E2A; <code>notifier</code> Observable&#x53D1;&#x9001;&#x65F6;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-sampleTime">sampleTime</a></span></span><span data-ice="signature">(period: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5728;&#x5468;&#x671F;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5185;&#x53D1;&#x51FA;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x6700;&#x65B0;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-scan">scan</a></span></span><span data-ice="signature">(accumulator: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(acc: <span>R</span>, value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>R</span></span>, seed: <span>T</span> | <span>R</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5BF9;&#x6E90; Observable &#x4F7F;&#x7528;&#x7D2F;&#x52A0;&#x5668;&#x51FD;&#x6570;&#xFF0C; &#x8FD4;&#x56DE;&#x751F;&#x6210;&#x7684;&#x4E2D;&#x95F4;&#x503C;&#xFF0C; &#x53EF;&#x9009;&#x7684;&#x521D;&#x59CB;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-sequenceEqual">sequenceEqual</a></span></span><span data-ice="signature">(compareTo: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>, comparor: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4F7F;&#x7528;&#x53EF;&#x9009;&#x7684;&#x6BD4;&#x8F83;&#x51FD;&#x6570;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A; Observables &#x7684;&#x6240;&#x6709;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x5355;&#x4E2A;&#x5E03;&#x5C14;&#x503C;&#x7684; Observable&#xFF0C; &#x4EE5;&#x8868;&#x793A;&#x4E24;&#x4E2A;&#x5E8F;&#x5217;&#x662F;&#x5426;&#x76F8;&#x7B49;&#x3002;
+<span class="informal">&#x6309;&#x987A;&#x5E8F;&#x68C0;&#x67E5;&#x4E24;&#x4E2A; Observables &#x6240;&#x53D1;&#x51FA;&#x7684;&#x6240;&#x6709;&#x503C;&#x662F;&#x5426;&#x76F8;&#x7B49;&#x3002;</span></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-share">share</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Observable&#xFF0C;&#x8BE5; Observable &#x591A;&#x64AD;(&#x5171;&#x4EAB;)&#x6E90; Observable&#x3002; &#x81F3;&#x5C11;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8BA2;&#x9605;&#x8005;&#xFF0C;&#x8BE5; Observable &#x624D;&#x4F1A;&#x88AB;&#x8BA2;&#x9605;&#x5E76;&#x53D1;&#x51FA;&#x6570;&#x636E;&#x3002;
+&#x5F53;&#x6240;&#x6709;&#x7684;&#x8BA2;&#x9605;&#x8005;&#x90FD;&#x53D6;&#x6D88;&#x8BA2;&#x9605;&#x4E86;&#xFF0C;&#x5B83;&#x4F1A;&#x53D6;&#x6D88;&#x5BF9;&#x6E90; Observable &#x7684;&#x8BA2;&#x9605;&#x3002; &#x56E0;&#x4E3A; Observable &#x662F;&#x591A;&#x8DEF;&#x4F20;&#x64AD;&#x7684;&#x5B83;&#x4F7F;&#x5F97;&#x6D41;&#x662F; <code>hot</code>&#x3002;
+&#x5B83;&#x662F; &#xFF40;.publish().refCount()&#xFF40; &#x7684;&#x522B;&#x540D;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-shareReplay">shareReplay</a></span></span><span data-ice="signature">(bufferSize: <span>*</span>, windowTime: <span>*</span>, scheduler: <span>*</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-single">single</a></span></span><span data-ice="signature">(predicate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8BE5; Observable &#x53D1;&#x51FA;&#x6E90; Observable &#x6240;&#x53D1;&#x51FA;&#x7684;&#x503C;&#x4E2D;&#x5339;&#x914D;&#x6307;&#x5B9A; predicate &#x51FD;&#x6570;&#x7684;&#x5355;&#x4E2A;&#x9879;&#x3002;
+&#x5982;&#x679C;&#x6E90; Observable &#x53D1;&#x51FA;&#x591A;&#x4E8E;1&#x4E2A;&#x6570;&#x636E;&#x9879;&#x6216;&#x8005;&#x6CA1;&#x6709;&#x53D1;&#x51FA;&#x6570;&#x636E;&#x9879;, &#x5206;&#x522B;&#x4EE5; IllegalArgumentException &#x548C; NoSuchElementException &#x8FDB;&#x884C;&#x901A;&#x77E5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-skip">skip</a></span></span><span data-ice="signature">(count: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Observable&#xFF0C; &#x8BE5; Observable &#x8DF3;&#x8FC7;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x524D;N&#x4E2A;&#x503C;(N = count)&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-skipLast">skipLast</a></span></span><span data-ice="signature">(count: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8DF3;&#x8FC7;&#x6E90; Observable &#x6700;&#x540E;&#x53D1;&#x51FA;&#x7684;&#x7684;N&#x4E2A;&#x503C; (N = count)&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-skipUntil">skipUntil</a></span></span><span data-ice="signature">(notifier: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Observable&#xFF0C;&#x8BE5; Observable &#x4F1A;&#x8DF3;&#x8FC7;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x503C;&#x76F4;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A; Observable &#x5F00;&#x59CB;&#x53D1;&#x9001;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-skipWhile">skipWhile</a></span></span><span data-ice="signature">(predicate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Observable&#xFF0C; &#x8BE5; Observable &#x4F1A;&#x8DF3;&#x8FC7;&#x7531;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x6240;&#x6709;&#x6EE1;&#x8DB3;&#x6307;&#x5B9A;&#x6761;&#x4EF6;&#x7684;&#x6570;&#x636E;&#x9879;&#xFF0C;
+&#x4F46;&#x662F;&#x4E00;&#x65E6;&#x51FA;&#x73B0;&#x4E86;&#x4E0D;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x9879;&#xFF0C;&#x5219;&#x53D1;&#x51FA;&#x5728;&#x6B64;&#x4E4B;&#x540E;&#x7684;&#x6240;&#x6709;&#x9879;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-startWith">startWith</a></span></span><span data-ice="signature">(values: ...<span>T</span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observable &#x4F1A;&#x5148;&#x53D1;&#x51FA;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x7684;&#x9879;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53D1;&#x51FA;&#x7531;&#x6E90; Observable &#x6240;&#x53D1;&#x51FA;&#x7684;&#x9879;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-subscribe">subscribe</a></span></span><span data-ice="signature">(observerOrNext: <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, error: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, complete: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span>ISubscription</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8C03;&#x7528; Observable &#x7684;&#x6267;&#x884C;&#x5E76;&#x6CE8;&#x518C; Observer &#x7684;&#x5904;&#x7406;&#x5668;&#x4EE5;&#x4FBF;&#x4E8E;&#x53D1;&#x51FA;&#x901A;&#x77E5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-subscribeOn">subscribeOn</a></span></span><span data-ice="signature">(scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684; IScheduler &#x5F02;&#x6B65;&#x5730;&#x8BA2;&#x9605;&#x6B64; Observable &#x7684;&#x89C2;&#x5BDF;&#x8005;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-switch">switch</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x901A;&#x8FC7;&#x53EA;&#x8BA2;&#x9605;&#x6700;&#x65B0;&#x53D1;&#x51FA;&#x7684;&#x5185;&#x90E8; Observable &#xFF0C;&#x5C06;&#x9AD8;&#x9636; Observable &#x8F6C;&#x6362;&#x6210;&#x4E00;&#x9636; Observable &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-switchMap">switchMap</a></span></span><span data-ice="signature">(project: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, ?index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(outerValue: <span>T</span>, innerValue: <span>I</span>, outerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, innerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>any</span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x6210; Observable&#xFF0C;&#x8BE5; Observable &#x4F1A;&#x5408;&#x5E76;&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D;&#xFF0C;
+&#x5E76;&#x4E14;&#x53EA;&#x53D1;&#x51FA;&#x6700;&#x65B0;&#x6295;&#x5C04;&#x7684; Observable &#x4E2D;&#x7684;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-switchMapTo">switchMapTo</a></span></span><span data-ice="signature">(innerObservable: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, resultSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(outerValue: <span>T</span>, innerValue: <span>I</span>, outerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, innerIndex: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span>any</span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6BCF;&#x4E2A;&#x6E90;&#x503C;&#x6295;&#x5C04;&#x6210;&#x540C;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x8BE5; Observable &#x4F1A;&#x4F7F;&#x7528; <span><a href="class/es6/Observable.js~Observable.html#instance-method-switch">switch</a></span> &#x591A;&#x6B21;&#x88AB;&#x6253;&#x5E73;
+&#x5230;&#x8F93;&#x51FA; Observable &#x4E2D;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-take">take</a></span></span><span data-ice="signature">(count: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x53D1;&#x51FA;&#x6E90; Observable &#x6700;&#x521D;&#x53D1;&#x51FA;&#x7684;&#x7684;N&#x4E2A;&#x503C; (N = <code>count</code>)&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-takeLast">takeLast</a></span></span><span data-ice="signature">(count: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53EA;&#x53D1;&#x51FA;&#x6E90; Observable &#x6700;&#x540E;&#x53D1;&#x51FA;&#x7684;&#x7684;N&#x4E2A;&#x503C; (N = <code>count</code>)&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-takeUntil">takeUntil</a></span></span><span data-ice="signature">(notifier: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53D1;&#x51FA;&#x6E90; Observable &#x53D1;&#x51FA;&#x7684;&#x503C;&#xFF0C;&#x76F4;&#x5230; <code>notifier</code> Observable &#x53D1;&#x51FA;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-takeWhile">takeWhile</a></span></span><span data-ice="signature">(predicate: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>, index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x53D1;&#x51FA;&#x5728;&#x6E90; Observable &#x4E2D;&#x6EE1;&#x8DB3; <code>predicate</code> &#x51FD;&#x6570;&#x7684;&#x6BCF;&#x4E2A;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x4E00;&#x65E6;&#x51FA;&#x73B0;&#x4E0D;&#x6EE1;&#x8DB3; <code>predicate</code>
+&#x7684;&#x503C;&#x5C31;&#x7ACB;&#x5373;&#x5B8C;&#x6210;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-throttle">throttle</a></span></span><span data-ice="signature">(durationSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span>, config: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4ECE;&#x6E90; Observable &#x4E2D;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x7531;&#x53E6;&#x4E00;&#x4E2A; Observable &#x51B3;&#x5B9A;&#x7684;&#x671F;&#x95F4;&#x5185;&#x5FFD;&#x7565;
+&#x968F;&#x540E;&#x53D1;&#x51FA;&#x7684;&#x6E90;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x590D;&#x6B64;&#x8FC7;&#x7A0B;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-throttleTime">throttleTime</a></span></span><span data-ice="signature">(duration: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4ECE;&#x6E90; Observable &#x4E2D;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x5728; <code>duration</code> &#x6BEB;&#x79D2;&#x5185;&#x5FFD;&#x7565;&#x968F;&#x540E;&#x53D1;&#x51FA;&#x7684;&#x6E90;&#x503C;&#xFF0C;
+&#x7136;&#x540E;&#x91CD;&#x590D;&#x6B64;&#x8FC7;&#x7A0B;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-timeInterval">timeInterval</a></span></span><span data-ice="signature">(scheduler: <span>*</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>TimeInterval</span>&lt;<span>any</span>&gt;&gt; | <span><a href="class/es6/observable/dom/WebSocketSubject.js~WebSocketSubject.html">WebSocketSubject</a></span>&lt;<span>T</span>&gt; | <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-timeout">timeout</a></span></span><span data-ice="signature">(due: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, scheduler: <span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt; | <span><a href="class/es6/observable/dom/WebSocketSubject.js~WebSocketSubject.html">WebSocketSubject</a></span>&lt;<span>T</span>&gt; | <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-timeoutWith">timeoutWith</a></span></span><span data-ice="signature">(due: <span>*</span>, withObservable: <span>*</span>, scheduler: <span>*</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt; | <span><a href="class/es6/observable/dom/WebSocketSubject.js~WebSocketSubject.html">WebSocketSubject</a></span>&lt;<span>T</span>&gt; | <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-timestamp">timestamp</a></span></span><span data-ice="signature">(scheduler: <span>*</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>Timestamp</span>&lt;<span>any</span>&gt;&gt; | <span><a href="class/es6/observable/dom/WebSocketSubject.js~WebSocketSubject.html">WebSocketSubject</a></span>&lt;<span>T</span>&gt; | <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-toArray">toArray</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><span>any</span><span>[]</span></span>&gt; | <span><a href="class/es6/observable/dom/WebSocketSubject.js~WebSocketSubject.html">WebSocketSubject</a></span>&lt;<span>T</span>&gt; | <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-toPromise">toPromise</a></span></span><span data-ice="signature">(PromiseCtor: <span>PromiseConstructor</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06; Observable &#x5E8F;&#x5217;&#x8F6C;&#x6362;&#x4E3A;&#x7B26;&#x5408; ES2015 &#x6807;&#x51C6;&#x7684; Promise &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-window">window</a></span></span><span data-ice="signature">(windowBoundaries: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>any</span>&gt;): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x6BCF;&#x5F53; <code>windowBoundaries</code> &#x53D1;&#x51FA;&#x9879;&#x65F6;&#xFF0C;&#x5C06;&#x6E90; Observable &#x7684;&#x503C;&#x5206;&#x652F;&#x6210;&#x5D4C;&#x5957;&#x7684; Observable &#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-windowCount">windowCount</a></span></span><span data-ice="signature">(windowSize: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, startWindowEvery: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6E90; Observable &#x7684;&#x503C;&#x5206;&#x652F;&#x6210;&#x591A;&#x4E2A;&#x5D4C;&#x5957;&#x7684; Observable &#xFF0C;&#x6BCF;&#x4E2A;&#x5D4C;&#x5957;&#x7684; Observable &#x6700;&#x591A;&#x53D1;&#x51FA; windowSize &#x4E2A;&#x503C;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-windowToggle">windowToggle</a></span></span><span data-ice="signature">(openings: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>O</span>&gt;, closingSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>O</span>)</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6E90; Observable &#x7684;&#x503C;&#x5206;&#x652F;&#x6210;&#x5D4C;&#x5957;&#x7684; Observable&#xFF0C;&#x5206;&#x652F;&#x7B56;&#x7565;&#x662F;&#x4EE5; openings &#x53D1;&#x51FA;&#x9879;&#x4E3A;&#x8D77;&#x59CB;&#xFF0C;&#x4EE5; closingSelector &#x53D1;&#x51FA;&#x4E3A;&#x7ED3;&#x675F;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-windowWhen">windowWhen</a></span></span><span data-ice="signature">(closingSelector: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x6E90; Observable &#x7684;&#x503C;&#x5206;&#x652F;&#x6210;&#x5D4C;&#x5957;&#x7684; Observable &#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x5173;&#x95ED; Observable &#x7684;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x6765;&#x51B3;&#x5B9A;&#x4F55;&#x65F6;&#x5F00;&#x542F;&#x65B0;&#x7684;&#x7A97;&#x53E3;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-withLatestFrom">withLatestFrom</a></span></span><span data-ice="signature">(other: <span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span>, project: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x7ED3;&#x5408;&#x6E90; Observable &#x548C;&#x53E6;&#x5916;&#x7684; Observables &#x4EE5;&#x521B;&#x5EFA;&#x65B0;&#x7684; Observable&#xFF0C; &#x8BE5; Observable &#x7684;&#x503C;&#x7531;&#x6BCF;
+&#x4E2A; Observable &#x6700;&#x65B0;&#x7684;&#x503C;&#x8BA1;&#x7B97;&#x5F97;&#x51FA;&#xFF0C;&#x5F53;&#x4E14;&#x4EC5;&#x5F53;&#x6E90;&#x53D1;&#x51FA;&#x7684;&#x65F6;&#x5019;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-zipAll">zipAll</a></span></span><span data-ice="signature">(project: <span>*</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt; | <span><a href="class/es6/observable/dom/WebSocketSubject.js~WebSocketSubject.html">WebSocketSubject</a></span>&lt;<span>T</span>&gt; | <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html#instance-method-zipProto">zipProto</a></span></span><span data-ice="signature">(observables: <span>*</span>): <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span>&lt;<span>R</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "MergeAllOperator",
+            "range": [
+              9,
+              25
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 25
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "MergeAllOperator",
+            "range": [
+              9,
+              25
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 25
+              }
+            }
+          },
+          "range": [
+            9,
+            25
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 25
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./mergeAll-support",
+        "raw": "'./mergeAll-support'",
+        "range": [
+          33,
+          53
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 33
+          },
+          "end": {
+            "line": 1,
+            "column": 53
+          }
+        }
+      },
+      "range": [
+        0,
+        54
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 54
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Joins every Observable emitted by the source (an Observable of Observables), in a serial\n * fashion. Subscribing to each one only when the previous one has completed, and merging\n * all of their values into the returned observable.\n *\n * __Warning:__ If the source Observable emits Observables quickly and endlessly, and the\n * Observables it emits generally complete slower than the source emits, you can run into\n * memory issues as the incoming observables collect in an unbounded buffer.\n *\n * @returns {Observable} an observable of values merged from the incoming observables.\n ",
+          "range": [
+            55,
+            647
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "concatAll",
+          "range": [
+            672,
+            681
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 24
+            },
+            "end": {
+              "line": 13,
+              "column": 33
+            }
+          }
+        },
+        "params": [],
+        "body": {
+          "type": "BlockStatement",
+          "body": [
+            {
+              "type": "ReturnStatement",
+              "argument": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "ThisExpression",
+                    "range": [
+                      697,
+                      701
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 11
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "lift",
+                    "range": [
+                      702,
+                      706
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 20
+                      }
+                    }
+                  },
+                  "range": [
+                    697,
+                    706
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 14,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 20
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "NewExpression",
+                    "callee": {
+                      "type": "Identifier",
+                      "name": "MergeAllOperator",
+                      "range": [
+                        711,
+                        727
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 14,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 41
+                        }
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": 1,
+                        "raw": "1",
+                        "range": [
+                          728,
+                          729
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 14,
+                            "column": 42
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 43
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      707,
+                      730
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 21
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 44
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  697,
+                  731
+                ],
+                "loc": {
+                  "start": {
+                    "line": 14,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 45
+                  }
+                }
+              },
+              "range": [
+                690,
+                732
+              ],
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 4
+                },
+                "end": {
+                  "line": 14,
+                  "column": 46
+                }
+              }
+            }
+          ],
+          "range": [
+            684,
+            734
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 36
+            },
+            "end": {
+              "line": 15,
+              "column": 1
+            }
+          }
+        },
+        "generator": false,
+        "expression": false,
+        "range": [
+          663,
+          734
+        ],
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 15
+          },
+          "end": {
+            "line": 15,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Joins every Observable emitted by the source (an Observable of Observables), in a serial\n * fashion. Subscribing to each one only when the previous one has completed, and merging\n * all of their values into the returned observable.\n *\n * __Warning:__ If the source Observable emits Observables quickly and endlessly, and the\n * Observables it emits generally complete slower than the source emits, you can run into\n * memory issues as the incoming observables collect in an unbounded buffer.\n *\n * @returns {Observable} an observable of values merged from the incoming observables.\n ",
+            "range": [
+              55,
+              647
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 12,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        648,
+        734
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Joins every Observable emitted by the source (an Observable of Observables), in a serial\n * fashion. Subscribing to each one only when the previous one has completed, and merging\n * all of their values into the returned observable.\n *\n * __Warning:__ If the source Observable emits Observables quickly and endlessly, and the\n * Observables it emits generally complete slower than the source emits, you can run into\n * memory issues as the incoming observables collect in an unbounded buffer.\n *\n * @returns {Observable} an observable of values merged from the incoming observables.\n ",
+          "range": [
+            55,
+            647
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    734
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 15,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * Joins every Observable emitted by the source (an Observable of Observables), in a serial\n * fashion. Subscribing to each one only when the previous one has completed, and merging\n * all of their values into the returned observable.\n *\n * __Warning:__ If the source Observable emits Observables quickly and endlessly, and the\n * Observables it emits generally complete slower than the source emits, you can run into\n * memory issues as the incoming observables collect in an unbounded buffer.\n *\n * @returns {Observable} an observable of values merged from the incoming observables.\n ",
+      "range": [
+        55,
+        647
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

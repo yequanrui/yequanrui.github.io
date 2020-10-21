@@ -1,0 +1,2011 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ArrayObservable",
+            "range": [
+              9,
+              24
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 24
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "ArrayObservable",
+            "range": [
+              9,
+              24
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 24
+              }
+            }
+          },
+          "range": [
+            9,
+            24
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 24
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../observable/ArrayObservable",
+        "raw": "'../observable/ArrayObservable'",
+        "range": [
+          32,
+          63
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 32
+          },
+          "end": {
+            "line": 1,
+            "column": 63
+          }
+        }
+      },
+      "range": [
+        0,
+        64
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 64
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ScalarObservable",
+            "range": [
+              74,
+              90
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 25
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "ScalarObservable",
+            "range": [
+              74,
+              90
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 25
+              }
+            }
+          },
+          "range": [
+            74,
+            90
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 25
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../observable/ScalarObservable",
+        "raw": "'../observable/ScalarObservable'",
+        "range": [
+          98,
+          130
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 33
+          },
+          "end": {
+            "line": 2,
+            "column": 65
+          }
+        }
+      },
+      "range": [
+        65,
+        131
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "EmptyObservable",
+            "range": [
+              141,
+              156
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 9
+              },
+              "end": {
+                "line": 3,
+                "column": 24
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "EmptyObservable",
+            "range": [
+              141,
+              156
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 9
+              },
+              "end": {
+                "line": 3,
+                "column": 24
+              }
+            }
+          },
+          "range": [
+            141,
+            156
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 24
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../observable/EmptyObservable",
+        "raw": "'../observable/EmptyObservable'",
+        "range": [
+          164,
+          195
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 32
+          },
+          "end": {
+            "line": 3,
+            "column": 63
+          }
+        }
+      },
+      "range": [
+        132,
+        196
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 64
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "concatStatic",
+            "range": [
+              206,
+              218
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 9
+              },
+              "end": {
+                "line": 4,
+                "column": 21
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "concatStatic",
+            "range": [
+              206,
+              218
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 9
+              },
+              "end": {
+                "line": 4,
+                "column": 21
+              }
+            }
+          },
+          "range": [
+            206,
+            218
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 9
+            },
+            "end": {
+              "line": 4,
+              "column": 21
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./concat",
+        "raw": "'./concat'",
+        "range": [
+          226,
+          236
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 29
+          },
+          "end": {
+            "line": 4,
+            "column": 39
+          }
+        }
+      },
+      "range": [
+        197,
+        237
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "isScheduler",
+            "range": [
+              247,
+              258
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 9
+              },
+              "end": {
+                "line": 5,
+                "column": 20
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "isScheduler",
+            "range": [
+              247,
+              258
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 9
+              },
+              "end": {
+                "line": 5,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            247,
+            258
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 9
+            },
+            "end": {
+              "line": 5,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../util/isScheduler",
+        "raw": "'../util/isScheduler'",
+        "range": [
+          266,
+          287
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 28
+          },
+          "end": {
+            "line": 5,
+            "column": 49
+          }
+        }
+      },
+      "range": [
+        238,
+        288
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 50
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": " tslint:enable:max-line-length ",
+          "range": [
+            289,
+            324
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 35
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * 返回的 Observable 会先发出作为参数指定的项，然后再发出由源 Observable 所发出的项。\n *\n * <img src=\"./img/startWith.png\" width=\"100%\">\n *\n * @param {...T} values - 你希望修改过的 Observable 可以先发出的项。\n * @param {Scheduler} [scheduler] - 用于调度 `next` 通知发送的 {@link IScheduler} 。\n * @return {Observable} 该 Observable 发出指定的 Iterable 中的项，然后发出由源 Observable 所发出的项。\n * @method startWith\n * @owner Observable\n ",
+          "range": [
+            325,
+            695
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 17,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "startWith",
+          "range": [
+            712,
+            721
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 16
+            },
+            "end": {
+              "line": 18,
+              "column": 25
+            }
+          }
+        },
+        "params": [
+          {
+            "type": "RestElement",
+            "argument": {
+              "type": "Identifier",
+              "name": "array",
+              "range": [
+                725,
+                730
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 29
+                },
+                "end": {
+                  "line": 18,
+                  "column": 34
+                }
+              }
+            },
+            "range": [
+              722,
+              730
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 26
+              },
+              "end": {
+                "line": 18,
+                "column": 34
+              }
+            }
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "body": [
+            {
+              "type": "VariableDeclaration",
+              "declarations": [
+                {
+                  "type": "VariableDeclarator",
+                  "id": {
+                    "type": "Identifier",
+                    "name": "scheduler",
+                    "range": [
+                      742,
+                      751
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 17
+                      }
+                    }
+                  },
+                  "init": {
+                    "type": "MemberExpression",
+                    "computed": true,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "array",
+                      "range": [
+                        754,
+                        759
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 19,
+                          "column": 20
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 25
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "BinaryExpression",
+                      "operator": "-",
+                      "left": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "array",
+                          "range": [
+                            760,
+                            765
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 26
+                            },
+                            "end": {
+                              "line": 19,
+                              "column": 31
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "length",
+                          "range": [
+                            766,
+                            772
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 32
+                            },
+                            "end": {
+                              "line": 19,
+                              "column": 38
+                            }
+                          }
+                        },
+                        "range": [
+                          760,
+                          772
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 38
+                          }
+                        }
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": 1,
+                        "raw": "1",
+                        "range": [
+                          775,
+                          776
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 41
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 42
+                          }
+                        }
+                      },
+                      "range": [
+                        760,
+                        776
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 19,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 42
+                        }
+                      }
+                    },
+                    "range": [
+                      754,
+                      777
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 43
+                      }
+                    }
+                  },
+                  "range": [
+                    742,
+                    777
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 43
+                    }
+                  }
+                }
+              ],
+              "kind": "let",
+              "range": [
+                738,
+                778
+              ],
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 4
+                },
+                "end": {
+                  "line": 19,
+                  "column": 44
+                }
+              }
+            },
+            {
+              "type": "IfStatement",
+              "test": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "Identifier",
+                  "name": "isScheduler",
+                  "range": [
+                    787,
+                    798
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 19
+                    }
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Identifier",
+                    "name": "scheduler",
+                    "range": [
+                      799,
+                      808
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 29
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  787,
+                  809
+                ],
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 30
+                  }
+                }
+              },
+              "consequent": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "array",
+                          "range": [
+                            821,
+                            826
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 21,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 21,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "pop",
+                          "range": [
+                            827,
+                            830
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 21,
+                              "column": 14
+                            },
+                            "end": {
+                              "line": 21,
+                              "column": 17
+                            }
+                          }
+                        },
+                        "range": [
+                          821,
+                          830
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 21,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 17
+                          }
+                        }
+                      },
+                      "arguments": [],
+                      "range": [
+                        821,
+                        832
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 21,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 21,
+                          "column": 19
+                        }
+                      }
+                    },
+                    "range": [
+                      821,
+                      833
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 21,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 20
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  811,
+                  839
+                ],
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 32
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 5
+                  }
+                }
+              },
+              "alternate": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "AssignmentExpression",
+                      "operator": "=",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "scheduler",
+                        "range": [
+                          859,
+                          868
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 24,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 17
+                          }
+                        }
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": null,
+                        "raw": "null",
+                        "range": [
+                          871,
+                          875
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 24,
+                            "column": 20
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 24
+                          }
+                        }
+                      },
+                      "range": [
+                        859,
+                        875
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 24,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 24,
+                          "column": 24
+                        }
+                      }
+                    },
+                    "range": [
+                      859,
+                      876
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 24,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 24,
+                        "column": 25
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  849,
+                  882
+                ],
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 5
+                  }
+                }
+              },
+              "range": [
+                783,
+                882
+              ],
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 5
+                }
+              }
+            },
+            {
+              "type": "VariableDeclaration",
+              "declarations": [
+                {
+                  "type": "VariableDeclarator",
+                  "id": {
+                    "type": "Identifier",
+                    "name": "len",
+                    "range": [
+                      893,
+                      896
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 13
+                      }
+                    }
+                  },
+                  "init": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "array",
+                      "range": [
+                        899,
+                        904
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 21
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "length",
+                      "range": [
+                        905,
+                        911
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 22
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 28
+                        }
+                      }
+                    },
+                    "range": [
+                      899,
+                      911
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 28
+                      }
+                    }
+                  },
+                  "range": [
+                    893,
+                    911
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 28
+                    }
+                  }
+                }
+              ],
+              "kind": "const",
+              "range": [
+                887,
+                912
+              ],
+              "loc": {
+                "start": {
+                  "line": 26,
+                  "column": 4
+                },
+                "end": {
+                  "line": 26,
+                  "column": 29
+                }
+              }
+            },
+            {
+              "type": "IfStatement",
+              "test": {
+                "type": "BinaryExpression",
+                "operator": "===",
+                "left": {
+                  "type": "Identifier",
+                  "name": "len",
+                  "range": [
+                    921,
+                    924
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 11
+                    }
+                  }
+                },
+                "right": {
+                  "type": "Literal",
+                  "value": 1,
+                  "raw": "1",
+                  "range": [
+                    929,
+                    930
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 17
+                    }
+                  }
+                },
+                "range": [
+                  921,
+                  930
+                ],
+                "loc": {
+                  "start": {
+                    "line": 27,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 17
+                  }
+                }
+              },
+              "consequent": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "argument": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "concatStatic",
+                        "range": [
+                          949,
+                          961
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 28,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 28,
+                            "column": 27
+                          }
+                        }
+                      },
+                      "arguments": [
+                        {
+                          "type": "NewExpression",
+                          "callee": {
+                            "type": "Identifier",
+                            "name": "ScalarObservable",
+                            "range": [
+                              966,
+                              982
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 28,
+                                "column": 32
+                              },
+                              "end": {
+                                "line": 28,
+                                "column": 48
+                              }
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "MemberExpression",
+                              "computed": true,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "array",
+                                "range": [
+                                  983,
+                                  988
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 28,
+                                    "column": 49
+                                  },
+                                  "end": {
+                                    "line": 28,
+                                    "column": 54
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Literal",
+                                "value": 0,
+                                "raw": "0",
+                                "range": [
+                                  989,
+                                  990
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 28,
+                                    "column": 55
+                                  },
+                                  "end": {
+                                    "line": 28,
+                                    "column": 56
+                                  }
+                                }
+                              },
+                              "range": [
+                                983,
+                                991
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 28,
+                                  "column": 49
+                                },
+                                "end": {
+                                  "line": 28,
+                                  "column": 57
+                                }
+                              }
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "scheduler",
+                              "range": [
+                                993,
+                                1002
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 28,
+                                  "column": 59
+                                },
+                                "end": {
+                                  "line": 28,
+                                  "column": 68
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+                            962,
+                            1003
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 28,
+                              "column": 28
+                            },
+                            "end": {
+                              "line": 28,
+                              "column": 69
+                            }
+                          }
+                        },
+                        {
+                          "type": "ThisExpression",
+                          "range": [
+                            1005,
+                            1009
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 28,
+                              "column": 71
+                            },
+                            "end": {
+                              "line": 28,
+                              "column": 75
+                            }
+                          }
+                        }
+                      ],
+                      "range": [
+                        949,
+                        1010
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 28,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 28,
+                          "column": 76
+                        }
+                      }
+                    },
+                    "range": [
+                      942,
+                      1011
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 28,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 77
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  932,
+                  1017
+                ],
+                "loc": {
+                  "start": {
+                    "line": 27,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 29,
+                    "column": 5
+                  }
+                }
+              },
+              "alternate": {
+                "type": "IfStatement",
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": ">",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "len",
+                    "range": [
+                      1031,
+                      1034
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 30,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 16
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 1,
+                    "raw": "1",
+                    "range": [
+                      1037,
+                      1038
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 30,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 20
+                      }
+                    }
+                  },
+                  "range": [
+                    1031,
+                    1038
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 30,
+                      "column": 13
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 20
+                    }
+                  }
+                },
+                "consequent": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "concatStatic",
+                          "range": [
+                            1057,
+                            1069
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 31,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 31,
+                              "column": 27
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "NewExpression",
+                            "callee": {
+                              "type": "Identifier",
+                              "name": "ArrayObservable",
+                              "range": [
+                                1074,
+                                1089
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 31,
+                                  "column": 32
+                                },
+                                "end": {
+                                  "line": 31,
+                                  "column": 47
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "array",
+                                "range": [
+                                  1090,
+                                  1095
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 31,
+                                    "column": 48
+                                  },
+                                  "end": {
+                                    "line": 31,
+                                    "column": 53
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Identifier",
+                                "name": "scheduler",
+                                "range": [
+                                  1097,
+                                  1106
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 31,
+                                    "column": 55
+                                  },
+                                  "end": {
+                                    "line": 31,
+                                    "column": 64
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1070,
+                              1107
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 31,
+                                "column": 28
+                              },
+                              "end": {
+                                "line": 31,
+                                "column": 65
+                              }
+                            }
+                          },
+                          {
+                            "type": "ThisExpression",
+                            "range": [
+                              1109,
+                              1113
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 31,
+                                "column": 67
+                              },
+                              "end": {
+                                "line": 31,
+                                "column": 71
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1057,
+                          1114
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 31,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 31,
+                            "column": 72
+                          }
+                        }
+                      },
+                      "range": [
+                        1050,
+                        1115
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 31,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 31,
+                          "column": 73
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1040,
+                    1121
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 30,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 5
+                    }
+                  }
+                },
+                "alternate": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "concatStatic",
+                          "range": [
+                            1148,
+                            1160
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 34,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 34,
+                              "column": 27
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "NewExpression",
+                            "callee": {
+                              "type": "Identifier",
+                              "name": "EmptyObservable",
+                              "range": [
+                                1165,
+                                1180
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 34,
+                                  "column": 32
+                                },
+                                "end": {
+                                  "line": 34,
+                                  "column": 47
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "scheduler",
+                                "range": [
+                                  1181,
+                                  1190
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 34,
+                                    "column": 48
+                                  },
+                                  "end": {
+                                    "line": 34,
+                                    "column": 57
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1161,
+                              1191
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 34,
+                                "column": 28
+                              },
+                              "end": {
+                                "line": 34,
+                                "column": 58
+                              }
+                            }
+                          },
+                          {
+                            "type": "ThisExpression",
+                            "range": [
+                              1193,
+                              1197
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 34,
+                                "column": 60
+                              },
+                              "end": {
+                                "line": 34,
+                                "column": 64
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1148,
+                          1198
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 34,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 34,
+                            "column": 65
+                          }
+                        }
+                      },
+                      "range": [
+                        1141,
+                        1199
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 34,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 34,
+                          "column": 66
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1131,
+                    1205
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 33,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 5
+                    }
+                  }
+                },
+                "range": [
+                  1027,
+                  1205
+                ],
+                "loc": {
+                  "start": {
+                    "line": 30,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 35,
+                    "column": 5
+                  }
+                }
+              },
+              "range": [
+                917,
+                1205
+              ],
+              "loc": {
+                "start": {
+                  "line": 27,
+                  "column": 4
+                },
+                "end": {
+                  "line": 35,
+                  "column": 5
+                }
+              }
+            }
+          ],
+          "range": [
+            732,
+            1207
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 36
+            },
+            "end": {
+              "line": 36,
+              "column": 1
+            }
+          }
+        },
+        "generator": false,
+        "expression": false,
+        "range": [
+          703,
+          1207
+        ],
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 7
+          },
+          "end": {
+            "line": 36,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": " tslint:enable:max-line-length ",
+            "range": [
+              289,
+              324
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 35
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * 返回的 Observable 会先发出作为参数指定的项，然后再发出由源 Observable 所发出的项。\n *\n * <img src=\"./img/startWith.png\" width=\"100%\">\n *\n * @param {...T} values - 你希望修改过的 Observable 可以先发出的项。\n * @param {Scheduler} [scheduler] - 用于调度 `next` 通知发送的 {@link IScheduler} 。\n * @return {Observable} 该 Observable 发出指定的 Iterable 中的项，然后发出由源 Observable 所发出的项。\n * @method startWith\n * @owner Observable\n ",
+            "range": [
+              325,
+              695
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 17,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Line",
+            "value": "# sourceMappingURL=startWith.js.map",
+            "range": [
+              1208,
+              1245
+            ],
+            "loc": {
+              "start": {
+                "line": 37,
+                "column": 0
+              },
+              "end": {
+                "line": 37,
+                "column": 37
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        696,
+        1207
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 36,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": " tslint:enable:max-line-length ",
+          "range": [
+            289,
+            324
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 35
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * 返回的 Observable 会先发出作为参数指定的项，然后再发出由源 Observable 所发出的项。\n *\n * <img src=\"./img/startWith.png\" width=\"100%\">\n *\n * @param {...T} values - 你希望修改过的 Observable 可以先发出的项。\n * @param {Scheduler} [scheduler] - 用于调度 `next` 通知发送的 {@link IScheduler} 。\n * @return {Observable} 该 Observable 发出指定的 Iterable 中的项，然后发出由源 Observable 所发出的项。\n * @method startWith\n * @owner Observable\n ",
+          "range": [
+            325,
+            695
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 17,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Line",
+          "value": "# sourceMappingURL=startWith.js.map",
+          "range": [
+            1208,
+            1245
+          ],
+          "loc": {
+            "start": {
+              "line": 37,
+              "column": 0
+            },
+            "end": {
+              "line": 37,
+              "column": 37
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    1207
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 36,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": " tslint:enable:max-line-length ",
+      "range": [
+        289,
+        324
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * 返回的 Observable 会先发出作为参数指定的项，然后再发出由源 Observable 所发出的项。\n *\n * <img src=\"./img/startWith.png\" width=\"100%\">\n *\n * @param {...T} values - 你希望修改过的 Observable 可以先发出的项。\n * @param {Scheduler} [scheduler] - 用于调度 `next` 通知发送的 {@link IScheduler} 。\n * @return {Observable} 该 Observable 发出指定的 Iterable 中的项，然后发出由源 Observable 所发出的项。\n * @method startWith\n * @owner Observable\n ",
+      "range": [
+        325,
+        695
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": "# sourceMappingURL=startWith.js.map",
+      "range": [
+        1208,
+        1245
+      ],
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 0
+        },
+        "end": {
+          "line": 37,
+          "column": 37
+        }
+      }
+    }
+  ]
+}

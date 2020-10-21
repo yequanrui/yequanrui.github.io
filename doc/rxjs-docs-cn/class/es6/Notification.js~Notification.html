@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">Notification | RxJS 中文文档</title>
+  <meta name="description" content="RxJS 中文文档 - RxJS 5 官方文档中文版，此中文文档与官方文档保持同步更新!RxJS 中文社区致力于为广大国内 RxJS 爱好者提供更好的学习环境，其中包括无语言障碍的中文文档及其他中文学习资料!">
+  <meta name="keywords" content="RxJS中文文档,RxJS5中文文档,RxJS,RxJS5,RxJS-CN,RxJS中文社区,Observable">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-Rx.js"></script>
+<script data-ice="userScript" src="user/script/1-devtools-welcome.js"></script>
+<script data-ice="userScript" src="user/script/2-custom-manual-styles.js"></script>
+<script data-ice="userScript" src="user/script/3-decision-tree-widget.min.js"></script>
+<script data-ice="userScript" src="user/script/4-theme-toggler.js"></script>
+<script data-ice="userScript" src="user/script/5-translate.js"></script>
+<script data-ice="userScript" src="user/script/6-link-hash.js"></script>
+<script data-ice="userScript" src="user/script/7-language.js"></script>
+<script data-ice="userScript" src="user/script/8-about-link.js"></script>
+<script data-ice="userScript" src="user/script/9-wechat-share.js"></script>
+<script data-ice="userScript" src="user/script/10-rxjs-spy.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-main.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/ReactiveX/RxJS" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/AsyncSubject.js~AsyncSubject.html">AsyncSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/BehaviorSubject.js~BehaviorSubject.html">BehaviorSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/ReplaySubject.js~ReplaySubject.html">ReplaySubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~AnonymousSubject.html">AnonymousSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~Subject.html">Subject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~SubjectSubscriber.html">SubjectSubscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~TeardownLogicDoc.html">TeardownLogic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Scheduler">Rx.Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Symbol">Rx.Symbol</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable/dom</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxError.html">AjaxError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxResponse.html">AjaxResponse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxTimeoutError.html">AjaxTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/observable/dom/MiscJSDoc.js~AjaxRequestDoc.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operator</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">scheduler</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/scheduler/Action.js~Action.html">Action</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-animationFrame">animationFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-asap">asap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-async">async</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-queue">queue</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">symbol</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$iterator">$$iterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$observable">$$observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$rxSubscriber">$$rxSubscriber</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ArgumentOutOfRangeError.js~ArgumentOutOfRangeError.html">ArgumentOutOfRangeError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/EmptyError.js~EmptyError.html">EmptyError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ObjectUnsubscribedError.js~ObjectUnsubscribedError.html">ObjectUnsubscribedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/TimeoutError.js~TimeoutError.html">TimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/UnsubscriptionError.js~UnsubscriptionError.html">UnsubscriptionError</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Notification} from &apos;<span><a href="file/es6/Notification.js.html#lineNumber13">@reactivex/rxjs/es6/Notification.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/es6/Notification.js.html#lineNumber13">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">Notification</h1>
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <div class="description" data-ice="description"><p>&#x4EE3;&#x8868;&#x53EF;&#x4EE5;&#x88AB; <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span> &#x53D1;&#x51FA;&#x7684;&#x57FA;&#x4E8E;&#x63A8;&#x9001;&#x4F53;&#x7CFB;&#x7684;&#x4E8B;&#x4EF6;&#x6216;&#x8005;&#x503C;&#x3002;&#x5BF9;&#x4E8E;&#x50CF; <span><a href="class/es6/Observable.js~Observable.html#instance-method-materialize">materialize</a></span>&#xFF0C;
+ <span><a href="class/es6/Observable.js~Observable.html#instance-method-dematerialize">dematerialize</a></span>&#xFF0C; <span><a href="class/es6/Observable.js~Observable.html#instance-method-observeOn">observeOn</a></span> &#x548C;&#x5176;&#x4ED6;&#x7BA1;&#x7406;&#x901A;&#x77E5;&#x7684;&#x64CD;&#x4F5C;&#x7B26;&#x6765;&#x8BF4;&#xFF0C;Notification &#x7C7B;&#x5C24;&#x5176;&#x9002;&#x7528;&#x3002;
+&#x9664;&#x4E86;&#x5305;&#x88C5;&#x771F;&#x6B63;&#x53D1;&#x51FA;&#x7684;&#x503C;&#xFF0C;&#x5B83;&#x8FD8;&#x4F7F;&#x7528;&#x5143;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6CE8;&#x89E3;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x63A8;&#x9001;&#x6D88;&#x606F;&#x7684;&#x7C7B;&#x578B;&#x662F;&#xFF08;<code>next</code>&#xFF0C;<code>error</code>&#xFF0C; or <code>complete</code>&#xFF09;&#x3002;</p>
+</div>
+
+  <div data-ice="see"><h4>See:</h4><ul><li><span><span><a href="class/es6/Observable.js~Observable.html#instance-method-materialize">materialize</a></span></span></li>
+<li><span><span><a href="class/es6/Observable.js~Observable.html#instance-method-dematerialize">dematerialize</a></span></span></li>
+<li><span><span><a href="class/es6/Observable.js~Observable.html#instance-method-observeOn">observeOn</a></span></span></li></ul></div>
+
+  
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec-js/Notification-spec.js.html#lineNumber6">Notification</a></span></li>
+</ul>
+  </div>
+
+  
+</div>
+
+
+<div data-ice="staticMethodSummary"><h2>Static Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html#static-method-createComplete">createComplete</a></span></span><span data-ice="signature">(): <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>any</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x521B;&#x5EFA;&#x7C7B;&#x578B;&#x4E3A; <code>complete</code> &#x7684; Notification &#x5B9E;&#x4F8B;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html#static-method-createError">createError</a></span></span><span data-ice="signature">(err: <span>any</span>): <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4F7F;&#x7528;&#x7ED9;&#x5B9A;&#x7684;&#x9519;&#x8BEF;&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x7C7B;&#x578B;&#x4E3A; <code>error</code> &#x7684; Notification &#x5B9E;&#x4F8B;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html#static-method-createNext">createNext</a></span></span><span data-ice="signature">(value: <span>T</span>): <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x4F7F;&#x7528;&#x7ED9;&#x5B9A;&#x7684;&#x503C;&#x521B;&#x5EFA;&#x7C7B;&#x578B;&#x4E3A; <code>next</code> &#x7684; Notification &#x5B9E;&#x4F8B;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html#instance-method-accept">accept</a></span></span><span data-ice="signature">(nextOrObserver: <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> | <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>void</span></span>, error: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(err: <span>any</span>)</span>: <span>void</span></span>, complete: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span>void</span></span>): <span>any</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x63A5;&#x53D7;&#x4E00;&#x4E2A; Observer &#x6216;&#x8005;&#x5B83;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x76F8;&#x5E94;&#x5730;&#x8C03;&#x7528; <code>observe</code> &#x6216;&#x8005; <code>do</code> &#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html#instance-method-do">do</a></span></span><span data-ice="signature">(next: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>void</span></span>, error: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(err: <span>any</span>)</span>: <span>void</span></span>, complete: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span>void</span></span>): <span>any</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E9B; <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> &#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C; &#x5C06;&#x5F53;&#x524D; Notification &#x6240;&#x8868;&#x793A;&#x7684;&#x503C;&#x6B63;&#x786E;&#x7684;&#x4F20;&#x9012;&#x7ED9;&#x76F8;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html#instance-method-observe">observe</a></span></span><span data-ice="signature">(observer: <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x5C06;&#x7531; Notification &#x5305;&#x88C5;&#x8FC7;&#x7684;&#x503C;&#x4F20;&#x9012;&#x7ED9;&#x7ED9;&#x5B9A;&#x7684; <code>observer</code>&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html#instance-method-toObservable">toObservable</a></span></span><span data-ice="signature">(): <span>any</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observable &#x53EA;&#x4F20;&#x9012;&#x4EE3;&#x8868;&#x5F53;&#x524D; Notification &#x5B9E;&#x4F8B;&#x7684;&#x901A;&#x77E5;&#x3002;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+<div data-ice="staticMethodDetails"><h2 data-ice="title">Static Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-createComplete">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    <span data-ice="name">createComplete</span><span data-ice="signature">(): <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>any</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/es6/Notification.js.html#lineNumber108">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>&#x521B;&#x5EFA;&#x7C7B;&#x578B;&#x4E3A; <code>complete</code> &#x7684; Notification &#x5B9E;&#x4F8B;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>any</span>&gt;</td>
+        <td class="return-desc" data-ice="returnDescription"><p>&#x6CA1;&#x6709;&#x503C;&#x7684;<code>complete</code>&#x578B;&#x7684;&#x901A;&#x77E5;&#x3002;</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-createError">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    <span data-ice="name">createError</span><span data-ice="signature">(err: <span>any</span>): <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>T</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/es6/Notification.js.html#lineNumber101">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>&#x4F7F;&#x7528;&#x7ED9;&#x5B9A;&#x7684;&#x9519;&#x8BEF;&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x7C7B;&#x578B;&#x4E3A; <code>error</code> &#x7684; Notification &#x5B9E;&#x4F8B;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">err</td>
+      <td data-ice="type"><span>any</span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p><code>error</code> &#x9519;&#x8BEF;&#x3002;</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>T</span>&gt;</td>
+        <td class="return-desc" data-ice="returnDescription"><p>&#x4EE3;&#x8868;&#x4F20;&#x5165;&#x9519;&#x8BEF;&#x7684;<code>error</code>&#x578B;&#x901A;&#x77E5;&#x5B9E;&#x4F8B;&#x3002;</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-createNext">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    <span data-ice="name">createNext</span><span data-ice="signature">(value: <span>T</span>): <span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>T</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/es6/Notification.js.html#lineNumber90">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>&#x4F7F;&#x7528;&#x7ED9;&#x5B9A;&#x7684;&#x503C;&#x521B;&#x5EFA;&#x7C7B;&#x578B;&#x4E3A; <code>next</code> &#x7684; Notification &#x5B9E;&#x4F8B;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">value</td>
+      <td data-ice="type"><span>T</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p><code>next</code> &#x7684;&#x503C;&#x3002;</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span>&lt;<span>T</span>&gt;</td>
+        <td class="return-desc" data-ice="returnDescription"><p>&#x4EE3;&#x8868;&#x4F20;&#x5165;&#x503C;&#x7684;<code>next</code>&#x578B;&#x901A;&#x77E5;&#x5B9E;&#x4F8B;&#x3002;</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+
+
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-accept">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">accept</span><span data-ice="signature">(nextOrObserver: <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> | <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>void</span></span>, error: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(err: <span>any</span>)</span>: <span>void</span></span>, complete: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span>void</span></span>): <span>any</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/es6/Notification.js.html#lineNumber61">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>&#x63A5;&#x53D7;&#x4E00;&#x4E2A; Observer &#x6216;&#x8005;&#x5B83;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x76F8;&#x5E94;&#x5730;&#x8C03;&#x7528; <code>observe</code> &#x6216;&#x8005; <code>do</code> &#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">nextOrObserver</td>
+      <td data-ice="type"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> | <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>void</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Observer &#x6216;&#x8005;
+<code>next</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">error</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(err: <span>any</span>)</span>: <span>void</span></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Observer &#x7684; <code>error</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">complete</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span>void</span></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Observer &#x7684; <code>complete</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>any</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-do">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">do</span><span data-ice="signature">(next: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>void</span></span>, error: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(err: <span>any</span>)</span>: <span>void</span></span>, complete: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span>void</span></span>): <span>any</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/es6/Notification.js.html#lineNumber42">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E9B; <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span> &#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C; &#x5C06;&#x5F53;&#x524D; Notification &#x6240;&#x8868;&#x793A;&#x7684;&#x503C;&#x6B63;&#x786E;&#x7684;&#x4F20;&#x9012;&#x7ED9;&#x76F8;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">next</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(value: <span>T</span>)</span>: <span>void</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Observer &#x7684; <code>next</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">error</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(err: <span>any</span>)</span>: <span>void</span></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Observer &#x7684; <code>error</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">complete</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>()</span>: <span>void</span></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>An Observer &#x7684; <code>complete</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>any</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec-js/operators/do-spec.js.html#lineNumber7">Observable.prototype.do</a></span></li>
+</ul>
+  </div>
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-observe">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">observe</span><span data-ice="signature">(observer: <span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/es6/Notification.js.html#lineNumber25">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>&#x5C06;&#x7531; Notification &#x5305;&#x88C5;&#x8FC7;&#x7684;&#x503C;&#x4F20;&#x9012;&#x7ED9;&#x7ED9;&#x5B9A;&#x7684; <code>observer</code>&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">observer</td>
+      <td data-ice="type"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-toObservable">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">toObservable</span><span data-ice="signature">(): <span>any</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/es6/Notification.js.html#lineNumber73">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>&#x8FD4;&#x56DE;&#x7684; Observable &#x53EA;&#x4F20;&#x9012;&#x4EE3;&#x8868;&#x5F53;&#x524D; Notification &#x5B9E;&#x4F8B;&#x7684;&#x901A;&#x77E5;&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>any</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

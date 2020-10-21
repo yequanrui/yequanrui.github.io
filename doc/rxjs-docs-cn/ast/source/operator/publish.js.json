@@ -1,0 +1,850 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Subject",
+            "range": [
+              9,
+              16
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 16
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Subject",
+            "range": [
+              9,
+              16
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 16
+              }
+            }
+          },
+          "range": [
+            9,
+            16
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 16
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../Subject",
+        "raw": "'../Subject'",
+        "range": [
+          24,
+          36
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 24
+          },
+          "end": {
+            "line": 1,
+            "column": 36
+          }
+        }
+      },
+      "range": [
+        0,
+        37
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "multicast",
+            "range": [
+              47,
+              56
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 18
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "multicast",
+            "range": [
+              47,
+              56
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 18
+              }
+            }
+          },
+          "range": [
+            47,
+            56
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 18
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./multicast",
+        "raw": "'./multicast'",
+        "range": [
+          64,
+          77
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 26
+          },
+          "end": {
+            "line": 2,
+            "column": 39
+          }
+        }
+      },
+      "range": [
+        38,
+        78
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 40
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": " tslint:enable:max-line-length ",
+          "range": [
+            79,
+            114
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 35
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * 返回 ConnectableObservable，它是 Observable 的变种，它会一直等待，直到 connnect 方法被调用才会开始把值发送给那些订阅它的观察者。\n *\n * <img src=\"./img/publish.png\" width=\"100%\">\n *\n * @param {Function} [selector] - 可选的选择器函数，可以根据需要多次使用以多播源序列，而不会导致源序列\n * 生成多个 subscriptions 。给定源的订阅者会从订阅开始的一刻起，接收源的所有通知。\n * @return ConnectableObservable，一旦连接，源 Observable 便会向它的观察者发出项。\n * @method publish\n * @owner Observable\n ",
+          "range": [
+            115,
+            488
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 0
+            },
+            "end": {
+              "line": 14,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "publish",
+          "range": [
+            505,
+            512
+          ],
+          "loc": {
+            "start": {
+              "line": 15,
+              "column": 16
+            },
+            "end": {
+              "line": 15,
+              "column": 23
+            }
+          }
+        },
+        "params": [
+          {
+            "type": "Identifier",
+            "name": "selector",
+            "range": [
+              513,
+              521
+            ],
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 24
+              },
+              "end": {
+                "line": 15,
+                "column": 32
+              }
+            }
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "body": [
+            {
+              "type": "ReturnStatement",
+              "argument": {
+                "type": "ConditionalExpression",
+                "test": {
+                  "type": "Identifier",
+                  "name": "selector",
+                  "range": [
+                    536,
+                    544
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 19
+                    }
+                  }
+                },
+                "consequent": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "multicast",
+                      "range": [
+                        547,
+                        556
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 22
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 31
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "call",
+                      "range": [
+                        557,
+                        561
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 32
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 36
+                        }
+                      }
+                    },
+                    "range": [
+                      547,
+                      561
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 16,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 36
+                      }
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "ThisExpression",
+                      "range": [
+                        562,
+                        566
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 37
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 41
+                        }
+                      }
+                    },
+                    {
+                      "type": "ArrowFunctionExpression",
+                      "id": null,
+                      "params": [],
+                      "body": {
+                        "type": "NewExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "Subject",
+                          "range": [
+                            578,
+                            585
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 53
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 60
+                            }
+                          }
+                        },
+                        "arguments": [],
+                        "range": [
+                          574,
+                          587
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 16,
+                            "column": 49
+                          },
+                          "end": {
+                            "line": 16,
+                            "column": 62
+                          }
+                        }
+                      },
+                      "generator": false,
+                      "expression": true,
+                      "range": [
+                        568,
+                        587
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 43
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 62
+                        }
+                      }
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "selector",
+                      "range": [
+                        589,
+                        597
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 64
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 72
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    547,
+                    598
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 73
+                    }
+                  }
+                },
+                "alternate": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "multicast",
+                      "range": [
+                        609,
+                        618
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 17
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "call",
+                      "range": [
+                        619,
+                        623
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 22
+                        }
+                      }
+                    },
+                    "range": [
+                      609,
+                      623
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 17,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 22
+                      }
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "ThisExpression",
+                      "range": [
+                        624,
+                        628
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 23
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 27
+                        }
+                      }
+                    },
+                    {
+                      "type": "NewExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "Subject",
+                        "range": [
+                          634,
+                          641
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 33
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 40
+                          }
+                        }
+                      },
+                      "arguments": [],
+                      "range": [
+                        630,
+                        643
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 29
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 42
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    609,
+                    644
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 17,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 43
+                    }
+                  }
+                },
+                "range": [
+                  536,
+                  644
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 43
+                  }
+                }
+              },
+              "range": [
+                529,
+                645
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 4
+                },
+                "end": {
+                  "line": 17,
+                  "column": 44
+                }
+              }
+            }
+          ],
+          "range": [
+            523,
+            647
+          ],
+          "loc": {
+            "start": {
+              "line": 15,
+              "column": 34
+            },
+            "end": {
+              "line": 18,
+              "column": 1
+            }
+          }
+        },
+        "generator": false,
+        "expression": false,
+        "range": [
+          496,
+          647
+        ],
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 7
+          },
+          "end": {
+            "line": 18,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": " tslint:enable:max-line-length ",
+            "range": [
+              79,
+              114
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 35
+              }
+            }
+          },
+          {
+            "type": "Block",
+            "value": "*\n * 返回 ConnectableObservable，它是 Observable 的变种，它会一直等待，直到 connnect 方法被调用才会开始把值发送给那些订阅它的观察者。\n *\n * <img src=\"./img/publish.png\" width=\"100%\">\n *\n * @param {Function} [selector] - 可选的选择器函数，可以根据需要多次使用以多播源序列，而不会导致源序列\n * 生成多个 subscriptions 。给定源的订阅者会从订阅开始的一刻起，接收源的所有通知。\n * @return ConnectableObservable，一旦连接，源 Observable 便会向它的观察者发出项。\n * @method publish\n * @owner Observable\n ",
+            "range": [
+              115,
+              488
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 0
+              },
+              "end": {
+                "line": 14,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Line",
+            "value": "# sourceMappingURL=publish.js.map",
+            "range": [
+              648,
+              683
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 0
+              },
+              "end": {
+                "line": 19,
+                "column": 35
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        489,
+        647
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": " tslint:enable:max-line-length ",
+          "range": [
+            79,
+            114
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 35
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * 返回 ConnectableObservable，它是 Observable 的变种，它会一直等待，直到 connnect 方法被调用才会开始把值发送给那些订阅它的观察者。\n *\n * <img src=\"./img/publish.png\" width=\"100%\">\n *\n * @param {Function} [selector] - 可选的选择器函数，可以根据需要多次使用以多播源序列，而不会导致源序列\n * 生成多个 subscriptions 。给定源的订阅者会从订阅开始的一刻起，接收源的所有通知。\n * @return ConnectableObservable，一旦连接，源 Observable 便会向它的观察者发出项。\n * @method publish\n * @owner Observable\n ",
+          "range": [
+            115,
+            488
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 0
+            },
+            "end": {
+              "line": 14,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Line",
+          "value": "# sourceMappingURL=publish.js.map",
+          "range": [
+            648,
+            683
+          ],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 0
+            },
+            "end": {
+              "line": 19,
+              "column": 35
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    647
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 18,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": " tslint:enable:max-line-length ",
+      "range": [
+        79,
+        114
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * 返回 ConnectableObservable，它是 Observable 的变种，它会一直等待，直到 connnect 方法被调用才会开始把值发送给那些订阅它的观察者。\n *\n * <img src=\"./img/publish.png\" width=\"100%\">\n *\n * @param {Function} [selector] - 可选的选择器函数，可以根据需要多次使用以多播源序列，而不会导致源序列\n * 生成多个 subscriptions 。给定源的订阅者会从订阅开始的一刻起，接收源的所有通知。\n * @return ConnectableObservable，一旦连接，源 Observable 便会向它的观察者发出项。\n * @method publish\n * @owner Observable\n ",
+      "range": [
+        115,
+        488
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 14,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": "# sourceMappingURL=publish.js.map",
+      "range": [
+        648,
+        683
+      ],
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 35
+        }
+      }
+    }
+  ]
+}

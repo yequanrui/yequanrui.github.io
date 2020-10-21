@@ -1,0 +1,469 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "AsapAction",
+            "range": [
+              9,
+              19
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 19
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "AsapAction",
+            "range": [
+              9,
+              19
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            9,
+            19
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./AsapAction",
+        "raw": "'./AsapAction'",
+        "range": [
+          27,
+          41
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 27
+          },
+          "end": {
+            "line": 1,
+            "column": 41
+          }
+        }
+      },
+      "range": [
+        0,
+        42
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "AsapScheduler",
+            "range": [
+              52,
+              65
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 22
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "AsapScheduler",
+            "range": [
+              52,
+              65
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 22
+              }
+            }
+          },
+          "range": [
+            52,
+            65
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 22
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./AsapScheduler",
+        "raw": "'./AsapScheduler'",
+        "range": [
+          73,
+          90
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 30
+          },
+          "end": {
+            "line": 2,
+            "column": 47
+          }
+        }
+      },
+      "range": [
+        43,
+        91
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 48
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n *\n * Asap 调度器\n *\n * <span class=\"informal\">尽可能快的异步地执行任务</span>\n *\n * 当你用它来延时任务的时候，`asap` 调度器的行为和 {@link async} 一样。如果你将延时时间设置为 `0`，\n * `asap` 会等待当前同步执行结束然后立刻执行当前任务。\n *\n * `asap` 会尽全力最小化当前执行代码和开始调度任务的时间。这使得它成为执行“deferring”的最佳候选人。以前，可以通过\n * 调用 `setTimeout(deferredTask, 0)` 来做到，但是这种方式仍热包含一些非期望的延时。\n *\n * 注意，使用 `asap` 调度器并不一定意味着你的任务将会在当前执行代码后第一个执行。尤其是如果之前有其他 `asap` 调度器的\n * 任务，该任务会首先执行。也就是说，如果你需要异步地调用任务，但是尽可能快的执行，`asap` 调度器是你最好的选择。\n *\n * @example <caption>比较 async 和 asap 调度器</caption>\n *\n * Rx.Scheduler.async.schedule(() => console.log('async')); // 首先调度 'async'\n * Rx.Scheduler.asap.schedule(() => console.log('asap'));\n *\n * // 日志:\n * // \"asap\"\n * // \"async\"\n * // 但是 'asap' 首先执行!\n *\n * @static true\n * @name asap\n * @owner Scheduler\n ",
+          "range": [
+            92,
+            835
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 31,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "asap",
+              "range": [
+                849,
+                853
+              ],
+              "loc": {
+                "start": {
+                  "line": 32,
+                  "column": 13
+                },
+                "end": {
+                  "line": 32,
+                  "column": 17
+                }
+              }
+            },
+            "init": {
+              "type": "NewExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "AsapScheduler",
+                "range": [
+                  860,
+                  873
+                ],
+                "loc": {
+                  "start": {
+                    "line": 32,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 32,
+                    "column": 37
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "AsapAction",
+                  "range": [
+                    874,
+                    884
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 38
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 48
+                    }
+                  }
+                }
+              ],
+              "range": [
+                856,
+                885
+              ],
+              "loc": {
+                "start": {
+                  "line": 32,
+                  "column": 20
+                },
+                "end": {
+                  "line": 32,
+                  "column": 49
+                }
+              }
+            },
+            "range": [
+              849,
+              885
+            ],
+            "loc": {
+              "start": {
+                "line": 32,
+                "column": 13
+              },
+              "end": {
+                "line": 32,
+                "column": 49
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          843,
+          886
+        ],
+        "loc": {
+          "start": {
+            "line": 32,
+            "column": 7
+          },
+          "end": {
+            "line": 32,
+            "column": 50
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n *\n * Asap 调度器\n *\n * <span class=\"informal\">尽可能快的异步地执行任务</span>\n *\n * 当你用它来延时任务的时候，`asap` 调度器的行为和 {@link async} 一样。如果你将延时时间设置为 `0`，\n * `asap` 会等待当前同步执行结束然后立刻执行当前任务。\n *\n * `asap` 会尽全力最小化当前执行代码和开始调度任务的时间。这使得它成为执行“deferring”的最佳候选人。以前，可以通过\n * 调用 `setTimeout(deferredTask, 0)` 来做到，但是这种方式仍热包含一些非期望的延时。\n *\n * 注意，使用 `asap` 调度器并不一定意味着你的任务将会在当前执行代码后第一个执行。尤其是如果之前有其他 `asap` 调度器的\n * 任务，该任务会首先执行。也就是说，如果你需要异步地调用任务，但是尽可能快的执行，`asap` 调度器是你最好的选择。\n *\n * @example <caption>比较 async 和 asap 调度器</caption>\n *\n * Rx.Scheduler.async.schedule(() => console.log('async')); // 首先调度 'async'\n * Rx.Scheduler.asap.schedule(() => console.log('asap'));\n *\n * // 日志:\n * // \"asap\"\n * // \"async\"\n * // 但是 'asap' 首先执行!\n *\n * @static true\n * @name asap\n * @owner Scheduler\n ",
+            "range": [
+              92,
+              835
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 31,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Line",
+            "value": "# sourceMappingURL=asap.js.map",
+            "range": [
+              887,
+              919
+            ],
+            "loc": {
+              "start": {
+                "line": 33,
+                "column": 0
+              },
+              "end": {
+                "line": 33,
+                "column": 32
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        836,
+        886
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 0
+        },
+        "end": {
+          "line": 32,
+          "column": 50
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n *\n * Asap 调度器\n *\n * <span class=\"informal\">尽可能快的异步地执行任务</span>\n *\n * 当你用它来延时任务的时候，`asap` 调度器的行为和 {@link async} 一样。如果你将延时时间设置为 `0`，\n * `asap` 会等待当前同步执行结束然后立刻执行当前任务。\n *\n * `asap` 会尽全力最小化当前执行代码和开始调度任务的时间。这使得它成为执行“deferring”的最佳候选人。以前，可以通过\n * 调用 `setTimeout(deferredTask, 0)` 来做到，但是这种方式仍热包含一些非期望的延时。\n *\n * 注意，使用 `asap` 调度器并不一定意味着你的任务将会在当前执行代码后第一个执行。尤其是如果之前有其他 `asap` 调度器的\n * 任务，该任务会首先执行。也就是说，如果你需要异步地调用任务，但是尽可能快的执行，`asap` 调度器是你最好的选择。\n *\n * @example <caption>比较 async 和 asap 调度器</caption>\n *\n * Rx.Scheduler.async.schedule(() => console.log('async')); // 首先调度 'async'\n * Rx.Scheduler.asap.schedule(() => console.log('asap'));\n *\n * // 日志:\n * // \"asap\"\n * // \"async\"\n * // 但是 'asap' 首先执行!\n *\n * @static true\n * @name asap\n * @owner Scheduler\n ",
+          "range": [
+            92,
+            835
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 31,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Line",
+          "value": "# sourceMappingURL=asap.js.map",
+          "range": [
+            887,
+            919
+          ],
+          "loc": {
+            "start": {
+              "line": 33,
+              "column": 0
+            },
+            "end": {
+              "line": 33,
+              "column": 32
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    886
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 32,
+      "column": 50
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n *\n * Asap 调度器\n *\n * <span class=\"informal\">尽可能快的异步地执行任务</span>\n *\n * 当你用它来延时任务的时候，`asap` 调度器的行为和 {@link async} 一样。如果你将延时时间设置为 `0`，\n * `asap` 会等待当前同步执行结束然后立刻执行当前任务。\n *\n * `asap` 会尽全力最小化当前执行代码和开始调度任务的时间。这使得它成为执行“deferring”的最佳候选人。以前，可以通过\n * 调用 `setTimeout(deferredTask, 0)` 来做到，但是这种方式仍热包含一些非期望的延时。\n *\n * 注意，使用 `asap` 调度器并不一定意味着你的任务将会在当前执行代码后第一个执行。尤其是如果之前有其他 `asap` 调度器的\n * 任务，该任务会首先执行。也就是说，如果你需要异步地调用任务，但是尽可能快的执行，`asap` 调度器是你最好的选择。\n *\n * @example <caption>比较 async 和 asap 调度器</caption>\n *\n * Rx.Scheduler.async.schedule(() => console.log('async')); // 首先调度 'async'\n * Rx.Scheduler.asap.schedule(() => console.log('asap'));\n *\n * // 日志:\n * // \"asap\"\n * // \"async\"\n * // 但是 'asap' 首先执行!\n *\n * @static true\n * @name asap\n * @owner Scheduler\n ",
+      "range": [
+        92,
+        835
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 31,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": "# sourceMappingURL=asap.js.map",
+      "range": [
+        887,
+        919
+      ],
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 0
+        },
+        "end": {
+          "line": 33,
+          "column": 32
+        }
+      }
+    }
+  ]
+}

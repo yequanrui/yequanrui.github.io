@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">教程 | RxJS 中文文档</title>
+  <meta name="description" content="RxJS 中文文档 - RxJS 5 官方文档中文版，此中文文档与官方文档保持同步更新!RxJS 中文社区致力于为广大国内 RxJS 爱好者提供更好的学习环境，其中包括无语言障碍的中文文档及其他中文学习资料!">
+  <meta name="keywords" content="RxJS中文文档,RxJS5中文文档,RxJS,RxJS5,RxJS-CN,RxJS中文社区,Observable">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-Rx.js"></script>
+<script data-ice="userScript" src="user/script/1-devtools-welcome.js"></script>
+<script data-ice="userScript" src="user/script/2-custom-manual-styles.js"></script>
+<script data-ice="userScript" src="user/script/3-decision-tree-widget.min.js"></script>
+<script data-ice="userScript" src="user/script/4-theme-toggler.js"></script>
+<script data-ice="userScript" src="user/script/5-translate.js"></script>
+<script data-ice="userScript" src="user/script/6-link-hash.js"></script>
+<script data-ice="userScript" src="user/script/7-language.js"></script>
+<script data-ice="userScript" src="user/script/8-about-link.js"></script>
+<script data-ice="userScript" src="user/script/9-wechat-share.js"></script>
+<script data-ice="userScript" src="user/script/10-rxjs-spy.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-main.css">
+</head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/ReactiveX/RxJS" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual" data-toc-name="overview">
+    <h1 class="manual-toc-title"><a href="manual/overview.html" data-ice="title">Overview</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x5165;&#x95E8;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x7B2C;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-purity-" data-ice="link">&#x7EAF;&#x51C0;&#x6027; (Purity)</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-flow-" data-ice="link">&#x6D41;&#x52A8;&#x6027; (Flow)</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-values-" data-ice="link">&#x503C; (Values)</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#observable-" data-ice="link">Observable (&#x53EF;&#x89C2;&#x5BDF;&#x5BF9;&#x8C61;)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-pull-vs-push-" data-ice="link">&#x62C9;&#x53D6; (Pull) vs. &#x63A8;&#x9001; (Push)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#observables-" data-ice="link">Observables &#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x7684;&#x6CDB;&#x5316;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#observable-" data-ice="link">Observable &#x5256;&#x6790;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-observables" data-ice="link">&#x521B;&#x5EFA; Observables</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-observables" data-ice="link">&#x8BA2;&#x9605; Observables</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-observables" data-ice="link">&#x6267;&#x884C; Observables</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-observable-" data-ice="link">&#x6E05;&#x7406; Observable &#x6267;&#x884C;</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#observer-" data-ice="link">Observer (&#x89C2;&#x5BDF;&#x8005;)</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#subscription-" data-ice="link">Subscription (&#x8BA2;&#x9605;)</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#subject-" data-ice="link">Subject (&#x4E3B;&#x4F53;)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-observables" data-ice="link">&#x591A;&#x64AD;&#x7684; Observables</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x5F15;&#x7528;&#x8BA1;&#x6570;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#behaviorsubject" data-ice="link">BehaviorSubject</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#replaysubject" data-ice="link">ReplaySubject</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#asyncsubject" data-ice="link">AsyncSubject</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#operators-" data-ice="link">Operators (&#x64CD;&#x4F5C;&#x7B26;)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x4EC0;&#x4E48;&#x662F;&#x64CD;&#x4F5C;&#x7B26;&#xFF1F;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-vs-" data-ice="link">&#x5B9E;&#x4F8B;&#x64CD;&#x4F5C;&#x7B26; vs. &#x9759;&#x6001;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#marble-diagrams-" data-ice="link">Marble diagrams (&#x5F39;&#x73E0;&#x56FE;)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x9009;&#x62E9;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x64CD;&#x4F5C;&#x7B26;&#x5206;&#x7C7B;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x521B;&#x5EFA;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x8FC7;&#x6EE4;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x7EC4;&#x5408;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x591A;&#x64AD;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x9519;&#x8BEF;&#x5904;&#x7406;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x5DE5;&#x5177;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x6761;&#x4EF6;&#x548C;&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x6570;&#x5B66;&#x548C;&#x805A;&#x5408;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/overview.html#scheduler-" data-ice="link">Scheduler (&#x8C03;&#x5EA6;&#x5668;)</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x8C03;&#x5EA6;&#x5668;&#x7C7B;&#x578B;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/overview.html#-" data-ice="link">&#x4F7F;&#x7528;&#x8C03;&#x5EA6;&#x5668;</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="installation">
+    <h1 class="manual-toc-title"><a href="manual/installation.html" data-ice="title">Installation</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/installation.html#-npm-es6-" data-ice="link">&#x901A;&#x8FC7; npm &#x5B89;&#x88C5; ES6 &#x7248;&#x672C;</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/installation.html#-npm-commonjs-" data-ice="link">&#x901A;&#x8FC7; npm &#x5B89;&#x88C5; CommonJS &#x7248;&#x672C;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/installation.html#-typescript-commonjs-" data-ice="link">&#x4F7F;&#x7528; TypeScript &#x7684; CommonJS &#x6A21;&#x5F0F;</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/installation.html#-npm-cjs-es6-amd-typescript-" data-ice="link">&#x901A;&#x8FC7; npm &#x6240;&#x6709;&#x5168;&#x6A21;&#x5757;&#x7C7B;&#x578B; (CJS/ES6/AMD/TypeScript)</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/installation.html#cdn" data-ice="link">CDN</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="tutorial">
+    <h1 class="manual-toc-title"><a href="manual/tutorial.html" data-ice="title">Tutorial</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x57FA;&#x7840;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-observables" data-ice="link">&#x8F6C;&#x6362;&#x6210; observables</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-observables" data-ice="link">&#x521B;&#x5EFA; observables</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x63A7;&#x5236;&#x6D41;&#x52A8;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x4EA7;&#x751F;&#x503C;</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x521B;&#x5EFA;&#x5E94;&#x7528;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-state-store-" data-ice="link">&#x72B6;&#x6001;&#x548C;&#x5B58;&#x50A8; (State Store)</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/tutorial.html#immutable-js" data-ice="link">Immutable JS</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/tutorial.html#react" data-ice="link">React</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x5916;&#x90E8;&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x6559;&#x7A0B;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x4E66;&#x7C4D;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x89C6;&#x9891;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/tutorial.html#-" data-ice="link">&#x6F14;&#x8BB2;</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="usage">
+    <h1 class="manual-toc-title"><a href="manual/usage.html" data-ice="title">Usage</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#pipeable-" data-ice="link">Pipeable &#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-pipeable-" data-ice="link">&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981; pipeable &#x64CD;&#x4F5C;&#x7B26;&#xFF1F;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-pipeable-" data-ice="link">&#x4EC0;&#x4E48;&#x662F; pipeable &#x64CD;&#x4F5C;&#x7B26;&#xFF1F;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x7528;&#x6CD5;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x8F7B;&#x677E;&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x5DF2;&#x77E5;&#x95EE;&#x9898;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#typescript-2-4" data-ice="link">TypeScript &lt; 2.4</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x6784;&#x5EFA;&#x548C;&#x6447;&#x6811;&#x4F18;&#x5316;</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x7F16;&#x5199;&#x5F39;&#x73E0;&#x6D4B;&#x8BD5;</a></li>
+<li data-ice="manualNav" class="indent-h4"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x94FE;&#x63A5;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x57FA;&#x7840;&#x65B9;&#x6CD5;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-hot-cold-" data-ice="link">hot &#x548C; cold &#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x662F;&#x7B26;&#x5408;&#x4EBA;&#x7C7B;&#x8BA4;&#x77E5;&#x7684;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x5F39;&#x73E0;&#x8BED;&#x6CD5;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x793A;&#x4F8B;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#subscription-" data-ice="link">Subscription &#x7684;&#x5F39;&#x73E0;&#x8BED;&#x6CD5;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x793A;&#x4F8B;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x6D4B;&#x8BD5;&#x5256;&#x6790;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-png-" data-ice="link">&#x57FA;&#x4E8E;&#x6D4B;&#x8BD5;&#x751F;&#x6210; PNG &#x5F39;&#x73E0;&#x56FE;</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x521B;&#x5EFA;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x81EA;&#x52A8;&#x52A8;&#x624B;&#x6765;&#x4E3A;&#x7EC8;&#x7AEF;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x6307;&#x5357;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x793A;&#x4F8B;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-observalbe-" data-ice="link">&#x5C06;&#x64CD;&#x4F5C;&#x7B26;&#x6DFB;&#x52A0;&#x5230; Observalbe &#x4E2D;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x4F5C;&#x4E3A;&#x7EAF;&#x51FD;&#x6570;&#x7684;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-" data-ice="link">&#x5C06;&#x64CD;&#x4F5C;&#x7B26;&#x4F5C;&#x4E3A;&#x72EC;&#x7ACB;&#x7684;&#x5E93;&#x53D1;&#x5E03;</a></li>
+<li data-ice="manualNav" class="indent-h2"><span class="manual-dot"></span><a href="manual/usage.html#-a-id-advanced-a-" data-ice="link">&#x521B;&#x5EFA;&#x52A0;&#x5165;&#x5230;&#x6B64;&#x5E93;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x7B26;</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-pr" data-ice="link">&#x4E3A;&#x64CD;&#x4F5C;&#x7B26;&#x63D0;&#x4EA4; PR</a></li>
+<li data-ice="manualNav" class="indent-h3"><span class="manual-dot"></span><a href="manual/usage.html#-subscriptions" data-ice="link">&#x5185;&#x90E8; Subscriptions</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <h1 class="manual-toc-title"><a href="identifiers.html" data-ice="title">Reference</a></h1>
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#class" data-ice="link">Class</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#interface" data-ice="link">Interface</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#variable" data-ice="link">Variable</a></li>
+<li data-ice="manualNav" class="indent-h1"><span class="manual-dot"></span><a href="identifiers.html#typedef" data-ice="link">Typedef</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-breadcrumb-list">
+    <a href="./manual/./index.html">Manual</a>
+    <span>&#xBB;</span>
+    <span data-ice="title">Tutorial</span>
+  </div>
+  <div data-ice="content"><h1 id="-">&#x57FA;&#x7840;</h1>
+<h2 id="-observables">&#x8F6C;&#x6362;&#x6210; observables</h2>
+<p><!-- skip-example -->
+</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">// &#x6765;&#x81EA;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x503C;
+Rx.Observable.of(&apos;foo&apos;, &apos;bar&apos;);
+
+// &#x6765;&#x81EA;&#x6570;&#x7EC4;
+Rx.Observable.from([1,2,3]);
+
+// &#x6765;&#x81EA;&#x4E8B;&#x4EF6;
+Rx.Observable.fromEvent(document.querySelector(&apos;button&apos;), &apos;click&apos;);
+
+// &#x6765;&#x81EA; Promise
+Rx.Observable.fromPromise(fetch(&apos;/users&apos;));
+
+// &#x6765;&#x81EA;&#x56DE;&#x8C03;&#x51FD;&#x6570;(&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5F97;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x7684; cb)
+// fs.exists = (path, cb(exists))
+var exists = Rx.Observable.bindCallback(fs.exists);
+exists(&apos;file.txt&apos;).subscribe(exists =&gt; console.log(&apos;Does file exist?&apos;, exists));
+
+// &#x6765;&#x81EA;&#x56DE;&#x8C03;&#x51FD;&#x6570;(&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5F97;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x7684; cb)
+// fs.rename = (pathA, pathB, cb(err, result))
+var rename = Rx.Observable.bindNodeCallback(fs.rename);
+rename(&apos;file.txt&apos;, &apos;else.txt&apos;).subscribe(() =&gt; console.log(&apos;Renamed!&apos;));</code>
+</code></pre>
+<h2 id="-observables">&#x521B;&#x5EFA; observables</h2>
+<p>&#x5728;&#x5916;&#x90E8;&#x4EA7;&#x751F;&#x65B0;&#x4E8B;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">var myObservable = new Rx.Subject();
+myObservable.subscribe(value =&gt; console.log(value));
+myObservable.next(&apos;foo&apos;);</code>
+</code></pre>
+<p>&#x5728;&#x5185;&#x90E8;&#x4EA7;&#x751F;&#x65B0;&#x4E8B;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">var myObservable = Rx.Observable.create(observer =&gt; {
+  observer.next(&apos;foo&apos;);
+  setTimeout(() =&gt; observer.next(&apos;bar&apos;), 1000);
+});
+myObservable.subscribe(value =&gt; console.log(value));</code>
+</code></pre>
+<p>&#x9009;&#x62E9;&#x54EA;&#x79CD;&#x65B9;&#x5F0F;&#x9700;&#x8981;&#x6839;&#x636E;&#x573A;&#x666F;&#x3002;&#x5F53;&#x4F60;&#x60F3;&#x8981;&#x5305;&#x88C5;&#x968F;&#x65F6;&#x95F4;&#x63A8;&#x79FB;&#x4EA7;&#x751F;&#x503C;&#x7684;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x666E;&#x901A;&#x7684; <strong>Observable</strong> &#x5C31;&#x5DF2;&#x7ECF;&#x5F88;&#x597D;&#x4E86;&#x3002;&#x4F7F;&#x7528; <strong>Subject</strong>&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4ECE;&#x4EFB;&#x4F55;&#x5730;&#x65B9;&#x89E6;&#x53D1;&#x65B0;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x5DF2;&#x5B58;&#x5728;&#x7684; observables &#x548C;&#x5B83;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#x3002;</p>
+<h2 id="-">&#x63A7;&#x5236;&#x6D41;&#x52A8;</h2>
+<pre><code class="lang-js"><code class="source-code prettyprint">// &#x8F93;&#x5165; &quot;hello world&quot;
+var input = Rx.Observable.fromEvent(document.querySelector(&apos;input&apos;), &apos;input&apos;);
+
+// &#x8FC7;&#x6EE4;&#x6389;&#x5C0F;&#x4E8E;3&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;&#x7684;&#x76EE;&#x6807;&#x503C;
+input.filter(event =&gt; event.target.value.length &gt; 2)
+  .map(event =&gt; event.target.value)
+  .subscribe(value =&gt; console.log(value)); // &quot;hel&quot;
+
+// &#x5EF6;&#x8FDF;&#x4E8B;&#x4EF6;
+input.delay(200)
+  .map(event =&gt; event.target.value)
+  .subscribe(value =&gt; console.log(value)); // &quot;h&quot; -200ms-&gt; &quot;e&quot; -200ms-&gt; &quot;l&quot; ...
+
+// &#x6BCF;200ms&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;
+input.throttleTime(200)
+  .map(event =&gt; event.target.value)
+  .subscribe(value =&gt; console.log(value)); // &quot;h&quot; -200ms-&gt; &quot;w&quot;
+
+// &#x505C;&#x6B62;&#x8F93;&#x5165;&#x540E;200ms&#x65B9;&#x80FD;&#x901A;&#x8FC7;&#x6700;&#x65B0;&#x7684;&#x90A3;&#x4E2A;&#x4E8B;&#x4EF6;
+input.debounceTime(200)
+  .map(event =&gt; event.target.value)
+  .subscribe(value =&gt; console.log(value)); // &quot;o&quot; -200ms-&gt; &quot;d&quot;
+
+// &#x5728;3&#x6B21;&#x4E8B;&#x4EF6;&#x540E;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x6D41;
+input.take(3)
+  .map(event =&gt; event.target.value)
+  .subscribe(value =&gt; console.log(value)); // &quot;hel&quot;
+
+// &#x76F4;&#x5230;&#x5176;&#x4ED6; observable &#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x624D;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x6D41;
+var stopStream = Rx.Observable.fromEvent(document.querySelector(&apos;button&apos;), &apos;click&apos;);
+input.takeUntil(stopStream)
+  .map(event =&gt; event.target.value)
+  .subscribe(value =&gt; console.log(value)); // &quot;hello&quot; (&#x70B9;&#x51FB;&#x624D;&#x80FD;&#x770B;&#x5230;)</code>
+</code></pre>
+<h2 id="-">&#x4EA7;&#x751F;&#x503C;</h2>
+<pre><code class="lang-js"><code class="source-code prettyprint">// &#x8F93;&#x5165; &quot;hello world&quot;
+var input = Rx.Observable.fromEvent(document.querySelector(&apos;input&apos;), &apos;input&apos;);
+
+// &#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x503C;
+input.map(event =&gt; event.target.value)
+  .subscribe(value =&gt; console.log(value)); // &quot;h&quot;
+
+// &#x901A;&#x8FC7;&#x63D0;&#x53D6;&#x5C5E;&#x6027;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x503C;
+input.pluck(&apos;target&apos;, &apos;value&apos;)
+  .subscribe(value =&gt; console.log(value)); // &quot;h&quot;
+
+// &#x4F20;&#x9012;&#x4E4B;&#x524D;&#x7684;&#x4E24;&#x4E2A;&#x503C;
+input.pluck(&apos;target&apos;, &apos;value&apos;).pairwise()
+  .subscribe(value =&gt; console.log(value)); // [&quot;h&quot;, &quot;he&quot;]
+
+// &#x53EA;&#x4F1A;&#x901A;&#x8FC7;&#x552F;&#x4E00;&#x7684;&#x503C;
+input.pluck(&apos;data&apos;).distinct()
+  .subscribe(value =&gt; console.log(value)); // &quot;helo wrd&quot;
+
+// &#x4E0D;&#x4F1A;&#x4F20;&#x9012;&#x91CD;&#x590D;&#x7684;&#x503C;
+input.pluck(&apos;data&apos;).distinctUntilChanged()
+  .subscribe(value =&gt; console.log(value)); // &quot;helo world&quot;</code>
+</code></pre>
+<h1 id="-">&#x521B;&#x5EFA;&#x5E94;&#x7528;</h1>
+<p>RxJS &#x662F;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x66F4;&#x5C11;&#x51FA;&#x9519;&#x3002;&#x5B83;&#x662F;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x7EAF;&#x51FD;&#x6570;&#x6765;&#x505A;&#x5230;&#x8FD9;&#x70B9;&#x7684;&#x3002;&#x4F46;&#x662F;&#x5E94;&#x7528;&#x662F;&#x6709;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x5C06; RxJS &#x7684;&#x65E0;&#x72B6;&#x6001;&#x4E16;&#x754C;&#x4E0E;&#x6211;&#x4EEC;&#x5E94;&#x7528;&#x7684;&#x6709;&#x72B6;&#x6001;&#x4E16;&#x754C;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x5462;&#xFF1F;</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EA;&#x5B58;&#x50A8;&#x503C;&#x4E3A;<code>0</code>&#x7684;&#x7B80;&#x5355;&#x72B6;&#x6001;&#x3002;&#x6BCF;&#x6B21;&#x70B9;&#x51FB;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x589E;&#x52A0;&#x5B58;&#x50A8;&#x5728;&#x72B6;&#x6001;&#x4E2D;&#x7684; count &#x3002;</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">var button = document.querySelector(&apos;button&apos;);
+Rx.Observable.fromEvent(button, &apos;click&apos;)
+  // &#x5BF9;&#x6D41;&#x8FDB;&#x884C; scan (reduce) &#x64CD;&#x4F5C;&#xFF0C;&#x4EE5;&#x83B7;&#x53D6; count &#x7684;&#x503C;
+  .scan(count =&gt; count + 1, 0)
+  // &#x6BCF;&#x6B21;&#x6539;&#x53D8;&#x65F6;&#x90FD;&#x5728;&#x5143;&#x7D20;&#x4E0A;&#x8BBE;&#x7F6E; count
+  .subscribe(count =&gt; document.querySelector(&apos;#count&apos;).innerHTML = count);</code>
+</code></pre>
+<p>&#x6240;&#x4EE5;&#x4EA7;&#x751F;&#x72B6;&#x6001;&#x662F;&#x5728; RxJS &#x7684;&#x4E16;&#x754C;&#x4E2D;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x4F46;&#x6700;&#x540E;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x4E2D;&#x6539;&#x53D8; DOM &#x5374;&#x662F;&#x4E00;&#x79CD;&#x526F;&#x4F5C;&#x7528;&#x3002;</p>
+<h2 id="-state-store-">&#x72B6;&#x6001;&#x548C;&#x5B58;&#x50A8; (State Store)</h2>
+<p>&#x5E94;&#x7528;&#x4F7F;&#x7528;&#x72B6;&#x6001;&#x548C;&#x5B58;&#x50A8;&#x6765;&#x4FDD;&#x6301;&#x72B6;&#x6001;&#x3002;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6846;&#x67B6;&#x4E2D;&#x6709;&#x7740;&#x4E0D;&#x540C;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x50CF; store&#x3001;reducer &#x548C; model &#xFF0C;&#x4F46;&#x91CD;&#x70B9;&#x662F;&#x5B83;&#x4EEC;&#x90FD;&#x53EA;&#x662F;&#x666E;&#x901A;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x662F;&#x591A;&#x4E2A; observables &#x53EF;&#x4EE5;&#x66F4;&#x65B0;&#x540C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x3002;</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">var increaseButton = document.querySelector(&apos;#increase&apos;);
+var increase = Rx.Observable.fromEvent(increaseButton, &apos;click&apos;)
+  // &#x6211;&#x4EEC;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4F1A;&#x6539;&#x53D8;&#x72B6;&#x6001;
+  .map(() =&gt; state =&gt; Object.assign({}, state, {count: state.count + 1}));</code>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x6240;&#x505A;&#x7684;&#x662F;&#x5C06;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x6620;&#x5C04;&#x6210;&#x6539;&#x53D8;&#x72B6;&#x6001;&#x7684;&#x51FD;&#x6570;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x4E2A;&#x503C;&#x3002;&#x51FD;&#x6570;&#x4F1A;&#x6539;&#x53D8;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x4E2D;&#x7684;&#x72B6;&#x6001;&#x3002;&#x90A3;&#x4E48;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x5982;&#x4F55;&#x5B9E;&#x9645;&#x5730;&#x505A;&#x51FA;&#x6539;&#x53D8;&#x3002;</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">var increaseButton = document.querySelector(&apos;#increase&apos;);
+var increase = Rx.Observable.fromEvent(increaseButton, &apos;click&apos;)
+  .map(() =&gt; state =&gt; Object.assign({}, state, {count: state.count + 1}));
+
+// &#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;&#x6BCF;&#x5F53;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x63A5;&#x6536;&#x5230;&#x6539;&#x53D8;&#x72B6;&#x6001;&#x7684;&#x51FD;&#x6570;&#xFF0C;
+// &#x5E76;&#x628A;&#x72B6;&#x6001;&#x4F20;&#x9012;&#x7ED9;&#x5B83;&#x3002;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x65B0;&#x7684;&#x72B6;&#x6001;&#x5E76;&#x51C6;&#x5907;&#x5728;&#x4E0B;&#x6B21;&#x70B9;&#x51FB;&#x540E;&#x518D;&#x6B21;&#x66F4;&#x6539;&#x72B6;&#x6001;&#x3002;
+var state = increase.scan((state, changeFn) =&gt; changeFn(state), {count: 0});</code>
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x518D;&#x6DFB;&#x52A0;&#x51E0;&#x4E2A; observables &#xFF0C;&#x5B83;&#x4EEC;&#x540C;&#x6837;&#x4E5F;&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x540C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x3002;</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">var increaseButton = document.querySelector(&apos;#increase&apos;);
+var increase = Rx.Observable.fromEvent(increaseButton, &apos;click&apos;)
+  // &#x6211;&#x4EEC;&#x518D;&#x4E00;&#x6B21;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4F1A;&#x589E;&#x52A0; count
+  .map(() =&gt; state =&gt; Object.assign({}, state, {count: state.count + 1}));
+
+var decreaseButton = document.querySelector(&apos;#decrease&apos;);
+var decrease = Rx.Observable.fromEvent(decreaseButton, &apos;click&apos;)
+  // &#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4F1A;&#x51CF;&#x5C11; count 
+  .map(() =&gt; state =&gt; Object.assign({}, state, {count: state.count - 1}));
+
+var inputElement = document.querySelector(&apos;#input&apos;);
+var input = Rx.Observable.fromEvent(inputElement, &apos;keypress&apos;)
+  // &#x6211;&#x4EEC;&#x8FD8;&#x5C06;&#x6309;&#x952E;&#x4E8B;&#x4EF6;&#x6620;&#x5C04;&#x6210;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x53EB;&#x505A; inputValue &#x72B6;&#x6001;
+  .map(event =&gt; state =&gt; Object.assign({}, state, {inputValue: event.target.value}));
+
+// &#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x4E09;&#x4E2A;&#x6539;&#x53D8;&#x72B6;&#x6001;&#x7684; observables &#x8FDB;&#x884C;&#x5408;&#x5E76;
+var state = Rx.Observable.merge(
+  increase,
+  decrease,
+  input
+).scan((state, changeFn) =&gt; changeFn(state), {
+  count: 0,
+  inputValue: &apos;&apos;
+});
+
+// &#x6211;&#x4EEC;&#x8BA2;&#x9605;&#x72B6;&#x6001;&#x7684;&#x53D8;&#x5316;&#x5E76;&#x66F4;&#x65B0; DOM
+state.subscribe((state) =&gt; {
+  document.querySelector(&apos;#count&apos;).innerHTML = state.count;
+  document.querySelector(&apos;#hello&apos;).innerHTML = &apos;Hello &apos; + state.inputValue;
+});
+
+// &#x4E3A;&#x4E86;&#x4F18;&#x5316;&#x6E32;&#x67D3;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x68C0;&#x67E5;&#x4EC0;&#x4E48;&#x72B6;&#x6001;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x4E86;&#x7684;
+var prevState = {};
+state.subscribe((state) =&gt; {
+  if (state.count !== prevState.count) {
+    document.querySelector(&apos;#count&apos;).innerHTML = state.count;
+  }
+  if (state.inputValue !== prevState.inputValue) {
+    document.querySelector(&apos;#hello&apos;).innerHTML = &apos;Hello &apos; + state.inputValue;
+  }
+  prevState = state;
+});</code>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5E76;&#x4E14;&#x7ED3;&#x5408;&#x4E00;&#x4E9B;&#x4E0D;&#x540C;&#x7684;&#x6846;&#x67B6;&#x548C;&#x5E93;&#x6765;&#x8FDB;&#x884C;&#x4F7F;&#x7528;&#x3002;</p>
+<h3 id="immutable-js">Immutable JS</h3>
+<p>&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://facebook.github.io/immutable-js/">Immutable JS</a> &#x6765;&#x4E3A;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x3002;Immutable JS &#x662F;&#x521B;&#x5EFA;&#x4E0D;&#x53D8;&#x7684;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x7684;&#x597D;&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x4F60;&#x901A;&#x8FC7;&#x5BF9;&#x66F4;&#x6539;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x6D45;&#x68C0;&#x67E5;&#x6765;&#x4F18;&#x5316;&#x6E32;&#x67D3;&#x3002;</p>
+<p><!-- skip-example -->
+</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import Immutable from &apos;immutable&apos;;
+import someObservable from &apos;./someObservable&apos;;
+import someOtherObservable from &apos;./someOtherObservable&apos;;
+
+var initialState = {
+  foo: &apos;bar&apos;
+};
+
+var state = Observable.merge(
+  someObservable,
+  someOtherObservable
+).scan((state, changeFn) =&gt; changeFn(state), Immutable.fromJS(initialState));
+
+export default state;</code>
+</code></pre>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x4EFB;&#x4F55; UI &#x5C42;&#x4E2D;&#x5BFC;&#x5165;&#x72B6;&#x6001;&#x3002;</p>
+<p><!-- skip-example -->
+</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import state from &apos;./state&apos;;
+
+state.subscribe(state =&gt; {
+  document.querySelector(&apos;#text&apos;).innerHTML = state.get(&apos;foo&apos;);
+});</code>
+</code></pre>
+<h3 id="react">React</h3>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF0C;&#x5F53;&#x7EC4;&#x4EF6;&#x8FDB;&#x5165; <code>componentDidMount</code> &#x751F;&#x547D;&#x5468;&#x671F;&#x4E8B;&#x4EF6;&#x65F6;&#x8BA2;&#x9605; observable&#xFF0C;&#x800C;&#x5F53;&#x8FDB;&#x5165; <code>componentWillUnmount</code> &#x751F;&#x547D;&#x5468;&#x671F;&#x4E8B;&#x4EF6;&#x65F6;&#x53D6;&#x6D88;&#x8BA2;&#x9605;&#x3002;</p>
+<p><!-- skip-example -->
+</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import messages from &apos;./someObservable&apos;;
+
+class MyComponent extends ObservableComponent {
+  constructor(props) {
+    super(props);
+    this.state = {messages: []};
+  }
+  componentDidMount() {
+    this.messages = messages
+      // &#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x7D2F;&#x79EF;&#x6211;&#x4EEC;&#x7684;&#x6D88;&#x606F;
+      .scan((messages, message) =&gt; [message].concat(messages), [])
+      // &#x5F53;&#x5F97;&#x5230;&#x4E00;&#x6761;&#x65B0;&#x6D88;&#x606F;&#x65F6;&#x8FDB;&#x884C;&#x6E32;&#x67D3;
+      .subscribe(messages =&gt; this.setState({messages: messages}));
+  }
+  componentWillUnmount() {
+    this.messages.unsubscribe();
+  }
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;ul&gt;
+          {this.state.messages.map(message =&gt; &lt;li&gt;{message.text}&lt;/li&gt;)}
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default MyComponent;</code>
+</code></pre>
+<p>&#x8FD8;&#x6709;&#x8BB8;&#x591A;&#x5176;&#x4ED6;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; React &#x548C; observables&#x3002;&#x770B;&#x770B;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/rxjs-react-component">rxjs-react-component</a>&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x4F60;&#x66B4;&#x9732;&#x6620;&#x5C04;&#x5230;&#x72B6;&#x6001;&#x66F4;&#x6539;&#x7684; observable &#x3002;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; observable &#x7248;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50;&#x3002;</li>
+</ul>
+<h1 id="-">&#x5916;&#x90E8;&#x53C2;&#x8003;&#x8D44;&#x6599;</h1>
+<p>&#x8FD8;&#x6CA1;&#x6709;&#x5B66;&#x5230;&#x8DB3;&#x591F;&#x7684; RxJS &#x77E5;&#x8BC6;&#xFF1F;&#x67E5;&#x770B;&#x5176;&#x4ED6;&#x8FD9;&#x4E9B;&#x8D85;&#x7EA7;&#x68D2;&#x7684;&#x8D44;&#x6E90;&#x5427;&#xFF01;</p>
+<blockquote>
+<p>&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x4E0B;&#x9762;&#x4E0D;&#x5C11;&#x8D44;&#x6E90;&#x8FD8;&#x662F;&#x57FA;&#x4E8E; RxJS 4&#xFF0C;&#x4F46;&#x601D;&#x60F3;&#x662F;&#x76F8;&#x540C;&#x7684; (=.=)</p>
+</blockquote>
+<h2 id="-">&#x6559;&#x7A0B;</h2>
+<ul>
+<li><a href="https://egghead.io/technologies/rx">RxJS &#x8BFE;&#x7A0B; - Egghead.io</a></li>
+<li><a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">&#x4E0D;&#x5BB9;&#x9519;&#x8FC7;&#x7684;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x4ECB;&#x7ECD;</a></li>
+<li><a href="https://medium.com/@andrestaltz/2-minute-introduction-to-rx-24c8ca793877">2&#x5206;&#x949F;&#x544A;&#x8BC9;&#x4F60;&#x4EC0;&#x4E48;&#x662F; Rx</a></li>
+<li><a href="https://github.com/jhusain/learnrx">&#x5B66;&#x4E60; RxJS - @jhusain</a></li>
+<li><a href="http://rxworkshop.codeplex.com/">Rx &#x5DE5;&#x573A;</a> </li>
+<li><a href="http://aaronstacy.com/writings/reactive-programming-and-mvc/">&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x548C; MVC</a></li>
+<li><a href="https://github.com/staltz/rxjs-training">RxJS &#x57F9;&#x8BAD; - @andrestaltz</a></li>
+</ul>
+<h2 id="-">&#x4E66;&#x7C4D;</h2>
+<ul>
+<li><a href="https://www.manning.com/books/rxjs-in-action">RxJS &#x5B9E;&#x6218;</a> </li>
+<li><a href="http://xgrommx.github.io/rx-book/">Rx Book</a></li>
+<li><a href="http://www.amazon.com/Introduction-to-Rx-ebook/dp/B008GM3YPM/">Rx &#x4ECB;&#x7ECD;</a></li>
+<li><a href="http://www.amazon.com/Programming-Reactive-Extensions-Jesse-Liberty/dp/1430237473/">&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x6269;&#x5C55; LINQ</a></li>
+<li><a href="https://pragprog.com/book/smreactjs/reactive-programming-with-rxjs">&#x4F7F;&#x7528; RxJS &#x8FDB;&#x884C;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;</a></li>
+</ul>
+<h2 id="-">&#x89C6;&#x9891;</h2>
+<ul>
+<li><a href="http://channel9.msdn.com/posts/Bart-De-Smet-Jafar-Hussain-Matthew-Podwysocki-Pragmatic-Rx">&#x5B9E;&#x7528;&#x7684; Rx - Channel 9</a></li>
+<li><a href="http://channel9.msdn.com/posts/Rx-and-Netflix">Netflix &#x548C; RxJS - Channel 9</a></li>
+<li><a href="http://channel9.msdn.com/Blogs/Charles/Introducing-RxJS-Reactive-Extensions-for-JavaScript">&#x4F60;&#x597D; RxJS - Channel 9</a></li>
+<li><a href="http://channel9.msdn.com/events/MIX/MIX11/HTM07">RxJS - MIX 2011 - Channel 9</a></li>
+<li><a href="http://channel9.msdn.com/Blogs/Charles/Matthew-Podwysocki-and-Bart-J-F-De-Smet-RxJS-Today-and-Tomorrow">RxJS &#x7684;&#x4ECA;&#x5929;&#x548C;&#x660E;&#x5929; - Channel 9</a></li>
+<li><a href="http://channel9.msdn.com/Tags/reactive+extensions">&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x6269;&#x5C55;&#x89C6;&#x9891; - Channel 9</a></li>
+<li><a href="https://www.youtube.com/watch?v=XRYN2xt11Ek">Netflix &#x7684;&#x5F02;&#x6B65; JavaScript - Netflix JavaScript &#x4F1A;&#x8BDD; - Jafar Husain</a></li>
+<li><a href="https://www.youtube.com/watch?v=XE692Clb5LU">Netflix &#x7684;&#x5F02;&#x6B65; JavaScript - MountainWest JavaScript 2014 - Jafar Husain</a></li>
+<li><a href="https://www.youtube.com/watch?v=5uxSu-F5Kj0">Netflix &#x7684;&#x5F02;&#x6B65; JavaScript - HTML5DevConf - Jafar Husain</a></li>
+<li><a href="https://www.youtube.com/watch?v=8EExNfm0gt4">&#x4F7F;&#x7528; RxJS &#x6765;&#x4E3A;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x4E50;&#x8DA3; - Ryan Anklam</a></li>
+<li><a href="http://parleys.com/play/53677646e4b0593229b85841/chapter0/about">&#x54CD;&#x5E94;&#x5F0F;&#x7684; Angular - Devoxx France 2014 - Martin Gontovnikas</a></li>
+<li><a href="https://www.youtube.com/watch?v=x8mmAu7ZR9Y">&#x54CD;&#x5E94;&#x5F0F;&#x6E38;&#x620F;&#x7F16;&#x7A0B;&#x7684;&#x65F6;&#x5C1A;&#x6F6E;&#x6D41; - JSConf 2014 - Bodil Stokke</a></li>
+</ul>
+<h2 id="-">&#x6F14;&#x8BB2;</h2>
+<ul>
+<li>&#x4E0D;&#x8981;&#x4EA4;&#x53C9;&#x6D41; - Cascadia.js 2012 <a href="http://www.slideshare.net/mattpodwysocki/cascadiajs-dont-cross-the-streams">&#x5E7B;&#x706F;&#x7247;/&#x6F14;&#x793A;</a> | <a href="http://www.youtube.com/watch?v=FqBq4uoiG0M">&#x89C6;&#x9891;</a></li>
+<li>&#x6CBB;&#x6108;&#x4F60;&#x7684;&#x5F02;&#x6B65;&#x5FE7;&#x4F24; - Strange Loop 2013 <a href="https://github.com/Reactive-Extensions/StrangeLoop2013">&#x5E7B;&#x706F;&#x7247;/&#x6F14;&#x793A;</a> | <a href="http://www.infoq.com/presentations/rx-event-processing">&#x89C6;&#x9891;</a></li>
+<li>&#x4F7F;&#x7528; FRP &#x548C; RxJS &#x8FDB;&#x884C;&#x6D41;&#x548C;&#x57FA;&#x4E8E;&#x4E8B;&#x4EF6;&#x7684;&#x7F16;&#x7A0B; - FutureJS 2014 <a href="https://github.com/Reactive-Extensions/FutureJS">&#x5E7B;&#x706F;&#x7247;/&#x6F14;&#x793A;</a> | <a href="https://www.youtube.com/watch?v=zlERo_JMGCw">&#x89C6;&#x9891;</a></li>
+<li><a href="http://yobriefca.se/presentations/tyrannosaurus-rx.pdf">&#x9738;&#x738B;&#x9F99; Rx</a> - <a href="http://twitter.com/kouphax">James Hughes</a></li>
+<li>&#x4F7F;&#x7528;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x6765;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x5DE5;&#x4F5C;&#x6D41; - EuroClojure - <a href="https://twitter.com/leonardo_borges">Leonardo Borges</a> <a href="http://www.slideshare.net/borgesleonardo/functional-reactive-programming-compositional-event-systems">&#x5E7B;&#x706F;&#x7247;</a> | <a href="http://www.slideshare.net/borgesleonardo/functional-reactive-programming-compositional-event-systems">&#x89C6;&#x9891;</a></li>
+<li>&#x5173;&#x4E8E;&#x54CD;&#x5E94;&#x5F0F;&#x7684;&#x4E00;&#x5207; - ng-conf 2015 - <a href="https://twitter.com/mgonto/">Martin Gontovnikas</a> &amp; <a href="https://twitter.com/BenLesh">Ben Lesh</a><ul>
+<li><a href="http://mgonto.github.io/reactive-all-the-things-talk/#1">&#x5E7B;&#x706F;&#x7247;</a></li>
+<li><a href="https://www.youtube.com/watch?v=zbBVG8bOoXk&amp;feature=youtu.be&amp;app=desktop">&#x89C6;&#x9891;</a></li>
+</ul>
+</li>
+<li>&#x54CD;&#x5E94;&#x5F0F;&#x5FAA;&#x73AF; - Functional JS London 2015<ul>
+<li><a href="http://slides.com/theefer/reactive-loop-funjs#/">&#x5E7B;&#x706F;&#x7247;</a></li>
+<li><a href="https://github.com/theefer/funjs-reactive-loop">&#x4EE3;&#x7801;</a></li>
+</ul>
+</li>
+<li>&#x4F7F;&#x7528; RxJS &#x7684;&#x54CD;&#x5E94;&#x5F0F;&#x51FD;&#x6570; - Leeds JS 2015<ul>
+<li><a href="https://www.icloud.com/keynote/AwBWCAESEIf9pea2IykiVtOZFiXflDsaKj9lVsSLP_OtPU29v7fNpMs78DK7tvXz4bFBkb6BXFKjxqt4G5B_UlM6TwMCUCAQEEIGVYVFig5qOTdorTOd2ERMJDtn6dvDFY58zqBiVzZmtN#RxJS_talk">&#x5E7B;&#x706F;&#x7247;</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

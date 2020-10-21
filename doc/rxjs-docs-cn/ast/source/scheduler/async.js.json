@@ -1,0 +1,469 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "AsyncAction",
+            "range": [
+              9,
+              20
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "AsyncAction",
+            "range": [
+              9,
+              20
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            9,
+            20
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./AsyncAction",
+        "raw": "'./AsyncAction'",
+        "range": [
+          28,
+          43
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 28
+          },
+          "end": {
+            "line": 1,
+            "column": 43
+          }
+        }
+      },
+      "range": [
+        0,
+        44
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "AsyncScheduler",
+            "range": [
+              54,
+              68
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 23
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "AsyncScheduler",
+            "range": [
+              54,
+              68
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            54,
+            68
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 23
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./AsyncScheduler",
+        "raw": "'./AsyncScheduler'",
+        "range": [
+          76,
+          94
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 31
+          },
+          "end": {
+            "line": 2,
+            "column": 49
+          }
+        }
+      },
+      "range": [
+        45,
+        95
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 50
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n *\n * Async 调度器\n *\n * <span class=\"informal\">就像你使用过的 setTimeout(task, duration) 那样调度任务</span>\n *\n * `async` 调度器异步地调度任务，通过将它们放入 JavaScript 事件循环中。它被认为是适时地延时任务或者\n * 按时间间隔重复调度任务的最佳实践。\n *\n * 如果你只是想\"延时\"任务，即在当前执行同步代码结束后执行它（通常会用`setTimeout(deferredTask, 0)`实现），\n * {@link asap} 调度器会是更好的选择。\n *\n * @example <caption>使用 async 调度器来延时任务</caption>\n * const task = () => console.log('it works!');\n *\n * Rx.Scheduler.async.schedule(task, 2000);\n *\n * // 2秒后的输出:\n * // \"it works!\"\n *\n *\n * @example <caption>使用 async 调度器按时间间隔重复执行任务</caption>\n * function task(state) {\n *   console.log(state);\n *   this.schedule(state + 1, 1000); // `this` 指向当前执行的 Action,\n *                                   // 我们用新的状态和延时来重新调度它\n * }\n *\n * Rx.Scheduler.async.schedule(task, 3000, 0);\n *\n * // 日志:\n * // 0 after 3s\n * // 1 after 4s\n * // 2 after 5s\n * // 3 after 6s\n *\n * @static true\n * @name async\n * @owner Scheduler\n ",
+          "range": [
+            96,
+            989
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 42,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "async",
+              "range": [
+                1003,
+                1008
+              ],
+              "loc": {
+                "start": {
+                  "line": 43,
+                  "column": 13
+                },
+                "end": {
+                  "line": 43,
+                  "column": 18
+                }
+              }
+            },
+            "init": {
+              "type": "NewExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "AsyncScheduler",
+                "range": [
+                  1015,
+                  1029
+                ],
+                "loc": {
+                  "start": {
+                    "line": 43,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 43,
+                    "column": 39
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "AsyncAction",
+                  "range": [
+                    1030,
+                    1041
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 43,
+                      "column": 40
+                    },
+                    "end": {
+                      "line": 43,
+                      "column": 51
+                    }
+                  }
+                }
+              ],
+              "range": [
+                1011,
+                1042
+              ],
+              "loc": {
+                "start": {
+                  "line": 43,
+                  "column": 21
+                },
+                "end": {
+                  "line": 43,
+                  "column": 52
+                }
+              }
+            },
+            "range": [
+              1003,
+              1042
+            ],
+            "loc": {
+              "start": {
+                "line": 43,
+                "column": 13
+              },
+              "end": {
+                "line": 43,
+                "column": 52
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          997,
+          1043
+        ],
+        "loc": {
+          "start": {
+            "line": 43,
+            "column": 7
+          },
+          "end": {
+            "line": 43,
+            "column": 53
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n *\n * Async 调度器\n *\n * <span class=\"informal\">就像你使用过的 setTimeout(task, duration) 那样调度任务</span>\n *\n * `async` 调度器异步地调度任务，通过将它们放入 JavaScript 事件循环中。它被认为是适时地延时任务或者\n * 按时间间隔重复调度任务的最佳实践。\n *\n * 如果你只是想\"延时\"任务，即在当前执行同步代码结束后执行它（通常会用`setTimeout(deferredTask, 0)`实现），\n * {@link asap} 调度器会是更好的选择。\n *\n * @example <caption>使用 async 调度器来延时任务</caption>\n * const task = () => console.log('it works!');\n *\n * Rx.Scheduler.async.schedule(task, 2000);\n *\n * // 2秒后的输出:\n * // \"it works!\"\n *\n *\n * @example <caption>使用 async 调度器按时间间隔重复执行任务</caption>\n * function task(state) {\n *   console.log(state);\n *   this.schedule(state + 1, 1000); // `this` 指向当前执行的 Action,\n *                                   // 我们用新的状态和延时来重新调度它\n * }\n *\n * Rx.Scheduler.async.schedule(task, 3000, 0);\n *\n * // 日志:\n * // 0 after 3s\n * // 1 after 4s\n * // 2 after 5s\n * // 3 after 6s\n *\n * @static true\n * @name async\n * @owner Scheduler\n ",
+            "range": [
+              96,
+              989
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 42,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Line",
+            "value": "# sourceMappingURL=async.js.map",
+            "range": [
+              1044,
+              1077
+            ],
+            "loc": {
+              "start": {
+                "line": 44,
+                "column": 0
+              },
+              "end": {
+                "line": 44,
+                "column": 33
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        990,
+        1043
+      ],
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 0
+        },
+        "end": {
+          "line": 43,
+          "column": 53
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n *\n * Async 调度器\n *\n * <span class=\"informal\">就像你使用过的 setTimeout(task, duration) 那样调度任务</span>\n *\n * `async` 调度器异步地调度任务，通过将它们放入 JavaScript 事件循环中。它被认为是适时地延时任务或者\n * 按时间间隔重复调度任务的最佳实践。\n *\n * 如果你只是想\"延时\"任务，即在当前执行同步代码结束后执行它（通常会用`setTimeout(deferredTask, 0)`实现），\n * {@link asap} 调度器会是更好的选择。\n *\n * @example <caption>使用 async 调度器来延时任务</caption>\n * const task = () => console.log('it works!');\n *\n * Rx.Scheduler.async.schedule(task, 2000);\n *\n * // 2秒后的输出:\n * // \"it works!\"\n *\n *\n * @example <caption>使用 async 调度器按时间间隔重复执行任务</caption>\n * function task(state) {\n *   console.log(state);\n *   this.schedule(state + 1, 1000); // `this` 指向当前执行的 Action,\n *                                   // 我们用新的状态和延时来重新调度它\n * }\n *\n * Rx.Scheduler.async.schedule(task, 3000, 0);\n *\n * // 日志:\n * // 0 after 3s\n * // 1 after 4s\n * // 2 after 5s\n * // 3 after 6s\n *\n * @static true\n * @name async\n * @owner Scheduler\n ",
+          "range": [
+            96,
+            989
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 42,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Line",
+          "value": "# sourceMappingURL=async.js.map",
+          "range": [
+            1044,
+            1077
+          ],
+          "loc": {
+            "start": {
+              "line": 44,
+              "column": 0
+            },
+            "end": {
+              "line": 44,
+              "column": 33
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    1043
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 43,
+      "column": 53
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n *\n * Async 调度器\n *\n * <span class=\"informal\">就像你使用过的 setTimeout(task, duration) 那样调度任务</span>\n *\n * `async` 调度器异步地调度任务，通过将它们放入 JavaScript 事件循环中。它被认为是适时地延时任务或者\n * 按时间间隔重复调度任务的最佳实践。\n *\n * 如果你只是想\"延时\"任务，即在当前执行同步代码结束后执行它（通常会用`setTimeout(deferredTask, 0)`实现），\n * {@link asap} 调度器会是更好的选择。\n *\n * @example <caption>使用 async 调度器来延时任务</caption>\n * const task = () => console.log('it works!');\n *\n * Rx.Scheduler.async.schedule(task, 2000);\n *\n * // 2秒后的输出:\n * // \"it works!\"\n *\n *\n * @example <caption>使用 async 调度器按时间间隔重复执行任务</caption>\n * function task(state) {\n *   console.log(state);\n *   this.schedule(state + 1, 1000); // `this` 指向当前执行的 Action,\n *                                   // 我们用新的状态和延时来重新调度它\n * }\n *\n * Rx.Scheduler.async.schedule(task, 3000, 0);\n *\n * // 日志:\n * // 0 after 3s\n * // 1 after 4s\n * // 2 after 5s\n * // 3 after 6s\n *\n * @static true\n * @name async\n * @owner Scheduler\n ",
+      "range": [
+        96,
+        989
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 42,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": "# sourceMappingURL=async.js.map",
+      "range": [
+        1044,
+        1077
+      ],
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 0
+        },
+        "end": {
+          "line": 44,
+          "column": 33
+        }
+      }
+    }
+  ]
+}

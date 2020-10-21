@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">es6/operator/delay.js | RxJS 中文文档</title>
+  <meta name="description" content="RxJS 中文文档 - RxJS 5 官方文档中文版，此中文文档与官方文档保持同步更新!RxJS 中文社区致力于为广大国内 RxJS 爱好者提供更好的学习环境，其中包括无语言障碍的中文文档及其他中文学习资料!">
+  <meta name="keywords" content="RxJS中文文档,RxJS5中文文档,RxJS,RxJS5,RxJS-CN,RxJS中文社区,Observable">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-Rx.js"></script>
+<script data-ice="userScript" src="user/script/1-devtools-welcome.js"></script>
+<script data-ice="userScript" src="user/script/2-custom-manual-styles.js"></script>
+<script data-ice="userScript" src="user/script/3-decision-tree-widget.min.js"></script>
+<script data-ice="userScript" src="user/script/4-theme-toggler.js"></script>
+<script data-ice="userScript" src="user/script/5-translate.js"></script>
+<script data-ice="userScript" src="user/script/6-link-hash.js"></script>
+<script data-ice="userScript" src="user/script/7-language.js"></script>
+<script data-ice="userScript" src="user/script/8-about-link.js"></script>
+<script data-ice="userScript" src="user/script/9-wechat-share.js"></script>
+<script data-ice="userScript" src="user/script/10-rxjs-spy.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-main.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/ReactiveX/RxJS" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/AsyncSubject.js~AsyncSubject.html">AsyncSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/BehaviorSubject.js~BehaviorSubject.html">BehaviorSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/ReplaySubject.js~ReplaySubject.html">ReplaySubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~AnonymousSubject.html">AnonymousSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~Subject.html">Subject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~SubjectSubscriber.html">SubjectSubscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~TeardownLogicDoc.html">TeardownLogic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Scheduler">Rx.Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Symbol">Rx.Symbol</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable/dom</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxError.html">AjaxError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxResponse.html">AjaxResponse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxTimeoutError.html">AjaxTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/observable/dom/MiscJSDoc.js~AjaxRequestDoc.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operator</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">scheduler</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/scheduler/Action.js~Action.html">Action</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-animationFrame">animationFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-asap">asap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-async">async</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-queue">queue</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">symbol</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$iterator">$$iterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$observable">$$observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$rxSubscriber">$$rxSubscriber</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ArgumentOutOfRangeError.js~ArgumentOutOfRangeError.html">ArgumentOutOfRangeError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/EmptyError.js~EmptyError.html">EmptyError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ObjectUnsubscribedError.js~ObjectUnsubscribedError.html">ObjectUnsubscribedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/TimeoutError.js~TimeoutError.html">TimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/UnsubscriptionError.js~UnsubscriptionError.html">UnsubscriptionError</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">es6/operator/delay.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { async } from &apos;../scheduler/async&apos;;
+import { isDate } from &apos;../util/isDate&apos;;
+import { Subscriber } from &apos;../Subscriber&apos;;
+import { Notification } from &apos;../Notification&apos;;
+/**
+ * &#x901A;&#x8FC7;&#x7ED9;&#x5B9A;&#x7684;&#x8D85;&#x65F6;&#x6216;&#x8005;&#x76F4;&#x5230;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x6765;&#x5EF6;&#x8FDF;&#x6E90; Observable &#x7684;&#x53D1;&#x9001;&#x3002;
+ *
+ * &lt;span class=&quot;informal&quot;&gt;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x9879;&#x7684;&#x53D1;&#x51FA;&#x65F6;&#x95F4;&#x90FD;&#x5F80;&#x540E;&#x63A8;&#x79FB;&#x56FA;&#x5B9A;&#x7684;&#x6BEB;&#x79D2;&#x6570;.&lt;/span&gt;
+ *
+ * &lt;img src=&quot;./img/delay.png&quot; width=&quot;100%&quot;&gt;
+ *
+ * &#x5982;&#x679C;&#x5EF6;&#x65F6;&#x53C2;&#x6570;&#x662F;&#x6570;&#x5B57;, &#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#x4F1A;&#x5C06;&#x6E90; Observable &#x7684;&#x53D1;&#x51FA;&#x65F6;&#x95F4;&#x90FD;&#x5F80;&#x540E;&#x63A8;&#x79FB;&#x56FA;&#x5B9A;&#x7684;&#x6BEB;&#x79D2;&#x6570;&#x3002;
+ * &#x4FDD;&#x5B58;&#x503C;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x5BF9;&#x65F6;&#x95F4;&#x95F4;&#x9694;.
+ *
+ * &#x5982;&#x679C;&#x5EF6;&#x8FDF;&#x53C2;&#x6570;&#x662F;&#x65E5;&#x671F;&#x7C7B;&#x578B;, &#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#x4F1A;&#x5EF6;&#x65F6;Observable&#x7684;&#x6267;&#x884C;&#x76F4;&#x5230;&#x5230;&#x4E86;&#x7ED9;&#x5B9A;&#x7684;&#x65F6;&#x95F4;.
+ *
+ * @example &lt;caption&gt;&#x6BCF;&#x6B21;&#x70B9;&#x51FB;&#x5EF6;&#x8FDF;1&#x79D2;&lt;/caption&gt;
+ * var clicks = Rx.Observable.fromEvent(document, &apos;click&apos;);
+ * var delayedClicks = clicks.delay(1000); // each click emitted after 1 second
+ * delayedClicks.subscribe(x =&gt; console.log(x));
+ *
+ * @example &lt;caption&gt;&#x5EF6;&#x65F6;&#x6240;&#x6709;&#x7684;&#x70B9;&#x51FB;&#x76F4;&#x5230;&#x5230;&#x8FBE;&#x672A;&#x6765;&#x7684;&#x65F6;&#x95F4;&#x70B9;&lt;/caption&gt;
+ * var clicks = Rx.Observable.fromEvent(document, &apos;click&apos;);
+ * var date = new Date(&apos;March 15, 2050 12:00:00&apos;); // in the future
+ * var delayedClicks = clicks.delay(date); // click emitted only after that date
+ * delayedClicks.subscribe(x =&gt; console.log(x));
+ *
+ * @see {@link debounceTime}
+ * @see {@link delayWhen}
+ *
+ * @param {number|Date} delay &#x5EF6;&#x8FDF;&#x65F6;&#x95F4;(&#x4EE5;&#x6BEB;&#x79D2;&#x4E3A;&#x5355;&#x4F4D;&#x7684;&#x6570;&#x5B57;)&#x6216; Date &#x5BF9;&#x8C61;(&#x53D1;&#x9001;&#x5EF6;&#x8FDF;&#x5230;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;)&#x3002;
+ * @param {Scheduler} [scheduler=async] &#x8C03;&#x5EA6;&#x5668;&#xFF0C;&#x7528;&#x6765;&#x7BA1;&#x7406;&#x5904;&#x7406;&#x6BCF;&#x9879;&#x65F6;&#x5EF6;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x3002;
+ * @return {Observable} &#x8BE5; Observalbe &#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x6216;&#x65E5;&#x671F;&#x6765;&#x5EF6;&#x8FDF;&#x6E90; Observable &#x7684;&#x53D1;&#x9001;&#x3002;
+ * @method delay
+ * @owner Observable
+ */
+export function delay(delay, scheduler = async) {
+    const absoluteDelay = isDate(delay);
+    const delayFor = absoluteDelay ? (+delay - scheduler.now()) : Math.abs(delay);
+    return this.lift(new DelayOperator(delayFor, scheduler));
+}
+class DelayOperator {
+    constructor(delay, scheduler) {
+        this.delay = delay;
+        this.scheduler = scheduler;
+    }
+    call(subscriber, source) {
+        return source.subscribe(new DelaySubscriber(subscriber, this.delay, this.scheduler));
+    }
+}
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+class DelaySubscriber extends Subscriber {
+    constructor(destination, delay, scheduler) {
+        super(destination);
+        this.delay = delay;
+        this.scheduler = scheduler;
+        this.queue = [];
+        this.active = false;
+        this.errored = false;
+    }
+    static dispatch(state) {
+        const source = state.source;
+        const queue = source.queue;
+        const scheduler = state.scheduler;
+        const destination = state.destination;
+        while (queue.length &gt; 0 &amp;&amp; (queue[0].time - scheduler.now()) &lt;= 0) {
+            queue.shift().notification.observe(destination);
+        }
+        if (queue.length &gt; 0) {
+            const delay = Math.max(0, queue[0].time - scheduler.now());
+            this.schedule(state, delay);
+        }
+        else {
+            source.active = false;
+        }
+    }
+    _schedule(scheduler) {
+        this.active = true;
+        this.add(scheduler.schedule(DelaySubscriber.dispatch, this.delay, {
+            source: this, destination: this.destination, scheduler: scheduler
+        }));
+    }
+    scheduleNotification(notification) {
+        if (this.errored === true) {
+            return;
+        }
+        const scheduler = this.scheduler;
+        const message = new DelayMessage(scheduler.now() + this.delay, notification);
+        this.queue.push(message);
+        if (this.active === false) {
+            this._schedule(scheduler);
+        }
+    }
+    _next(value) {
+        this.scheduleNotification(Notification.createNext(value));
+    }
+    _error(err) {
+        this.errored = true;
+        this.queue = [];
+        this.destination.error(err);
+    }
+    _complete() {
+        this.scheduleNotification(Notification.createComplete());
+    }
+}
+class DelayMessage {
+    constructor(time, notification) {
+        this.time = time;
+        this.notification = notification;
+    }
+}
+//# sourceMappingURL=delay.js.map</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

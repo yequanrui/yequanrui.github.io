@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">es6/observable/BoundCallbackObservable.js | RxJS 中文文档</title>
+  <meta name="description" content="RxJS 中文文档 - RxJS 5 官方文档中文版，此中文文档与官方文档保持同步更新!RxJS 中文社区致力于为广大国内 RxJS 爱好者提供更好的学习环境，其中包括无语言障碍的中文文档及其他中文学习资料!">
+  <meta name="keywords" content="RxJS中文文档,RxJS5中文文档,RxJS,RxJS5,RxJS-CN,RxJS中文社区,Observable">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-Rx.js"></script>
+<script data-ice="userScript" src="user/script/1-devtools-welcome.js"></script>
+<script data-ice="userScript" src="user/script/2-custom-manual-styles.js"></script>
+<script data-ice="userScript" src="user/script/3-decision-tree-widget.min.js"></script>
+<script data-ice="userScript" src="user/script/4-theme-toggler.js"></script>
+<script data-ice="userScript" src="user/script/5-translate.js"></script>
+<script data-ice="userScript" src="user/script/6-link-hash.js"></script>
+<script data-ice="userScript" src="user/script/7-language.js"></script>
+<script data-ice="userScript" src="user/script/8-about-link.js"></script>
+<script data-ice="userScript" src="user/script/9-wechat-share.js"></script>
+<script data-ice="userScript" src="user/script/10-rxjs-spy.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-main.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/ReactiveX/RxJS" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/AsyncSubject.js~AsyncSubject.html">AsyncSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/BehaviorSubject.js~BehaviorSubject.html">BehaviorSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/ReplaySubject.js~ReplaySubject.html">ReplaySubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~AnonymousSubject.html">AnonymousSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~Subject.html">Subject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~SubjectSubscriber.html">SubjectSubscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~TeardownLogicDoc.html">TeardownLogic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Scheduler">Rx.Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Symbol">Rx.Symbol</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable/dom</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxError.html">AjaxError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxResponse.html">AjaxResponse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxTimeoutError.html">AjaxTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/observable/dom/MiscJSDoc.js~AjaxRequestDoc.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operator</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">scheduler</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/scheduler/Action.js~Action.html">Action</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-animationFrame">animationFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-asap">asap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-async">async</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-queue">queue</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">symbol</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$iterator">$$iterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$observable">$$observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$rxSubscriber">$$rxSubscriber</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ArgumentOutOfRangeError.js~ArgumentOutOfRangeError.html">ArgumentOutOfRangeError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/EmptyError.js~EmptyError.html">EmptyError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ObjectUnsubscribedError.js~ObjectUnsubscribedError.html">ObjectUnsubscribedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/TimeoutError.js~TimeoutError.html">TimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/UnsubscriptionError.js~UnsubscriptionError.html">UnsubscriptionError</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">es6/observable/BoundCallbackObservable.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Observable } from &apos;../Observable&apos;;
+import { tryCatch } from &apos;../util/tryCatch&apos;;
+import { errorObject } from &apos;../util/errorObject&apos;;
+import { AsyncSubject } from &apos;../AsyncSubject&apos;;
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @extends {Ignored}
+ * @hide true
+ */
+export class BoundCallbackObservable extends Observable {
+    constructor(callbackFunc, selector, args, context, scheduler) {
+        super();
+        this.callbackFunc = callbackFunc;
+        this.selector = selector;
+        this.args = args;
+        this.context = context;
+        this.scheduler = scheduler;
+    }
+    /* tslint:enable:max-line-length */
+    /**
+     * &#x628A;&#x56DE;&#x8C03;API&#x8F6C;&#x5316;&#x4E3A;&#x8FD4;&#x56DE;Observable&#x7684;&#x51FD;&#x6570;&#x3002;
+     *
+     * &lt;span class=&quot;informal&quot;&gt;&#x7ED9;&#x5B83;&#x4E00;&#x4E2A;&#x7B7E;&#x540D;&#x4E3A;`f(x, callback)`&#x7684;&#x51FD;&#x6570;f,&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;g,
+     * &#x8C03;&#x7528;&apos;g(x)&apos;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Observable&#x3002;&lt;/span&gt;
+     *
+     * `bindCallback` &#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x7684;&#x8F93;&#x5165;&#x548C;&#x8F93;&#x51FA;&#x5E76;&#x4E0D;&#x662F; Observable &#x3002;&#x8F93;&#x5165;&#x7684;&#x662F;&#x4E00;&#x4E2A;
+     * &#x5E26;&#x6709;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x8BE5;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#x4F1A;&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;
+     *
+     * `bindCallback` &#x7684;&#x8F93;&#x51FA;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x7684;&#x53C2;&#x6570;&#x548C;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x4E00;&#x6837;(&#x9664;&#x4E86;&#x6CA1;&#x6709;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;
+     * &#x6570;)&#x3002;&#x5F53;&#x8F93;&#x51FA;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Observable &#x3002;&#x5982;&#x679C;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x5219;&#x8BE5; Observable
+     * &#x4F1A;&#x53D1;&#x51FA;&#x8FD9;&#x4E2A;&#x503C;&#x3002;&#x5982;&#x679C;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4F20;&#x9012;&#x591A;&#x4E2A;&#x503C;&#xFF0C;&#x5219;&#x8BE5; Observable &#x4F1A;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x6240;&#x6709;&#x503C;&#x7684;&#x6570;&#x7EC4;&#x3002;
+     *
+     * &#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x8F93;&#x51FA;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684; Observable &#x88AB;&#x8BA2;&#x9605;&#x4E4B;&#x524D;&#xFF0C;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x662F;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#x7684;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x8F93;&#x5165;
+     * &#x51FD;&#x6570;&#x53D1;&#x8D77; AJAX &#x8BF7;&#x6C42;&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x8BF7;&#x6C42;&#x5728;&#x6BCF;&#x6B21;&#x8BA2;&#x9605;&#x8FD4;&#x56DE;&#x7684; Observable &#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x53D1;&#x51FA;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E4B;&#x524D;&#x3002;
+     *
+     * &#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x9879;&#xFF0C;selector &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4F20;&#x7ED9;`bindObservable`&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x548C;&#x56DE;&#x8C03;&#x4E00;&#x6837;&#x7684;&#x53C2;&#x6570;&#x3002;&#x8FD4;&#x56DE; Observable
+     * &#x53D1;&#x51FA;&#x7684;&#x503C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x56DE;&#x8C03;&#x53C2;&#x6570;&#x672C;&#x8EAB;&#xFF0C;&#x5373;&#x4F7F;&#x5728;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x7684;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#x5C06;&#x5728;&#x6D41;&#x4E2D;&#x663E;&#x793A;&#x4E3A;&#x6570;&#x7EC4;&#x3002;&#x9009;&#x62E9;&#x5668;
+     * &#x51FD;&#x6570;&#x76F4;&#x63A5;&#x7528;&#x53C2;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x5C31;&#x50CF;&#x56DE;&#x8C03;&#x4E00;&#x6837;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4F60;&#x53EF;&#x4EE5;&#x60F3;&#x8C61;&#x9ED8;&#x8BA4;&#x9009;&#x62E9;&#x5668;&#xFF08;&#x5F53;&#x6CA1;&#x6709;&#x663E;&#x793A;&#x63D0;&#x4F9B;&#x7684;&#x65F6;&#x5019;&#xFF09;&#x662F;&#x8FD9;&#x6837;
+     * &#x4E00;&#x4E2A;&#x51FD;&#x6570;:&#x5C06;&#x5B83;&#x7684;&#x6240;&#x6709;&#x53C2;&#x6570;&#x805A;&#x96C6;&#x5230;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x6216;&#x8005;&#x4EC5;&#x4EC5;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;(&#x5F53;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;)&#x3002;
+     *
+     * &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x53C2;&#x6570; - {@link Scheduler} - &#x5F53; Observable &#x88AB;&#x8BA2;&#x9605;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x63A7;&#x5236;&#x8C03;&#x7528;&#x8F93;&#x5165;&#x51FD;
+     * &#x6570;&#x4EE5;&#x53CA;&#x53D1;&#x51FA;&#x7ED3;&#x679C;&#x7684;&#x65F6;&#x673A;&#x3002;&#x9ED8;&#x8BA4;&#x8BA2;&#x9605; Observable &#x540E;&#x8C03;&#x7528;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x662F;&#x540C;&#x6B65;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4F7F;&#x7528;`Scheduler.async`
+     * &#x4F5C;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5C06;&#x4F1A;&#x5EF6;&#x8FDF;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x5C31;&#x50CF;&#x662F;&#x7528;0&#x6BEB;&#x79D2;&#x7684;setTimeout&#x5305;&#x88C5;&#x8FC7;&#x3002;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x4E86;&#x5F02;
+     * &#x6B65;&#x8C03;&#x5EA6;&#x5668;&#x5E76;&#x4E14;&#x8BA2;&#x9605;&#x4E86; Observable &#xFF0C;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x5C06;&#x5728;&#x8C03;&#x7528;&#x201C;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x201D;&#x4E4B;&#x524D;&#x7ED3;&#x675F;&#x3002;
+     *
+     * &#x5F53;&#x6D89;&#x53CA;&#x5230;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x7684;&#x7ED3;&#x679C;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x5F53;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x4E4B;&#x540E;&#x4F1A;&#x7ACB;&#x9A6C;&#x53D1;&#x51FA;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5982;&#x679C;&#x56DE;&#x8C03;&#x4E5F;&#x662F;&#x540C;&#x6B65;&#x8C03;&#x52A8;&#x7684;&#x8BDD;&#xFF0C;
+     * &#x90A3;&#x4E48; Observable &#x7684;&#x8BA2;&#x9605;&#x4E5F;&#x4F1A;&#x540C;&#x6B65;&#x8C03;&#x7528;`next`&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5EF6;&#x8FDF;&#x8C03;&#x7528;&#xFF0C;&#x4F7F;&#x7528;`Scheduler.async`&#x3002;
+     * &#x8FD9;&#x610F;&#x5473;&#x7740;&#x901A;&#x8FC7;&#x4F7F;&#x7528;`Scheduler.async`&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x6C38;&#x8FDC;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x4E86;&#x53EF;&#x6015;&#x7684;Zalgo&#x3002;
+     *
+     * &#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8F93;&#x51FA;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;Observable&#x53EA;&#x80FD;&#x53D1;&#x51FA;&#x4E00;&#x6B21;&#x7136;&#x540E;&#x5B8C;&#x6210;&#x3002;&#x5373;&#x4F7F;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x591A;&#x6B21;&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;
+     * &#x4EE5;&#x53CA;&#x4E4B;&#x540E;&#x7684;&#x8C03;&#x7528;&#x90FD;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x6D41;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x76D1;&#x542C;&#x591A;&#x6B21;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x4F60;&#x5927;&#x6982;&#x9700;&#x8981;&#x4F7F;&#x7528;{@link fromEvent}&#x6216;&#x8005;
+     * {@link fromEventPattern}&#x6765;&#x4EE3;&#x66FF;&#x3002;
+     *
+     * &#x5982;&#x679C;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4E0A;&#x4E0B;&#x6587;(this)&#xFF0C;&#x8BE5;&#x4E0A;&#x4E0B;&#x6587;&#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x8F93;&#x51FA;&#x51FD;&#x6570;&#x5728;&#x8C03;&#x7528;&#x65F6;&#x7684;&#x540C;&#x4E00;&#x4E0A;&#x4E0B;&#x6587;&#x3002;&#x7279;&#x522B;&#x662F;&#x5982;&#x679C;&#x8F93;&#x5165;&#x51FD;&#x6570;
+     * &#x88AB;&#x5F53;&#x4F5C;&#x662F;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x540C;&#x6837;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x5EFA;&#x8BAE;&#x5C06;&#x8F93;&#x51FA;&#x51FD;&#x6570;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x8BBE;&#x7F6E;&#x4E3A;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x8F93;&#x5165;&#x65B9;&#x6CD5;&#x4E0D;
+     * &#x662F;&#x5DF2;&#x7ECF;&#x7ED1;&#x5B9A;&#x597D;&#x7684;&#x3002;
+     *
+     * &#x5982;&#x679C;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x4EE5; node &#x7684;&#x65B9;&#x5F0F;(&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x53EF;&#x9009;&#x7684;&#x9519;&#x8BEF;&#x53C2;&#x6570;&#x7528;&#x6765;&#x6807;&#x793A;&#x8C03;&#x7528;&#x662F;&#x5426;&#x6210;&#x529F;)&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;{@link bindNodeCallback}
+     * &#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x4FBF;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF0C;&#x4E5F;&#x8BB8;&#x662F;&#x66F4;&#x597D;&#x7684;&#x9009;&#x62E9;&#x3002; `bindCallback` &#x4E0D;&#x4F1A;&#x533A;&#x522B;&#x5BF9;&#x5F85;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#xFF0C;&#x9519;&#x8BEF;&#x53C2;&#x6570;(&#x662F;&#x5426;&#x4F20;&#x9012;)
+     * &#x88AB;&#x89E3;&#x91CA;&#x6210;&#x6B63;&#x5E38;&#x7684;&#x53C2;&#x6570;&#x3002;
+     *
+     * @example &lt;caption&gt;&#x628A;jQuery&#x7684;getJSON&#x65B9;&#x6CD5;&#x8F6C;&#x5316;&#x4E3A;Observable API&lt;/caption&gt;
+     * // &#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;:jQuery.getJSON(&apos;/my/url&apos;, callback)
+     * var getJSONAsObservable = Rx.Observable.bindCallback(jQuery.getJSON);
+     * var result = getJSONAsObservable(&apos;/my/url&apos;);
+     * result.subscribe(x =&gt; console.log(x), e =&gt; console.error(e));
+     *
+     *
+     * @example &lt;caption&gt;&#x63A5;&#x6536;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x7684;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#x3002;&lt;/caption&gt;
+     * someFunction((a, b, c) =&gt; {
+     *   console.log(a); // 5
+     *   console.log(b); // &apos;some string&apos;
+     *   console.log(c); // {someProperty: &apos;someValue&apos;}
+     * });
+     *
+     * const boundSomeFunction = Rx.Observable.bindCallback(someFunction);
+     * boundSomeFunction().subscribe(values =&gt; {
+     *   console.log(values) // [5, &apos;some string&apos;, {someProperty: &apos;someValue&apos;}]
+     * });
+     *
+     *
+     * @example &lt;caption&gt;&#x4F7F;&#x7528;&#x5E26; selector &#x51FD;&#x6570;&#x7684; bindCallback&#x3002;&lt;/caption&gt;
+     * someFunction((a, b, c) =&gt; {
+     *   console.log(a); // &apos;a&apos;
+     *   console.log(b); // &apos;b&apos;
+     *   console.log(c); // &apos;c&apos;
+     * });
+     *
+     * const boundSomeFunction = Rx.Observable.bindCallback(someFunction, (a, b, c) =&gt; a + b + c);
+     * boundSomeFunction().subscribe(value =&gt; {
+     *   console.log(value) // &apos;abc&apos;
+     * });
+     *
+     *
+     * @example &lt;caption&gt;&#x5BF9;&#x4F7F;&#x7528;&#x548C;&#x4E0D;&#x4F7F;&#x7528; async &#x8C03;&#x5EA6;&#x5668;&#x7684;&#x884C;&#x4E3A;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;&lt;/caption&gt;
+     * function iCallMyCallbackSynchronously(cb) {
+     *   cb();
+     * }
+     *
+     * const boundSyncFn = Rx.Observable.bindCallback(iCallMyCallbackSynchronously);
+     * const boundAsyncFn = Rx.Observable.bindCallback(iCallMyCallbackSynchronously, null, Rx.Scheduler.async);
+     *
+     * boundSyncFn().subscribe(() =&gt; console.log(&apos;I was sync!&apos;));
+     * boundAsyncFn().subscribe(() =&gt; console.log(&apos;I was async!&apos;));
+     * console.log(&apos;This happened...&apos;);
+     *
+     * // Logs:
+     * // I was sync!
+     * // This happened...
+     * // I was async!
+     *
+     *
+     * @example &lt;caption&gt;&#x5728;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;&#x4E0A;&#x4F7F;&#x7528; bindCallback&lt;/caption&gt;
+     * const boundMethod = Rx.Observable.bindCallback(someObject.methodWithCallback);
+     * boundMethod.call(someObject) // &#x786E;&#x4FDD;methodWithCallback&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;someObject
+     * .subscribe(subscriber);
+     *
+     *
+     * @see {@link bindNodeCallback}
+     * @see {@link from}
+     * @see {@link fromPromise}
+     *
+     * @param {function} func &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x56DE;&#x8C03;&#x7684;&#x51FD;&#x6570;&#x3002;
+     * @param {function} [selector] &#x9009;&#x62E9;&#x5668;&#xFF0C;&#x4ECE;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x83B7;&#x53D6;&#x53C2;&#x6570;&#x5E76;&#x5C06;&#x8FD9;&#x4E9B;&#x6620;&#x5C04;&#x4E3A;&#x4E00;&#x4E2A; Observable &#x53D1;&#x51FA;&#x7684;&#x503C;&#x3002;
+     * @param {Scheduler} [scheduler] &#x8C03;&#x5EA6;&#x5668;&#xFF0C;&#x8C03;&#x5EA6;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;
+     * @return {function(...params: *): Observable} &#x4E00;&#x4E2A;&#x8FD4;&#x56DE;Observable&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;Observable&#x53D1;&#x51FA;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x3002;
+     * @static true
+     * @name bindCallback
+     * @owner Observable
+     */
+    static create(func, selector = undefined, scheduler) {
+        return function (...args) {
+            return new BoundCallbackObservable(func, selector, args, this, scheduler);
+        };
+    }
+    _subscribe(subscriber) {
+        const callbackFunc = this.callbackFunc;
+        const args = this.args;
+        const scheduler = this.scheduler;
+        let subject = this.subject;
+        if (!scheduler) {
+            if (!subject) {
+                subject = this.subject = new AsyncSubject();
+                const handler = function handlerFn(...innerArgs) {
+                    const source = handlerFn.source;
+                    const { selector, subject } = source;
+                    if (selector) {
+                        const result = tryCatch(selector).apply(this, innerArgs);
+                        if (result === errorObject) {
+                            subject.error(errorObject.e);
+                        }
+                        else {
+                            subject.next(result);
+                            subject.complete();
+                        }
+                    }
+                    else {
+                        subject.next(innerArgs.length &lt;= 1 ? innerArgs[0] : innerArgs);
+                        subject.complete();
+                    }
+                };
+                // use named function instance to avoid closure.
+                handler.source = this;
+                const result = tryCatch(callbackFunc).apply(this.context, args.concat(handler));
+                if (result === errorObject) {
+                    subject.error(errorObject.e);
+                }
+            }
+            return subject.subscribe(subscriber);
+        }
+        else {
+            return scheduler.schedule(BoundCallbackObservable.dispatch, 0, { source: this, subscriber, context: this.context });
+        }
+    }
+    static dispatch(state) {
+        const self = this;
+        const { source, subscriber, context } = state;
+        const { callbackFunc, args, scheduler } = source;
+        let subject = source.subject;
+        if (!subject) {
+            subject = source.subject = new AsyncSubject();
+            const handler = function handlerFn(...innerArgs) {
+                const source = handlerFn.source;
+                const { selector, subject } = source;
+                if (selector) {
+                    const result = tryCatch(selector).apply(this, innerArgs);
+                    if (result === errorObject) {
+                        self.add(scheduler.schedule(dispatchError, 0, { err: errorObject.e, subject }));
+                    }
+                    else {
+                        self.add(scheduler.schedule(dispatchNext, 0, { value: result, subject }));
+                    }
+                }
+                else {
+                    const value = innerArgs.length &lt;= 1 ? innerArgs[0] : innerArgs;
+                    self.add(scheduler.schedule(dispatchNext, 0, { value, subject }));
+                }
+            };
+            // use named function to pass values in without closure
+            handler.source = source;
+            const result = tryCatch(callbackFunc).apply(context, args.concat(handler));
+            if (result === errorObject) {
+                subject.error(errorObject.e);
+            }
+        }
+        self.add(subject.subscribe(subscriber));
+    }
+}
+function dispatchNext(arg) {
+    const { value, subject } = arg;
+    subject.next(value);
+    subject.complete();
+}
+function dispatchError(arg) {
+    const { err, subject } = arg;
+    subject.error(err);
+}
+//# sourceMappingURL=BoundCallbackObservable.js.map</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">es6/operator/combineLatest.js | RxJS 中文文档</title>
+  <meta name="description" content="RxJS 中文文档 - RxJS 5 官方文档中文版，此中文文档与官方文档保持同步更新!RxJS 中文社区致力于为广大国内 RxJS 爱好者提供更好的学习环境，其中包括无语言障碍的中文文档及其他中文学习资料!">
+  <meta name="keywords" content="RxJS中文文档,RxJS5中文文档,RxJS,RxJS5,RxJS-CN,RxJS中文社区,Observable">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-Rx.js"></script>
+<script data-ice="userScript" src="user/script/1-devtools-welcome.js"></script>
+<script data-ice="userScript" src="user/script/2-custom-manual-styles.js"></script>
+<script data-ice="userScript" src="user/script/3-decision-tree-widget.min.js"></script>
+<script data-ice="userScript" src="user/script/4-theme-toggler.js"></script>
+<script data-ice="userScript" src="user/script/5-translate.js"></script>
+<script data-ice="userScript" src="user/script/6-link-hash.js"></script>
+<script data-ice="userScript" src="user/script/7-language.js"></script>
+<script data-ice="userScript" src="user/script/8-about-link.js"></script>
+<script data-ice="userScript" src="user/script/9-wechat-share.js"></script>
+<script data-ice="userScript" src="user/script/10-rxjs-spy.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-main.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/ReactiveX/RxJS" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/AsyncSubject.js~AsyncSubject.html">AsyncSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/BehaviorSubject.js~BehaviorSubject.html">BehaviorSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/ReplaySubject.js~ReplaySubject.html">ReplaySubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~AnonymousSubject.html">AnonymousSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~Subject.html">Subject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~SubjectSubscriber.html">SubjectSubscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~TeardownLogicDoc.html">TeardownLogic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Scheduler">Rx.Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Symbol">Rx.Symbol</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable/dom</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxError.html">AjaxError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxResponse.html">AjaxResponse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxTimeoutError.html">AjaxTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/observable/dom/MiscJSDoc.js~AjaxRequestDoc.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operator</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">scheduler</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/scheduler/Action.js~Action.html">Action</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-animationFrame">animationFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-asap">asap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-async">async</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-queue">queue</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">symbol</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$iterator">$$iterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$observable">$$observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$rxSubscriber">$$rxSubscriber</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ArgumentOutOfRangeError.js~ArgumentOutOfRangeError.html">ArgumentOutOfRangeError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/EmptyError.js~EmptyError.html">EmptyError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ObjectUnsubscribedError.js~ObjectUnsubscribedError.html">ObjectUnsubscribedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/TimeoutError.js~TimeoutError.html">TimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/UnsubscriptionError.js~UnsubscriptionError.html">UnsubscriptionError</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">es6/operator/combineLatest.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ArrayObservable } from &apos;../observable/ArrayObservable&apos;;
+import { isArray } from &apos;../util/isArray&apos;;
+import { OuterSubscriber } from &apos;../OuterSubscriber&apos;;
+import { subscribeToResult } from &apos;../util/subscribeToResult&apos;;
+const none = {};
+/* tslint:enable:max-line-length */
+/**
+ * &#x7EC4;&#x5408;&#x591A;&#x4E2A; Observables &#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Observable &#xFF0C;&#x8BE5; Observable &#x7684;&#x503C;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x8F93;&#x5165; Observable &#x7684;&#x6700;&#x65B0;&#x503C;&#x8BA1;&#x7B97;&#x5F97;&#x51FA;&#x7684;&#x3002;
+ *
+ * &lt;span class=&quot;informal&quot;&gt;&#x5B83;&#x5C06;&#x4F7F;&#x7528;&#x6240;&#x6709;&#x8F93;&#x5165;&#x4E2D;&#x7684;&#x6700;&#x65B0;&#x503C;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x51FA;&#x8BE5;&#x516C;&#x5F0F;&#x7684;&#x8F93;&#x51FA;&#x3002;&lt;/span&gt;
+ *
+ * &lt;img src=&quot;./img/combineLatest.png&quot; width=&quot;100%&quot;&gt;
+ *
+ * `combineLatest` &#x7ED3;&#x5408;&#x4F20;&#x5165;&#x7684;&#x591A;&#x4E2A; Observables&#x3002; &#x901A;&#x8FC7;&#x987A;&#x5E8F;&#x7684;&#x8BA2;&#x9605;&#x6BCF;&#x4E2A;&#x8F93;&#x5165;Observable, &#x5728;&#x6BCF;&#x6B21;&#x4EFB;&#x4E00;&#x8F93;&#x5165;Observables&#x53D1;&#x9001;&#x7684;&#x65F6;&#x5019;&#x6536;&#x96C6;
+ * &#x6BCF;&#x4E2A;&#x8F93;&#x5165;Observables&#x6700;&#x65B0;&#x7684;&#x503C;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;, &#x7136;&#x540E;&#x8981;&#x4E48;&#x5C06;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x4F20;&#x7ED9;&#x53EF;&#x9009;&#x7684;&#x6295;&#x5C04;&#x51FD;&#x6570;&#x5E76;&#x53D1;&#x9001;&#x6295;&#x5C04;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;,
+ * &#x6216;&#x8005;&#x5728;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x6295;&#x5C04;&#x51FD;&#x6570;&#x65F6;&#x4EC5;&#x4EC5;&#x53D1;&#x51FA;&#x8BE5;&#x6570;&#x7EC4;&#x3002;
+ *
+ * @example &lt;caption&gt;&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x8EAB;&#x9AD8;&#x7684; Observable &#x548C;&#x4E00;&#x4E2A;&#x4F53;&#x91CD;&#x7684; Observable &#x52A8;&#x6001;&#x7684;&#x8BA1;&#x7B97;BMI&#x6307;&#x6570;&lt;/caption&gt;
+ * var weight = Rx.Observable.of(70, 72, 76, 79, 75);
+ * var height = Rx.Observable.of(1.76, 1.77, 1.78);
+ * var bmi = weight.combineLatest(height, (w, h) =&gt; w / (h * h));
+ * bmi.subscribe(x =&gt; console.log(&apos;BMI is &apos; + x));
+ *
+ * // With output to console:
+ * // BMI is 24.212293388429753
+ * // BMI is 23.93948099205209
+ * // BMI is 23.671253629592222
+ *
+ * @see {@link combineAll}
+ * @see {@link merge}
+ * @see {@link withLatestFrom}
+ *
+ * @param {ObservableInput} other &#x5C06;&#x8981;&#x548C;&#x6E90; Observable &#x7ED3;&#x5408;&#x7684;&#x8F93;&#x5165; Observable&#x3002; &#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x591A;&#x4E2A;&#x8F93;&#x5165; Observables&#x3002;
+ * @param {function} [project] &#x53EF;&#x9009;&#x7684;&#x6295;&#x5C04;&#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x8F93;&#x51FA; Observable &#x8FD4;&#x56DE;&#x7684;&#x503C;&#x6295;&#x5C04;&#x4E3A;&#x8981;&#x53D1;&#x51FA;&#x7684;&#x65B0;&#x7684;&#x503C;&#x3002;
+ * @return {Observable} &#x8BE5; Observable &#x4E3A;&#x6BCF;&#x4E2A;&#x8F93;&#x5165; Observable &#x7684;&#x6700;&#x65B0;&#x503C;&#x7684;&#x6295;&#x5C04;&#x7ED3;&#x679C;&#x6216;&#x6570;&#x7EC4;&#x3002;
+ * @method combineLatest
+ * @owner Observable
+ */
+export function combineLatest(...observables) {
+    let project = null;
+    if (typeof observables[observables.length - 1] === &apos;function&apos;) {
+        project = observables.pop();
+    }
+    // if the first and only other argument besides the resultSelector is an array
+    // assume it&apos;s been called with `combineLatest([obs1, obs2, obs3], project)`
+    if (observables.length === 1 &amp;&amp; isArray(observables[0])) {
+        observables = observables[0].slice();
+    }
+    observables.unshift(this);
+    return this.lift.call(new ArrayObservable(observables), new CombineLatestOperator(project));
+}
+export class CombineLatestOperator {
+    constructor(project) {
+        this.project = project;
+    }
+    call(subscriber, source) {
+        return source.subscribe(new CombineLatestSubscriber(subscriber, this.project));
+    }
+}
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+export class CombineLatestSubscriber extends OuterSubscriber {
+    constructor(destination, project) {
+        super(destination);
+        this.project = project;
+        this.active = 0;
+        this.values = [];
+        this.observables = [];
+    }
+    _next(observable) {
+        this.values.push(none);
+        this.observables.push(observable);
+    }
+    _complete() {
+        const observables = this.observables;
+        const len = observables.length;
+        if (len === 0) {
+            this.destination.complete();
+        }
+        else {
+            this.active = len;
+            this.toRespond = len;
+            for (let i = 0; i &lt; len; i++) {
+                const observable = observables[i];
+                this.add(subscribeToResult(this, observable, observable, i));
+            }
+        }
+    }
+    notifyComplete(unused) {
+        if ((this.active -= 1) === 0) {
+            this.destination.complete();
+        }
+    }
+    notifyNext(outerValue, innerValue, outerIndex, innerIndex, innerSub) {
+        const values = this.values;
+        const oldVal = values[outerIndex];
+        const toRespond = !this.toRespond
+            ? 0
+            : oldVal === none ? --this.toRespond : this.toRespond;
+        values[outerIndex] = innerValue;
+        if (toRespond === 0) {
+            if (this.project) {
+                this._tryProject(values);
+            }
+            else {
+                this.destination.next(values.slice());
+            }
+        }
+    }
+    _tryProject(values) {
+        let result;
+        try {
+            result = this.project.apply(this, values);
+        }
+        catch (err) {
+            this.destination.error(err);
+            return;
+        }
+        this.destination.next(result);
+    }
+}
+//# sourceMappingURL=combineLatest.js.map</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

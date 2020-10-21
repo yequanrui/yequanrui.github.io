@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">SubscribableOrPromise | RxJS 中文文档</title>
+  <meta name="description" content="RxJS 中文文档 - RxJS 5 官方文档中文版，此中文文档与官方文档保持同步更新!RxJS 中文社区致力于为广大国内 RxJS 爱好者提供更好的学习环境，其中包括无语言障碍的中文文档及其他中文学习资料!">
+  <meta name="keywords" content="RxJS中文文档,RxJS5中文文档,RxJS,RxJS5,RxJS-CN,RxJS中文社区,Observable">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<script data-ice="userScript" src="user/script/0-Rx.js"></script>
+<script data-ice="userScript" src="user/script/1-devtools-welcome.js"></script>
+<script data-ice="userScript" src="user/script/2-custom-manual-styles.js"></script>
+<script data-ice="userScript" src="user/script/3-decision-tree-widget.min.js"></script>
+<script data-ice="userScript" src="user/script/4-theme-toggler.js"></script>
+<script data-ice="userScript" src="user/script/5-translate.js"></script>
+<script data-ice="userScript" src="user/script/6-link-hash.js"></script>
+<script data-ice="userScript" src="user/script/7-language.js"></script>
+<script data-ice="userScript" src="user/script/8-about-link.js"></script>
+<script data-ice="userScript" src="user/script/9-wechat-share.js"></script>
+<script data-ice="userScript" src="user/script/10-rxjs-spy.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-main.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/ReactiveX/RxJS" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/AsyncSubject.js~AsyncSubject.html">AsyncSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/BehaviorSubject.js~BehaviorSubject.html">BehaviorSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Notification.js~Notification.html">Notification</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Observable.js~Observable.html">Observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/ReplaySubject.js~ReplaySubject.html">ReplaySubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Scheduler.js~Scheduler.html">Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~AnonymousSubject.html">AnonymousSubject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~Subject.html">Subject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subject.js~SubjectSubscriber.html">SubjectSubscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscriber.js~Subscriber.html">Subscriber</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/Subscription.js~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObservableInputDoc.html">ObservableInput</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~ObserverDoc.html">Observer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html">SubscribableOrPromise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/MiscJSDoc.js~TeardownLogicDoc.html">TeardownLogic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Scheduler">Rx.Scheduler</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Rx.Symbol">Rx.Symbol</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/ConnectableObservable.js~ConnectableObservable.html">ConnectableObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">observable/dom</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxError.html">AjaxError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxResponse.html">AjaxResponse</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/observable/dom/AjaxObservable.js~AjaxTimeoutError.html">AjaxTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-interface">I</span><span data-ice="name"><span><a href="class/es6/observable/dom/MiscJSDoc.js~AjaxRequestDoc.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">operator</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/operator/groupBy.js~GroupedObservable.html">GroupedObservable</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">scheduler</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/scheduler/Action.js~Action.html">Action</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-animationFrame">animationFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-asap">asap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-async">async</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-queue">queue</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">symbol</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$iterator">$$iterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$observable">$$observable</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$$rxSubscriber">$$rxSubscriber</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ArgumentOutOfRangeError.js~ArgumentOutOfRangeError.html">ArgumentOutOfRangeError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/EmptyError.js~EmptyError.html">EmptyError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/ObjectUnsubscribedError.js~ObjectUnsubscribedError.html">ObjectUnsubscribedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/TimeoutError.js~TimeoutError.html">TimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/es6/util/UnsubscriptionError.js~UnsubscriptionError.html">UnsubscriptionError</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode"></code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">interface</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/es6/MiscJSDoc.js.html#lineNumber243">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">SubscribableOrPromise</h1>
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <div class="description" data-ice="description"><p><code>SubscribableOrPromise</code> &#x63A5;&#x53E3;&#x63CF;&#x8FF0;&#x884C;&#x4E3A;&#x50CF; Observables &#x6216;&#x8005; Promises &#x7684;&#x503C;&#x3002;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;
+&#x63A5;&#x53D7;&#x88AB;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3; annotate &#x8FC7;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x662F; RxJS Observables &#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x4E0B;&#x5217;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x7ED9;&#x671F;&#x671B;&#x6B64;&#x63A5;&#x53E3;&#x7684;&#x64CD;&#x4F5C;&#x7B26;&#xFF1A;</p>
+<h2 id="observable">Observable</h2>
+<p>RxJS <span><a href="class/es6/Observable.js~Observable.html">Observable</a></span> &#x5B9E;&#x4F8B;&#x3002;</p>
+<h2 id="-observable-subscribable-">&#x7C7B; Observable &#x5BF9;&#x8C61; (Subscribable)</h2>
+<p>&#x8FD9;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x4F55;&#x62E5;&#x6709; <code>Symbol.observable</code> &#x65B9;&#x6CD5;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5F53;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5E26;&#x6709;
+<code>subscribe</code> &#x65B9;&#x6CD5;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x884C;&#x4E3A;&#x5E94;&#x8BE5;&#x548C; RxJS &#x7684; <code>Observable.subscribe</code> &#x4E00;&#x81F4;&#x3002;</p>
+<p><code>Symbol.observable</code> &#x662F; <a href="https://github.com/tc39/proposal-observable">https://github.com/tc39/proposal-observable</a> &#x63D0;&#x6848;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;
+&#x5F53;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7C7B; Observable &#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;&#x73B0;&#x5728;&#x8FD8;&#x6CA1;&#x6709;&#x88AB;&#x539F;&#x751F;&#x652F;&#x6301;, &#x6BCF;&#x4E2A;&#x7B26;&#x53F7;&#x53EA;&#x548C;&#x81EA;&#x5DF1;&#x76F8;&#x7B49;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; <a href="https://github.com/blesh/symbol-observable">https://github.com/blesh/symbol-observable</a> &#x57AB;&#x7247;&#x3002;</p>
+<p><strong>TypeScript Subscribable &#x63A5;&#x53E3;&#x95EE;&#x9898;</strong></p>
+<p>&#x5C3D;&#x7BA1; TypeScript &#x63A5;&#x53E3;&#x58F0;&#x660E;&#xFF0C;&#x53EF;&#x8BA2;&#x9605;&#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x58F0;&#x660E;&#x4E86; <code>subscribe</code> &#x65B9;&#x6CD5;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x662F;&#x4F20;&#x9012;&#x5B9A;&#x4E49;&#x4E86; <code>subscribe</code> &#x65B9;&#x6CD5;
+&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x5B9A;&#x4E49; <code>Symbol.observable</code> &#x65B9;&#x6CD5;&#x7684;&#x5BF9;&#x8C61;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4F1A;&#x5931;&#x8D25;&#x3002;&#x76F8;&#x53CD;&#x5730;&#xFF0C;&#x4F20;&#x9012;&#x5B9A;&#x4E49;&#x4E86; <code>Symbol.observable</code> &#x800C;&#x6CA1;&#x6709;
+&#x5B9A;&#x4E49; <code>subscribe</code> &#x7684;&#x5BF9;&#x8C61;&#x5C06;&#x4F1A;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x5931;&#x8D25;&#xFF08;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528; TypeScript&#xFF09;&#x3002;</p>
+<p>TypeScript &#x5728;&#x652F;&#x6301;&#x5B9A;&#x4E49;&#x4E86; symbol &#x5C5E;&#x6027;&#x65B9;&#x6CD5;&#x7684;&#x63A5;&#x53E3;&#x65F6;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x7ED5;&#x8FC7;&#x5B83;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x76F4;&#x63A5;&#x5B9E;&#x73B0;
+<code>subscribe</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x4F7F; <code>Symbol.observable</code> &#x65B9;&#x6CD5;&#x7B80;&#x5355;&#x5730;&#x8FD4;&#x56DE; <code>this</code> &#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x80FD;&#x591F;
+&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4E5F;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;&#x3002;&#x5982;&#x679C;&#x4F60;&#x771F;&#x7684;&#x4E0D;&#x60F3;&#x6DFB;&#x52A0; <code>subscribe</code> &#x65B9;&#x6CD5;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x5C06;&#x5176;&#x4F20;&#x9012;&#x7ED9;&#x64CD;&#x4F5C;&#x7B26;&#x4E4B;&#x524D;&#xFF0C;
+&#x5C06;&#x7C7B;&#x578B;&#x8F6C;&#x5316;&#x4E3A; <code>any</code>&#x3002;</p>
+<p>&#x5F53;&#x8FD9;&#x4E2A; issue &#x88AB;&#x89E3;&#x51B3;&#x4E86;&#xFF0C;&#x53EF;&#x8BA2;&#x9605;&#x7684;&#x63A5;&#x53E3;&#x4EC5;&#x5141;&#x8BB8;&#x5B9A;&#x4E49;&#x4E86; <code>Symbol.observable</code> &#x65B9;&#x6CD5;&#x7684;&#x7C7B; Observable
+&#x5BF9;&#x8C61;&#xFF0C;&#x65E0;&#x8BBA;&#x8BE5;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x5B9E;&#x73B0;&#x4E86; <code>subscribe</code> &#x65B9;&#x6CD5;&#x3002;</p>
+<h2 id="es6-promise">ES6 Promise</h2>
+<p>Promise &#x53EF;&#x4EE5;&#x88AB;&#x8BA4;&#x4E3A;&#x662F; Observable&#xFF0C;&#x5F53; resolved &#x7684;&#x65F6;&#x5019;&#xFF0C;Observable &#x53D1;&#x51FA;&#x503C;&#x5E76;&#x5B8C;&#x6210;&#xFF0C;
+&#x5F53; rejected &#x7684;&#x65F6;&#x5019;&#xFF0C;Observable &#x53D1;&#x51FA;&#x9519;&#x8BEF;&#x3002;</p>
+<h2 id="-promise-then-">&#x7C7B; Promise &#x5BF9;&#x8C61; (&#x53EF;&#x4F7F;&#x7528; then &#x65B9;&#x6CD5;&#x7684;)</h2>
+<p>&#x4F20;&#x9012;&#x7ED9;&#x64CD;&#x4F5C;&#x7B26;&#x7684; Promises &#x4E0D;&#x9700;&#x8981;&#x662F; ES6 &#x539F;&#x751F;&#x7684; Promises&#x3002;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x6D41;&#x884C;&#x5E93;&#x6216;&#x57AB;&#x7247;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x751A;&#x81F3;&#x81EA;&#x5DF1;&#x6765;&#x5B9E;&#x73B0;&#x3002;
+&#x5B83;&#x53EA;&#x9700;&#x8981;&#x62E5;&#x6709; <code>then</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x65B9;&#x6CD5;&#x548C; ES6 Promise &#x7684; <code>then</code> &#x884C;&#x4E3A;
+&#x4E00;&#x81F4;&#x3002;</p>
+</div>
+
+  
+
+  <div data-ice="exampleDocs">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      <div class="example-caption" data-ice="exampleCaption">&#x7528;&#x975E; RxJS &#x7684; observable &#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x6765;&#x4F7F;&#x7528; merge &#x548C; map &#x64CD;&#x4F5C;&#x7B26;</div>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const nonRxJSObservable = {
+  subscribe(observer) {
+    observer.next(1000);
+    observer.complete();
+  },
+  [Symbol.observable]() {
+    return this;
+  }
+};
+
+Rx.Observable.merge(nonRxJSObservable)
+.map(value =&gt; &quot;This value is &quot; + value)
+.subscribe(result =&gt; console.log(result)); // &#x8F93;&#x51FA; &quot;This value is 1000&quot;</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      <div class="example-caption" data-ice="exampleCaption">&#x7528; ES6 &#x7684; Promise &#x6765;&#x4F7F;&#x7528; combineLatest &#x64CD;&#x4F5C;&#x7B26;</div>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">Rx.Observable.combineLatest(Promise.resolve(5), Promise.resolve(10), Promise.resolve(15))
+.subscribe(
+  value =&gt; console.log(value),
+  err =&gt; {},
+  () =&gt; console.log(&apos;the end!&apos;)
+);
+// &#x8F93;&#x51FA;:
+// [5, 10, 15]
+// &quot;the end!&quot;</code></pre>
+    </div>
+</div>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

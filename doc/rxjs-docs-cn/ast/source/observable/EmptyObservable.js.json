@@ -1,0 +1,1745 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Observable",
+            "range": [
+              9,
+              19
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 19
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Observable",
+            "range": [
+              9,
+              19
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            9,
+            19
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../Observable",
+        "raw": "'../Observable'",
+        "range": [
+          27,
+          42
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 27
+          },
+          "end": {
+            "line": 1,
+            "column": 42
+          }
+        }
+      },
+      "range": [
+        0,
+        43
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 43
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * We need this JSDoc comment for affecting ESDoc.\n * @extends {Ignored}\n * @hide true\n ",
+          "range": [
+            44,
+            138
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "EmptyObservable",
+          "range": [
+            152,
+            167
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 13
+            },
+            "end": {
+              "line": 7,
+              "column": 28
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "Observable",
+          "range": [
+            176,
+            186
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 37
+            },
+            "end": {
+              "line": 7,
+              "column": 47
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+                  193,
+                  204
+                ],
+                "loc": {
+                  "start": {
+                    "line": 8,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 15
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "scheduler",
+                    "range": [
+                      205,
+                      214
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 8,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 25
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Super",
+                          "range": [
+                            226,
+                            231
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 9,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 9,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "arguments": [],
+                        "range": [
+                          226,
+                          233
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 9,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 9,
+                            "column": 15
+                          }
+                        }
+                      },
+                      "range": [
+                        226,
+                        234
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 16
+                        }
+                      }
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+                              243,
+                              247
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 10,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 12
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "scheduler",
+                            "range": [
+                              248,
+                              257
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 10,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 22
+                              }
+                            }
+                          },
+                          "range": [
+                            243,
+                            257
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 22
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "scheduler",
+                          "range": [
+                            260,
+                            269
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 34
+                            }
+                          }
+                        },
+                        "range": [
+                          243,
+                          269
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 10,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 34
+                          }
+                        }
+                      },
+                      "range": [
+                        243,
+                        270
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 10,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 35
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    216,
+                    276
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 8,
+                      "column": 27
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  204,
+                  276
+                ],
+                "loc": {
+                  "start": {
+                    "line": 8,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+                193,
+                276
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 4
+                },
+                "end": {
+                  "line": 11,
+                  "column": 5
+                }
+              },
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * 创建一个什么数据都不发出并且立马完成的 Observable。\n     *\n     * <span class=\"informal\"> 仅仅发出 complete 通知，其他什么也不做。\n     * </span>\n     *\n     * <img src=\"./img/empty.png\" width=\"100%\">\n     *\n     * 这个静态操作符对于创建一个简单的只发出完成状态通知的 Observable 是非常有用的。 它可以被用来和\n     * 其他 Observables 进行组合, 比如在 {@link mergeMap} 中使用。\n     *\n     * @example <caption>发出数字7, 然后完成。</caption>\n     * var result = Rx.Observable.empty().startWith(7);\n     * result.subscribe(x => console.log(x));\n     *\n     * @example <caption>仅将奇数映射并打平成字母序列abc。</caption>\n     * var interval = Rx.Observable.interval(1000);\n     * var result = interval.mergeMap(x =>\n     *   x % 2 === 1 ? Rx.Observable.of('a', 'b', 'c') : Rx.Observable.empty()\n     * );\n     * result.subscribe(x => console.log(x));\n     *\n     * // 结果如下:\n     * // x 是间隔的计数比如：0,1,2,3,...\n     * // x 1000ms 出现一次\n     * // 如果 x % 2 等于 1 打印 abc\n     * // 如果 x % 2 不等于1 什么也不输出\n     *\n     * @see {@link create}\n     * @see {@link never}\n     * @see {@link of}\n     * @see {@link throw}\n     *\n     * @param {Scheduler} [scheduler] 调度器 ( {@link IScheduler} )， 用来调度完成通知。\n     * @return {Observable} 空的Observable: 仅仅发出完成通知。\n     * @static true\n     * @name empty\n     * @owner Observable\n     ",
+                  "range": [
+                    281,
+                    1485
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 50,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "create",
+                "range": [
+                  1497,
+                  1503
+                ],
+                "loc": {
+                  "start": {
+                    "line": 51,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 51,
+                    "column": 17
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "scheduler",
+                    "range": [
+                      1504,
+                      1513
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 51,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 51,
+                        "column": 27
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "NewExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "EmptyObservable",
+                          "range": [
+                            1536,
+                            1551
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 19
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 34
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "scheduler",
+                            "range": [
+                              1552,
+                              1561
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 52,
+                                "column": 35
+                              },
+                              "end": {
+                                "line": 52,
+                                "column": 44
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1532,
+                          1562
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 45
+                          }
+                        }
+                      },
+                      "range": [
+                        1525,
+                        1563
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 52,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 52,
+                          "column": 46
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1515,
+                    1569
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 51,
+                      "column": 29
+                    },
+                    "end": {
+                      "line": 53,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1503,
+                  1569
+                ],
+                "loc": {
+                  "start": {
+                    "line": 51,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 53,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                1490,
+                1569
+              ],
+              "loc": {
+                "start": {
+                  "line": 51,
+                  "column": 4
+                },
+                "end": {
+                  "line": 53,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * 创建一个什么数据都不发出并且立马完成的 Observable。\n     *\n     * <span class=\"informal\"> 仅仅发出 complete 通知，其他什么也不做。\n     * </span>\n     *\n     * <img src=\"./img/empty.png\" width=\"100%\">\n     *\n     * 这个静态操作符对于创建一个简单的只发出完成状态通知的 Observable 是非常有用的。 它可以被用来和\n     * 其他 Observables 进行组合, 比如在 {@link mergeMap} 中使用。\n     *\n     * @example <caption>发出数字7, 然后完成。</caption>\n     * var result = Rx.Observable.empty().startWith(7);\n     * result.subscribe(x => console.log(x));\n     *\n     * @example <caption>仅将奇数映射并打平成字母序列abc。</caption>\n     * var interval = Rx.Observable.interval(1000);\n     * var result = interval.mergeMap(x =>\n     *   x % 2 === 1 ? Rx.Observable.of('a', 'b', 'c') : Rx.Observable.empty()\n     * );\n     * result.subscribe(x => console.log(x));\n     *\n     * // 结果如下:\n     * // x 是间隔的计数比如：0,1,2,3,...\n     * // x 1000ms 出现一次\n     * // 如果 x % 2 等于 1 打印 abc\n     * // 如果 x % 2 不等于1 什么也不输出\n     *\n     * @see {@link create}\n     * @see {@link never}\n     * @see {@link of}\n     * @see {@link throw}\n     *\n     * @param {Scheduler} [scheduler] 调度器 ( {@link IScheduler} )， 用来调度完成通知。\n     * @return {Observable} 空的Observable: 仅仅发出完成通知。\n     * @static true\n     * @name empty\n     * @owner Observable\n     ",
+                  "range": [
+                    281,
+                    1485
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 50,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "dispatch",
+                "range": [
+                  1581,
+                  1589
+                ],
+                "loc": {
+                  "start": {
+                    "line": 54,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 54,
+                    "column": 19
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "arg",
+                    "range": [
+                      1590,
+                      1593
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 54,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 54,
+                        "column": 23
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "ObjectPattern",
+                            "properties": [
+                              {
+                                "type": "Property",
+                                "key": {
+                                  "type": "Identifier",
+                                  "name": "subscriber",
+                                  "range": [
+                                    1613,
+                                    1623
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 55,
+                                      "column": 16
+                                    },
+                                    "end": {
+                                      "line": 55,
+                                      "column": 26
+                                    }
+                                  }
+                                },
+                                "value": {
+                                  "type": "Identifier",
+                                  "name": "subscriber",
+                                  "range": [
+                                    1613,
+                                    1623
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 55,
+                                      "column": 16
+                                    },
+                                    "end": {
+                                      "line": 55,
+                                      "column": 26
+                                    }
+                                  }
+                                },
+                                "kind": "init",
+                                "method": false,
+                                "shorthand": true,
+                                "computed": false,
+                                "range": [
+                                  1613,
+                                  1623
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 55,
+                                    "column": 16
+                                  },
+                                  "end": {
+                                    "line": 55,
+                                    "column": 26
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1611,
+                              1625
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 55,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 55,
+                                "column": 28
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "Identifier",
+                            "name": "arg",
+                            "range": [
+                              1628,
+                              1631
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 55,
+                                "column": 31
+                              },
+                              "end": {
+                                "line": 55,
+                                "column": 34
+                              }
+                            }
+                          },
+                          "range": [
+                            1611,
+                            1631
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 55,
+                              "column": 14
+                            },
+                            "end": {
+                              "line": 55,
+                              "column": 34
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "const",
+                      "range": [
+                        1605,
+                        1632
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 55,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 55,
+                          "column": 35
+                        }
+                      }
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "subscriber",
+                            "range": [
+                              1641,
+                              1651
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 56,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 56,
+                                "column": 18
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "complete",
+                            "range": [
+                              1652,
+                              1660
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 56,
+                                "column": 19
+                              },
+                              "end": {
+                                "line": 56,
+                                "column": 27
+                              }
+                            }
+                          },
+                          "range": [
+                            1641,
+                            1660
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 56,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 56,
+                              "column": 27
+                            }
+                          }
+                        },
+                        "arguments": [],
+                        "range": [
+                          1641,
+                          1662
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 56,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 56,
+                            "column": 29
+                          }
+                        }
+                      },
+                      "range": [
+                        1641,
+                        1663
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 56,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 56,
+                          "column": 30
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1595,
+                    1669
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 54,
+                      "column": 25
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1589,
+                  1669
+                ],
+                "loc": {
+                  "start": {
+                    "line": 54,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 57,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                1574,
+                1669
+              ],
+              "loc": {
+                "start": {
+                  "line": 54,
+                  "column": 4
+                },
+                "end": {
+                  "line": 57,
+                  "column": 5
+                }
+              },
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "_subscribe",
+                "range": [
+                  1674,
+                  1684
+                ],
+                "loc": {
+                  "start": {
+                    "line": 58,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 58,
+                    "column": 14
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "subscriber",
+                    "range": [
+                      1685,
+                      1695
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 58,
+                        "column": 15
+                      },
+                      "end": {
+                        "line": 58,
+                        "column": 25
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "name": "scheduler",
+                            "range": [
+                              1713,
+                              1722
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 59,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 59,
+                                "column": 23
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+                                1725,
+                                1729
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 59,
+                                  "column": 26
+                                },
+                                "end": {
+                                  "line": 59,
+                                  "column": 30
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "scheduler",
+                              "range": [
+                                1730,
+                                1739
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 59,
+                                  "column": 31
+                                },
+                                "end": {
+                                  "line": 59,
+                                  "column": 40
+                                }
+                              }
+                            },
+                            "range": [
+                              1725,
+                              1739
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 59,
+                                "column": 26
+                              },
+                              "end": {
+                                "line": 59,
+                                "column": 40
+                              }
+                            }
+                          },
+                          "range": [
+                            1713,
+                            1739
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 59,
+                              "column": 14
+                            },
+                            "end": {
+                              "line": 59,
+                              "column": 40
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "const",
+                      "range": [
+                        1707,
+                        1740
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 59,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 59,
+                          "column": 41
+                        }
+                      }
+                    },
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "Identifier",
+                        "name": "scheduler",
+                        "range": [
+                          1753,
+                          1762
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 60,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 60,
+                            "column": 21
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ReturnStatement",
+                            "argument": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "scheduler",
+                                  "range": [
+                                    1785,
+                                    1794
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 61,
+                                      "column": 19
+                                    },
+                                    "end": {
+                                      "line": 61,
+                                      "column": 28
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "schedule",
+                                  "range": [
+                                    1795,
+                                    1803
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 61,
+                                      "column": 29
+                                    },
+                                    "end": {
+                                      "line": 61,
+                                      "column": 37
+                                    }
+                                  }
+                                },
+                                "range": [
+                                  1785,
+                                  1803
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 61,
+                                    "column": 19
+                                  },
+                                  "end": {
+                                    "line": 61,
+                                    "column": 37
+                                  }
+                                }
+                              },
+                              "arguments": [
+                                {
+                                  "type": "MemberExpression",
+                                  "computed": false,
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "EmptyObservable",
+                                    "range": [
+                                      1804,
+                                      1819
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 61,
+                                        "column": 38
+                                      },
+                                      "end": {
+                                        "line": 61,
+                                        "column": 53
+                                      }
+                                    }
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "dispatch",
+                                    "range": [
+                                      1820,
+                                      1828
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 61,
+                                        "column": 54
+                                      },
+                                      "end": {
+                                        "line": 61,
+                                        "column": 62
+                                      }
+                                    }
+                                  },
+                                  "range": [
+                                    1804,
+                                    1828
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 61,
+                                      "column": 38
+                                    },
+                                    "end": {
+                                      "line": 61,
+                                      "column": 62
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "Literal",
+                                  "value": 0,
+                                  "raw": "0",
+                                  "range": [
+                                    1830,
+                                    1831
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 61,
+                                      "column": 64
+                                    },
+                                    "end": {
+                                      "line": 61,
+                                      "column": 65
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "ObjectExpression",
+                                  "properties": [
+                                    {
+                                      "type": "Property",
+                                      "key": {
+                                        "type": "Identifier",
+                                        "name": "subscriber",
+                                        "range": [
+                                          1835,
+                                          1845
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 61,
+                                            "column": 69
+                                          },
+                                          "end": {
+                                            "line": 61,
+                                            "column": 79
+                                          }
+                                        }
+                                      },
+                                      "value": {
+                                        "type": "Identifier",
+                                        "name": "subscriber",
+                                        "range": [
+                                          1835,
+                                          1845
+                                        ],
+                                        "loc": {
+                                          "start": {
+                                            "line": 61,
+                                            "column": 69
+                                          },
+                                          "end": {
+                                            "line": 61,
+                                            "column": 79
+                                          }
+                                        }
+                                      },
+                                      "kind": "init",
+                                      "method": false,
+                                      "shorthand": true,
+                                      "computed": false,
+                                      "range": [
+                                        1835,
+                                        1845
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 61,
+                                          "column": 69
+                                        },
+                                        "end": {
+                                          "line": 61,
+                                          "column": 79
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "range": [
+                                    1833,
+                                    1847
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 61,
+                                      "column": 67
+                                    },
+                                    "end": {
+                                      "line": 61,
+                                      "column": 81
+                                    }
+                                  }
+                                }
+                              ],
+                              "range": [
+                                1785,
+                                1848
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 61,
+                                  "column": 19
+                                },
+                                "end": {
+                                  "line": 61,
+                                  "column": 82
+                                }
+                              }
+                            },
+                            "range": [
+                              1778,
+                              1849
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 61,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 61,
+                                "column": 83
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1764,
+                          1859
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 60,
+                            "column": 23
+                          },
+                          "end": {
+                            "line": 62,
+                            "column": 9
+                          }
+                        }
+                      },
+                      "alternate": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "subscriber",
+                                  "range": [
+                                    1887,
+                                    1897
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 64,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 64,
+                                      "column": 22
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "complete",
+                                  "range": [
+                                    1898,
+                                    1906
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 64,
+                                      "column": 23
+                                    },
+                                    "end": {
+                                      "line": 64,
+                                      "column": 31
+                                    }
+                                  }
+                                },
+                                "range": [
+                                  1887,
+                                  1906
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 64,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 64,
+                                    "column": 31
+                                  }
+                                }
+                              },
+                              "arguments": [],
+                              "range": [
+                                1887,
+                                1908
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 64,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 64,
+                                  "column": 33
+                                }
+                              }
+                            },
+                            "range": [
+                              1887,
+                              1909
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 64,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 64,
+                                "column": 34
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1873,
+                          1919
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 63,
+                            "column": 13
+                          },
+                          "end": {
+                            "line": 65,
+                            "column": 9
+                          }
+                        }
+                      },
+                      "range": [
+                        1749,
+                        1919
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 60,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 65,
+                          "column": 9
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1697,
+                    1925
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 58,
+                      "column": 27
+                    },
+                    "end": {
+                      "line": 66,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1684,
+                  1925
+                ],
+                "loc": {
+                  "start": {
+                    "line": 58,
+                    "column": 14
+                  },
+                  "end": {
+                    "line": 66,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                1674,
+                1925
+              ],
+              "loc": {
+                "start": {
+                  "line": 58,
+                  "column": 4
+                },
+                "end": {
+                  "line": 66,
+                  "column": 5
+                }
+              },
+              "static": false
+            }
+          ],
+          "range": [
+            187,
+            1927
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 48
+            },
+            "end": {
+              "line": 67,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          146,
+          1927
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 7
+          },
+          "end": {
+            "line": 67,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * We need this JSDoc comment for affecting ESDoc.\n * @extends {Ignored}\n * @hide true\n ",
+            "range": [
+              44,
+              138
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Line",
+            "value": "# sourceMappingURL=EmptyObservable.js.map",
+            "range": [
+              1928,
+              1971
+            ],
+            "loc": {
+              "start": {
+                "line": 68,
+                "column": 0
+              },
+              "end": {
+                "line": 68,
+                "column": 43
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        139,
+        1927
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 67,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * We need this JSDoc comment for affecting ESDoc.\n * @extends {Ignored}\n * @hide true\n ",
+          "range": [
+            44,
+            138
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Line",
+          "value": "# sourceMappingURL=EmptyObservable.js.map",
+          "range": [
+            1928,
+            1971
+          ],
+          "loc": {
+            "start": {
+              "line": 68,
+              "column": 0
+            },
+            "end": {
+              "line": 68,
+              "column": 43
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    1927
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 67,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * We need this JSDoc comment for affecting ESDoc.\n * @extends {Ignored}\n * @hide true\n ",
+      "range": [
+        44,
+        138
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * 创建一个什么数据都不发出并且立马完成的 Observable。\n     *\n     * <span class=\"informal\"> 仅仅发出 complete 通知，其他什么也不做。\n     * </span>\n     *\n     * <img src=\"./img/empty.png\" width=\"100%\">\n     *\n     * 这个静态操作符对于创建一个简单的只发出完成状态通知的 Observable 是非常有用的。 它可以被用来和\n     * 其他 Observables 进行组合, 比如在 {@link mergeMap} 中使用。\n     *\n     * @example <caption>发出数字7, 然后完成。</caption>\n     * var result = Rx.Observable.empty().startWith(7);\n     * result.subscribe(x => console.log(x));\n     *\n     * @example <caption>仅将奇数映射并打平成字母序列abc。</caption>\n     * var interval = Rx.Observable.interval(1000);\n     * var result = interval.mergeMap(x =>\n     *   x % 2 === 1 ? Rx.Observable.of('a', 'b', 'c') : Rx.Observable.empty()\n     * );\n     * result.subscribe(x => console.log(x));\n     *\n     * // 结果如下:\n     * // x 是间隔的计数比如：0,1,2,3,...\n     * // x 1000ms 出现一次\n     * // 如果 x % 2 等于 1 打印 abc\n     * // 如果 x % 2 不等于1 什么也不输出\n     *\n     * @see {@link create}\n     * @see {@link never}\n     * @see {@link of}\n     * @see {@link throw}\n     *\n     * @param {Scheduler} [scheduler] 调度器 ( {@link IScheduler} )， 用来调度完成通知。\n     * @return {Observable} 空的Observable: 仅仅发出完成通知。\n     * @static true\n     * @name empty\n     * @owner Observable\n     ",
+      "range": [
+        281,
+        1485
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "line": 50,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": "# sourceMappingURL=EmptyObservable.js.map",
+      "range": [
+        1928,
+        1971
+      ],
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 0
+        },
+        "end": {
+          "line": 68,
+          "column": 43
+        }
+      }
+    }
+  ]
+}
