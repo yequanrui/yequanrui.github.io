@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{189:function(e,n,t){"use strict";t.r(n),function(e){t.d(n,"pageQuery",function(){return i});var a=t(222),c=(t(0),t(203)),o=t(211),r=t(213),i="128216468";n.default=function(n){var t=n.data,i=n.location;return e.createElement(c.a,{location:i},e.createElement(a.a,{enableScrollSync:!0,createLink:o.d,location:i,markdownRemark:t.markdownRemark,sectionList:r.c,titlePostfix:" – React 中文文档 v16.6.3"}))}}.call(this,t(58))}}]);
-//# sourceMappingURL=component---src-templates-tutorial-js-02217fcbb4da5e546e69.js.map
