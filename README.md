@@ -2,6 +2,15 @@
 
 > Pages for yequanrui
 
+[![version](https://img.shields.io/github/package-json/v/yequanrui/yequanrui.github.io)](https://yequanrui.github.io/)
+[![types](https://img.shields.io/npm/types/@angular/core)](https://www.tslang.cn/)
+[![license](https://img.shields.io/github/license/yequanrui/yequanrui.github.io)](https://choosealicense.rustwiki.org/licenses/mit/)
+
+[![node](https://img.shields.io/node/v/@angular/core)](http://nodejs.cn/)
+[![npm](https://img.shields.io/npm/v/npm/latest-6?label=npm)](https://www.npmjs.com/)
+
+[![angular](https://img.shields.io/github/package-json/dependency-version/yequanrui/yequanrui.github.io/@angular/core?label=angular)](http://angular.cn/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
 ## Development server
