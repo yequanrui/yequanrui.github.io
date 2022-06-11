@@ -29,7 +29,7 @@ export class AppComponent {
     {
       id: 'CloudVideo',
       name: 'CloudVideo',
-      desc: 'CloudVideo',
+      desc: 'Record daily',
       url: '/CloudVideo',
     },
     {
@@ -48,34 +48,34 @@ export class AppComponent {
   };
   docs = [
     {
-      id: 'DevTools',
-      name: 'DevTools',
-      desc: 'Toolset for Development',
-      url: '/#/DevTools/index',
+      id: 'LeetCode',
+      name: 'LeetCode',
+      desc: '力扣题库',
+      url: '/CloudNotes/#/LeetCode/_index',
+    },
+    {
+      id: 'NowCoder',
+      name: 'NowCoder',
+      desc: '牛客题库-华为机考',
+      url: '/CloudNotes/#/NowCoder/_index',
+    },
+    {
+      id: 'DevNotes',
+      name: 'DevNotes',
+      desc: 'Notes for Development',
+      url: '/CloudNotes/#/DevNotes/_index',
     },
     {
       id: 'WinNotes',
       name: 'WinNotes',
       desc: 'Notes for Windows',
-      url: '/#/WinNotes/index',
+      url: '/CloudNotes/#/WinNotes/index',
     },
     {
-      id: 'WinTools',
-      name: 'WinTools',
-      desc: 'Toolset for Windows',
-      url: '/#/WinTools/index',
-    },
-    {
-      id: 'MobileTools',
-      name: 'MobileTools',
-      desc: 'Toolset for Mobile',
-      url: '/#/MobileTools/index',
-    },
-    {
-      id: 'Music',
-      name: 'Music',
-      desc: 'Collection of Music',
-      url: '/#/Music/index',
+      id: 'MobileNotes',
+      name: 'MobileNotes',
+      desc: 'Notes for Mobile',
+      url: '/#/MobileNotes/index',
     },
   ];
 
