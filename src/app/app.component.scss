@@ -48,7 +48,13 @@ a:hover {
   .spacer {
     flex: 1;
   }
-  #github-logo {
+  .repo-link {
+    color: #cdd9e5;
+    &:hover {
+      color: #cdd9e5b3;
+    }
+  }
+  .repo-logo {
     height: 40px;
     margin: 0 8px;
     display: inline-block;

@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'YeQuanrui';
+  repo = {
+    name: 'GitHub',
+    html_url: 'https://github.com/yequanrui',
+    repos_url: 'https://github.com/yequanrui?tab=repositories',
+  };
   sites = [
     {
       id: 'CloudTools',
@@ -56,7 +61,7 @@ export class AppComponent {
     {
       id: 'NowCoder',
       name: 'NowCoder',
-      desc: '牛客题库-华为机考',
+      desc: '牛客题库',
       url: '/CloudNotes/#/NowCoder/_index',
     },
     {
@@ -85,6 +90,10 @@ export class AppComponent {
       this.sites.forEach((site) => (site.url = `${localhost}/Web${site.url}`));
       this.defaultDoc.url = `${this.defaultDoc.url}/docs`;
       this.docs.forEach((doc) => (doc.url = `${localhost}/Web${this.defaultDoc.url}${doc.url}`));
+    } else if (location.hostname.includes('gitee')) {
+      this.repo.name = 'Gitee';
+      this.repo.html_url = this.repo.html_url.replace('github', 'gitee');
+      this.repo.repos_url = `${this.repo.html_url}/projects`;
     }
   }
 }
