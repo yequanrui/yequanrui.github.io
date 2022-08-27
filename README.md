@@ -11,7 +11,7 @@
 
 [![angular](https://img.shields.io/github/package-json/dependency-version/yequanrui/yequanrui.github.io/@angular/core?label=angular)](http://angular.cn/)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 
 ## Development server
 
