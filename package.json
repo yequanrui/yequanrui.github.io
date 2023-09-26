@@ -2,9 +2,10 @@
   "name": "yequanrui",
   "version": "1.6.0",
   "author": "yequanrui",
-  "description": "Pages for yequanrui",
+  "description": "Pages based on angular for yequanrui",
   "keywords": [
     "yequanrui",
+    "angular",
     "pages"
   ],
   "scripts": {

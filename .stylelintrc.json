@@ -1,19 +1,10 @@
 {
-  "extends": "stylelint-config-standard",
-  "validate": [
-    "css",
-    "html",
-    "less",
-    "postcss",
-    "sass",
-    "scss",
-    "source.css.styled",
-    "styled-css"
-  ],
+  "extends": ["stylelint-config-standard", "stylelint-config-recommended-scss"],
+  "validate": ["stylelint-scss"],
   "rules": {
     "max-empty-lines": 4,
     "string-quotes": "single",
-    "function-url-quotes": "single",
+    "function-url-quotes": "never",
     "color-hex-length": "long",
     "media-feature-no-missing-punctuation": null,
     "declaration-colon-newline-after": null,
