@@ -15,7 +15,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:yequanrui": "node dist/yequanrui/server/server.mjs",
-    "deploy": "ng deploy --base-href=/ --name='yequanrui' --email='yequanrui@qq.com'"
+    "deploy": "ng deploy --base-href=/browser --name='yequanrui' --email='yequanrui@qq.com'"
   },
   "private": true,
   "dependencies": {
