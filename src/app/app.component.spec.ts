@@ -2,11 +2,11 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(() =>
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [AppComponent],
-    })
-  );
+    }).compileComponents();
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -17,13 +17,13 @@ describe('AppComponent', () => {
   it(`should have the 'YeQuanrui's Pages' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('YeQuanrui's Pages');
+    expect(app.title).toEqual('YeQuanrui\'s Pages');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('YeQuanrui's app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('YeQuanrui\'s app is running!');
   });
 });

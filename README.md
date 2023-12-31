@@ -8,10 +8,11 @@
 
 [![node](https://img.shields.io/node/v/@angular/core)](http://nodejs.cn/)
 [![npm](https://img.shields.io/npm/v/npm/latest-6?label=npm)](https://www.npmjs.com/)
+[![pnpm](https://img.shields.io/npm/v/pnpm/latest-8?label=pnpm)](https://www.pnpm.cn/)
 
 [![angular](https://img.shields.io/github/package-json/dependency-version/yequanrui/yequanrui.github.io/@angular/core?label=angular)](http://angular.cn/)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
 
 ## Development server
 

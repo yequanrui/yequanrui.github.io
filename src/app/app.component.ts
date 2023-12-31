@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'YeQuanrui';
@@ -88,13 +88,13 @@ export class AppComponent {
     },
   ];
 
-  constructor() {
-    if (location.hostname === 'localhost') {
+  constructor(@Inject(DOCUMENT) private _doc: Document) {
+    if (this._doc.location.hostname === 'localhost') {
       const localhost = 'http://localhost:8080';
       this.sites.forEach((site) => (site.url = `${localhost}/Web${site.url}`));
       this.defaultDoc.url = `${this.defaultDoc.url}/docs`;
       this.docs.forEach((doc) => (doc.url = `${localhost}/Web${this.defaultDoc.url}${doc.url}`));
-    } else if (location.hostname.includes('gitee')) {
+    } else if (this._doc.location.hostname.includes('gitee')) {
       this.repo.name = 'Gitee';
       this.repo.html_url = this.repo.html_url.replace('github', 'gitee');
       this.repo.repos_url = `${this.repo.html_url}/projects`;
