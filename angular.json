@@ -98,10 +98,7 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "buildTarget": "yequanrui:build:production"
-          }
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

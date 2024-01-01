@@ -30,7 +30,7 @@ jobs:
       - name: Deploy to Github Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run deploy
+        run: npx angular-cli-ghpages --dir=dist/browser
       - name: Github Sync to Gitee
         uses: wearerequired/git-mirror-action@master
         env:
