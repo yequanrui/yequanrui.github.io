@@ -1,7 +1,6 @@
 {
   "name": "yequanrui",
   "version": "1.7.0",
-  "author": "yequanrui",
   "description": "Pages based on angular for yequanrui",
   "keywords": [
     "yequanrui",
@@ -13,9 +12,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:yequanrui": "node dist/yequanrui/server/server.mjs",
-    "deploy": "ng deploy --base-href=/ --name='yequanrui' --email='yequanrui@qq.com'"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -26,10 +23,7 @@
     "@angular/forms": "^17.0.8",
     "@angular/platform-browser": "^17.0.8",
     "@angular/platform-browser-dynamic": "^17.0.8",
-    "@angular/platform-server": "^17.0.8",
     "@angular/router": "^17.0.8",
-    "@angular/ssr": "^17.0.8",
-    "express": "^4.18.2",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.2"
@@ -38,10 +32,7 @@
     "@angular-devkit/build-angular": "^17.0.8",
     "@angular/cli": "^17.0.8",
     "@angular/compiler-cli": "^17.0.8",
-    "@types/express": "^4.17.21",
     "@types/jasmine": "~5.1.4",
-    "@types/node": "^18.18.0",
-    "angular-cli-ghpages": "^1.0.7",
     "jasmine-core": "~5.1.1",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.2.0",
@@ -57,6 +48,11 @@
     "pnpm": ">=8"
   },
   "license": "MIT",
+  "author": {
+    "name": "yequanrui",
+    "email": "yequanrui@qq.com",
+    "url": "https://yequanrui.github.io"
+  },
   "homepage": "https://github.com/yequanrui/yequanrui.github.io",
   "repository": {
     "type": "git",
