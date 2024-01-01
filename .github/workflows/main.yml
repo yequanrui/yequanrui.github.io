@@ -31,7 +31,7 @@ jobs:
       - name: Deploy to Github Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx angular-cli-ghpages --dir=dist/browser --repo=https://${{ secrets.GITHUB_TOKEN }}@github.com/yequanrui/yequanrui.github.io.git --name="yequanrui" --email=yequanrui@qq.com
+        run: npx angular-cli-ghpages --dir=dist/yequanrui/browser --repo=https://${{ secrets.GITHUB_TOKEN }}@github.com/yequanrui/yequanrui.github.io.git --name="yequanrui" --email=yequanrui@qq.com
       - name: Github Sync to Gitee
         uses: wearerequired/git-mirror-action@master
         env:
