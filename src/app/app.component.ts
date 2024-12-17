@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -24,10 +24,10 @@ export class AppComponent {
       url: '/CloudTools',
     },
     {
-      id: 'CloudAdmin',
-      name: 'CloudAdmin',
-      desc: 'Admin based on DevUI(Angular)',
-      url: '/CloudAdmin',
+      id: 'WeTools',
+      name: 'WeTools',
+      desc: 'An Electron-Vite application with TinyVue',
+      url: '/WeTools',
     },
     {
       id: 'CloudModel',
