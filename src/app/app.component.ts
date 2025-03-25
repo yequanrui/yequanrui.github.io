@@ -98,6 +98,10 @@ export class AppComponent {
       this.repo.name = 'Gitee';
       this.repo.html_url = this.repo.html_url.replace('github', 'gitee');
       this.repo.repos_url = `${this.repo.html_url}/projects`;
+    } else if (this._doc.location.hostname.includes('gitcode')) {
+      this.repo.name = 'GitCode';
+      this.repo.html_url = this.repo.html_url.replace('github', 'gitcode');
+      this.repo.repos_url = this.repo.html_url.replace('yequanrui', 'user/yequanrui/repos');
     }
   }
 }
