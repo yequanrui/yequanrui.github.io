@@ -12,7 +12,7 @@
 
 [![angular](https://img.shields.io/github/package-json/dependency-version/yequanrui/yequanrui.github.io/@angular/core?label=angular)](https://angular.dev/)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.x.x.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.x.x.
 
 ## Development server
 
