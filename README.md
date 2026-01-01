@@ -12,7 +12,7 @@
 
 [![angular](https://img.shields.io/github/package-json/dependency-version/yequanrui/yequanrui.github.io/@angular/core?label=angular)](https://angular.dev/)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.x.x.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.x.x.
 
 ## Development server
 
@@ -50,7 +50,7 @@ This will compile your project and store the build artifacts in the `dist/` dire
 
 ## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
 ```bash
 ng test
