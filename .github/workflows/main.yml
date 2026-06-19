@@ -15,9 +15,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v6
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
-          version: 10.27.0
+          version: 10.34.3
       - name: Setup Node.js Environment
         uses: actions/setup-node@v6
         with:
