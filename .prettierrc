@@ -10,5 +10,13 @@
   "endOfLine": "auto",
   "proseWrap": "preserve",
   "quoteProps": "preserve",
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }

@@ -7,12 +7,18 @@
 [![license](https://img.shields.io/github/license/yequanrui/yequanrui.github.io)](https://choosealicense.rustwiki.org/licenses/mit/)
 
 [![node](https://img.shields.io/node/v/@angular/core)](http://nodejs.cn/)
-[![npm](https://img.shields.io/npm/v/npm/latest-6?label=npm)](https://www.npmjs.com/)
-[![pnpm](https://img.shields.io/npm/v/pnpm/latest-8?label=pnpm)](https://www.pnpm.cn/)
+[![npm](https://img.shields.io/npm/v/npm/next-10?label=npm)](https://www.npmjs.com/)
+[![pnpm](https://img.shields.io/npm/v/pnpm/latest-10?label=pnpm)](https://www.pnpm.cn/)
 
 [![angular](https://img.shields.io/github/package-json/dependency-version/yequanrui/yequanrui.github.io/@angular/core?label=angular)](https://angular.dev/)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.x.x.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.x.x.
+
+## New Project
+
+```bash
+ng new yequanrui --skip-git --skip-install --skip-tests --style=scss --package-manager=pnpm --ssr=false --ai-config=none
+```
 
 ## Development server
 

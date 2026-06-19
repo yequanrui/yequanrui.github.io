@@ -6,10 +6,10 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
 })
-export class AppComponent {
+export class App {
   title = 'YeQuanrui';
   repo = {
     name: 'GitHub',
